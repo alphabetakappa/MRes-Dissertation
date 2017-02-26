@@ -1,0 +1,43 @@
+\contentsline {section}{\numberline {1}Introduction}{3}
+\contentsline {section}{\numberline {2}Background}{3}
+\contentsline {subsection}{\numberline {2.1}Emergent Behaviour}{3}
+\contentsline {subsubsection}{\numberline {2.1.1}Interaction Dynamics}{3}
+\contentsline {paragraph}{\numberline {2.1.1.1}System Interaction only Emergent Behaviour}{3}
+\contentsline {subsubsection}{\numberline {2.1.2}Feedback Loops}{3}
+\contentsline {paragraph}{\numberline {2.1.2.1}Static Loops versus Dynamic Loops}{3}
+\contentsline {subsection}{\numberline {2.2}Emergent Behaviour in the Finacial Markets}{3}
+\contentsline {subsubsection}{\numberline {2.2.1}Fine-Grained Microstructure Approach to Financial Markets}{4}
+\contentsline {paragraph}{\numberline {2.2.1.1}Discrete Time}{4}
+\contentsline {paragraph}{\numberline {2.2.1.2}Hot Potato}{4}
+\contentsline {paragraph}{\numberline {2.2.1.3}Flash Crash}{5}
+\contentsline {subsection}{\numberline {2.3}Agent Based Modelling}{5}
+\contentsline {subsubsection}{\numberline {2.3.1}Benefits}{5}
+\contentsline {paragraph}{\numberline {2.3.1.1}Tracking Messages}{5}
+\contentsline {paragraph}{\numberline {2.3.1.2}Conceptually Easy to Understand}{5}
+\contentsline {subsection}{\numberline {2.4}InterDyne}{5}
+\contentsline {subsubsection}{\numberline {2.4.1}Harness}{6}
+\contentsline {section}{\numberline {3}Description and analysis of the problem}{6}
+\contentsline {subsection}{\numberline {3.1}Why Agent Based Modelling is not enough}{6}
+\contentsline {subsubsection}{\numberline {3.1.1}One-to-Many Problem}{6}
+\contentsline {subsubsection}{\numberline {3.1.2}Semantics of the System}{6}
+\contentsline {subsubsection}{\numberline {3.1.3}Inverse Function Problem?}{6}
+\contentsline {subsection}{\numberline {3.2}Difference equations}{6}
+\contentsline {subsubsection}{\numberline {3.2.1}Benefits and Problems}{6}
+\contentsline {subsubsection}{\numberline {3.2.2}Lack of Visualisation}{6}
+\contentsline {subsubsection}{\numberline {3.2.3}Optimisation Problems}{6}
+\contentsline {subsection}{\numberline {3.3}Two Views Approach}{6}
+\contentsline {subsubsection}{\numberline {3.3.1}Converter}{6}
+\contentsline {section}{\numberline {4}New Language}{6}
+\contentsline {subsection}{\numberline {4.1}Syntax/Grammer}{6}
+\contentsline {subsection}{\numberline {4.2}Parser}{6}
+\contentsline {subsection}{\numberline {4.3}Examples}{6}
+\contentsline {subsubsection}{\numberline {4.3.1}Simple Example}{6}
+\contentsline {subsubsection}{\numberline {4.3.2}Complex Example}{6}
+\contentsline {section}{\numberline {5}Converting to Lambda Calculus}{6}
+\contentsline {section}{\numberline {6}Converting to Agent Based Modelling}{6}
+\contentsline {section}{\numberline {7}Relating Agent Based Modelling to Lambda Calculus}{6}
+\contentsline {section}{\numberline {8}Conclusion}{6}
+\contentsline {subsection}{\numberline {8.1}Further Work}{6}
+\contentsline {section}{\numberline {9}Appendix}{6}
+\contentsline {subsection}{\numberline {9.1}Appendix 1}{6}
+\contentsline {section}{References}{6}

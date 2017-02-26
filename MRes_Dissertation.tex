@@ -1,0 +1,358 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{mathtools}
+\usepackage{wrapfig}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{mathtools}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{gensymb}
+\usepackage{caption}
+\usepackage{geometry}
+\usepackage{cite}
+
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\Tr}{Tr}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+
+
+
+
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+	{-2.5ex\@plus -1ex \@minus -.25ex}%
+	{1.25ex \@plus .25ex}%
+	{\normalfont\normalsize\bfseries}}
+\makeatother
+\setcounter{secnumdepth}{4} % how many sectioning levels to assign numbers to
+\setcounter{tocdepth}{4}    % how many sectioning levels to show in ToC in preamble
+
+
+
+
+
+\geometry
+{
+  %body={6.5in, 8.5in},
+  left=1.0in,
+  top=1.25in
+}
+
+\setlength{\parindent}{10ex}
+
+
+
+
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[scale=0.2]{rhul_logo}
+%\end{figure}
+
+
+
+
+
+\begin{document} 
+\title{Defining the Semantics of Agent Based Modelling in Interdyne}
+\author{Leo Carlos-Sandberg\\
+Supervisor: Dr Christopher D. Clack} 
+\maketitle 
+
+\begin{abstract}
+\noindent {\it This paper defines the semantics of agent based modelling within the Interdyne simulator. A converter has been created that links an agent based model step wise to a difference equation based language, this language is created in such a way that it is directly relatable to lambda calculus which can then be used as definition of the semantics of the agent based model.
+%talk about this helping regulators 
+}
+\end{abstract}
+
+
+
+
+\newpage
+\newgeometry{top = 2cm}
+\tableofcontents
+{\textit{ }}
+\restoregeometry
+\newpage
+
+
+
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[scale=0.5]{spin_on_lattice}
+%	\caption{\it The two-dimensional Ising model lattice.}
+%	\label{fig:spins_on_lattice_demo}
+%\end{figure} 
+
+%\begin{equation}
+%E = -J\sum_{\langle i,j \rangle}^{N} s_{i}s_{j} - h \sum_{i = 1}^{N} s_{i}.
+%\end{equation}
+
+%\label{1d_code}
+
+%~\cite{GouldBook} 
+%~\ref{s_the_ising_model} 
+
+
+\section{Introduction}
+%prove that the simulations are right
+%Ability to provide confidence in the semantics of the system to economists and financial services industry practitioners
+%Example ? difference equations (recurrence relations) ? provide a time-view, provides a way for economists to validate the description of the system (yes, we agree ? we understand these equations) 
+
+\section{Background} %can do now
+%so why we are interested in emeregent behviour
+%say why the backkgorugh is important
+	%needed to understand the need of the work
+	%needed to understand the work I am imediately building on
+	%needed to understand the issues with the work I am building on
+	%needed to understand the point of the work I am buidling on
+%say what I am going to talk about in this section
+
+The work that this paper is building on is interested in the modelling and understanding of emergent behaviour from complex interacting systems. In particular the work focusses on the financial markets and unexpected emergent behaviour that can be exhibited in them, such as the "Flash Crash" of May 6th 2010. Behaviour of this type can be unpredictable and very damaging to the individual market that it materialises in, however the damage in one market can easily spread to others due to traders using "hedging" trades in different markets to manage their risk. This creates an exceptionally complex system of interconnected markets who them selfs are already very complex, this system of systems can easily exhibit emergent behaviour that due to the complexity of the system is very difficult to find the cause of. Therefore the aim of the research that is built on here is to create a simulator that can be used to model complex aspects of the finical markets with the view to understand the origin of emergence and hence be able to provide useful information to regulators, economist and financial services practitioners on how to use and regulate the markets safely.         
+
+
+\subsection{Emergent Behaviour} 
+%talk about physics as an example?
+%Introduce the Idea of emegence and emergent behviour
+	%define what I mean by emergence 
+%give an example of emergence
+	%something simple and relatiable (maybe traffic jams)
+%introduce systems of systems
+	%diiscuss emergence in systems of systems
+
+\subsubsection{Interaction Dynamics}
+%introduce interaction dynamics, what they are
+	%give examples maybe?
+	%say what an interaction only system is like
+	%say how interactions can be passed/occur
+
+\paragraph{System Interaction only Emergent Behaviour} 
+%Say that I am only interested in EB from interactions only
+	%give two examples, one from interactions one from not
+%say why I only care about interactiosn
+
+\subsubsection{Feedback Loops}
+%what is a feedback loop 
+
+19.1.2 Feedback loopsA good example of undesirable emergent behaviour in the financial markets is the creation of feedback loops, where a component system observes in its input some value that derives from its own output.  The process by which an output value is transformed into a derived input value may be complex and transitive (i.e. it may involve processing by one or more other component systems).The description and classification of feedback loops is not straghtforward. Feedback loops may exist in a financial market ab initio, or may be created dynamically after the financial market has been operational for a period of time.  It is also possible for feedback loops to increase or decrease in size or effect, to split or merge, or to disappear.  Some feedback loops may have a benign effect (we call these stabilising loops) and some are malignant (destablilising loops).In addition to categorising loops as either stablilising or destabilising, we identify whether they are static or dynamic.  For a given SoS, a static loop is one that always exists, with unchanging size and effect, and which could be detected by a straightforward static analysis of a formal description of the SoS.  Such loops may be intended or unintended.  By contrast a dynamic loop may be transient, may have changing size or effect, and might not be detectable via straightforward static analysis.  Dynamic loops may be highly unpredictable and difficult to detect, analyse and understand.
+
+\paragraph{Static Loops versus Dynamic Loops} 
+%what is a static loop
+%what is a dynamic loop
+%why static loops are boring
+%why dnamic loops are emegence 
+%I am intrested in dynamic loops
+
+\subsection{Emergent Behaviour in the Finacial Markets}
+%why I  am doing an example
+	%this is the stuff we are actually looking at 
+	%why look at the finical markets
+%talking about what I am going to say in this section
+
+from the book
+Our focus is to explore emergent behaviour in the financial markets that arises from the dynamics of interaction between component systems, although the modelling and simulation technique that we use is applicable to other Systems of Systems.  We aim to assist economists, regulators, and financial services practitioners in understanding the complexity of such emergent behaviour; to model both simple and highly complex systems, to analyse and categorise emergent behaviour, to detect artefacts such as feedback loops, and to utilise modelling and simulation to predict the possible consequences of innovative practices (such as high-frequency trading) and regulatory interventions (such as transaction taxes).Our initial interest in the financial markets derived from reading the reports of the staffs of the CFTC and the SEC into the ?Flash Crash? of May 6th 2010 [REF], coupled with observations from academics [REFS] and from industry practitioners [REFS].  We noticed that much of the approach and reasoning that was employed did not take into account the SoS nature of the financial markets; the issue of emergent behaviour was not discussed, and although the evidence presented in the formal CFTC/SEC report described several key feedback loops we felt that there was insufficient attention paid to the high-level market impact of low-level dynamic interaction, including these feedback loops. Our research therefore seeks to improve the conceptual understading of financial markets as a SoS with emergent behaviour arising from interaction dynamics.
+	
+\subsubsection{Fine-Grained Microstructure Approach to Financial Markets} 
+%What is this approach
+%why use this approach
+%how this changes how we look at the fincial markets
+
+from the book
+As we investigated the interaction dynamics involved in the Flash Crash, we realised that it would be necessary to model message-passing at a very fine-grained level.  For example, it would be necessary to model the timing of the arrival of limit orders at an exchange, because the sequence in which limit orders were processed by the exchange might support or defeat a feedback loop.  It would be necessary not only to model message-passing but also to run experiments to collect and observe the precise orderings of messages and their content. Furthermore, several reports [REFS] had mentioned the existence of communication delays and it was important to model the effects of increasing delays.  Thus, our task has been to model market microstructure [REF] in great detail.
+
+\paragraph{Discrete Time} 
+%this leads to discete time
+%what is discrete time
+%why this is good for us
+
+from the book
+When viewed in ?human time?, the financial markets appear to operate in continuous time. However, at a very fine-grained level of detail all computer operations are effected in discrete time dictated by the change in voltage of a system clock (a chip that emits an extremely precise square-wave oscillating voltage).  The passing of messages between two component systems of a financial market is a communication between two discrete-time systems linked by a transmission system; the transmission system itself would comprise a sequence of cables and intermediary devices, where the intermediary devices are typically operating in discrete time yet the cables (and the transmission delays introduced by the lengths of those cables) do not operate in discrete time.  Yet despite the continuous-time nature of some parts of the transmission system, a message will only be received by a computer at a discrete time determine by the receiving computer?s system clock (a message arriving earlier will not be processed until the next triggering edge of the clock voltage).A challenge in modelling the interaction behaviour of financial markets is the linking of the extremely fast behaviour of discrete-time computers (and the automated trading and matching algorithms that they run) with the comparatively slow human observation of market behaviour.  
+
+\paragraph{Hot Potato} 
+%this is a dynamic feedback loop
+%how is it caused 
+%when has it happened 
+
+%what is a hft (probably need a subsectuion on this)
+	%how do they work
+	%what do they do
+	%market makers
+	%inventory limits
+	%why do simple versions of them still work
+
+To understand the hot potato effect one must first know that High Frequency Traders have strict inventory limits and that when these limits are passed they are said to be in a ``panic state''. During a panic state the traders will issue large sell market orders to reduce their inventories back into their ideal trading regions. A High Frequency Trader can go into a panic state when it unintentionally buys more inventory then intended, which can happen due to information delays in the confirmation of purchases. It is thought that in the flash crash High Frequency Trades panicked when buying from a mutual fund who issued an unusually large sell order. Once one High Frequency Trader has panicked its now sold inventory can be bought by another trader who, again because of information delay, surpass their inventory limits and in turn panics. This processes can continue indefinitely depending on the system and is known as the hot potato effect as the inventory is constantly passed around and not retained by an one trader~\cite{Elias_Paper}. This feedback effect has been shown, in the InterDyne simulator, to create instabilities in market prices and even lead to crashes~\cite{DynamicCoupling_Chris}.   
+
+\paragraph{Flash Crash} 
+%what is the flash crash
+%when have they happned 
+%other theories to why they happen?
+%what we think causes them
+	%emergence from feedback loops in hfts
+%why they are important
+A flash crash is defined as a quick drop and then recovery in securities prices, with the most infamous  crash occurring on the 6th of May 2010 and lasting for around 20 minutes in which time almost one trillion dollars of market value was lost~\cite{Vikram_Paper}.\\
+There is no consensus on the exact cause of the flash crash, however a number of theories exist. The theory that InterDyne models is that the flash crash was caused by an interaction effect between High Frequency Trader Market Makers, known as the hot potato effect~\cite{Elias_Paper}. 
+
+\subsection{Agent Based Modelling}
+%what is agent based modleing
+
+\subsubsection{Benefits} 
+%it has denifits and downsides
+%why it is used for this
+%its ebnfits
+	%computation speed
+	%ease of thinking
+	%store messages
+\paragraph{Tracking Messages} 
+\paragraph{Conceptually Easy to Understand} 
+%look at the notes for chris course for more reasons
+
+\subsection{InterDyne} 
+%what is interdyne
+%how does it work
+%what do we want it to show
+
+InterDyne is a simulator designed to look at interaction dynamics, these dynamics have been with in the financial sector but can in theory be any interacting system. 
+This is an agent based simulator, this means that each component of an interacting system can be expressed as an agent, in the case of a financial system agents could be individual traders. Interactions between the agents can then be defined, these could be messages sent between a trader and an exchange for placing an order. 
+Once the simulator is set up in this way it can run through steps, at each step the interactions between the agents are passed and each agents response to the interaction is processed, these steps can represent discrete time.   
+InterDyne adds no direct mechanism that would force the system as a whole to exhibit any specific behaviour, any emergent behaviour experienced by the system is a result of the interaction dynamics only.\\ 
+A more complete way of labelling InterDyne would be as; a simulator used to investigate interaction dynamics and feedback effects in non-smooth complex systems~\cite{Chris_webPage}.
+
+\subsubsection{Harness} 
+%used to connect the agents and monitor the interactions
+
+\section {Description and analysis of the problem} %can do now
+%this model is not fully excepted by econimists
+%why this is so
+%a method to fix this
+
+\subsection{Why Agent Based Modelling is not enough}
+%why agent based modeling is not perfect for being excepted
+%one to many relationship
+%an alternative differnce equations
+
+\subsubsection{One-to-Many Problem}
+\subsubsection{Semantics of the System} 
+\subsubsection{Inverse Function Problem?} 
+
+\subsection{Difference equations} 
+%what are difference equations
+%how do they work
+%why are they more easily excepted
+
+ \subsubsection{Benefits and Problems} 
+ %other benfitis and down sides of them
+ 
+ \subsubsection{Lack of Visualisation} 
+%but they won?t be able to ?see? the emergent behaviour with running the simulator ?
+
+\subsubsection{Optimisation Problems} 
+% but generally we can?t directly ?run? these equations because for any reasonable-sized system there will be too much recomputation (we get the same problem with dynamic optimisation problems!)
+%there are ways to cache intermediate results, but they ain?t pretty
+
+\subsection{Two Views Approach} 
+%My solutions, two view
+%what is two views
+%its benifits
+%how it will solve the problem
+%look at refrence in book chapter relating ABM to difference equations
+
+\subsubsection{Converter} 
+%how I will create the two views
+%what the converter is meant to do
+
+
+\section{New Language}
+%first step is to create a language which can be used by a user to create a propram as difference equations
+%language has to be simple enough that a non computer scientist/econimist can use, but must still be able to contain all the information required for the program
+%programs wirtten in this language will be parsed into lexemes and then converted into a numeric type (?) which will be used to transfer this into lambda calcus and an ABM model
+
+\subsection{Syntax/Grammer}
+%what the new language looks like 
+%what each bit means
+%what is allowed to be written
+%how to write certain things
+%how is it user friendly
+%why this was choosen, for example easier to convert to lambda calcualse 
+\subsection{Parser}
+%explain what the parser is and how it works, in preparing these files for transfermation
+\subsection{Examples}
+%examples on how to use the grammar
+\subsubsection{Simple Example}
+%a very simple example on the use of the grammar
+\subsubsection{Complex Example}
+%what I have actually done maybe?
+
+\section{Converting to Lambda Calculus}
+%converting this grammer into a lambda calaulus that can then be used to explain its syntax
+
+\section{Converting to Agent Based Modelling}
+
+\section{Relating Agent Based Modelling to Lambda Calculus}
+%explicitly talk about the symantics that has been defined for agent based modeling
+%make sure an econimist can understnd it here
+%expain why the paper by chris is therefore right? 
+
+\section{Conclusion}
+\subsection{Further Work}
+
+ 
+\section{Appendix}
+
+\subsection{Appendix 1} %\label{Appendix_1}
+%\lstinputlisting[language=C++]{AllCode_functions.cpp}
+
+
+\addcontentsline{toc}{section}{References}
+\bibliographystyle{unsrt}
+\bibliography{MRes_Dissertation}
+
+
+
+
+
+
+
+     
+\end{document}
+
+
+
+
+
+
+
+
+
+
