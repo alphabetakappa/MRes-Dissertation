@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  19 APR 2017 11:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  19 APR 2017 14:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -569,18 +569,18 @@ Package color Info: Driver file: pdftex.def on input line 144.
 (./MRes_Dissertation.aux)
 \openout1 = `MRes_Dissertation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
 
 (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -644,15 +644,15 @@ Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Info: Redefining \celsius on input line 89.
-Package gensymb Info: Faking symbols for \degree and \celsius on input line 89.
+LaTeX Info: Redefining \celsius on input line 90.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 90.
 
 
 
 Package gensymb Warning: Not defining \perthousand.
 
-LaTeX Info: Redefining \ohm on input line 89.
-Package gensymb Info: Using \Omega for \ohm on input line 89.
+LaTeX Info: Redefining \ohm on input line 90.
+Package gensymb Info: Using \Omega for \ohm on input line 90.
 
 Package gensymb Warning: Not defining \micro.
 
@@ -733,18 +733,18 @@ Package gensymb Warning: Not defining \micro.
 
  [2
 
+] [3
+
 ]
-<feedback_loops_example.png, id=16, 290.08376pt x 319.1925pt>
+<feedback_loops_example.png, id=19, 290.08376pt x 319.1925pt>
 File: feedback_loops_example.png Graphic file (type png)
 
 <use feedback_loops_example.png>
-Package pdftex.def Info: feedback_loops_example.png used on input line 236.
+Package pdftex.def Info: feedback_loops_example.png used on input line 208.
 (pdftex.def)             Requested size: 145.04152pt x 159.59586pt.
- [3
 
-]
 
-./MRes_Dissertation.tex:244: Package inputenc Error: Keyboard character used is
+./MRes_Dissertation.tex:216: Package inputenc Error: Keyboard character used is
  undefined
 (inputenc)                in inputencoding `utf8'.
 
@@ -752,12 +752,12 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.244 ...H. Barkhausen, Lehrbuch der Elektronen-Rö
+l.216 ...H. Barkhausen, Lehrbuch der Elektronen-Rö
                                                   hren und ihrer technischen...
 
 ? 
 
-./MRes_Dissertation.tex:244: Package inputenc Error: Keyboard character used is
+./MRes_Dissertation.tex:216: Package inputenc Error: Keyboard character used is
  undefined
 (inputenc)                in inputencoding `utf8'.
 
@@ -765,43 +765,46 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.244 ...ren und ihrer technischen Anwendungen: Rü
+l.216 ...ren und ihrer technischen Anwendungen: Rü
                                                   ckkopplung, Hirzel:Leipzig...
 
 ? 
-[4 <./feedback_loops_example.png>] [5] [6] [7] [8] (./MRes_Dissertation.bbl
-Overfull \hbox (24.61536pt too wide) in paragraph at lines 4--7
-[]\OT1/cmr/m/n/10 Christopher D. Clack.  The in-ter-dyne sim-u-la-tor (2011-). 
- http://www.resnovae.org.uk/fccsuclacuk/research,
+[4 <./feedback_loops_example.png>] [5] [6] [7] [8] [9] (./MRes_Dissertation.bbl
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--7
+[]\OT1/cmr/m/n/10 Christopher D. Clack.  The in-ter-dyne sim-u-la-tor (2011-).
  []
 
-[9])
+[10])
 
 Package caption Warning: Unused \captionsetup[sub] on input line 11.
 See the caption package documentation for explanation.
 
-[10] (./MRes_Dissertation.aux) ) 
+[11] (./MRes_Dissertation.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 6171 strings out of 493014
- 90872 string characters out of 6133350
- 170853 words of memory out of 5000000
- 9617 multiletter control sequences out of 15000+600000
+ 6176 strings out of 493014
+ 90964 string characters out of 6133350
+ 173870 words of memory out of 5000000
+ 9622 multiletter control sequences out of 15000+600000
  10321 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,8n,40p,1603b,290s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2016/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr17.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmti10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmti9.pfb>
-Output written on MRes_Dissertation.pdf (10 pages, 223227 bytes).
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
+usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></us
+r/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/
+local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/lo
+cal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/loc
+al/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
+Output written on MRes_Dissertation.pdf (11 pages, 227262 bytes).
 PDF statistics:
- 72 PDF objects out of 1000 (max. 8388607)
- 49 compressed objects within 1 object stream
+ 75 PDF objects out of 1000 (max. 8388607)
+ 51 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -84,10 +84,11 @@
 %questions for chris
 %is there a paper for the creation of InterDyne that can be referenced, or is the webpage all there is?
 
+%why do we need simple models of the finical markets
 
 
 \begin{document} 
-\title{Defining the Semantics of Agent Based Modelling in Interdyne}
+\title{Defining the Semantics of Agent Based Modelling in InterDyne}
 \author{Leo Carlos-Sandberg\\
 Supervisor: Dr Christopher D. Clack} 
 \maketitle 
@@ -128,6 +129,13 @@ Supervisor: Dr Christopher D. Clack}
 
 
 \section{Introduction}
+
+%USE THIS LINK
+%\cite{fallacyofcompostionBook}
+%talks about policy due to emergence 
+%page 10 
+%googled "fallacy of division emergent behaviour"
+
 %introduce finicail markets
 %Market Micrustrue, very research field at the cutting edge
 %the need for interdyne, ergence in finciall markets is really investigated
@@ -144,76 +152,30 @@ Supervisor: Dr Christopher D. Clack}
 
 
 \section{Background} 
-This section explains the rational behind the creation of InterDyne by Clack~\cite{Chris_webPage}; InterDyne is bespoke simulation software designed to model emegernt behaviour within the financial markets. This research was inspired by the "Flash Crash" of 2010, this crash can be seen as a change in phase between a stable and unstable market; it has been shown that emergent behaviour in physical systems can lead to phase transitions and postulated that this could also be true within the financial markets~\cite{networkcastphorynature}. InterDyne hence exists to see if this flash crash and ones like it could be examples of this critical behaviour caused by emergence within the markets.     
+This section explains the rational behind the creation of InterDyne by Clack~\cite{Chris_webPage}; InterDyne is bespoke simulation software designed to model emegernt behaviour within the financial markets. This research was inspired by the "Flash Crash" of 2010, this crash can be seen as a change in phase between a stable and unstable market; it has been shown that emergent behaviour in physical systems can lead to phase transitions and postulated that this could also be true within the financial markets~\cite{networkcastphorynature}. InterDyne hence exists to see if this flash crash and ones like it could be examples of this critical behaviour caused by emergence within the markets.\\     
 This section will explain emergence within the financial markets, the approach taken to model these markets, examples of emergence within these models, a method to simulate these models and a detailed description of InterDyne.         
 
 
 \subsection{Emergent Behaviour from Interaction Dynamics} 
-%what is emegent behviour
-%-microstystem to macrosystem
-%-whats not emergence, can not claim indervidula elements contain the same properties as the system
-%examples of emergence in other fields, physics chemistry bioligy etc
-%-
-%what are the interaction dynamics here and how do they lead to emergence
-%why fincial markets? (they seems similar in strutre, different bodies interacting)
-%fincial markets intteractitn dynamics (trading loans etc), focusing on trading
-%why this interactions happen and why they are important (price impact etc)
+
+Emergent behaviour is a term used to describe macro-behaviour of a system that is not obvious from analysis of the micro-behaviour of the system, more formally this is behaviour that can not be predicted through analysis of any single component of a system \cite{EB_systemofsystemsGLangford}.\\
+A misunderstanding of emergence can lead to the fallacy of division, this is that a property of the system as a whole most also be a property of an individual component of the system; water for example has a number of properties including being able to be cooled down to become ice and heated to become steam, saying the same must also be true of a molecule of water however is incorrect. This concept continues into economics, being called the fallacy of composition, where what is true for the whole economy my not hold for an individual and vice versa~\cite{fallacyofcompostionBook}.\\       
+A simple way to demonstrate emergence is in the Game of Life~\cite{gameoflifepage}, which is an example of cellular automaton; this game takes place on an infinite two-dimensional grid in which cells can either be `alive', coloured for example green, or `dead', a different colour usually black. Wether a cell is `alive' or `dead' is based on a set of simple rules:   
+\begin{enumerate}
+  \item `Alive' cells will transition to be `dead' cells in the next time step if they have few than two `alive' neighbours.
+  \item `Alive' cells with two or three `alive' neighbours remain `alive' at the next time step.
+  \item `Alive' cells will transition to be 'dead' cells in the next time step if they have more than three `alive' neighbours.
+  \item `Dead' cells with exactly three 'alive' neighbours will transition to `alive' at the next time step.
+\end{enumerate}
+With this simple set up very complex patterns evolving through time can be created, these patterns can be seen as emergence, with an individual cell not being able to encapsulate this behaviour.\\
+Emergent behaviour can be seen occurring naturally, with physics offering many well explored examples, for instance the n-body problem~\cite{nbodyproblem}. This historically is explained as n planets in proximity to each other, who interact via gravity in accordance with Newtons laws, this interaction gives rise to motion which is unsolvable analytically and can be viewed as an emergent property of the system. There is a certain amount of intuition with this observation, this is a very complex system and hence it seems reasonable that the interactions may not be analytically solvable. Also as likely expected a case with only one two bodies does have a solution, however the three-body case does not have a solution and generates this emergent behaviour. This outcome is not as obvious and many may assuming that such a simple system would not express emergent behaviour, the three-body problem is hence a good example of emergent behaviour in a simple system within nature.\\     
+Emergent behaviour can be generated in many-body systems, in which these bodies them selfs do not inherently create the emergent behaviour but interactions between them give rise to it. For example in the planet n-body problem interactions are via gravity which passes information about each body to the others, such as a planets mass and momentum, however if the gravity was some how removed, there would be no emergence and the planets would all move with a constant velocity~\cite{newtonconstantvelocity}.\\
+It is intuitive to assume that the financial markets will demonstrate some interaction based emergent behaviour due to the similarities between the financial markets and a n-body problem. The markets each be seen as a body within this problem that interact via traders who operate in more then one market simultaneously; these trades for example could be hedging against risk or exploiting arbitrage opportunities between markets. The individual markets them selfs could in turn also be seen in a similar way, with different entities such as, dealers, brokers, traders and exchanges acting as bodies. These entities then interact via communications sent between them, such as a sell order sent from a trader to a exchange, in modern markets these processes are automated so the interactions are computers sending messages between each other.\\
+Though one could expect emergent behaviour to occur to some extent in such a large and complex system as the financial markets, continuing with the analogy of n-body problem and remembering the three-body part of it, the question naturally arises, can complex emergent behaviour be observed in a very simplified model of the financial markets?\\
+It has been shown that yes, simple models of the financial markets can produces complex emergence. For example bull and bear markets created from the interaction between two traders operating different simple trading strategies and a market maker~\cite{bearandbull}.
 
 
-
-
-Emergent behaviour describes properties of the macrosystem that are not inherent within the microsystem, in other words properties that emerge from the interaction of components of a system. A more formal definition is behaviour that can not be predicted through analysis of any single component of a system \cite{EB_systemofsystemsGLangford}
-
-
-
-
-%https://www.researchgate.net/post/What_is_your_definition_of_emergent_properties
-%https://arxiv.org/ftp/nlin/papers/0506/0506028.pdf
-%https://www.researchgate.net/publication/265407712_THE_INTRINSIC_NATURE_OF_EMERGENCE
-%https://phys.org/news/2015-04-complicated-self-organized-patterns-emergent-behavior.html
-
-emegence leads to critical behviour and phase changes such as a flash crash
-%http://www.cs.bris.ac.uk/home/dc/cliff_wtf_transcript_final.pdf
-%http://nautil.us/issue/23/dominoes/why-the-flash-crash-really-matters
-
-
-
-Emergent behaviour, described as behaviour that can not be predicted through analysis of any single component of a system [REF??? ]
-%http://faculty.nps.edu/thuynh/Conference%20Proceedings%20Papers/Paper_14_Emergent%20Behavior%20in%20Systems%20of%20Systems.pdf
-%describe these physical systems as systems of systems then describe the fincicial markets of systems of systems
-, is a well known concept in scientific fields, such as physics chemistry and biology. A simple example of this phenomena is demonstrated in the game of life, see reference [REF],
-%http://www.scholarpedia.org/article/Game_of_Life   
-which shows the creation of large and complex patterns on a 2D grid from a few very simple rules. Real life examples include things such as, coupled oscillators [REF]
-%[Wilberforce, Lionel Robert (1896). "On the vibrations of a loaded spiral spring". Philosophical Magazine. 38: 386?392]
-and flocking dynamics [REF]. 
-%flocking emergent behviour 
-%http://ieeexplore.ieee.org/abstract/document/4200853
-The high-level behaviour of note in these examples is generated from the interaction between components of these systems and would not be present with out the interactions. If a bird was to fly solo its trajectory would be relatively constant and no flocking would be observed as the need to avoid other birds and match their speed would not exist. Similarly if one of the coupled oscillators was removed then the remaining one would exhibit simple movement.\\  
-The research that this paper is building on is primarily focussed on emergent behaviour with in the financial markets, it is relatively easy to see that given the huge complexity within the markets that emergent behaviour would occur. However noting that emergence occurs in relatively simple systems in real life, such as ????,
-%example of rellativley simple system 
-this research seeks to show that this is also the case within the financial markets.\\
-Interactions in systems is just the passing of information from one entity to another, in the financial markets this is by electronic messages sent between the different players in the market, such as traders and exchanges. Nowadays most financial players operate algorithms in some capacity which will send and receive these messages, therefore the markets can be seen as a collection of interacting algorithms.   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+%%%?????? CBT why do we want models
 
 
 

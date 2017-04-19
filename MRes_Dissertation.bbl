@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{Chris_webPage}
 Christopher~D. Clack.
@@ -15,6 +15,32 @@ Tsai-Ching~Lu Hankyu~Moon.
 Gary O.~Langford John S.~Osmundson, Thomas V.~Huynh.
 \newblock Emergent behavior in systems of systems.
 \newblock In {\em CONFERENCE ON SYSTEMS ENGINEERING RESEARCH(CSER)}, 2008.
+
+\bibitem{fallacyofcompostionBook}
+Norman Ehrentreich.
+\newblock {\em Agent-Based Modeling: The Santa Fe Institute Artificial Stock
+  Market Model}.
+\newblock Springer, 2008.
+
+\bibitem{gameoflifepage}
+Eugene M.~Izhikevich et~al.
+\newblock Game of life.
+\newblock {\em Scholarpedia}, 10(6):1816, 2015.
+
+\bibitem{nbodyproblem}
+Douglas~C. Heggie.
+\newblock The classical gravitational n-body problem.
+\newblock astro-ph/0503600, 2005.
+
+\bibitem{newtonconstantvelocity}
+Anne~Whitman Isaac~Newton, I. Bernard~Cohen.
+\newblock {\em The Principia: Mathematical Principles of Natural Philosophy}.
+\newblock Univ of California Press, 1999.
+
+\bibitem{bearandbull}
+Weihong~Huang Richard H.~Day.
+\newblock Bulls, bears and market sheep.
+\newblock {\em Jourmal of Economic Behaviour and Organisation}, 1990.
 
 \bibitem{Elias_Paper}
 Elias Court.

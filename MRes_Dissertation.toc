@@ -1,18 +1,18 @@
 \contentsline {section}{\numberline {1}Introduction}{3}
 \contentsline {section}{\numberline {2}Background}{3}
 \contentsline {subsection}{\numberline {2.1}Emergent Behaviour from Interaction Dynamics}{3}
-\contentsline {subsubsection}{\numberline {2.1.1}Feedback Loops}{3}
-\contentsline {subsection}{\numberline {2.2}Approach to Modelling the Financial Markets}{5}
+\contentsline {subsubsection}{\numberline {2.1.1}Feedback Loops}{4}
+\contentsline {subsection}{\numberline {2.2}Approach to Modelling the Financial Markets}{6}
 \contentsline {subsubsection}{\numberline {2.2.1}Fine-Grained Microstructure Approach to Financial Markets}{6}
-\contentsline {subsubsection}{\numberline {2.2.2}Discrete Time}{6}
+\contentsline {subsubsection}{\numberline {2.2.2}Discrete Time}{7}
 \contentsline {subsection}{\numberline {2.3}Example}{7}
 \contentsline {subsubsection}{\numberline {2.3.1}Hot Potato}{7}
-\contentsline {subsubsection}{\numberline {2.3.2}Flash Crash}{7}
-\contentsline {subsection}{\numberline {2.4}Agent Based Modelling}{7}
-\contentsline {subsubsection}{\numberline {2.4.1}Benefits}{7}
-\contentsline {paragraph}{\numberline {2.4.1.1}Tracking Messages}{7}
-\contentsline {paragraph}{\numberline {2.4.1.2}Conceptually Easy to Understand}{7}
-\contentsline {subsection}{\numberline {2.5}InterDyne}{7}
+\contentsline {subsubsection}{\numberline {2.3.2}Flash Crash}{8}
+\contentsline {subsection}{\numberline {2.4}Agent Based Modelling}{8}
+\contentsline {subsubsection}{\numberline {2.4.1}Benefits}{8}
+\contentsline {paragraph}{\numberline {2.4.1.1}Tracking Messages}{8}
+\contentsline {paragraph}{\numberline {2.4.1.2}Conceptually Easy to Understand}{8}
+\contentsline {subsection}{\numberline {2.5}InterDyne}{8}
 \contentsline {subsubsection}{\numberline {2.5.1}Harness}{9}
 \contentsline {section}{\numberline {3}Description and analysis of the problem}{9}
 \contentsline {subsection}{\numberline {3.1}Why Agent Based Modelling is not enough}{9}
