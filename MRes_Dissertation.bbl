@@ -2,12 +2,19 @@
 
 \bibitem{Chris_webPage}
 Christopher~D. Clack.
-\newblock The interdyne simulator (2011-), 2011.
+\newblock The interdyne simulator (2011-).
+\newblock http://www.resnovae.org.uk/fccsuclacuk/research, 11 2016.
 
-\bibitem{Vikram_Paper}
-Vikram Bkshi.
-\newblock Simulating interaction in financial markets.
-\newblock MSc Dissertation, 2015.
+\bibitem{networkcastphorynature}
+Tsai-Ching~Lu Hankyu~Moon.
+\newblock Network catastrophe: Self-organized patterns reveal both the
+  instability and the structure of complex networks.
+\newblock {\em Scientific Reports}, 2015.
+
+\bibitem{EB_systemofsystemsGLangford}
+Gary O.~Langford John S.~Osmundson, Thomas V.~Huynh.
+\newblock Emergent behavior in systems of systems.
+\newblock In {\em CONFERENCE ON SYSTEMS ENGINEERING RESEARCH(CSER)}, 2008.
 
 \bibitem{Elias_Paper}
 Elias Court.
@@ -17,6 +24,11 @@ Elias Court.
 \bibitem{DynamicCoupling_Chris}
 Dmitrijs~Zaparanuks Christopher D.~Clack, Elias~Court.
 \newblock Dynamic coupling and market instability.
-\newblock 2014.
+\newblock ., 2014.
+
+\bibitem{Vikram_Paper}
+Vikram Bkshi.
+\newblock Simulating interaction in financial markets.
+\newblock MSc Dissertation, 2015.
 
 \end{thebibliography}
