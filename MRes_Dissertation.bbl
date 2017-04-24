@@ -42,6 +42,25 @@ Weihong~Huang Richard H.~Day.
 \newblock Bulls, bears and market sheep.
 \newblock {\em Jourmal of Economic Behaviour and Organisation}, 1990.
 
+\bibitem{hftinformation1}
+Bus Inf~Syst Peter~Gomber, Martin~Haferkorn.
+\newblock High-frequency-trading.
+\newblock {\em Business & Information Systems Engineering}, 5:97--99, April
+  2013.
+
+\bibitem{hftmarketparticipation}
+Steven~Krawciw Irene~Aldridge.
+\newblock {\em Real-Time Risk: What Investors Should Know About FinTech,
+  High-Frequency Trading, and Flash Crashes}.
+\newblock Wiley, 2017.
+
+\bibitem{SECreport_delays}
+U.S. Securities & Exchange~Commission U.S. Commodity Futures
+  Trading~Commission.
+\newblock Findings regarding the market events of may 6, 2010.
+\newblock https://www.sec.gov/news/studies/2010/marketevents-report.pdf,
+  September 2010.
+
 \bibitem{Elias_Paper}
 Elias Court.
 \newblock The instability of market-making algoritms.
