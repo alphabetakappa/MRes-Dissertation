@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  13 MAY 2017 15:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  13 MAY 2017 16:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -747,24 +747,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 256--258
 
  []
 
-[6] [7]
-./MRes_Dissertation.tex:317: Misplaced alignment tab character &.
-l.317 ...e for example [REF Huang et al] [REF Yan&
+[6] [7] [8]
+./MRes_Dissertation.tex:324: Misplaced alignment tab character &.
+l.324 ...e for example [REF Huang et al] [REF Yan&
                                                   Clack, etc]).  An importan...
 
 ? 
-[8]
-./MRes_Dissertation.tex:365: Misplaced alignment tab character &.
-l.365 ...in question occurred within the E-mini S&
+./MRes_Dissertation.tex:372: Misplaced alignment tab character &.
+l.372 ...in question occurred within the E-mini S&
                                                   P 500 market, EXPLAIN WHAT...
 
 ? 
-[9] [10] (./MRes_Dissertation.bbl
+[9] [10] (./MRes_Dissertation.bbl [11]
 Underfull \hbox (badness 10000) in paragraph at lines 10--13
 []\OT1/cmr/m/n/10 Christopher D. Clack.  The in-ter-dyne sim-u-la-tor (2011-).
  []
 
-[11]
 ./MRes_Dissertation.bbl:41: Misplaced alignment tab character &.
 l.41 U.S. Securities &
                        Exchange~Commission U.S. Commodity Futures
@@ -780,16 +778,16 @@ l.57 \newblock {\em Business &
                                Information Systems Engineering}, 5:97--99, A...
 
 ? 
-)
+[12])
 
 Package caption Warning: Unused \captionsetup[sub] on input line 11.
 See the caption package documentation for explanation.
 
-[12] (./MRes_Dissertation.aux) ) 
+[13] (./MRes_Dissertation.aux) ) 
 Here is how much of TeX's memory you used:
  6181 strings out of 493014
  91009 string characters out of 6133350
- 176890 words of memory out of 5000000
+ 178890 words of memory out of 5000000
  9627 multiletter control sequences out of 15000+600000
  10321 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -806,10 +804,10 @@ nts/cm/cmr7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmr8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmti10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmti9.pfb>
-Output written on MRes_Dissertation.pdf (12 pages, 199865 bytes).
+Output written on MRes_Dissertation.pdf (13 pages, 201071 bytes).
 PDF statistics:
- 90 PDF objects out of 1000 (max. 8388607)
- 62 compressed objects within 1 object stream
+ 94 PDF objects out of 1000 (max. 8388607)
+ 65 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
