@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  24 APR 2017 17:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  13 MAY 2017 15:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -736,53 +736,64 @@ Package gensymb Warning: Not defining \micro.
 ] [3
 
 ]
-<simpletwofbex.png, id=19, 188.705pt x 307.1475pt>
+<simpletwofbex.png, id=22, 188.705pt x 307.1475pt>
 File: simpletwofbex.png Graphic file (type png)
  <use simpletwofbex.png>
-Package pdftex.def Info: simpletwofbex.png used on input line 206.
+Package pdftex.def Info: simpletwofbex.png used on input line 210.
 (pdftex.def)             Requested size: 94.35226pt x 153.57336pt.
 
 [4] [5 <./simpletwofbex.png>]
-./MRes_Dissertation.tex:251: Misplaced alignment tab character &.
-l.251 ...e for example [REF Huang et al] [REF Yan&
+Underfull \hbox (badness 10000) in paragraph at lines 256--258
+
+ []
+
+[6] [7]
+./MRes_Dissertation.tex:317: Misplaced alignment tab character &.
+l.317 ...e for example [REF Huang et al] [REF Yan&
                                                   Clack, etc]).  An importan...
 
 ? 
-[6] [7]
-./MRes_Dissertation.tex:351: Misplaced alignment tab character &.
-l.351 ...in question occurred within the E-mini S&
+[8]
+./MRes_Dissertation.tex:365: Misplaced alignment tab character &.
+l.365 ...in question occurred within the E-mini S&
                                                   P 500 market, EXPLAIN WHAT...
 
 ? 
-[8] [9] (./MRes_Dissertation.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 4--7
+[9] [10] (./MRes_Dissertation.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 10--13
 []\OT1/cmr/m/n/10 Christopher D. Clack.  The in-ter-dyne sim-u-la-tor (2011-).
  []
 
-[10]
-./MRes_Dissertation.bbl:48: Misplaced alignment tab character &.
-l.48 \newblock {\em Business &
+[11]
+./MRes_Dissertation.bbl:41: Misplaced alignment tab character &.
+l.41 U.S. Securities &
+                       Exchange~Commission U.S. Commodity Futures
+? 
+
+Underfull \hbox (badness 2582) in paragraph at lines 48--53
+[]\OT1/cmr/m/n/10 Mehrdad Samadi Tugkan Tuzun An-drei Kir-ilenko, Al-bert S. Ky
+le.  The flash crash:
+ []
+
+./MRes_Dissertation.bbl:57: Misplaced alignment tab character &.
+l.57 \newblock {\em Business &
                                Information Systems Engineering}, 5:97--99, A...
 
 ? 
-./MRes_Dissertation.bbl:58: Misplaced alignment tab character &.
-l.58 U.S. Securities &
-                       Exchange~Commission U.S. Commodity Futures
-? 
-[11])
+)
 
 Package caption Warning: Unused \captionsetup[sub] on input line 11.
 See the caption package documentation for explanation.
 
 [12] (./MRes_Dissertation.aux) ) 
 Here is how much of TeX's memory you used:
- 6179 strings out of 493014
- 90991 string characters out of 6133350
- 178882 words of memory out of 5000000
- 9625 multiletter control sequences out of 15000+600000
+ 6181 strings out of 493014
+ 91009 string characters out of 6133350
+ 176890 words of memory out of 5000000
+ 9627 multiletter control sequences out of 15000+600000
  10321 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,7n,40p,1404b,290s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,8n,40p,1661b,290s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/p
@@ -790,12 +801,15 @@ ublic/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmr17.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmti10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmti9.pfb>
-Output written on MRes_Dissertation.pdf (12 pages, 171044 bytes).
+sfonts/cm/cmr6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmti10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmti9.pfb>
+Output written on MRes_Dissertation.pdf (12 pages, 199865 bytes).
 PDF statistics:
- 78 PDF objects out of 1000 (max. 8388607)
- 53 compressed objects within 1 object stream
+ 90 PDF objects out of 1000 (max. 8388607)
+ 62 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

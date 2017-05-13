@@ -160,17 +160,32 @@ Supervisor: Dr Christopher D. Clack}
 %Ability to provide confidence in the semantics of the system to economists and financial services industry practitioners
 %Example ? difference equations (recurrence relations) ? provide a time-view, provides a way for economists to validate the description of the system (yes, we agree ? we understand these equations) 
 
+This research was inspired by the "Flash Crash" of 2010, this crash can be seen as a change in phase between a stable and unstable market; it has been shown that emergent behaviour in physical systems can lead to phase transitions and postulated that this could also be true within the financial markets~\cite{networkcastphorynature}. InterDyne hence exists to see if this flash crash and ones like it could be examples of this critical behaviour caused by emergence within the markets
+
+
+\section{InterDyne} 
+%what is Interdyne briefly
+%what are its componets in modeleling 
+%-agent based
+%-discrete time etc
+%why was it created? model flash crash, next section explains why it is good at this
+
+
+InterDyne is bespoke simulator created by Clack and associates~\cite{Chris_webPage}, it is a general-purpose simulator for exploring emergent behaviour and interaction dynamics within complex systems.\\
+InterDyne design is that of an agent-based model interacting via a harness. This creates a structure of individual autonomous agents who interact through messages sent to one another.\\ 
+Similar to other agent-based models InterDyne operates in discrete-time rather then continuous time. These quantised time chunks which move the simulation forward can be left with out proper definition, simply having things defined in a number of time steps, or they can be equated to a real time usually with the smallest time gap needed be a single time step and then all other timings being integer multiples of this. This discrete time is most important to message passing, meaning messages between agents are only sent on a integer time step.\\ 
+Massages in InterDyne are just small packets of data, such as a series of numbers.  Agents can only communicate via these messages, meaning that any emergent behaviour observed, that is not directly due to one agent, must be caused by linking of agents mediated by these messages. An agent can send private messages that are only received by a single other agents, one-to-one messages, or can send broadcast messages received by a number of agents, one-to-many messages. To facilitate this a communication topology can be made for InterDyne, this is done in the form of a directed graph determining which agents can communicate with each other. Due to the directional nature of these messages this topology could allow an agent to send messages to another but not be able to receive messages from that same agent. Messages have a defined order to them, an agent will, unless otherwise instructed, always process messages in the order in which they arrive. To change the order in which messages arrive delays can be added to communication paths between agents, this can be a static delay which always applies to messages sent from one agent to another, meaning this will arrive a set number of time steps later. Or a more complex dynamic delay, which is achieved by using another agent to mediate the passing of these messages delaying by an amount decided on in some internal logic. All messages in InterDyne are passed through a harness, this does not alter the messages or delay them\footnote{Unless instructed to using the static delay.}, but does store the messages and their order which can be used in post analyse.\\         
+Each of the agents within an InterDyne simulation can be completely unique and modelled to different levels of complexity, allowing system components to be created to the level needed for the required experiment. As a whole InterDyne simulations are deterministic, repeated experiments will return identical results. However non-determinism can be added via the agents, making some part of an agent stochastic will lead to repeated experiments on the whole returning different results. A pseudo-random element can also be added by instructing InterDyne to randomly sort the message order for any agent receiving multiple messages in one time step. This is only pseudo-random as, as long as the same seed is used each run of the simulation will order the rearranged messages in the same way.   
 
 
 
-\section{Background} 
 
-This section explains the rational behind the creation of InterDyne by Clack~\cite{Chris_webPage}; InterDyne is bespoke simulation software designed to model emegernt behaviour within the financial markets. This research was inspired by the "Flash Crash" of 2010, this crash can be seen as a change in phase between a stable and unstable market; it has been shown that emergent behaviour in physical systems can lead to phase transitions and postulated that this could also be true within the financial markets~\cite{networkcastphorynature}. InterDyne hence exists to see if this flash crash and ones like it could be examples of this critical behaviour caused by emergence within the markets.\\     
-This section will explain emergence within the financial markets, the approach taken to model these markets, examples of emergence within these models, a method to simulate these models and a detailed description of InterDyne.         
+\subsection{Emergent Behaviour from Interaction Dynamics}
+%-emergent behaviour 
+%-feedback loops
 
 
-\subsection{Emergent Behaviour from Interaction Dynamics} 
-
+As mentioned previously InterDyne is designed to allow the simulation and investigation of emergent behaviour caused by interaction dynamics.\\ 
 Emergent behaviour is a term used to describe macro-behaviour of a system that is not obvious from analysis of the micro-behaviour of the system, more formally this is behaviour that can not be predicted through analysis of any single component of a system \cite{EB_systemofsystemsGLangford}.\\
 A misunderstanding of emergence can lead to the fallacy of division, this is that a property of the system as a whole most also be a property of an individual component of the system; water for example has a number of properties including being able to be cooled down to become ice and heated to become steam, saying the same must also be true of a molecule of water however is incorrect. This concept continues into economics, being called the fallacy of composition, where what is true for the whole economy my not hold for an individual and vice versa~\cite{fallacyofcompostionBook}.\\       
 A simple way to demonstrate emergence is in the Game of Life~\cite{gameoflifepage}, which is an example of cellular automaton; this game takes place on an infinite two-dimensional grid in which cells can either be `alive', coloured for example green, or `dead', a different colour usually black. Wether a cell is `alive' or `dead' is based on a set of simple rules:   
@@ -182,24 +197,13 @@ A simple way to demonstrate emergence is in the Game of Life~\cite{gameoflifepag
 \end{enumerate}
 With this simple set up very complex patterns evolving through time can be created, these patterns can be seen as emergence, with an individual cell not being able to encapsulate this behaviour.\\
 Emergent behaviour can be seen occurring naturally, with physics offering many well explored examples, for instance the n-body problem~\cite{nbodyproblem}. This historically is explained as n planets in proximity to each other, who interact via gravity in accordance with Newtons laws, this interaction gives rise to motion which is unsolvable analytically and can be viewed as an emergent property of the system. There is a certain amount of intuition with this observation, this is a very complex system and hence it seems reasonable that the interactions may not be analytically solvable. Also as likely expected a case with only one two bodies does have a solution, however the three-body case does not have a solution and generates this emergent behaviour. This outcome is not as obvious and many may assuming that such a simple system would not express emergent behaviour, the three-body problem is hence a good example of emergent behaviour in a simple system within nature.\\     
-Emergent behaviour can be generated in many-body systems, in which these bodies them selfs do not inherently create the emergent behaviour but interactions between them give rise to it. For example in the planet n-body problem interactions are via gravity which passes information about each body to the others, such as a planets mass and momentum, however if the gravity was some how removed, there would be no emergence and the planets would all move with a constant velocity~\cite{newtonconstantvelocity}.\\
-It is intuitive to assume that the financial markets will demonstrate some interaction based emergent behaviour due to the similarities between the financial markets and a n-body problem. The markets each be seen as a body within this problem that interact via traders who operate in more then one market simultaneously; these trades for example could be hedging against risk or exploiting arbitrage opportunities between markets. The individual markets them selfs could in turn also be seen in a similar way, with different entities such as, dealers, brokers, traders and exchanges acting as bodies. These entities then interact via communications sent between them, such as a sell order sent from a trader to a exchange, in modern markets these processes are automated so the interactions are computers sending messages between each other.\\
-Though one could expect emergent behaviour to occur to some extent in such a large and complex system as the financial markets, continuing with the analogy of n-body problem and remembering the three-body part of it, the question naturally arises, can complex emergent behaviour be observed in a very simplified model of the financial markets?\\
-It has been shown that yes, simple models of the financial markets can produces complex emergence. For example bull and bear markets created from the interaction between two traders, operating different simple trading strategies, and a market maker~\cite{bearandbull}.
-
-
-%%%?????? CBT why do we want models
-
-
-
-
-
+Emergent behaviour can be generated in many-body systems, in which these bodies them selfs do not inherently create the emergent behaviour but interactions between them give rise to it. For example in the planet n-body problem interactions are via gravity which passes information about each body to the others, such as a planets mass and momentum, however if the gravity was some how removed, there would be no emergence and the planets would all move with a constant velocity~\cite{newtonconstantvelocity}.
 
 \subsubsection{Feedback Loops}
 
-Emergent behaviour from interaction dynamics can take a number of forms, with a prominent type in the financial markets being feedback loops.\\
+Emergent behaviour from interaction dynamics can take a number of forms, with a prominent type being feedback loops.\\
 Feedback loops are where the input information to an entity is dependent on the output information of that same entity, from a previous moment in time. For this to be worth investigating all entities involved must be set up so that they make decisions about their output, such as what messages they send or who they send them to, based on some input information.\\
-A very simple example could be two algorithms who send each other messages, see Fig~\ref{fig:examplesimpletwofeedback}, where the message algorithm 1, A1, sends to algorithm 2, A2, is twice what it received and A2 sends A1 three times what it received. It is trivial to find that if the initial input for A1 was 1 then the subsequent four inputs would be: 6, 36, 216, 1296. However if A2 always returned the same value, say 4, this would not be considered a feedback loop worth investigating as its result would be constant and trivial.         
+A very simple example could be two algorithms who send each other messages, see Fig~\ref{fig:examplesimpletwofeedback}, where the message algorithm 1, A1, sends to algorithm 2, A2, is twice what it received and A2 sends A1 three times what it received. It is trivial to find that if the initial input for A1 was 1 then the subsequent four inputs would be: 6, 36, 216, 1296. However if A2 always returned the same value, say 4, this would not be considered a feedback loop as its result would be constant and trivial.         
 
 \begin{figure}[H]
 	\centering
@@ -208,36 +212,72 @@ A very simple example could be two algorithms who send each other messages, see 
 	\label{fig:examplesimpletwofeedback}
 \end{figure} 
 
-This example was very simple, feedback loops can be much more complex, encompassing any number of entities, each of whom can have very complex algorithms for transforming their inputs. The financial markets are complex systems, so the entities involved in feedback loops will likely be interacting with a vast number of other entities, this can make detecting feedback loops very difficult.\\ %unsure about this sentence???? 
-In the financial markets there can be a number of different objects involved in feedback loops such as, interbank loans or traded assets, this paper and the work that it is building on focus on the latter. A simple example of a feedback loop with traded assets is, a trader selling some of the assets due to falling market prices, causing the prices to be pushed down further and hence this trader to sell more of the asset to minimise their loses. This feedback loop can be considered malignant or a destabilising feedback loop, as it destabilise the market price. However not all feedback loops have a negative impact, some can be stabilising feedback loops due to a benign effect.\\      
+This example was very simple and feedback loops can be much more complex, encompassing any number of entities, each of whom can have very complex algorithms for transforming their inputs. Feedback loops can operate across time, meaning that an event in the past can feedback to a present decision. A simple example being a single entity sending itself a message to process in the future effecting its actions at that time. For a feedback loop containing a large number of entities the time scale on which the feedback occurs can be come significantly large.\\
+Not all feedback loops have a negative impact, some can be stabilising feedback loops due to a benign effect.\\ 
 Feedback loops can be present in a system in two ways, either they can be a constant fixture, a static feedback loop, or they can form and change, dynamic feedback loops. A static feedback loop is present in the system from the start whether this is intentional and known, or unintentional and unknown to the members of the system. Dynamic feedback loops my not be present at the start and can form and change over time, with new entities joining or leaving them, allowing them to increase or decrease in size or effect, to split or merge, or to disappear.\\
-Feedback loops can operate across time, meaning that an event in the past can feedback to a present decision. Using the example of the seller selling their inventory to mitigate loss again, it can be seen that this loop operates over a time series, the seller sells some of their stock causing the price to go down then, however the process for this to happen and the seller to become aware of it is not, so at a later time the seller will see the drop in price and hence sell more stock. The time scale this example will happen over is quite smaller, however for a feedback loop containing a large number of entities the time scale on which the feedback occurs can be come significantly larger.\\
-Due to the potential complexity of feedback loops both in construction and in time, they can be difficult to detect hence methods can be used to expose them. For static loops, forms of static analysis can be used such as, analysing initial setup, this is possible since the loops do not change through out time. Dynamic loops can be much harder to observe and analyses, an important aspect to detecting these loops is the interactions, messages sent between different entities within the system. Since the loops can evolve over time being able to track and analyse these messages over a time series is vitally important for the analysis of these loops, this time dependent analyse is called dynamic analyse.             
+Due to the potential complexity of feedback loops both in construction and in time, they can be difficult to detect therefore methods are usually used to expose them. For static loops, forms of static analysis can be used such as, analysing initial setup, this is possible since the loops do not change through out time. Dynamic loops can be much harder to observe and analyses, an important aspect to detecting these loops is the interactions, messages sent between different entities within the system. Since the loops can evolve over time being able to track and analyse these messages over a time series is vitally important for the analysis of these loops, this time dependent analyse is called dynamic analyse.  
 
 
 
 
-\subsection{Approach to Modelling the Financial Markets}
+\subsection{Applicability to Finance}
 
-The aim of the work this paper is building on is to be able to create a model on which dynamic analyse of feedback loops can be done. More specifically this model aims to investigate feedback loops with in the market microstructure, looking at the fastest members of the system, High-Frequency Traders (HFTs).\\
-HFTs are a subset of algorithmic traders who normally participate in the market as arbitrageurs or market makers, they invest in ultra-high speed technology allowing them to detect, analyses and react to market condition in nanoseconds \cite{hftinformation1}. This means HFTs can trade huge quantities of assets in very short time frames, with some estimates stating that 10-40\% of all trades where initiated by them during 2016 \cite{hftmarketparticipation}. For these reasons HFTs create fertile ground for the exploration of dynamic feedback loops.\\
-To model the market microstructure and the HFTs interactions within it, the approach must be fine-grained and quantised in time.   
+Though InterDyne is a general purpose simulator, its main use thus far has been the exploration of financial markets. In particular InterDyne has been used to explore ``Flash Crash'' of 2010, during which market prices and rational valuations became disconnected, with some stocks trading as low as a penny per share, this lead to frenzied trading and irrational prices which spread between markets causing a massive price crash~\cite{SECreport_delays}. This event lasted around 36 minutes and has been described as``one of the most turbulent periods in their history'' for the US financial markets~\cite{Impact_hft}.\\
+The hypotheses for this crash which InterDyne exists to investigate, is that this crash is an emergent phenomenon caused by the interaction between High Frequency Traders (HFTs) within the market.\\
+HFTs are a subset of algorithmic traders who normally participate in the market as arbitrageurs or market makers, they invest in ultra-high speed technology allowing them to detect, analyses and react to market condition in nanoseconds \cite{hftinformation1}. This means HFTs can trade huge quantities of assets in very short time frames, with some estimates stating that 10-40\% of all trades where initiated by them during 2016 \cite{hftmarketparticipation}.\\
+The type of interaction between these traders suggested to have caused the crash is ``Hot Potato'' trading, this is when inventory imbalance is repeatedly passed between HFTs market makers. A market maker is a trader who is required to have both a bid and a ask on the order book at all times, this means in theory that they are constantly buying and selling, a high frequency market maker as expected should be buying and selling very very often. Market makers make a profit from the spread and not long positions, hence they want to keep inventories low to avoid the market moving against them. To achieve this market makers have strict inventory limits that if they pass will cause them to go into what is know as a ``panic state'', during this state the trader will sell of an amount of its inventory to return back into its normal trading region. This inventory now solid by the market maker can be bought by another market maker causing them to in turn go into ``panic'' and sell, this process is ``Hot Potato'' trading and can in theory continue indefinitely~\cite{Elias_Paper}.\\
+``Hot Potato'' trading was observed in the market during the ``Flash Crash''~\cite{SECreport_delays}, this is thought to have been caused by a combination of an initial large sell order by a mutual fund and delays in communication between HFTs maker makers and the exchange on which they were operating on, causing them to buy more inventory then they wanted and go into a ``panic state'' and hence a ``Hot Potato'' feedback loop.\\       
+This section explains in more detail this hypotheses and how InterDyne is set up to investigate it.  
 
-	
-\subsubsection{Fine-Grained Microstructure Approach to Financial Markets} 
+\subsubsection{Deterministic}
+
+The deterministic nature of InterDyne allows for experiments to be run multiple times with the same result always returned, this allows for investigation of changes to the experiment setup to be investigated. For example changing the number of traders in the market and comparing this to a previous run allows for an investigation into how many traders are required for a crash to be observed. 
+
+
+It is intuitive to assume that the financial markets will demonstrate some interaction based emergent behaviour due to the similarities between the financial markets and a n-body problem. The markets each be seen as a body within this problem that interact via traders who operate in more then one market simultaneously; these trades for example could be hedging against risk or exploiting arbitrage opportunities between markets. The individual markets them selfs could in turn also be seen in a similar way, with different entities such as, dealers, brokers, traders and exchanges acting as bodies. These entities then interact via communications sent between them, such as a sell order sent from a trader to a exchange, in modern markets these processes are automated so the interactions are computers sending messages between each other.\\
+Though one could expect emergent behaviour to occur to some extent in such a large and complex system as the financial markets, continuing with the analogy of n-body problem and remembering the three-body part of it, the question naturally arises, can complex emergent behaviour be observed in a very simplified model of the financial markets?\\
+It has been shown that yes, simple models of the financial markets can produces complex emergence. For example bull and bear markets created from the interaction between two traders, operating different simple trading strategies, and a market maker~\cite{bearandbull}.
+
+
+\subsubsection{Message Delays}
+
+\subsubsection{Message Passing}
+%interaction dynamics
+
+
+
+
+
+
+
+\subsubsection{Storing Passed Messages/Tracking}
+%investigation of feedback loops
+
+ The financial markets are complex systems, so the entities involved in feedback loops will likely be interacting with a vast number of other entities, this can make detecting feedback loops very difficult.\\ %unsure about this sentence???? 
+In the financial markets there can be a number of different objects involved in feedback loops such as, interbank loans or traded assets, this paper and the work that it is building on focus on the latter. A simple example of a feedback loop with traded assets is, a trader selling some of the assets due to falling market prices, causing the prices to be pushed down further and hence this trader to sell more of the asset to minimise their loses. This feedback loop can be considered malignant or a destabilising feedback loop, as it destabilise the market price. However not all feedback loops have a negative impact, some can be stabilising feedback loops due to a benign effect.\\      
+
+
+Using the example of the seller selling their inventory to mitigate loss again, it can be seen that this loop operates over a time series, the seller sells some of their stock causing the price to go down then, however the process for this to happen and the seller to become aware of it is not, so at a later time the seller will see the drop in price and hence sell more stock.
+
+
+Since the loops can evolve over time being able to track and analyse these messages over a time series is vitally important for the analysis of these loops, this time dependent analyse is called dynamic analyse.  
+
+\subsubsection{Discrete Time}
+%high frequency
+
+To model the market microstructure, message order and delays, time progression within the market must also be modelled. Though naively it is easy to assume that this time is continuous, this is not always the case and discrete time can sometimes be used. For example the market can be looked at in a long time horizon,  possibly for portfolios that only rebalance rarely, where the only time jumps of note are days, months or years, then time may progress discretely in chunks relating to the desired time step. Conversely very small time scales may be investigated, this is the case that pertains to HFTs market microstructure. Looking at very short time gaps it can be seen that the market actually operates at discrete intervals only progressing in very short time steps. This phenomenon is due to the use of electronic markets, since all markets that HFTs trade on are controlled by a computer they operate at a time set be the computers internal clock. Though computers can have a large amount of precision their clocks do not operate continuously and are in fact using discrete time prescribed by the change in voltage of an internal system clock, done by creating a square-wave oscillating voltage. Hence all trading on electronic markets, whether or not it started in continuous time, was sent by a human, will be curtailed into discrete time by the exchanges computers.\\
+To a human this will still appear as a continuous time scale, however HFTs operate at such small time scales that this discrete time is comparable and therefore important to modelling them.       
+
+\subsubsection{Message Ordering}
+%fine grained
 
 Due to the speed at which HFTs trade, the order in which events happen becomes very important. For example if two orders sent to an exchange are processed in the wrong order this could cause or destroy a feedback loop, hence making meaningful analyse impossible. Therefore a fine-grained approach which keeps track of both timings of interactions and ordering of messages between entities is required; modelling and storage of the precise order of message-passing and the messages is hence needed. To correctly order messages delays also have to be taken into account, these can be from constant elements such has how long it takes messages to pass through the cables between computers, or varying elements for instance the time taken for an exchange to process an order, which can increase with large traffic \cite{SECreport_delays}. Hence the approach to modelling a market in this detail requires the correct storage of message-passing, arrival order (that can be altered with different delays) and content.
 
 
-\subsubsection{Discrete Time}
-
-To model the market microstructure, message order and delays, time progression within the market must also be modelled. Though naively it is easy to assume that this time is continuous, this is not always the case and discrete time can sometimes be used. For example the market can be looked at in a long time horizon,  possibly for portfolios that only rebalance rarely, where the only time jumps of note are days, months or years, then time may progress discretely in chunks relating to the desired time step. Conversely very small time scales may be investigated, this is the case that pertains to HFTs market microstructure. Looking at very short time gaps it can be seen that the market actually operates at discrete intervals only progressing in very short time steps. This phenomenon is due to the use of electronic markets, since all markets that HFTs trade on are controlled by a computer they operate at a time set be the computers internal clock. Though computers can have a large amount of precision their clocks do not operate continuously and are in fact using discrete time prescribed by the change in voltage of an internal system clock, done by creating a square-wave oscillating voltage. Hence all trading on electronic markets, whether or not it started in continuous time, was sent by a human, will be curtailed into discrete time by the exchanges computers.\\
-To a human this will still appear as a continuous time scale, however HFTs operate at such small time scales that this discrete time is comparable and therefore important to modelling them.          
+\subsubsection{Agents}
+%different things like traders
 
 
-
-
-\subsection{Agent Based Modelling}
 %modeligng techinques, no model is right but some are useful 
 %what is agent based modelign
 %why was it chosen
@@ -248,7 +288,16 @@ To a human this will still appear as a continuous time scale, however HFTs opera
 %http://ieeexplore.ieee.org/abstract/document/5679168/
 
 
-An agent-based model [REF] provides an attractive fit to modelling interaction dynamics in a System of Systems, since each component can be modelled by a separate agent or by a group of agents with varying levels of detail, with private communication within a group; furthermore, messaging and discrete time are handled naturally, and numerical solutions can be obtained for large problems that are analytically intractable.  However, we were initially wary of this approach because of the limitations that cause agent-based models to be not widely accepted by economists, as described for example by Gould et al [REF 2013] and Leombruni and Richiardi [REF].  For our purposes, the most important limitations appear to be:?	Although each agent is fully specified, the model as a whole may lack a formal definition.?	It can be difficult to track how a specified input parameter affects the output, and parameter-estimation may be achieved in a way that is not representative of all possible outcomes the model can produce. ?	Finding a set of agent rules that produces a specific high-level behaviour provides no guarantee that it is the only set of rules to do so.Leombruni and Richiardi [REF] resolved the first of these problems by providing a formal specification of an agent-based model in terms of a set of recurrence relations. This has the added advantage that the recurrence relations are easily understandable by non-programmers.  They also showed how to ameliorate the second problem by analysis of the sensitivity of outcomes to parameter selections.  The third problem remains, yet it is a problem shared by a wide range of models [REFS? HMMs?].
+To create InterDyne, a modelling technique on which to build the simulator had to be decided upon. This technique hard to satisfy the previously discussed requirements for market microstructure modelling; discrete time, message-passing, arrival order and storage of messages.\\
+The chosen technique for the InterDyne project was agent-based modelling \cite{abm1}
+
+
+
+An agent-based model [REF] provides an attractive fit to modelling interaction dynamics in a System of Systems, since each component can be modelled by a separate agent or by a group of agents with varying levels of detail, with private communication within a group; furthermore, messaging and discrete time are handled naturally, and numerical solutions can be obtained for large problems that are analytically intractable.  However, we were initially wary of this approach because of the limitations that cause agent-based models to be not widely accepted by economists, as described for example by Gould et al [REF 2013] and Leombruni and Richiardi [REF].  For our purposes, the most important limitations appear to be:
+?	Although each agent is fully specified, the model as a whole may lack a formal definition.
+?	It can be difficult to track how a specified input parameter affects the output, and parameter-estimation may be achieved in a way that is not representative of all possible outcomes the model can produce. 
+?	Finding a set of agent rules that produces a specific high-level behaviour provides no guarantee that it is the only set of rules to do so.
+Leombruni and Richiardi [REF] resolved the first of these problems by providing a formal specification of an agent-based model in terms of a set of recurrence relations. This has the added advantage that the recurrence relations are easily understandable by non-programmers.  They also showed how to ameliorate the second problem by analysis of the sensitivity of outcomes to parameter selections.  The third problem remains, yet it is a problem shared by a wide range of models [REFS? HMMs?].
 
 
 
@@ -259,68 +308,18 @@ based model [REF] provides an attractive fit to a SoS, since each component syst
 
 Agent based models (ABMs) are a kind of model which can be used for simulations. These simulations work by having a number of independent agents who each have their own behaviour interacting via messages sent between them, this system created by these interacting agents is the model. 
 Because ABMs takes a radically different approach to the modelling of systems the difference equations, using a number of interacting agents each with their own behaviour that could be described as grouped difference equations instead of that large block of logic, which is inherent in difference equations, they can tackle some of the issues in a very different way. 
-ABMs also have the ability to be run at a far faster pace then difference equations under the right circumstances, this is because they can be run in parallel computing architecture setups, allowing multiple calculations to be run simultaneously on different machines. They also tend to require far less recomputation then there difference equation counterparts due to the way, which they are set up and then run.These features makes this method far more efficient for very large systems that otherwise could take a very large amount of computation time.  
+ABMs also have the ability to be run at a far faster pace then difference equations under the right circumstances, this is because they can be run in parallel computing architecture setups, allowing multiple calculations to be run simultaneously on different machines. 
+They also tend to require far less recomputation then there difference equation counterparts due to the way, which they are set up and then run.
+These features makes this method far more efficient for very large systems that otherwise could take a very large amount of computation time.  
 ABMs operate in a step-by-step way making it very natural to create an ABM that has discrete time as each step. This means that at each step all the agents will send out their messages to other agents telling them their interactions at that particular time interval, this is a similar behaviour to how the real financial market operates. The exact time interval can be chosen by deciding upon the smallest time unit which will be used in the simulation and having everything else operate at integer multiples of this base time.
 
 
 Discrete time is also used in coarse-grained models, where in different models an individual time step may represent an intraday period, a day, or perhaps a month (see for example [REF Huang et al] [REF Yan&Clack, etc]).  An important characteristic of discrete-time models is that each time step represents an equal amount of time; the extent of each time step may be defined (e.g. as a number of seconds, minutes, hours or days), though in some models (e.g. [REF Huang et al]) the extent is left unstated in the model and may then be instantiated in a numerical simulation. 
 
 
-\subsubsection{Benefits} 
-%it has denifits and downsides
-%why it is used for this
-%its ebnfits
-	%computation speed
-	%ease of thinking
-	%store messages
-\paragraph{Tracking Messages} 
-\paragraph{Conceptually Easy to Understand} 
-%look at the notes for chris course for more reasons
+\subsection{InterDyne Detail Operation}
 
-\subsection{InterDyne} 
-%this is what has been made
-%how it works
-%what has it been used for already
-
-%what is interdyne
-%how does it work
-%what do we want it to show
-
-InterDyne is a simulator designed to look at interaction dynamics, these dynamics have been with in the financial sector but can in theory be any interacting system. 
-This is an agent based simulator, this means that each component of an interacting system can be expressed as an agent, in the case of a financial system agents could be individual traders. Interactions between the agents can then be defined, these could be messages sent between a trader and an exchange for placing an order. 
-Once the simulator is set up in this way it can run through steps, at each step the interactions between the agents are passed and each agents response to the interaction is processed, these steps can represent discrete time.   
-InterDyne adds no direct mechanism that would force the system as a whole to exhibit any specific behaviour, any emergent behaviour experienced by the system is a result of the interaction dynamics only.\\ 
-A more complete way of labelling InterDyne would be as; a simulator used to investigate interaction dynamics and feedback effects in non-smooth complex systems~\cite{Chris_webPage}.
-
-
-
-
-
-from book 
-Interdyne is a simulator that is designed to allow for exploration of interaction dynamics and feedback effects in non-smooth complex systems, though this is a general purpose simulator that can be used in a variety of fields its setup makes it especially sorted to modelling the financial system that has been described above.  Below the aspects of Interdyne will be explained showing how it satisfies the criteria needed to model the finical markets. 
-Like other agent-based models InterDyne operates in discrete-time, this discrete-time can be left without a proper definition in terms of real time, this is normally done in experiments that are interested purely in general behaviour of a system. Though real time mapping is easily achievable by simply taking the smallest time step that will need to be used with in a simulation and then mapping all time steps as a integer multiple of it.  
-Being an agent-based model InterDyne allows communication between agents as the only form of interaction. This communication can be done in a one-to-one or one-to-many format, allowing for agents to send out broadcast messages which can be read by all other agents or send private correspondents that can only be seen by one other agent. Both of these messaging types are needed in modelling the markets, for example an exchange would send out a broadcast message to all members updating them on the order book, where as a trader would send a private message to a exchange when they want to place a order. 
-To allow a full understanding and the precise use of these messages, a communication topology can be defined within InterDyne. This topology will defined the interaction paths between agents and as such which communication routes are possible and which are not. This topology takes the form of a directed graph (allowing on agent to trader with another but not vice versa) with the agents acting as the nodes and the communication paths acting as the edges. 
-As with most real systems messages are not passed instantaneously and as such InterDyne supports the use of information delays, these delays are unique to each interaction path between agents, as defined in the communication topology.  These delays apply to any messages using these interaction paths, whether the message is defined as a one-to-one or a one-to-many.  
-
-
-
-
-
-To allow InterDyne to model a system of systems and not just a flat system each agent can be modelled with differing levels of detail. This can take the form of having a simple agent generating outputs dependent on a statistical distribution, interacting with a trading algorithm, which contains a great amount of detail and complexity. An agent can also contain another InterDyne simulation as its internal structure, giving a true system of systems depth to the model.
-The InterDyne simulator as a whole is built to be deterministic, meaning that any run of an experiment that contains the same inputs will always give the same output. This behaviour is very beneficial for analysis of low-level interactions that cause complex behaviour as it allows for a more detailed examination of the causal pathways that cause this behaviour. Though InterDyne is designed to be deterministic, non-determinism can be added to a simulation in two different ways. Either non-deterministic elements can be added directly to the agents (such as use of stochastic calculus to calculate some aspect of placing orders), or for an agent that receives multiple messages in one time step (such as an exchange receiving orders from a large number of traders) these messages can be sorted randomly (alternatively they can be sorted according to the senders identity).  This random sorting is in actuality pseudo-randomly, as for every run of the simulation the same random order will be reached, this can be changed to being truly random (or as much as a computer can allow) using a different seed for each run of the simulation.
-
-
-\subsubsection{Harness} 
-%used to connect the agents and monitor the interactions
-
-
-\subsection{Example}
-%examples of real world feedbakc loops
-
-
-
-
+\subsection{Examples}
 
 
 Day and Huang [Day, R. And Huang, W., ?Bulls, Bears and Market Sheep?, Jourmal of Economic Behaviour and Organisation, 1990] for example have demonstrated how interactions between two simple but different trading strategies and a market-maker can cause complex emergent features of stock market prices such as alternating periods of rising (?bull market?) and falling (?bear market?) with sudden switching between the two at irregular intervals. Further, Lyons [Lyons, R.K. ?A Simultaneous Trade Model of the Foreign Exchange Hot Potato?, Journal of International Economics 42 (1997) 275?298] has shown how a feedback loop can emerge between foreign exchange dealers, causing them to repeatedly transfer inventory between themselves.  Yet these are simple models of interaction.  Our aim is to develop a framework for modelling and analysing more complex emergent behaviour that arises from the dynamics of interaction, and in the context of our case study to analyse behaviour that may increase risk to the stability of the financial markets.
@@ -340,7 +339,7 @@ Day and Huang [Day, R. And Huang, W., ?Bulls, Bears and Market Sheep?, Jourmal o
 	%inventory limits
 	%why do simple versions of them still work
 
-To understand the hot potato effect one must first know that High Frequency Traders have strict inventory limits and that when these limits are passed they are said to be in a ``panic state''. During a panic state the traders will issue large sell market orders to reduce their inventories back into their ideal trading regions. A High Frequency Trader can go into a panic state when it unintentionally buys more inventory then intended, which can happen due to information delays in the confirmation of purchases. It is thought that in the flash crash High Frequency Trades panicked when buying from a mutual fund who issued an unusually large sell order. Once one High Frequency Trader has panicked its now sold inventory can be bought by another trader who, again because of information delay, surpass their inventory limits and in turn panics. This processes can continue indefinitely depending on the system and is known as the hot potato effect as the inventory is constantly passed around and not retained by an one trader~\cite{Elias_Paper}. This feedback effect has been shown, in the InterDyne simulator, to create instabilities in market prices and even lead to crashes~\cite{DynamicCoupling_Chris}.   
+This feedback effect has been shown, in the InterDyne simulator, to create instabilities in market prices and even lead to crashes~\cite{DynamicCoupling_Chris}.   
 
 
 
@@ -387,7 +386,7 @@ A reason assumption are made is because of time delays with in the system.
 %why this is so
 %a method to fix this
 
-\subsection{Why Agent Based Modelling is not enough}
+\subsection{Why InterDyne is not enough}
 %
 
 %why agent based modeling is not perfect for being excepted
