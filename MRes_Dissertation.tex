@@ -174,6 +174,7 @@ This research was inspired by the "Flash Crash" of 2010, this crash can be seen 
 %-discrete time etc
 %why was it created? model flash crash, next section explains why it is good at this
 
+%To create InterDyne, a modelling technique on which to build the simulator had to be decided upon. This technique hard to satisfy the previously discussed requirements for market microstructure modelling; discrete time, message-passing, arrival order and storage of messages. The chosen technique for the InterDyne project was agent-based modelling \cite{abm1}
 
 InterDyne is bespoke simulator created by Clack and associates~\cite{Chris_webPage}, it is a general-purpose simulator for exploring emergent behaviour and interaction dynamics within complex systems.\\
 InterDyne design is that of an agent-based model interacting via a harness. This creates a structure of individual autonomous agents who interact through messages sent to one another.\\ 
@@ -189,6 +190,14 @@ Each of the agents within an InterDyne simulation can be completely unique and m
 %-feedback loops
 
 %Strong emergence may be evident in failures or shutdowns. For example, the US-Canada Blackout of 2003 as described by the US-Canada Power System Outage Task Force (US-Canada Power Task Force 2004) was a case of cascading shutdown that resulted from the design of the system. Even though there was no equipment failure, the shutdown was systemic. As Hitchins points out, this example shows that emergent properties are not always beneficial (Hitchins 2007, 15).
+
+
+%It has been shown that yes, simple models of the financial markets can produces complex emergence. For example bull and bear markets created from the interaction between two traders, operating different simple trading strategies, and a market maker~\cite{bearandbull}.
+
+%what is agent based modleing
+%http://ieeexplore.ieee.org/abstract/document/5679168/
+
+
 
 As mentioned previously InterDyne is designed to allow the simulation and investigation of emergent behaviour caused by interaction dynamics.\\ 
 Emergent behaviour is a term used to describe macro-behaviour of a system that is not obvious from analysis of the micro-behaviour of the system, more formally this is behaviour that can not be predicted through analysis of any single component of a system \cite{EB_systemofsystemsGLangford}.\\
@@ -265,62 +274,66 @@ Though it is easy to assume that the financial markets operate in continuous tim
      
 
 \subsubsection{Message Ordering}
-%fine grained
 
-Due to the speed at which HFTs trade, the order in which events happen becomes very important. For example if two orders sent to an exchange are processed in the wrong order this could cause or destroy a feedback loop, hence making meaningful analyse impossible. Therefore a fine-grained approach which keeps track of both timings of interactions and ordering of messages between entities is required; modelling and storage of the precise order of message-passing and the messages is hence needed. To correctly order messages delays also have to be taken into account, these can be from constant elements such has how long it takes messages to pass through the cables between computers, or varying elements for instance the time taken for an exchange to process an order, which can increase with large traffic \cite{SECreport_delays}. Hence the approach to modelling a market in this detail requires the correct storage of message-passing, arrival order (that can be altered with different delays) and content.
+The order in which messages are processed can be very important, for an exchange, for example, it can change whose limit order has priority at a given price and whose market order executes the lowest prices. Changing these factors can make or break feedback loops within the system, meaning if message ordering is not properly dealt with the correct emegernt behaviour may not be observed. Hence InterDyne stores messages in the order they are received by an agent, taking into account delays to the messages. This however can not be done when multiple messages are received at the same time step, due to the nature of discrete time there is no way for the agents to know which message arrived first, therefore two options are presented by InterDyne; messages are ordered according to their agent identifier %say what this is in a foot note?
+or messages are randomised and executed in the  emerging order. This randomisation is handled in the same manner every run of the simulation \footnote{This can be changed using a new seed if so desired} hence resulting in the same order and therefore not effecting the deterministic nature of the experiment.  
 
 
 \subsubsection{Agents}
-%different things like traders
 
-
-%modeligng techinques, no model is right but some are useful 
-%what is agent based modelign
-%why was it chosen
-%what are its benifits for this
-%what are its down sides
-
-%what is agent based modleing
-%http://ieeexplore.ieee.org/abstract/document/5679168/
-
-
-It has been shown that yes, simple models of the financial markets can produces complex emergence. For example bull and bear markets created from the interaction between two traders, operating different simple trading strategies, and a market maker~\cite{bearandbull}.
-
-To create InterDyne, a modelling technique on which to build the simulator had to be decided upon. This technique hard to satisfy the previously discussed requirements for market microstructure modelling; discrete time, message-passing, arrival order and storage of messages.\\
-The chosen technique for the InterDyne project was agent-based modelling \cite{abm1}
-
-
-
-An agent-based model [REF] provides an attractive fit to modelling interaction dynamics in a System of Systems, since each component can be modelled by a separate agent or by a group of agents with varying levels of detail, with private communication within a group; furthermore, messaging and discrete time are handled naturally, and numerical solutions can be obtained for large problems that are analytically intractable.  However, we were initially wary of this approach because of the limitations that cause agent-based models to be not widely accepted by economists, as described for example by Gould et al [REF 2013] and Leombruni and Richiardi [REF].  For our purposes, the most important limitations appear to be:
-?	Although each agent is fully specified, the model as a whole may lack a formal definition.
-?	It can be difficult to track how a specified input parameter affects the output, and parameter-estimation may be achieved in a way that is not representative of all possible outcomes the model can produce. 
-?	Finding a set of agent rules that produces a specific high-level behaviour provides no guarantee that it is the only set of rules to do so.
-Leombruni and Richiardi [REF] resolved the first of these problems by providing a formal specification of an agent-based model in terms of a set of recurrence relations. This has the added advantage that the recurrence relations are easily understandable by non-programmers.  They also showed how to ameliorate the second problem by analysis of the sensitivity of outcomes to parameter selections.  The third problem remains, yet it is a problem shared by a wide range of models [REFS? HMMs?].
+A benefit of agent based models of other alternatives is the ability to encode agents as unique traders instead of having to model the general behaviour of a number of traders. This allows for unique behaviour of varying complexity to be given to different agents, facilitating experimentation with different trading strategies, allowing different questions to be investigated, such as, does a trading strategy need to be complex for emergence to be observed? 
 
 
 
 
 
-based model [REF] provides an attractive fit to a SoS, since each component system can be modelled by a separate agent or by a group of agents with private communication within a group (perhaps using a hierarchical agent-based model [REF]); furthermore, messaging and discrete time are handled naturally, and numerical solutions can be obtained for large problems that are analytically intractable.  However, we were initially wary of this approach because of the limitations that cause agent-based models to be not widely accepted by 
-
-
-Agent based models (ABMs) are a kind of model which can be used for simulations. These simulations work by having a number of independent agents who each have their own behaviour interacting via messages sent between them, this system created by these interacting agents is the model. 
-Because ABMs takes a radically different approach to the modelling of systems the difference equations, using a number of interacting agents each with their own behaviour that could be described as grouped difference equations instead of that large block of logic, which is inherent in difference equations, they can tackle some of the issues in a very different way. 
-ABMs also have the ability to be run at a far faster pace then difference equations under the right circumstances, this is because they can be run in parallel computing architecture setups, allowing multiple calculations to be run simultaneously on different machines. 
-They also tend to require far less recomputation then there difference equation counterparts due to the way, which they are set up and then run.
-These features makes this method far more efficient for very large systems that otherwise could take a very large amount of computation time.  
-ABMs operate in a step-by-step way making it very natural to create an ABM that has discrete time as each step. This means that at each step all the agents will send out their messages to other agents telling them their interactions at that particular time interval, this is a similar behaviour to how the real financial market operates. The exact time interval can be chosen by deciding upon the smallest time unit which will be used in the simulation and having everything else operate at integer multiples of this base time.
-
-
-Discrete time is also used in coarse-grained models, where in different models an individual time step may represent an intraday period, a day, or perhaps a month (see for example [REF Huang et al] [REF Yan&Clack, etc]).  An important characteristic of discrete-time models is that each time step represents an equal amount of time; the extent of each time step may be defined (e.g. as a number of seconds, minutes, hours or days), though in some models (e.g. [REF Huang et al]) the extent is left unstated in the model and may then be instantiated in a numerical simulation. 
 
 
 \subsection{InterDyne Detail Operation}
+%what is interdyne again (more detail description)
+%interdynes set up, harness /
+%create and eat messages, infite list /
+%how to call interdyne simple /
+%how to call interdyne complex, agents /
+%details of interdyne/
+%-an agent+wrapper/
+%topology
+%messages
+
+
+InterDyne is an agent-based model simulator written in the Haskell language. An InterDyne simulations structure, shown in Fig.~\ref{fig:harness_setupfigure}, consistent of a number of independent agents, sending messages to a ``Simulation Harness'', this harness then (i) sends these messages to the relevant counter party or parties \footnote{In the case of broadcast messages}, (ii) saves these messages to a trace file.   
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{harness_setup}
+	\caption{\it Structure of an InterDyne simulation containing three agents.}
+	\label{fig:harness_setupfigure}
+\end{figure} 
+
+By set up each agent is required to both consume and produce a message at every time step, this is done by sending each agent a potentially-infinite list of messages and requiring it to create a potentially-infinite list of messages. The inbound list contains every message the agent will receive through out the entire simulation, ordered by time, and the outbound list contains every message the agent will ever send, order by time. This is possible due to lazy evaluation of the language that InterDyne is written in, This means that only messages being used are evaluated. Since no agent should attempted to use a message from the future \footnote{If they do an error will be thrown.}, only messages that have been created so far are read.\\
+Since the set up of these list requires an element for every time step and an agent my not need to send a message during a time step, empty messages can be sent, this will result in an agent either receiving or sending an empty list. It may be the case in a simulation that an agent could be generating empty messages by mistake, to differentiate between a message empty by mistake or by choice, a message can be created containing ''Hiaton`` demonstrating that it is empty by choice.\\   
+A InterDyne simulation once created can be run by executing the ''sim`` function with relevant arguments, this function has a type,      
+\lstinputlisting[language=Haskell]{simplerunInterdyne.hs}
+corresponding to, number of time steps, list of ``runtime arguments'', and a two tuple with the agents function and broadcast channels to which it is subscribed.\\
+Agents within a simulation are defined by ID numbers, with the first agent having ID=1, followed by the second agent with ID=2,  ID=0 is used to represent the ``simulator harness''. These ID numbers are used to specify which agents messages are coming from and going to. This however can be difficult to keep track of within large experiments for the experimenter, therefore InterDyne allows for agents to be referred to by a name. This example shows InterDyne being run with the use of names for identification:     
+\lstinputlisting[language=Haskell]{fullunInterdyne.hs}
+This simulation will run for 60 time steps, with three agents subscribed to a number of broadcast channels, for example the third agent is subscribed to channel 2 and 3. There is a single run time argument convert, that can convert an ID to a name and a name to an ID. This is a simplistic call of the function sim, but shows how an experiment run could be setup and executed.\\   
+In the example one can notice that the agents called all were to referred to as wrappers, this is because agents in InterDyne are typically, though not necessarily, written in two sections; ``wrapper'' and ``logic'' functions. The ``wrapper'' function, called in the example, can be thought of as the true agent, it handles message receiving and sending, as well as updating the local state of the function, hence this function is the one that interacts with the other agents and the harness. The ``logic'' function rests inside the ``wrapper'' function and computes the messages to be sent, hence this contains the functionality of the agent. An example of a ``wrapper'' function containing a ``logic'' function is shown here:
+\lstinputlisting[language=Haskell]{complexagentwrapper.hs}
+This agent will output a list containing m, which is the output of the ``logic'' function for that given time period based on the received messages. The wrapper is a recursive function with each recursion being a new time step. It takes as inputs, st the local stat variable, args the run time arguments, a list of all messages to it, and its ID.  The list of messages has a three tuple for each time, containing the current time, list of all messages sent to the agent directly, and a list of all messages sent to the agent from broadcast channels.\\ 
+
+ 
+
+
+
+
+
+
 
 \subsection{Examples}
 
 
-Day and Huang [Day, R. And Huang, W., ?Bulls, Bears and Market Sheep?, Jourmal of Economic Behaviour and Organisation, 1990] for example have demonstrated how interactions between two simple but different trading strategies and a market-maker can cause complex emergent features of stock market prices such as alternating periods of rising (?bull market?) and falling (?bear market?) with sudden switching between the two at irregular intervals. Further, Lyons [Lyons, R.K. ?A Simultaneous Trade Model of the Foreign Exchange Hot Potato?, Journal of International Economics 42 (1997) 275?298] has shown how a feedback loop can emerge between foreign exchange dealers, causing them to repeatedly transfer inventory between themselves.  Yet these are simple models of interaction.  Our aim is to develop a framework for modelling and analysing more complex emergent behaviour that arises from the dynamics of interaction, and in the context of our case study to analyse behaviour that may increase risk to the stability of the financial markets.
+%Day and Huang [Day, R. And Huang, W., ?Bulls, Bears and Market Sheep?, Jourmal of Economic Behaviour and Organisation, 1990] for example have demonstrated how interactions between two simple but different trading strategies and a market-maker can cause complex emergent features of stock market prices such as alternating periods of rising (?bull market?) and falling (?bear market?) with sudden switching between the two at irregular intervals. Further, Lyons [Lyons, R.K. ?A Simultaneous Trade Model of the Foreign Exchange Hot Potato?, Journal of International Economics 42 (1997) 275?298] has shown how a feedback loop can emerge between foreign exchange dealers, causing them to repeatedly transfer inventory between themselves.  Yet these are simple models of interaction.  Our aim is to develop a framework for modelling and analysing more complex emergent behaviour that arises from the dynamics of interaction, and in the context of our case study to analyse behaviour that may increase risk to the stability of the financial markets.
 
 \subsubsection{Hot Potato} 
 %what is hot potato
@@ -353,23 +366,23 @@ This feedback effect has been shown, in the InterDyne simulator, to create insta
 %what we think causes them
 	%emergence from feedback loops in hfts
 %why they are important
-A flash crash is defined as a quick drop and then recovery in securities prices, with the most infamous  crash occurring on the 6th of May 2010 and lasting for around 20 minutes in which time almost one trillion dollars of market value was lost~\cite{Vikram_Paper}.\\
-There is no consensus on the exact cause of the flash crash, however a number of theories exist. The theory that InterDyne models is that the flash crash was caused by an interaction effect between High Frequency Trader Market Makers, known as the hot potato effect~\cite{Elias_Paper}. 
+%A flash crash is defined as a quick drop and then recovery in securities prices, with the most infamous  crash occurring on the 6th of May 2010 and lasting for around 20 minutes in which time almost one trillion dollars of market value was lost~\cite{Vikram_Paper}.\\
+%There is no consensus on the exact cause of the flash crash, however a number of theories exist. The theory that InterDyne models is that the flash crash was caused by an interaction effect between High Frequency Trader Market Makers, known as the hot potato effect~\cite{Elias_Paper}. 
 
 
 
-There are numerous examples of emergent behaviour in the financial markets caused by interaction dynamics within the SoS, here we will look at how the US markets ?Flash Crash? of May 6th 2010 [CFTC-SEC, 2010. ?Findings regarding the market events of May 6, 2010?] may have been caused by these interaction dynamics. 
-The term ?Flash Crash? here is used to describe an event within a financial market where the price of commodities plummets extremely quickly before rapidly rebounding. This kind of behaviour tends to go hand and hand with commodities becoming disconnected from their fundamental value, such as stocks for companies trading at far lower prices despite the fact that mothering has change about the company in question.
-The crash in question occurred within the E-mini S&P 500 market, EXPLAIN WHAT THIS MARKET IS, lasting approximately thirty minutes [REF] with the prices for some stocks falling as low as a penny a share [REF].
-FIGURE OF FLASH CRASH??? 
-There has been a large amount of speculation about the cause of this crash with blame levelled at a large sale by a mutual fund, spoofing by a independent trader and the hot potato effect between High Frequency Traders (HFTs), it is the later that we are interested in here.
-HFTs are algorithmic traders who use equipment that allows them to operate at nanosecond speeds [REF], this means huge amounts of trading can occur between HFTs before a human can process what has happened.  Not sure how to phrase this but want to say that a lot can go wrong before a human realises 
-HFTs often operate as a Market Maker, these are entities that both buy and sell with the market under a set of rules, such as having to always have a bid and ask on the order book, they are then rewarded by having discounts applied to their trades. Market Makers make their profit of the difference in price between buying and selling assets and not of the fluctuation in price of an asset over time. They would not buy assets with the aim of selling them in a few days as they think the price would increase, instead they buy and sell the assets normally within a few milliseconds. As such having a large inventory of any asset is considered to be risky by the Market Maker and they will normally have thresholds on their stock, if these thresholds are passed, they have more stock then they want, they will enter an aggressive selling phase, quickly reducing their stock back below their thresholds. When this occurs the HFT is said to be in a panic state, the inventory at which this panic state occurs can be dynamic, changing demanding on the perceived risk within the market and how the Market Maker is trying to preform. 
-Since HFTs can place orders so quickly and make their profit of buying and selling they will normally have orders near or at the touch, the best bid and ask. This means that if you trade on the market you are likely to execute your trade with a market maker first SAY WHAT PERCENTAGE OF TRADES THE MARKET MAKERS ARE RESPONSIBLE FOR [REF]. This means that if a Market Maker goes into panic it is likely to sell its stock to another Market Maker; this creates links between the Market Makers as they will buy and sell to each other during panic states.  
-There are a number of methods used for exiting a panic state, enough inventory can be solid to bring the Market Maker back to exactly its limit, more can be solid to bring it below its limit by a set amount or all the inventory can be solid to reduce the risk to the Market Maker to zero. Each of these different options changes how much stock will be passed on to another Market Maker during the panic state.
-The question then arises, what happens if the Market Maker who buys this excesses stock is already near its inventory limit? In this case the receiving Market Maker can also enter panic, causing it to sell its inventory back to the market. As can be imagined in the right market conditions, this inventory can be picked up by another Market Maker who is also close to their limit and hence the processes can continue. If this inventory passing between the Market Makers forms a feed bank loop, where the initial Market Maker receives the stock again before selling it on for a second time, it can be said that ?Hot Potato? effect is occurring, this is simply the processes of passing inventory around traders in a loop.    
-There are a number of reason a Market Maker could be near its limits or go into panic, it could be already near its limits and then be forced to buy more inventory by the exchange rules. It could dynamically shift its risk limits changing its inventory boundaries causing it to go into panic or at least approach its limits or it could make a number of assumptions about its sell orders which may be incorrect. 
-A reason assumption are made is because of time delays with in the system. 
+%There are numerous examples of emergent behaviour in the financial markets caused by interaction dynamics within the SoS, here we will look at how the US markets ?Flash Crash? of May 6th 2010 [CFTC-SEC, 2010. ?Findings regarding the market events of May 6, 2010?] may have been caused by these interaction dynamics. 
+%The term ?Flash Crash? here is used to describe an event within a financial market where the price of commodities plummets extremely quickly before rapidly rebounding. This kind of behaviour tends to go hand and hand with commodities becoming disconnected from their fundamental value, such as stocks for companies trading at far lower prices despite the fact that mothering has change about the company in question.
+%The crash in question occurred within the E-mini S&P 500 market, EXPLAIN WHAT THIS MARKET IS, lasting approximately thirty minutes [REF] with the prices for some stocks falling as low as a penny a share [REF].
+%FIGURE OF FLASH CRASH??? 
+%There has been a large amount of speculation about the cause of this crash with blame levelled at a large sale by a mutual fund, spoofing by a independent trader and the hot potato effect between High Frequency Traders (HFTs), it is the later that we are interested in here.
+%HFTs are algorithmic traders who use equipment that allows them to operate at nanosecond speeds [REF], this means huge amounts of trading can occur between HFTs before a human can process what has happened.  Not sure how to phrase this but want to say that a lot can go wrong before a human realises 
+%HFTs often operate as a Market Maker, these are entities that both buy and sell with the market under a set of rules, such as having to always have a bid and ask on the order book, they are then rewarded by having discounts applied to their trades. Market Makers make their profit of the difference in price between buying and selling assets and not of the fluctuation in price of an asset over time. They would not buy assets with the aim of selling them in a few days as they think the price would increase, instead they buy and sell the assets normally within a few milliseconds. As such having a large inventory of any asset is considered to be risky by the Market Maker and they will normally have thresholds on their stock, if these thresholds are passed, they have more stock then they want, they will enter an aggressive selling phase, quickly reducing their stock back below their thresholds. When this occurs the HFT is said to be in a panic state, the inventory at which this panic state occurs can be dynamic, changing demanding on the perceived risk within the market and how the Market Maker is trying to preform. 
+%Since HFTs can place orders so quickly and make their profit of buying and selling they will normally have orders near or at the touch, the best bid and ask. This means that if you trade on the market you are likely to execute your trade with a market maker first SAY WHAT PERCENTAGE OF TRADES THE MARKET MAKERS ARE RESPONSIBLE FOR [REF]. This means that if a Market Maker goes into panic it is likely to sell its stock to another Market Maker; this creates links between the Market Makers as they will buy and sell to each other during panic states.  
+%There are a number of methods used for exiting a panic state, enough inventory can be solid to bring the Market Maker back to exactly its limit, more can be solid to bring it below its limit by a set amount or all the inventory can be solid to reduce the risk to the Market Maker to zero. Each of these different options changes how much stock will be passed on to another Market Maker during the panic state.
+%The question then arises, what happens if the Market Maker who buys this excesses stock is already near its inventory limit? In this case the receiving Market Maker can also enter panic, causing it to sell its inventory back to the market. As can be imagined in the right market conditions, this inventory can be picked up by another Market Maker who is also close to their limit and hence the processes can continue. If this inventory passing between the Market Makers forms a feed bank loop, where the initial Market Maker receives the stock again before selling it on for a second time, it can be said that ?Hot Potato? effect is occurring, this is simply the processes of passing inventory around traders in a loop.    
+%There are a number of reason a Market Maker could be near its limits or go into panic, it could be already near its limits and then be forced to buy more inventory by the exchange rules. It could dynamically shift its risk limits changing its inventory boundaries causing it to go into panic or at least approach its limits or it could make a number of assumptions about its sell orders which may be incorrect. 
+%A reason assumption are made is because of time delays with in the system. 
 
 
 
@@ -391,6 +404,24 @@ A reason assumption are made is because of time delays with in the system.
 %one to many relationship
 %an alternative differnce equations
 
+
+%?	Although each agent is fully specified, the model as a whole may lack a formal definition.
+
+%An agent-based model [REF] provides an attractive fit to modelling interaction dynamics in a System of Systems, since each component can be modelled by a separate agent or by a group of agents with varying levels of detail, with private communication within a group; furthermore, messaging and discrete time are handled naturally, and numerical solutions can be obtained for large problems that are analytically intractable.  However, we were initially wary of this approach because of the limitations that cause agent-based models to be not widely accepted by economists, as described for example by Gould et al [REF 2013] and Leombruni and Richiardi [REF].  For our purposes, the most important limitations appear to be:
+%	Although each agent is fully specified, the model as a whole may lack a formal definition.
+%	It can be difficult to track how a specified input parameter affects the output, and parameter-estimation may be achieved in a way that is not representative of all possible outcomes the model can produce. 
+%	Finding a set of agent rules that produces a specific high-level behaviour provides no guarantee that it is the only set of rules to do so.
+%Leombruni and Richiardi [REF] resolved the first of these problems by providing a formal specification of an agent-based model in terms of a set of recurrence relations. This has the added advantage that the recurrence relations are easily understandable by non-programmers.  They also showed how to ameliorate the second problem by analysis of the sensitivity of outcomes to parameter selections.  The third problem remains, yet it is a problem shared by a wide range of models [REFS? HMMs?].
+
+%Agent based models (ABMs) are a kind of model which can be used for simulations. These simulations work by having a number of independent agents who each have their own behaviour interacting via messages sent between them, this system created by these interacting agents is the model. 
+%Because ABMs takes a radically different approach to the modelling of systems the difference equations, using a number of interacting agents each with their own behaviour that could be described as grouped difference equations instead of that large block of logic, which is inherent in difference equations, they can tackle some of the issues in a very different way. 
+%ABMs also have the ability to be run at a far faster pace then difference equations under the right circumstances, this is because they can be run in parallel computing architecture setups, allowing multiple calculations to be run simultaneously on different machines. 
+%They also tend to require far less recomputation then there difference equation counterparts due to the way, which they are set up and then run.
+%These features makes this method far more efficient for very large systems that otherwise could take a very large amount of computation time.  
+%ABMs operate in a step-by-step way making it very natural to create an ABM that has discrete time as each step. This means that at each step all the agents will send out their messages to other agents telling them their interactions at that particular time interval, this is a similar behaviour to how the real financial market operates. The exact time interval can be chosen by deciding upon the smallest time unit which will be used in the simulation and having everything else operate at integer multiples of this base time.
+
+
+
 \subsubsection{One-to-Many Problem}
 \subsubsection{Semantics of the System} 
 \subsubsection{Inverse Function Problem?} 
@@ -400,7 +431,7 @@ A reason assumption are made is because of time delays with in the system.
 %how do they work
 %why are they more easily excepted
 
-Leombruni and Richiardi [REF] have shown how a discrete-time agent-based model of the dynamic microstructure of financial markets can be expressed as a set of recurrence relations.  In their formulation, each agent is well described by a state variable given by xi,t where i is the agent identity (i ? 1, ... , n) LC- in a n agent problem and t is time, and where each xi,t+1  
+%Leombruni and Richiardi [REF] have shown how a discrete-time agent-based model of the dynamic microstructure of financial markets can be expressed as a set of recurrence relations.  In their formulation, each agent is well described by a state variable given by xi,t where i is the agent identity (i ? 1, ... , n) LC- in a n agent problem and t is time, and where each xi,t+1  
 
  \subsubsection{Benefits and Problems} 
  %other benfitis and down sides of them
@@ -420,9 +451,9 @@ Leombruni and Richiardi [REF] have shown how a discrete-time agent-based model o
 %look at refrence in book chapter relating ABM to difference equations
 
 
-from book
-As can be seen in the previous sections there is no one perfect method for modelling the interaction dynamics and emergent behaviour with in the financial system. Due to the nature of this system it has been concluded that the two most useful models are difference equations and agent based models, however these two methods give very different views of the system making it impossible to be able to claim that one single method is more useful then the other in all cases. From this problem a natural question arises: is it possible to combine these two methods and hence reap the benefits that they both have, off setting the negatives of each other? The answer to this question we call the two-views approach, this is a way of combining both methods to tackle the same problem. The way in which we combine these two methods is to first define the problem using difference equations, allowing the benefits of this method to be used such as defining the semantics of the problem. Once the problem has been defined it is converted into an agent-based model using series of correctness preserving transformations. This allows the now agent-based version of this problem to still contain the same information that was present in its difference equation form, while now also now being able to be modelled with the benefits of the agent-based model.      
-This method is specialised and a custom language for difference equations has been defined, that is an expansion of lambda calculus. This language has been defined in such a way that it can be used to express a problem so that the function of the agent-based model can still be fully utilised. The agent-based language that is used is designed to contain all the aspects need for expressing the financial markets: message passing, communication delays and interaction topology definition. We call this bespoke agent-based model Interdyne. 
+%from book
+%As can be seen in the previous sections there is no one perfect method for modelling the interaction dynamics and emergent behaviour with in the financial system. Due to the nature of this system it has been concluded that the two most useful models are difference equations and agent based models, however these two methods give very different views of the system making it impossible to be able to claim that one single method is more useful then the other in all cases. From this problem a natural question arises: is it possible to combine these two methods and hence reap the benefits that they both have, off setting the negatives of each other? The answer to this question we call the two-views approach, this is a way of combining both methods to tackle the same problem. The way in which we combine these two methods is to first define the problem using difference equations, allowing the benefits of this method to be used such as defining the semantics of the problem. Once the problem has been defined it is converted into an agent-based model using series of correctness preserving transformations. This allows the now agent-based version of this problem to still contain the same information that was present in its difference equation form, while now also now being able to be modelled with the benefits of the agent-based model.      
+%This method is specialised and a custom language for difference equations has been defined, that is an expansion of lambda calculus. This language has been defined in such a way that it can be used to express a problem so that the function of the agent-based model can still be fully utilised. The agent-based language that is used is designed to contain all the aspects need for expressing the financial markets: message passing, communication delays and interaction topology definition. We call this bespoke agent-based model Interdyne. 
 
 \section{Converter} 
 %how I will create the two views

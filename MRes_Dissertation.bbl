@@ -38,8 +38,8 @@ Anne~Whitman Isaac~Newton, I. Bernard~Cohen.
 \newblock Univ of California Press, 1999.
 
 \bibitem{SECreport_delays}
-U.S. Securities & Exchange~Commission U.S. Commodity Futures
-  Trading~Commission.
+U.S.~Securities U.S. Commodity Futures Trading~Commission and Exchange
+  Commission.
 \newblock Findings regarding the market events of may 6, 2010.
 \newblock https://www.sec.gov/news/studies/2010/marketevents-report.pdf,
   September 2010.
@@ -54,7 +54,7 @@ Mehrdad Samadi Tugkan~Tuzun Andrei~Kirilenko, Albert S.~Kyle.
 \bibitem{hftinformation1}
 Bus Inf~Syst Peter~Gomber, Martin~Haferkorn.
 \newblock High-frequency-trading.
-\newblock {\em Business & Information Systems Engineering}, 5:97--99, April
+\newblock {\em Business \& Information Systems Engineering}, 5:97--99, April
   2013.
 
 \bibitem{hftmarketparticipation}
@@ -68,26 +68,9 @@ Elias Court.
 \newblock The instability of market-making algoritms.
 \newblock MEng Dissertation, 2013.
 
-\bibitem{bearandbull}
-Weihong~Huang Richard H.~Day.
-\newblock Bulls, bears and market sheep.
-\newblock {\em Jourmal of Economic Behaviour and Organisation}, 1990.
-
-\bibitem{abm1}
-Charles M.~Macal Wai Kin Victor~Chan, Young-Jun~Son.
-\newblock Agent-based simulation tutorial - simulation of emergent behavior and
-  differences between agent-based simulation and discrete-event simulation.
-\newblock In {\em Simulation Conference (WSC), Proceedings of the 2010 Winter}.
-  IEEE, 2010.
-
 \bibitem{DynamicCoupling_Chris}
 Dmitrijs~Zaparanuks Christopher D.~Clack, Elias~Court.
 \newblock Dynamic coupling and market instability.
 \newblock ., 2014.
-
-\bibitem{Vikram_Paper}
-Vikram Bkshi.
-\newblock Simulating interaction in financial markets.
-\newblock MSc Dissertation, 2015.
 
 \end{thebibliography}
