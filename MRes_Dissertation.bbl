@@ -1,7 +1,7 @@
 \begin{thebibliography}{10}
 
 \bibitem{networkcastphorynature}
-Tsai-Ching~Lu Hankyu~Moon.
+Hankyu Moon and Tsai-Ching Lu.
 \newblock Network catastrophe: Self-organized patterns reveal both the
   instability and the structure of complex networks.
 \newblock {\em Scientific Reports}, 2015.
@@ -12,9 +12,9 @@ Christopher~D. Clack.
 \newblock http://www.resnovae.org.uk/fccsuclacuk/research, 11 2016.
 
 \bibitem{EB_systemofsystemsGLangford}
-Gary O.~Langford John S.~Osmundson, Thomas V.~Huynh.
+John~S. Osmundson, Thomas~V. Huynh, and Gary~O. Langford.
 \newblock Emergent behavior in systems of systems.
-\newblock In {\em CONFERENCE ON SYSTEMS ENGINEERING RESEARCH(CSER)}, 2008.
+\newblock In {\em Conference on Systems Engineering Research (CSER)}, 2008.
 
 \bibitem{fallacyofcompostionBook}
 Norman Ehrentreich.
@@ -33,32 +33,32 @@ Douglas~C. Heggie.
 \newblock astro-ph/0503600, 2005.
 
 \bibitem{newtonconstantvelocity}
-Anne~Whitman Isaac~Newton, I. Bernard~Cohen.
+Isaac Newton, I.~Bernard Cohen, and Anne Whitman.
 \newblock {\em The Principia: Mathematical Principles of Natural Philosophy}.
 \newblock Univ of California Press, 1999.
 
 \bibitem{SECreport_delays}
-U.S.~Securities U.S. Commodity Futures Trading~Commission and Exchange
+U.S. Commodity Futures~Trading Commission, U.S. Securities, and Exchange
   Commission.
 \newblock Findings regarding the market events of may 6, 2010.
 \newblock https://www.sec.gov/news/studies/2010/marketevents-report.pdf,
   September 2010.
 
 \bibitem{Impact_hft}
-Mehrdad Samadi Tugkan~Tuzun Andrei~Kirilenko, Albert S.~Kyle.
+Andrei Kirilenko, Albert~S. Kyle, Mehrdad Samadi, and Tugkan Tuzun.
 \newblock The flash crash: The impact of high frequency trading on an
   electronic market.
 \newblock Working Paper, SSRN. http://ssrn.com/abstract=1686004 (accessed May
   13, 2017)., 2014.
 
 \bibitem{hftinformation1}
-Bus Inf~Syst Peter~Gomber, Martin~Haferkorn.
+Peter Gomber, Martin Haferkorn, and Bus~Inf Syst.
 \newblock High-frequency-trading.
 \newblock {\em Business \& Information Systems Engineering}, 5:97--99, April
   2013.
 
 \bibitem{hftmarketparticipation}
-Steven~Krawciw Irene~Aldridge.
+Irene Aldridge and Steven Krawciw.
 \newblock {\em Real-Time Risk: What Investors Should Know About FinTech,
   High-Frequency Trading, and Flash Crashes}.
 \newblock Wiley, 2017.
@@ -69,8 +69,34 @@ Elias Court.
 \newblock MEng Dissertation, 2013.
 
 \bibitem{DynamicCoupling_Chris}
-Dmitrijs~Zaparanuks Christopher D.~Clack, Elias~Court.
+Christopher~D. Clack and Dmitrijs~Zaparanuks Elias~Court.
 \newblock Dynamic coupling and market instability.
 \newblock ., 2014.
+
+\bibitem{econmistsnoabm}
+R.~Leombruni and M.~Richiardi.
+\newblock Why are economists sceptical about agent-based simulations?
+\newblock {\em Physica A: Statistical Mechanics and its Applications},
+  355(1):103--109, 2005.
+
+\bibitem{lob_noecomimists}
+M.~Gould, M.~Porter, and S.~Williams.
+\newblock Limit order books.
+\newblock {\em Quantitative Finance}, 13(11):1709--1742, 2013.
+
+\bibitem{recurrelationbook}
+Jet Wimp.
+\newblock {\em Computation with Recurrence Relations}.
+\newblock Pitman Advanced Publishing Program, 1984.
+
+\bibitem{recurrealtionwebpage}
+Duane~Q. Nykamp.
+\newblock Recurrence relation definition.
+\newblock http://mathinsight.org/definition/recurrence\_relation, 6 2017.
+
+\bibitem{willevaluteargsa}
+Chris Clack and Simon~L. Peyton~Jones.
+\newblock {\em Strictness analysis --- a practical approach}, pages 35--49.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 1985.
 
 \end{thebibliography}

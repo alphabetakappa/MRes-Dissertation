@@ -76,6 +76,11 @@
 
 
 
+
+
+
+
+
 %\begin{figure}[H]
 %	\centering
 %	\includegraphics[scale=0.2]{rhul_logo}
@@ -91,6 +96,11 @@
 %feedback loops that always return the same value, no dependces therefore not part of a loop 
 
 %use the line "the work this paper is built on", interdyne project, creators or interdyne 
+
+
+%how do I refer to code? figure?
+
+%is static analyses difficult on ABM? 
 
 \begin{document} 
 \title{Defining the Semantics of Agent Based Modelling in InterDyne}
@@ -168,13 +178,7 @@ This research was inspired by the "Flash Crash" of 2010, this crash can be seen 
 
 
 \section{InterDyne} 
-%what is Interdyne briefly
-%what are its componets in modeleling 
-%-agent based
-%-discrete time etc
-%why was it created? model flash crash, next section explains why it is good at this
-
-%To create InterDyne, a modelling technique on which to build the simulator had to be decided upon. This technique hard to satisfy the previously discussed requirements for market microstructure modelling; discrete time, message-passing, arrival order and storage of messages. The chosen technique for the InterDyne project was agent-based modelling \cite{abm1}
+%say that ABM are sorted for dynamic analyse but not static analyse
 
 InterDyne is bespoke simulator created by Clack and associates~\cite{Chris_webPage}, it is a general-purpose simulator for exploring emergent behaviour and interaction dynamics within complex systems.\\
 InterDyne design is that of an agent-based model interacting via a harness. This creates a structure of individual autonomous agents who interact through messages sent to one another.\\ 
@@ -186,19 +190,6 @@ Each of the agents within an InterDyne simulation can be completely unique and m
 
 
 \subsection{Emergent Behaviour from Interaction Dynamics}
-%-emergent behaviour 
-%-feedback loops
-
-%Strong emergence may be evident in failures or shutdowns. For example, the US-Canada Blackout of 2003 as described by the US-Canada Power System Outage Task Force (US-Canada Power Task Force 2004) was a case of cascading shutdown that resulted from the design of the system. Even though there was no equipment failure, the shutdown was systemic. As Hitchins points out, this example shows that emergent properties are not always beneficial (Hitchins 2007, 15).
-
-
-%It has been shown that yes, simple models of the financial markets can produces complex emergence. For example bull and bear markets created from the interaction between two traders, operating different simple trading strategies, and a market maker~\cite{bearandbull}.
-
-%what is agent based modleing
-%http://ieeexplore.ieee.org/abstract/document/5679168/
-
-
-
 As mentioned previously InterDyne is designed to allow the simulation and investigation of emergent behaviour caused by interaction dynamics.\\ 
 Emergent behaviour is a term used to describe macro-behaviour of a system that is not obvious from analysis of the micro-behaviour of the system, more formally this is behaviour that can not be predicted through analysis of any single component of a system \cite{EB_systemofsystemsGLangford}.\\
 A misunderstanding of emergence can lead to the fallacy of division, this is that a property of the system as a whole most also be a property of an individual component of the system; water for example has a number of properties including being able to be cooled down to become ice and heated to become steam, saying the same must also be true of a molecule of water however is incorrect. This concept continues into economics, being called the fallacy of composition, where what is true for the whole economy my not hold for an individual and vice versa~\cite{fallacyofcompostionBook}.\\       
@@ -214,18 +205,15 @@ Emergent behaviour can be seen occurring naturally, with physics offering many w
 Emergent behaviour can be generated in many-body systems, in which these bodies them selfs do not inherently create the emergent behaviour but interactions between them give rise to it. For example in the planet n-body problem interactions are via gravity which passes information about each body to the others, such as a planets mass and momentum, however if the gravity was some how removed, there would be no emergence and the planets would all move with a constant velocity~\cite{newtonconstantvelocity}.
 
 \subsubsection{Feedback Loops}
-
 Emergent behaviour from interaction dynamics can take a number of forms, with a prominent type being feedback loops.\\
 Feedback loops are where the input information to an entity is dependent on the output information of that same entity, from a previous moment in time. For this to be worth investigating all entities involved must be set up so that they make decisions about their output, such as what messages they send or who they send them to, based on some input information.\\
 A very simple example could be two algorithms who send each other messages, see Fig~\ref{fig:examplesimpletwofeedback}, where the message algorithm 1, A1, sends to algorithm 2, A2, is twice what it received and A2 sends A1 three times what it received. It is trivial to find that if the initial input for A1 was 1 then the subsequent four inputs would be: 6, 36, 216, 1296. However if A2 always returned the same value, say 4, this would not be considered a feedback loop as its result would be constant and trivial.         
-
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{simpletwofbex}
 	\caption{\it Feedback loop between two algorithms A1 and A2, with each algorithm altering its output dependent on its input. A1s output is twice its input and A2s output is three times its input.}
 	\label{fig:examplesimpletwofeedback}
 \end{figure} 
-
 This example was very simple and feedback loops can be much more complex, encompassing any number of entities, each of whom can have very complex algorithms for transforming their inputs. Feedback loops can operate across time, meaning that an event in the past can feedback to a present decision. A simple example being a single entity sending itself a message to process in the future effecting its actions at that time. For a feedback loop containing a large number of entities the time scale on which the feedback occurs can be come significantly large.\\
 Not all feedback loops have a negative impact, some can be stabilising feedback loops due to a benign effect.\\ 
 Feedback loops can be present in a system in two ways, either they can be a constant fixture, a static feedback loop, or they can form and change, dynamic feedback loops. A static feedback loop is present in the system from the start whether this is intentional and known, or unintentional and unknown to the members of the system. Dynamic feedback loops my not be present at the start and can form and change over time, with new entities joining or leaving them, allowing them to increase or decrease in size or effect, to split or merge, or to disappear.\\
@@ -235,7 +223,6 @@ Due to the potential complexity of feedback loops both in construction and in ti
 
 
 \subsection{Applicability to Finance}
-
 Though InterDyne is a general purpose simulator, its main use thus far has been the exploration of financial markets. In particular InterDyne has been used to explore ``Flash Crash'' of 2010, during which market prices and rational valuations became disconnected, with some stocks trading as low as a penny per share, this lead to frenzied trading and irrational prices which spread between markets causing a massive price crash~\cite{SECreport_delays}. This event lasted around 36 minutes and has been described as``one of the most turbulent periods in their history'' for the US financial markets~\cite{Impact_hft}.\\
 The hypotheses for this crash which InterDyne exists to investigate, is that this crash is an emergent phenomenon caused by the interaction between High Frequency Traders (HFTs) within the market.\\
 HFTs are a subset of algorithmic traders who normally participate in the market as arbitrageurs or market makers, they invest in ultra-high speed technology allowing them to detect, analyses and react to market condition in nanoseconds \cite{hftinformation1}. This means HFTs can trade huge quantities of assets in very short time frames, with some estimates stating that 10-40\% of all trades where initiated by them during 2016 \cite{hftmarketparticipation}.\\
@@ -244,19 +231,15 @@ The type of interaction between these traders suggested to have caused the crash
 This section explains in more detail this hypotheses and how InterDyne is set up to investigate it.  
 
 \subsubsection{Deterministic}
-
 The deterministic nature of InterDyne allows for experiments to be run multiple times with the same result always returned, this allows for changes to the experiment setup to be investigated. For example changing the number of traders in the market and comparing this to a previous run allows for an investigation into how many traders are required for emergent behaviour to be observed.\\
 This becomes particularly interesting when comparing the interactions between market makers to that of the n-body problem, like with this problem one could expect emergent behaviour might occur to some extent in a large group of market makers, however the question of wether the emergence persists in a comparable market to the three-body problem and how this compares to a larger market can be investigated.   
 
 
 \subsubsection{Message Delays}
-
-
 Allowing the delaying of messages is intrinsically important to the investigation of the hypotheses since the existence of delays is proposed as one of the main aspects in the ``Hot Potato'' trading that occurred. Delays exist between all aspects of the market which can account for the processing time of the different elements and the transmission time of messages between them. Some of these delays will be static but it has been preposed that the delays related to the exchange actually increased during the crashing, further worsening the situation~\cite{SECreport_delays}.\\
 Static delays in built in InterDyne can be used to investigate the crash to see if it can occur without the need for dynamically varying delays. Dynamic delays created with agents can then be used to further investigate the events that occurred during the crash, allowing a situation to be set up where as more messages are sent to and from the exchange its delays increase.  Asymmetric delays can be specified between two agents allowing further investigation into the environment in which a crash is mostly likely to occur and how delays could be altered to reduce this out come. 
 
 \subsubsection{Message Passing}
-
 To observe the decided system level behaviour, a flash crash, two different methods can be use; the behaviour can be encoded into the program forcing it occur at a system level, or the system can be setup to allow the behaviour to emerge at the system level. For a true understanding of emegernt behaviour the latter approach is more relevant, this requires the different agents within the simulation to be able to communicate directly with one another. In modelling the financial market these communications are in the form of messages sent between different entities, for example a trader could send a message to an exchange detailing a limit order they wish to issue and an exchange could send back a message containing a confirmation of this order.\\
 These messages allow interaction dynamics to occur within the simulation and hence for emergent behaviour derived from interaction dynamics to naturally present within the system. 
 
@@ -264,52 +247,34 @@ These messages allow interaction dynamics to occur within the simulation and hen
 
 
 \subsubsection{Storing Passed Messages/Tracking}
-
 Due to the nature of emegernt behaviour being usually unexpected, it can be very difficult to to deduce what low level structures and operations gave rise to this system level phenomenon. This is especially true when modelling a financial system that has a large number of interacting agents all sending and receiving messages, some of which can be delayed changing their expected order of arrival. The delays in the system have been suggested to have influenced the emergence of behaviour within the system, hence in investigating these systems it is important to take into account not only message counter-parties but also message timings. InterDyne facilitates post simulation analyse into this by being able to produce a trace for all time steps of the full information of; messages sent by any agent, messages received by any agent and messages being delayed before being delayed to an agent.          
 
   
 \subsubsection{Discrete Time}
-
 Though it is easy to assume that the financial markets operate in continuous time this is in fact not always the case. For electronic markets that trade through an exchange their time is set by the exchange, orders are not processed and messages are not sent back till the exchange decides to do so. These electronic exchanges them selfs operate in discrete time, this is unavoidable and is a product of the systems being run on computers, a computer runs based on an internal clock that ticks in discrete intervals based on a change in a square-wave oscillating voltage. This change in voltage is so fast that to a human it seems continuous, however HFTs operate themselves at such high speeds that the system clock time gaps are comparable and hence need to be considered. Therefore models simulating HFTs interactions to this detail must take account of this discrete time, hence InterDynes discrete time nature is a good match to model HFTs interactions.     
      
 
 \subsubsection{Message Ordering}
-
 The order in which messages are processed can be very important, for an exchange, for example, it can change whose limit order has priority at a given price and whose market order executes the lowest prices. Changing these factors can make or break feedback loops within the system, meaning if message ordering is not properly dealt with the correct emegernt behaviour may not be observed. Hence InterDyne stores messages in the order they are received by an agent, taking into account delays to the messages. This however can not be done when multiple messages are received at the same time step, due to the nature of discrete time there is no way for the agents to know which message arrived first, therefore two options are presented by InterDyne; messages are ordered according to their agent identifier %say what this is in a foot note?
 or messages are randomised and executed in the  emerging order. This randomisation is handled in the same manner every run of the simulation \footnote{This can be changed using a new seed if so desired} hence resulting in the same order and therefore not effecting the deterministic nature of the experiment.  
 
 
 \subsubsection{Agents}
+%expand this section
 
 A benefit of agent based models of other alternatives is the ability to encode agents as unique traders instead of having to model the general behaviour of a number of traders. This allows for unique behaviour of varying complexity to be given to different agents, facilitating experimentation with different trading strategies, allowing different questions to be investigated, such as, does a trading strategy need to be complex for emergence to be observed? 
 
 
 
 
-
-
-
 \subsection{InterDyne Detail Operation}
-%what is interdyne again (more detail description)
-%interdynes set up, harness /
-%create and eat messages, infite list /
-%how to call interdyne simple /
-%how to call interdyne complex, agents /
-%details of interdyne/
-%-an agent+wrapper/
-%topology
-%messages
-
-
 InterDyne is an agent-based model simulator written in the Haskell language. An InterDyne simulations structure, shown in Fig.~\ref{fig:harness_setupfigure}, consistent of a number of independent agents, sending messages to a ``Simulation Harness'', this harness then (i) sends these messages to the relevant counter party or parties \footnote{In the case of broadcast messages}, (ii) saves these messages to a trace file.   
-
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{harness_setup}
 	\caption{\it Structure of an InterDyne simulation containing three agents.}
 	\label{fig:harness_setupfigure}
 \end{figure} 
-
 By set up each agent is required to both consume and produce a message at every time step, this is done by sending each agent a potentially-infinite list of messages and requiring it to create a potentially-infinite list of messages. The inbound list contains every message the agent will receive through out the entire simulation, ordered by time, and the outbound list contains every message the agent will ever send, order by time. This is possible due to lazy evaluation of the language that InterDyne is written in, This means that only messages being used are evaluated. Since no agent should attempted to use a message from the future \footnote{If they do an error will be thrown.}, only messages that have been created so far are read.\\
 Since the set up of these list requires an element for every time step and an agent my not need to send a message during a time step, empty messages can be sent, this will result in an agent either receiving or sending an empty list. It may be the case in a simulation that an agent could be generating empty messages by mistake, to differentiate between a message empty by mistake or by choice, a message can be created containing ''Hiaton`` demonstrating that it is empty by choice.\\   
 A InterDyne simulation once created can be run by executing the ''sim`` function with relevant arguments, this function has a type,      
@@ -320,8 +285,17 @@ Agents within a simulation are defined by ID numbers, with the first agent havin
 This simulation will run for 60 time steps, with three agents subscribed to a number of broadcast channels, for example the third agent is subscribed to channel 2 and 3. There is a single run time argument convert, that can convert an ID to a name and a name to an ID. This is a simplistic call of the function sim, but shows how an experiment run could be setup and executed.\\   
 In the example one can notice that the agents called all were to referred to as wrappers, this is because agents in InterDyne are typically, though not necessarily, written in two sections; ``wrapper'' and ``logic'' functions. The ``wrapper'' function, called in the example, can be thought of as the true agent, it handles message receiving and sending, as well as updating the local state of the function, hence this function is the one that interacts with the other agents and the harness. The ``logic'' function rests inside the ``wrapper'' function and computes the messages to be sent, hence this contains the functionality of the agent. An example of a ``wrapper'' function containing a ``logic'' function is shown here:
 \lstinputlisting[language=Haskell]{complexagentwrapper.hs}
-This agent will output a list containing m, which is the output of the ``logic'' function for that given time period based on the received messages. The wrapper is a recursive function with each recursion being a new time step. It takes as inputs, st the local stat variable, args the run time arguments, a list of all messages to it, and its ID.  The list of messages has a three tuple for each time, containing the current time, list of all messages sent to the agent directly, and a list of all messages sent to the agent from broadcast channels.\\ 
-
+This agent will output a list containing message m, which is the output of the ``logic'' function for that given time period based on the received messages. The wrapper is a recursive function with each recursion being a new time step. It takes as inputs, st the local stat variable, args the run time arguments, a list of all messages to it, and its ID.  The list of messages has a three tuple for each time, containing the current time, list of all messages sent to the agent directly, and a list of all messages sent to the agent from broadcast channels.\\ 
+InterDyne supports a wide range of messages in an array of complexities, to allow for a variety of interactions to take place. Messages, which are either one-to-one or broadcast, must all contain a pair of integers which represent the sending agents ID and the receiving agent or broadcast channels ID, the rest of the message depends on the type of message being sent. For example one could send a one-to-one message containing a list of (key, value) pairs, 
+\lstinputlisting[language=Haskell]{message_simple.hs}
+or a message carrying a string, 
+\lstinputlisting[language=Haskell]{message_data.hs}
+Broadcast messages content is defined by a broad type, which defined further within its type definition, 
+\lstinputlisting[language=Haskell]{message_broadcast.hs}
+As previously stated ID=0 represents the harness, messages sent to this ID are printed to an output file, output is also achieved in InterDyne by storing all messages of type Datamessage, which are saved to a different file then those sent to ID=0.\\  
+As mentioned earlier InterDyne allows for both a topology of allowed interactions and delays along interaction paths to be defined. This can be done by passing two runtime arguments to the ``sim'' function \footnote{Both the arguments must be given.}, (i) a function that when given two agent IDs will return a delay for the interaction between them in time steps, and (ii) the maximum delay that returned by this function, i.e. the maximum delay present in the system. The previous example expanded with delays is shown here: 
+\lstinputlisting[language=Haskell]{interdynewithdelays.hs}
+Once delays have been specified in this manner all messages, one-to-one and broadcast, are delayed by the stated amounts between the defined agents. Dynamic delays are not shown here, but are achieved with use of another agent acting as a go between \cite{Chris_webPage}. 
  
 
 
@@ -330,12 +304,14 @@ This agent will output a list containing m, which is the output of the ``logic''
 
 
 
-\subsection{Examples}
+
+
+%\subsection{Examples}
 
 
 %Day and Huang [Day, R. And Huang, W., ?Bulls, Bears and Market Sheep?, Jourmal of Economic Behaviour and Organisation, 1990] for example have demonstrated how interactions between two simple but different trading strategies and a market-maker can cause complex emergent features of stock market prices such as alternating periods of rising (?bull market?) and falling (?bear market?) with sudden switching between the two at irregular intervals. Further, Lyons [Lyons, R.K. ?A Simultaneous Trade Model of the Foreign Exchange Hot Potato?, Journal of International Economics 42 (1997) 275?298] has shown how a feedback loop can emerge between foreign exchange dealers, causing them to repeatedly transfer inventory between themselves.  Yet these are simple models of interaction.  Our aim is to develop a framework for modelling and analysing more complex emergent behaviour that arises from the dynamics of interaction, and in the context of our case study to analyse behaviour that may increase risk to the stability of the financial markets.
 
-\subsubsection{Hot Potato} 
+%\subsubsection{Hot Potato} 
 %what is hot potato
 %fx market
 
@@ -350,14 +326,14 @@ This agent will output a list containing m, which is the output of the ``logic''
 	%inventory limits
 	%why do simple versions of them still work
 
-This feedback effect has been shown, in the InterDyne simulator, to create instabilities in market prices and even lead to crashes~\cite{DynamicCoupling_Chris}.   
+%This feedback effect has been shown, in the InterDyne simulator, to create instabilities in market prices and even lead to crashes~\cite{DynamicCoupling_Chris}.   
 
 
 
 
 
 
-\subsubsection{Flash Crash}
+%\subsubsection{Flash Crash}
 %lob version of hot potato
  
 %what is the flash crash
@@ -389,97 +365,147 @@ This feedback effect has been shown, in the InterDyne simulator, to create insta
 
 
 
-\section {Description and analysis of the problem} 
-%simulations in itnerduyne not fully excepted by exconimists
+\section {Description and Analysis of the Problem} 
+Though InterDyne is a functional simulation platform and has been used to run a number of experiments, most notably in Ref.~\cite{DynamicCoupling_Chris} where a model was presented showing a flash crash caused by interaction dynamics, it possesses a concern when discussing these results, especially to non-experts in computational modelling.\\
+This section will discuss the main draw backs of InterDyne and a method for countering them.  
 
 
-%this model is not fully excepted by econimists
-%why this is so
-%a method to fix this
-
-\subsection{Why InterDyne is not enough}
-%
-
-%why agent based modeling is not perfect for being excepted
-%one to many relationship
-%an alternative differnce equations
-
-
-%?	Although each agent is fully specified, the model as a whole may lack a formal definition.
-
-%An agent-based model [REF] provides an attractive fit to modelling interaction dynamics in a System of Systems, since each component can be modelled by a separate agent or by a group of agents with varying levels of detail, with private communication within a group; furthermore, messaging and discrete time are handled naturally, and numerical solutions can be obtained for large problems that are analytically intractable.  However, we were initially wary of this approach because of the limitations that cause agent-based models to be not widely accepted by economists, as described for example by Gould et al [REF 2013] and Leombruni and Richiardi [REF].  For our purposes, the most important limitations appear to be:
-%	Although each agent is fully specified, the model as a whole may lack a formal definition.
-%	It can be difficult to track how a specified input parameter affects the output, and parameter-estimation may be achieved in a way that is not representative of all possible outcomes the model can produce. 
-%	Finding a set of agent rules that produces a specific high-level behaviour provides no guarantee that it is the only set of rules to do so.
-%Leombruni and Richiardi [REF] resolved the first of these problems by providing a formal specification of an agent-based model in terms of a set of recurrence relations. This has the added advantage that the recurrence relations are easily understandable by non-programmers.  They also showed how to ameliorate the second problem by analysis of the sensitivity of outcomes to parameter selections.  The third problem remains, yet it is a problem shared by a wide range of models [REFS? HMMs?].
-
-%Agent based models (ABMs) are a kind of model which can be used for simulations. These simulations work by having a number of independent agents who each have their own behaviour interacting via messages sent between them, this system created by these interacting agents is the model. 
-%Because ABMs takes a radically different approach to the modelling of systems the difference equations, using a number of interacting agents each with their own behaviour that could be described as grouped difference equations instead of that large block of logic, which is inherent in difference equations, they can tackle some of the issues in a very different way. 
-%ABMs also have the ability to be run at a far faster pace then difference equations under the right circumstances, this is because they can be run in parallel computing architecture setups, allowing multiple calculations to be run simultaneously on different machines. 
-%They also tend to require far less recomputation then there difference equation counterparts due to the way, which they are set up and then run.
-%These features makes this method far more efficient for very large systems that otherwise could take a very large amount of computation time.  
-%ABMs operate in a step-by-step way making it very natural to create an ABM that has discrete time as each step. This means that at each step all the agents will send out their messages to other agents telling them their interactions at that particular time interval, this is a similar behaviour to how the real financial market operates. The exact time interval can be chosen by deciding upon the smallest time unit which will be used in the simulation and having everything else operate at integer multiples of this base time.
+\subsection{Why InterDyne is Not Enough}
+As already mentioned InterDyne is an agent-based model and hence possesses the same limitations as do other models of this type. A number of these limitations are of particular concern to economists, making agent-based models and their results not commonly accepted by them~\cite{econmistsnoabm, lob_noecomimists}. The most significant limitations  with this models are:
+ \begin{enumerate}
+  \item Producing high-level behaviour or emergent behaviour from a set of base rules, only shows that those create it and does not show that those are the only rules that could exhibit this behaviour. This is often referred to as the inverse function problem.
+  \item Tracking the affect of an input parameter on the output of the agent-based model can be very difficult, and parameter-estimation may be done in a fashion that will not represent all of the possible outcomes of the model. 
+  \item Despite each agent within a simulation being fully specified the model as a whole will lack a formal definition. 
+\end{enumerate}
+The first limitation is shared by man modelling techniques and is a by product of studying emergent behaviour, more then one scenario may lead to the same emergence. This limitation should be considered more as a consideration when analysing results from experimentation, it is generally speaking useful to find a set of conditions that lead to an emergent behaviour, but should be noted that it can not be said that it is the only one without further research.\\
+The second limitation can be reduced by analysis of the sensitivity of the outcomes to parameter selections, this is shown in Ref.~\cite{econmistsnoabm}.\\
+The third limitation is of particular interest, though the other limitations can lead to questions of the validity of findings from agent-based models, the understanding of the actual model and experiment being undertaken is hindered by this limitation. A resolution to this problem was put forward by Ref.~\cite{econmistsnoabm}, in which a formal definition of the specification of the an agent-based model was given in terms of a set of recurrence relations. This solution not only provides a formal definition of an agent-based model but also does so in a way which is relatable to non-programmers, such as economists.     
 
 
 
-\subsubsection{One-to-Many Problem}
-\subsubsection{Semantics of the System} 
-\subsubsection{Inverse Function Problem?} 
 
-\subsection{Difference equations} 
-%what are difference equations
-%how do they work
-%why are they more easily excepted
+\subsection{Recurrences Relations} 
+Recurrence relations connect a discrete set of elements in sequence, these elements are normally either numbers or functions, they can be used to define these sequences of produce the elements in them. They can be seen as equations that give the next term in a sequence based on the previous term or terms, hence defining said sequence. Recurrence relations are often used to define coefficients in series expansions, moments of weight functions, and members of families of special functions~\cite{recurrelationbook}.\\
+The most simplistic form of a recurrence relation is one where the next term depends only on the immediately preceding term. If the $n^{th}$ element in the sequence is defined as  $x_{n}$, then this recurrence relation can be written as,    
+\begin{equation}
+x_{n+1} = f(x_{n}),
+\end{equation}
+where $f()$ is a function that calculates the next term based on the previous one. A recurrence relation does not just have to depend on its immediate previous term and can depend on any number of terms further back in the sequences, for example a recurrence relation depending on terms from two and three steps before can be written as, 
+\begin{equation}
+x_{n+1} = f(x_{n-1}, x_{n-2}),
+\end{equation}
+with $f()$ now taking two inputs to produce the new term in the sequence~\cite{recurrealtionwebpage}.\\
+Recurrence relations can also be used to define a sequence through time, in the simplest case the enumerate $n$, can be set to represent time $t$, this is applicable to discrete time as it requires set steps between the different times. Just as in the previous examples, the simplest recurrence relation is,  
+\begin{equation}
+x_{t+1} = f(x_{t}),
+\end{equation}
+where $x_{t}$ is the term at time $t$ and $f()$ gives the term at $t+1$ based on the term at $t$. Again this can be expanded to include terms from a number of previous time steps, allowing the memory of the sequence to be shown.\\  
+A recurrences relation for defining a sequences may as well as depending upon previous terms, also depend upon some parameter, $\alpha$, this would give, in its simplest case, 
+\begin{equation}
+x_{n+1} = f(x_{n}; \alpha).
+\end{equation}
+The next term in the sequence may not only depend on previous terms within its own sequence and paramters, it can also be conditional on another sequence. For example one sequence through out time, $x$, may depend on another sequence through out time, $y$, a simple recurrence relation for this could be,
+\begin{equation}
+x_{t+1} = f(x_{t}, y_{t}),
+\end{equation}
+with the sequence for $y$ possibly depending on its own recurrence relation. The sequence for $x$ may not even directly depend on its own sequence and could solely depend on $y$, 
+\begin{equation}
+x_{t+1} = f(y_{t}).
+\end{equation}
+Though it could also indirectly depend on its self, if $y$ was defined by a recurrence relation depending on $x$, such as, 
+\begin{equation}
+y_{t+1} = f(x_{t}).
+\end{equation}
+These cross sequence associations allow for complex interactions to be represented as time series defined by recurrence relations, this is a method which can be applied to agent-based modelling.\\
+Reference~\cite{econmistsnoabm} showed how an agent-based model looking at the microstructure of the financial markets, can be exhibited in the form of recurrence relations. In their approach each agent with in an $n$ agent model is considered to be well described by a state variable, $x_{i, t}$. The state variable describes the agent at each time step, where $i$ is the identity of the agent $(i \in 1,2,....,n)$, and $t$ is the time step at which the agent is being described, i.e. $x_{1,5}$ describes the first agent at the fifth time step. These state variables are defined by the recurrence relation,     
+\begin{equation} \label{eq:notimedelayrecur}
+x_{i, t+1} = f_{i}(x_{i, t}, x_{-i,t}; \alpha_{i}),
+\end{equation}
+where $f_{i}()$ is a function unique to agent $i$, that can take the state of the agent at the previous time step, $x_{i, t}$, the state of any other agent at the previous time step, $x_{-i, t}$\footnote{The $-i$ is used to refer to all other agents in the system. So if $i=1$, $-i$ refers to agents $2,3,4,....,n$, for an $n$ agent system.}, and a bespoke parameter $\alpha_{i}$.\\
+This method works by describing each agent as a sequence of state variables, these sequences are then interlinked by having dependencies to each other, allowing both the agents and their interactions to be represented. A simple example of this could be two agents, $x_{1}$ and $x_{2}$, that are coupled to each other and only depend on the others value at the previous time step and a parameter, represented by the recurrence relations,     
+\begin{equation}
+x_{1, t+1} = f_{1}(x_{2,t}; \alpha_{1}),
+\end{equation}
+\begin{equation}
+x_{2, t+1} = f_{2}(x_{1,t}; \alpha_{2}).
+\end{equation}
+This formulation only shows relationships to the previous time steps, however information delays can be added to the system by allowing the recurrence relations to have a longer memory. A recurrence relation that uses a state variable from three time steps ago, could be considered to have a time delay of three time steps in receiving this information. The generalisation of the model needed to allow for this, is a recurrence relation of the form, 
+\begin{equation}
+x_{i, t+1} = f_{i}(x_{i, t}, x_{i, -t} x_{-i,t}, x_{-i, -t}; \alpha_{i}).
+\end{equation}
+This is similar to Eq.~\ref{eq:notimedelayrecur} but contains two new terms $x_{i, -t}$ and $x_{-i, -t}$, these terms are used to refer to any time steps before the previous one, time $t$. This more general equation can now reference any state variable from any previous time, from any agent, as well as its bespoke parameter, to compute the next term in its sequence.\\  
+This models can be solved for macro-level properties by iteratively solving each state variable, $x_{i, t}$, given some initial conditions. This method of assessing the model gives it a formal definition, and one that is accessible by a larger range of experts then classic agent-based models. Recurrence relations in a number of forms are commonly used in economics and finance and hence are familiar and relatable to economists, this makes them a far more effective tool for describing models to these domain experts then agent-based models.\\
+This iterative method for solving the equations makes any dependencies between systems apparent, as if $x_{2, t}$ is present in the definition of $x_{1, t+1}$, one can say that $x_{1,t+1}$ depends on $x_{2,t}$. This transparency of dependencies makes this formulation amenable to static analysis, allowing the recurrence relations to be investigated to return their static dependencies.\\
+Although all recurrence relations will contain some form of recursive, since this is an intrinsic property, this will not necessarily be negative or destabilising. For example a dependency on a state at a previous time step may not be destabilising to the system, however the reverse would be a case where the state variable at $t+1$ depended on its self, this would be a destabilising loop. Static analysis hence could be used to detect hard-wired destabilising loops, such as the one just mentioned.\\
+Static analyse of the system can become difficult when the functions $f_{i}()$ contain conditional statements relating to their inputs, this can cause inputs not to be used at certain times hence meaning dependencies will not be as obvious as simply the inputs given, this is a problem of determining wether a function will necessarily evaluate all its arguments~\cite{willevaluteargsa}.\\
+Though through static analysis recurrence relations can be used to view the history of the state variables of a single agent, however the history of messages between pairs of agents is not easily detectable with static analysis. The interaction history is found through dynamic analysis which is not well suited to recurrence relations, as they lack a clear ability to follow the passing of messages within the system.   
 
-%Leombruni and Richiardi [REF] have shown how a discrete-time agent-based model of the dynamic microstructure of financial markets can be expressed as a set of recurrence relations.  In their formulation, each agent is well described by a state variable given by xi,t where i is the agent identity (i ? 1, ... , n) LC- in a n agent problem and t is time, and where each xi,t+1  
-
- \subsubsection{Benefits and Problems} 
- %other benfitis and down sides of them
- 
- \subsubsection{Lack of Visualisation} 
-%but they won?t be able to ?see? the emergent behaviour with running the simulator ?
-
-\subsubsection{Optimisation Problems} 
-% but generally we can?t directly ?run? these equations because for any reasonable-sized system there will be too much recomputation (we get the same problem with dynamic optimisation problems!)
-%there are ways to cache intermediate results, but they ain?t pretty
 
 \subsection{Two Views Approach} 
-%My solutions, two view
-%what is two views
-%its benifits
-%how it will solve the problem
-%look at refrence in book chapter relating ABM to difference equations
+As can be seen from the previous discussions neither agent-based models, in the form of InterDyne, or recurrence relations offer an optimal modelling technique whose results can be analysed to the level desired. With InterDyne suffering from a lack of a formal definition and difficulties for static analysis, and recurrence relations being unsuitable to preform dynamic analyses on. Looking at the benefits of the two techniques, InterDyne is well suited to dynamic analyses, and recurrence relations provided a formal definition and are appropriate for static analyses, one can see that they match each others draw backs.\\ 
+Therefore a more ideal model, would be representable in both recurrence relations and as an agent-based model.  This model would be suited to both static analyses, while expressed as recurrence relations, and dynamic analyses, when in the form of an agent-based model. A model that can correctly transform between a set of recurrence relations and an agent-based model, would provide the agent-based model with a formal definition in the form of the recurrence relations. This method will be referred to as the two views approach, with recurrence relations, and agent-based modelling seen as two complementary views of the same system.\\
+To create a model tool which will allow for the two views approach, three aspects most be covered, an agent-based model,the recurrence relations, and a convertor for transforming between them. The agent-based model as already been created in the form of InterDyne and as already discussed fulfils all the needed requirements for the systems being modelled. The latter two aspects however have not been previously produced and will be the focus of this paper.      
 
 
-%from book
-%As can be seen in the previous sections there is no one perfect method for modelling the interaction dynamics and emergent behaviour with in the financial system. Due to the nature of this system it has been concluded that the two most useful models are difference equations and agent based models, however these two methods give very different views of the system making it impossible to be able to claim that one single method is more useful then the other in all cases. From this problem a natural question arises: is it possible to combine these two methods and hence reap the benefits that they both have, off setting the negatives of each other? The answer to this question we call the two-views approach, this is a way of combining both methods to tackle the same problem. The way in which we combine these two methods is to first define the problem using difference equations, allowing the benefits of this method to be used such as defining the semantics of the problem. Once the problem has been defined it is converted into an agent-based model using series of correctness preserving transformations. This allows the now agent-based version of this problem to still contain the same information that was present in its difference equation form, while now also now being able to be modelled with the benefits of the agent-based model.      
-%This method is specialised and a custom language for difference equations has been defined, that is an expansion of lambda calculus. This language has been defined in such a way that it can be used to express a problem so that the function of the agent-based model can still be fully utilised. The agent-based language that is used is designed to contain all the aspects need for expressing the financial markets: message passing, communication delays and interaction topology definition. We call this bespoke agent-based model Interdyne. 
+\section{Bespoke Recurrence Relation Language}
+%why we need bespoke recurrance relation language, need to read this into a computer therofore need to desiced how people write it
 
-\section{Converter} 
-%how I will create the two views
-%what the converter is meant to do
+%what are the considerations needed to design this language (minumial as possible)
+%-must be usable by non computer scientist, mathimatiants, exonimists
+%-still has to contain all the information needed to specify the program
+%-have to be able to define different players
+%-if else statements
+%-spefy an expemrent 
+%-varibles
+%-where blocks (make things neater)
+%-equations with inputs
+%-lists
+%-mathmitcal opertions 
+%-hd
+%-tl
+%-:
 
 
-\subsection{New Language}
+
+
+
 %first step is to create a language which can be used by a user to create a propram as difference equations
 %language has to be simple enough that a non computer scientist/econimist can use, but must still be able to contain all the information required for the program
 %programs wirtten in this language will be parsed into lexemes and then converted into a numeric type (?) which will be used to transfer this into lambda calcus and an ABM model
 
-\subsubsection{Syntax/Grammer}
+
+\subsection{Syntax/Grammer}
 %what the new language looks like 
 %what each bit means
 %what is allowed to be written
 %how to write certain things
 %how is it user friendly
 %why this was choosen, for example easier to convert to lambda calcualse 
-\subsubsection{Parser}
-%explain what the parser is and how it works, in preparing these files for transfermation
-\subsubsection{Examples}
+
+\subsection{Examples}
 %examples on how to use the grammar
-\paragraph{Simple Example}
+\subsubsection{Simple Example}
 %a very simple example on the use of the grammar
-\paragraph{Complex Example}
+\subsubsection{Complex Example}
 %what I have actually done maybe?
+
+\section{Recurrence Relation to InterDyne Converter} 
+%how I will create the two views
+%what the converter is meant to do
+
+
+%how would this work? correctness preserving transformation 
+
+% Eventually, we would like to be able to express the System of Systems as a set of recurrence relations and then generate the agent-based model automatically; if this could be done in a way that preserves the semantics of the specification, then we would be confident that the static and dynamic analyses are being performed on models of the same System of Systems. 
+
+
+\subsection{Recurrence Relation Parser}
+%explain what the parser is and how it works, in preparing these files for transfermation
+
+
+
+
+
 
 
 
