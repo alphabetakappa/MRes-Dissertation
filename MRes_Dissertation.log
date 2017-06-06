@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  5 JUN 2017 14:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  6 JUN 2017 13:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -569,18 +569,18 @@ Package color Info: Driver file: pdftex.def on input line 144.
 (./MRes_Dissertation.aux)
 \openout1 = `MRes_Dissertation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
 
 (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -644,15 +644,15 @@ Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Info: Redefining \celsius on input line 105.
-Package gensymb Info: Faking symbols for \degree and \celsius on input line 105
+LaTeX Info: Redefining \celsius on input line 111.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 111
 .
 
 
 Package gensymb Warning: Not defining \perthousand.
 
-LaTeX Info: Redefining \ohm on input line 105.
-Package gensymb Info: Using \Omega for \ohm on input line 105.
+LaTeX Info: Redefining \ohm on input line 111.
+Package gensymb Info: Using \Omega for \ohm on input line 111.
 
 Package gensymb Warning: Not defining \micro.
 
@@ -739,14 +739,14 @@ Package gensymb Warning: Not defining \micro.
 <simpletwofbex.png, id=22, 188.705pt x 307.1475pt>
 File: simpletwofbex.png Graphic file (type png)
  <use simpletwofbex.png>
-Package pdftex.def Info: simpletwofbex.png used on input line 213.
+Package pdftex.def Info: simpletwofbex.png used on input line 229.
 (pdftex.def)             Requested size: 94.35226pt x 153.57336pt.
 
 [4] [5 <./simpletwofbex.png>] [6] [7]
 <harness_setup.png, id=39, 505.89pt x 445.665pt>
 File: harness_setup.png Graphic file (type png)
  <use harness_setup.png>
-Package pdftex.def Info: harness_setup.png used on input line 274.
+Package pdftex.def Info: harness_setup.png used on input line 290.
 (pdftex.def)             Requested size: 252.94437pt x 222.83195pt.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -763,9 +763,33 @@ File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <8> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 1.
 )
-(./fullunInterdyne.hs) (./complexagentwrapper.hs) (./message_simple.hs)
-(./message_data.hs [9]) (./message_broadcast.hs) (./interdynewithdelays.hs)
-[10] [11] [12] (./MRes_Dissertation.bbl [13]
+(./fullunInterdyne.hs) (./complexagentwrapper.hs) [9] (./message_simple.hs)
+(./message_data.hs) (./message_broadcast.hs) (./interdynewithdelays.hs)
+[10] [11] [12] [13]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 477.
+
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 477.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2015/06/04 1.6 listings language file
+) [14]
+(./exp_list_variations.m) (./exp_list_variations.m) (./exp_layout_gen.m
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 10.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 513--514
+
+ []
+
+(./MRes_Dissertation.bbl [15]
 Underfull \hbox (badness 10000) in paragraph at lines 10--13
 []\OT1/cmr/m/n/10 Christopher D. Clack.  The in-ter-dyne sim-u-la-tor (2011-).
  []
@@ -782,7 +806,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 41--46
 of may 6, 2010.
  []
 
-[14]
+[16]
 Overfull \hbox (24.52104pt too wide) in paragraph at lines 93--96
 []\OT1/cmr/m/n/10 Duane Q. Nykamp.  Re-cur-rence re-la-tion def-i-ni-tion.  htt
 p://mathinsight.org/definition/recurrence[]relation,
@@ -793,12 +817,12 @@ p://mathinsight.org/definition/recurrence[]relation,
 Package caption Warning: Unused \captionsetup[sub] on input line 11.
 See the caption package documentation for explanation.
 
-[15] (./MRes_Dissertation.aux) ) 
+[17] (./MRes_Dissertation.aux) ) 
 Here is how much of TeX's memory you used:
- 7089 strings out of 493014
- 101560 string characters out of 6133350
- 286030 words of memory out of 5000000
- 10502 multiletter control sequences out of 15000+600000
+ 7201 strings out of 493014
+ 103210 string characters out of 6133350
+ 290488 words of memory out of 5000000
+ 10598 multiletter control sequences out of 15000+600000
  10321 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,8n,43p,1661b,1818s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -820,10 +844,10 @@ pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pf
 b></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><
 /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on MRes_Dissertation.pdf (15 pages, 340649 bytes).
+Output written on MRes_Dissertation.pdf (17 pages, 350612 bytes).
 PDF statistics:
- 130 PDF objects out of 1000 (max. 8388607)
- 90 compressed objects within 1 object stream
+ 136 PDF objects out of 1000 (max. 8388607)
+ 94 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

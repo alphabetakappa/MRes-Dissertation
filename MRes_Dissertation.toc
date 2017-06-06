@@ -1,29 +1,33 @@
 \contentsline {section}{\numberline {1}Introduction}{3}
-\contentsline {section}{\numberline {2}InterDyne}{3}
-\contentsline {subsection}{\numberline {2.1}Emergent Behaviour from Interaction Dynamics}{3}
-\contentsline {subsubsection}{\numberline {2.1.1}Feedback Loops}{4}
-\contentsline {subsection}{\numberline {2.2}Applicability to Finance}{5}
-\contentsline {subsubsection}{\numberline {2.2.1}Deterministic}{6}
-\contentsline {subsubsection}{\numberline {2.2.2}Message Delays}{6}
-\contentsline {subsubsection}{\numberline {2.2.3}Message Passing}{7}
-\contentsline {subsubsection}{\numberline {2.2.4}Storing Passed Messages/Tracking}{7}
-\contentsline {subsubsection}{\numberline {2.2.5}Discrete Time}{7}
-\contentsline {subsubsection}{\numberline {2.2.6}Message Ordering}{7}
-\contentsline {subsubsection}{\numberline {2.2.7}Agents}{8}
-\contentsline {subsection}{\numberline {2.3}InterDyne Detail Operation}{8}
-\contentsline {section}{\numberline {3}Description and Analysis of the Problem}{10}
-\contentsline {subsection}{\numberline {3.1}Why InterDyne is Not Enough}{10}
-\contentsline {subsection}{\numberline {3.2}Recurrences Relations}{11}
-\contentsline {subsection}{\numberline {3.3}Two Views Approach}{13}
-\contentsline {section}{\numberline {4}Bespoke Recurrence Relation Language}{14}
-\contentsline {subsection}{\numberline {4.1}Syntax/Grammer}{14}
-\contentsline {subsection}{\numberline {4.2}Examples}{14}
-\contentsline {subsubsection}{\numberline {4.2.1}Simple Example}{14}
-\contentsline {subsubsection}{\numberline {4.2.2}Complex Example}{14}
-\contentsline {section}{\numberline {5}Recurrence Relation to InterDyne Converter}{14}
-\contentsline {subsection}{\numberline {5.1}Recurrence Relation Parser}{14}
-\contentsline {section}{\numberline {6}Conclusion}{14}
-\contentsline {subsection}{\numberline {6.1}Further Work}{14}
-\contentsline {section}{\numberline {7}Appendix}{14}
-\contentsline {subsection}{\numberline {7.1}Appendix 1}{14}
-\contentsline {section}{References}{14}
+\contentsline {section}{\numberline {2}Emergent Behaviour}{3}
+\contentsline {subsection}{\numberline {2.1}Interaction Dynamics}{3}
+\contentsline {subsection}{\numberline {2.2}Feedback Loops}{3}
+\contentsline {subsection}{\numberline {2.3}Emergence in Financial Markets}{3}
+\contentsline {section}{\numberline {3}InterDyne}{3}
+\contentsline {subsection}{\numberline {3.1}Emergent Behaviour from Interaction Dynamics}{4}
+\contentsline {subsubsection}{\numberline {3.1.1}Feedback Loops}{4}
+\contentsline {subsection}{\numberline {3.2}Applicability to Finance}{6}
+\contentsline {subsubsection}{\numberline {3.2.1}Deterministic}{6}
+\contentsline {subsubsection}{\numberline {3.2.2}Message Delays}{6}
+\contentsline {subsubsection}{\numberline {3.2.3}Message Passing}{7}
+\contentsline {subsubsection}{\numberline {3.2.4}Storing Passed Messages/Tracking}{7}
+\contentsline {subsubsection}{\numberline {3.2.5}Discrete Time}{7}
+\contentsline {subsubsection}{\numberline {3.2.6}Message Ordering}{7}
+\contentsline {subsubsection}{\numberline {3.2.7}Agents}{8}
+\contentsline {subsection}{\numberline {3.3}InterDyne Detail Operation}{8}
+\contentsline {section}{\numberline {4}Description and Analysis of the Problem}{10}
+\contentsline {subsection}{\numberline {4.1}Why InterDyne is Not Enough}{11}
+\contentsline {subsection}{\numberline {4.2}Recurrences Relations}{11}
+\contentsline {subsection}{\numberline {4.3}Two Views Approach}{13}
+\contentsline {section}{\numberline {5}Bespoke Recurrence Relation Language}{14}
+\contentsline {subsection}{\numberline {5.1}Syntax/Grammer}{15}
+\contentsline {subsection}{\numberline {5.2}Examples}{16}
+\contentsline {subsubsection}{\numberline {5.2.1}Simple Example}{16}
+\contentsline {subsubsection}{\numberline {5.2.2}Complex Example}{16}
+\contentsline {section}{\numberline {6}Recurrence Relation to InterDyne Converter}{16}
+\contentsline {subsection}{\numberline {6.1}Recurrence Relation Parser}{16}
+\contentsline {section}{\numberline {7}Conclusion}{16}
+\contentsline {subsection}{\numberline {7.1}Further Work}{16}
+\contentsline {section}{\numberline {8}Appendix}{16}
+\contentsline {subsection}{\numberline {8.1}Appendix 1}{16}
+\contentsline {section}{References}{16}

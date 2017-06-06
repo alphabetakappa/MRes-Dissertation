@@ -45,8 +45,12 @@
     showtabs=false,                  
     tabsize=2
 }
+
+%\usepackage{minted}
+%\begin{minted}{haskell}
  
 \lstset{style=mystyle}
+
 
 
 
@@ -101,6 +105,8 @@
 %how do I refer to code? figure?
 
 %is static analyses difficult on ABM? 
+
+%why does the language need to be as simple as possible? make it easier to formally define and learn?
 
 \begin{document} 
 \title{Defining the Semantics of Agent Based Modelling in InterDyne}
@@ -176,6 +182,16 @@ This research was inspired by the "Flash Crash" of 2010, this crash can be seen 
 %modeling complex systems to observe unpretected and possibly harmful emergent behivour
 %
 
+
+
+\section{Emergent Behaviour}
+%Move stuff here please.
+
+\subsection{Interaction Dynamics}
+
+\subsection{Feedback Loops}
+
+\subsection{Emergence in Financial Markets}
 
 \section{InterDyne} 
 %say that ABM are sorted for dynamic analyse but not static analyse
@@ -448,33 +464,57 @@ To create a model tool which will allow for the two views approach, three aspect
 
 
 \section{Bespoke Recurrence Relation Language}
-%why we need bespoke recurrance relation language, need to read this into a computer therofore need to desiced how people write it
-
-%what are the considerations needed to design this language (minumial as possible)
-%-must be usable by non computer scientist, mathimatiants, exonimists
-%-still has to contain all the information needed to specify the program
-%-have to be able to define different players
-%-if else statements
-%-spefy an expemrent 
-%-varibles
-%-where blocks (make things neater)
-%-equations with inputs
-%-lists
-%-mathmitcal opertions 
-%-hd
-%-tl
-%-:
-
-
-
-
-
-%first step is to create a language which can be used by a user to create a propram as difference equations
-%language has to be simple enough that a non computer scientist/econimist can use, but must still be able to contain all the information required for the program
-%programs wirtten in this language will be parsed into lexemes and then converted into a numeric type (?) which will be used to transfer this into lambda calcus and an ABM model
-
+Recurrence relations are used across a wide range of disciplines and as such have many different forms of notation, since these recurrence relations are going to act as an import for the convertor program, having a wide range of possibly conflicting notations is not ideal. Therefore it was decided that a bespoke notation for the recurrence relation input should be used, this language will force recurrence relations to be written in a set form for input into the convertor.\\
+In designing this language a few main considerations had to be taken into account:    
+\begin{enumerate}
+  \item The language needs to be able be both understood by and written by non-computer scientists, such as economists and mathematicians. 
+  \item The language needs to be as simple as possible, to keep it easy to formally define and learn.
+  \item The language still needs to contain enough functionality to fully specify the problems being modelled.
+\end{enumerate}
+The first consideration is taken into account by choosing the language to based in a more mathematical style then one that heavily relays on a computational style.%not sure about this sentence
+The second and third consideration go hand in hand, requiring that the functionality of the language be as simple as possible while still allowing for the problem to be expressed. As such it is pertinent to decide what functionality is required by the language, this functionality is:      
+\begin{itemize}
+  \item The use of basic mathematical operations.
+  \item The use of lists.
+  \item The ability to call the head of a list. %hd
+  \item The ability to call the tail of a list. %tl
+  \item The ability to add to the head of a list. %:
+  \item The ability to declare variables.  
+  \item The ability to define a unique name for each recurrence relation.
+  \item The ability to define a recurrence relation that uses inputs.
+  \item The use of where blocks.
+  \item The use of if else statements. 
+  \item The ability to specify an entire experiment and initial conditions.  
+\end{itemize}
+It was decided that this language would be created by using an already existing coding language and reducing its functionality down to what was required. This resulted in the recurrence relation language being a simplified version of the Miranda language, Miranda was chosen as it is a functional language whose structure is similar to that of a set of mathematical equations, hence making it easier to adapt for use by non-domain experts.   
 
 \subsection{Syntax/Grammer}
+%Syntax of the functionality, how do you write all the different elements 
+Here the syntax for the above listed functionality will be explained, in ordered of listing.\\
+Basic mathematical operations are allowed, plus $+$, minus $-$, times $*$, divide \textbackslash. The ability to make comments that will not be read is also allowed, a comment is started with ``\textbackslash\textbackslash'' and then the rest of the line is ignored.\\ 
+The main method for storing and transferring information between recurrence relations will be in the form of lists, lists follow the same rules stipulated by the Miranda language. A list can be created by putting the elements in side ``[]'' and separating them with a comma, allowing lists to be written in forms similar to:
+\lstinputlisting[language=Miranda]{exp_list_variations.m}
+However all elements in these lists must be of the same type.\\
+The head of a list will be extractable using the command $hd$, this will return the first element of a list, for example $hd$ called on the list $[1,2,3]$ would return $1$. Similarly the tail of a list can be called using $tl$, for example calling $tl$ on $[1,2,3]$ would return $3$.\\  
+Elements can be added to a list using the command $:$, this can be applied as follows \lstinputlisting[language=Miranda]{exp_list_variations.m} 
+
+
+
+
+
+
+
+
+
+
+
+An experiment can be defined with initial conditions in the following way:
+\lstinputlisting[language=Miranda]{exp_layout_gen.m}
+The design of this is one where the $where$ block contains all the definitions for the recurrence relations in the experiment. Above this the $main$ defines an experiment to run, such as a recurrence relation that you want to iterate ten times. The initial conditions are defined above this, these can have multiple different values depending on an input parameter. At the top $run\_main$ gives a list of the $main$ with different values of $runnumber$ which corresponds to different values of the initial conditions.\\
+ 
+
+
+
 %what the new language looks like 
 %what each bit means
 %what is allowed to be written
@@ -502,6 +542,7 @@ To create a model tool which will allow for the two views approach, three aspect
 \subsection{Recurrence Relation Parser}
 %explain what the parser is and how it works, in preparing these files for transfermation
 
+%programs wirtten in this language will be parsed into lexemes and then converted into a numeric type (?) which will be used to transfer this into lambda calcus and an ABM model
 
 
 
@@ -512,6 +553,9 @@ To create a model tool which will allow for the two views approach, three aspect
 
 
 \section{Conclusion}
+
+
+
 \subsection{Further Work}
 
  
