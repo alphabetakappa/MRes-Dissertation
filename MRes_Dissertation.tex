@@ -496,19 +496,20 @@ The main method for storing and transferring information between recurrence rela
 \lstinputlisting[language=Miranda]{exp_list_variations.m}
 However all elements in these lists must be of the same type.\\
 The head of a list will be extractable using the command $hd$, this will return the first element of a list, for example $hd$ called on the list $[1,2,3]$ would return $1$. Similarly the tail of a list can be called using $tl$, for example calling $tl$ on $[1,2,3]$ would return $3$.\\  
-Elements can be added to a list using the command $:$, this can be applied as follows \lstinputlisting[language=Miranda]{exp_list_variations.m} 
-
-
-
-
-
-
-
-
-
-
-
-An experiment can be defined with initial conditions in the following way:
+Elements can be added to a list using the command $:$, this can be applied in the form $4:[1,2,3] = [4,1,2,3]$.\\
+Variables can be declared in the language, these are names that are attached to fixed values, and can be written in the form: 
+\lstinputlisting[language=Miranda]{expl_varibles.m}
+A variable name must state with the identifier $c\_$, this indicates that the object is a constant, this underscore is then followed by the unique name of the variable, an equals, and then the value to which the variable refers.\\   
+A recurrence relation is defined in a similar way to a variable, but can take inputs and represents a function:
+\lstinputlisting[language=Miranda]{expl_simplerecurrance.m}
+The name must state with a identifier of what agent, $agent\_$, this recurrence relation belongs to, in this language all recurrence relations belong to an agent. A group of recurrence relations that belong to an agent will interact with each other but only have a single recurrence relation that interacts with a different agent, group of recurrence relations. After the agent identifier, the unique name of that recurrence relation within the agent is given, recurrence relations belonging to different agents may have the same name but with an agent the name must be unique. Then the inputs for this recurrence relation are given, there may be one or more inputs\footnote{A recurrence relation with no inputs is just a variable.} separated with a space between them. Then after the equals the function for the recurrence relation is give, this function may call on other recurrence relations.\\
+A where block is used to define functions and variables unique to a certain recurrence relation, one can be written as follows:
+\lstinputlisting[language=Miranda]{expl_whereblocks.m}
+Inside a $where$ block which is identified by ${}$ any number of functions and variables can be defined, with each new one appearing on a new line.\\
+This language facilitates the use of if else statements, this allows for different behaviour based on the inputs to the recurrence relation, this can be written in the form:
+\lstinputlisting[language=Miranda]{expl_ifelse.m}
+Using the command $myif$ declares that an if else statement is being used, then within brackets the condition for the if statement is given, this can use $<, >, \leq, \geq, =,$ etc. If this statement is true then the $then$ part of the statement is executed, if this is false the $else$ part is used.\\
+ An experiment can be defined with initial conditions in the following way:
 \lstinputlisting[language=Miranda]{exp_layout_gen.m}
 The design of this is one where the $where$ block contains all the definitions for the recurrence relations in the experiment. Above this the $main$ defines an experiment to run, such as a recurrence relation that you want to iterate ten times. The initial conditions are defined above this, these can have multiple different values depending on an input parameter. At the top $run\_main$ gives a list of the $main$ with different values of $runnumber$ which corresponds to different values of the initial conditions.\\
  

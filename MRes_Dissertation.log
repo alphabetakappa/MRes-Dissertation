@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  6 JUN 2017 13:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  7 JUN 2017 14:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -781,20 +781,21 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang2.sty
 File: lstlang2.sty 2015/06/04 1.6 listings language file
 ) [14]
-(./exp_list_variations.m) (./exp_list_variations.m) (./exp_layout_gen.m
+(./exp_list_variations.m) (./expl_varibles.m) (./expl_simplerecurrance.m)
+(./expl_whereblocks.m
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 10.
-)
-Underfull \hbox (badness 10000) in paragraph at lines 513--514
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 2.
+) [15] (./expl_ifelse.m) (./exp_layout_gen.m)
+Underfull \hbox (badness 10000) in paragraph at lines 514--515
 
  []
 
-(./MRes_Dissertation.bbl [15]
+(./MRes_Dissertation.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 10--13
 []\OT1/cmr/m/n/10 Christopher D. Clack.  The in-ter-dyne sim-u-la-tor (2011-).
  []
 
-
+[16]
 Underfull \hbox (badness 10000) in paragraph at lines 41--46
 []\OT1/cmr/m/n/10 U.S. Com-mod-ity Fu-tures Trad-ing Com-mis-sion, U.S. Se-cu-r
 i-ties, and Ex-
@@ -806,7 +807,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 41--46
 of may 6, 2010.
  []
 
-[16]
+
 Overfull \hbox (24.52104pt too wide) in paragraph at lines 93--96
 []\OT1/cmr/m/n/10 Duane Q. Nykamp.  Re-cur-rence re-la-tion def-i-ni-tion.  htt
 p://mathinsight.org/definition/recurrence[]relation,
@@ -819,10 +820,10 @@ See the caption package documentation for explanation.
 
 [17] (./MRes_Dissertation.aux) ) 
 Here is how much of TeX's memory you used:
- 7201 strings out of 493014
- 103210 string characters out of 6133350
+ 7220 strings out of 493014
+ 103476 string characters out of 6133350
  290488 words of memory out of 5000000
- 10598 multiletter control sequences out of 15000+600000
+ 10607 multiletter control sequences out of 15000+600000
  10321 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,8n,43p,1661b,1818s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -844,7 +845,7 @@ pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pf
 b></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><
 /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on MRes_Dissertation.pdf (17 pages, 350612 bytes).
+Output written on MRes_Dissertation.pdf (17 pages, 354625 bytes).
 PDF statistics:
  136 PDF objects out of 1000 (max. 8388607)
  94 compressed objects within 1 object stream
