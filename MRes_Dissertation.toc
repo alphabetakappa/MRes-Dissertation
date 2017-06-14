@@ -4,30 +4,30 @@
 \contentsline {subsubsection}{\numberline {2.1.1}Interaction Dynamics}{4}
 \contentsline {subsubsection}{\numberline {2.1.2}Feedback Loops}{4}
 \contentsline {subsubsection}{\numberline {2.1.3}Emergence in Financial Markets}{5}
-\contentsline {subsection}{\numberline {2.2}Agent Based Models}{6}
+\contentsline {subsection}{\numberline {2.2}Agent-Based Models}{6}
 \contentsline {subsection}{\numberline {2.3}InterDyne}{6}
 \contentsline {subsubsection}{\numberline {2.3.1}Applicability to Finance}{7}
-\contentsline {paragraph}{\numberline {2.3.1.1}Deterministic}{8}
-\contentsline {paragraph}{\numberline {2.3.1.2}Message Delays}{8}
+\contentsline {paragraph}{\numberline {2.3.1.1}Deterministic}{7}
+\contentsline {paragraph}{\numberline {2.3.1.2}Message Delays}{7}
 \contentsline {paragraph}{\numberline {2.3.1.3}Message Passing}{8}
-\contentsline {paragraph}{\numberline {2.3.1.4}Storing Passed Messages/Tracking}{9}
-\contentsline {paragraph}{\numberline {2.3.1.5}Discrete Time}{9}
-\contentsline {paragraph}{\numberline {2.3.1.6}Message Ordering}{9}
+\contentsline {paragraph}{\numberline {2.3.1.4}Storing Passed Messages/Tracking}{8}
+\contentsline {paragraph}{\numberline {2.3.1.5}Discrete Time}{8}
+\contentsline {paragraph}{\numberline {2.3.1.6}Message Ordering}{8}
 \contentsline {paragraph}{\numberline {2.3.1.7}Agents}{9}
 \contentsline {subsubsection}{\numberline {2.3.2}InterDyne Detail Operation}{9}
-\contentsline {section}{\numberline {3}Description and Analysis of the Problem}{12}
+\contentsline {section}{\numberline {3}Description and Analysis of the Problem}{11}
 \contentsline {subsection}{\numberline {3.1}Why InterDyne is Not Enough}{12}
-\contentsline {subsection}{\numberline {3.2}Recurrences Relations}{13}
-\contentsline {subsection}{\numberline {3.3}Two Views Approach}{15}
+\contentsline {subsection}{\numberline {3.2}Recurrences Relations}{12}
+\contentsline {subsection}{\numberline {3.3}Two Views Approach}{14}
 \contentsline {section}{\numberline {4}Bespoke Recurrence Relation Language}{15}
 \contentsline {subsection}{\numberline {4.1}Syntax/Grammer}{16}
-\contentsline {subsection}{\numberline {4.2}Examples}{18}
-\contentsline {subsubsection}{\numberline {4.2.1}Simple Example}{18}
-\contentsline {subsubsection}{\numberline {4.2.2}Complex Example}{18}
-\contentsline {section}{\numberline {5}Recurrence Relation to InterDyne Converter}{18}
-\contentsline {subsection}{\numberline {5.1}Recurrence Relation Parser}{18}
-\contentsline {section}{\numberline {6}Conclusion}{18}
-\contentsline {subsection}{\numberline {6.1}Further Work}{18}
-\contentsline {section}{\numberline {7}Appendix}{18}
-\contentsline {subsection}{\numberline {7.1}Appendix 1}{18}
-\contentsline {section}{References}{18}
+\contentsline {subsection}{\numberline {4.2}Examples}{17}
+\contentsline {subsubsection}{\numberline {4.2.1}Simple Example}{17}
+\contentsline {subsubsection}{\numberline {4.2.2}Complex Example}{17}
+\contentsline {section}{\numberline {5}Recurrence Relation to InterDyne Converter}{17}
+\contentsline {subsection}{\numberline {5.1}Recurrence Relation Parser}{17}
+\contentsline {section}{\numberline {6}Conclusion}{17}
+\contentsline {subsection}{\numberline {6.1}Further Work}{17}
+\contentsline {section}{\numberline {7}Appendix}{17}
+\contentsline {subsection}{\numberline {7.1}Appendix 1}{17}
+\contentsline {section}{References}{17}

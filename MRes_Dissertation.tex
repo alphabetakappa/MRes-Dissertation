@@ -257,59 +257,20 @@ Though emergence is prevalent in many disciplines, this paper is focussed on eme
 
 
 
-\subsection{Agent Based Models}
-%talk about what agent based models are use stuff from the paper p371-macal
-%Agent based models offer an attractive way to model interactin dynamics
-
-%use this refrence {abmhumsystems}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\subsection{Agent-Based Models}
+There are a number of different techniques to model emergent behaviour in complex systems, one popular method is agent-based modelling. Agent-based modelling can be considered more of a mind set then a rigid methodology, this involves describing the system in question in terms of its components and then allowing these to interact. Agent-based models allow a system to be described naturally and are hence the canonical approach to modelling emergent phenomena. This method is a bottom up approach, allowing for each component of the system, agent of the model, to be created to a relevant degree of abstraction~\cite{abmhumsystems}.\\
+Agent-based models have been used to model a wide range of emergent behaviour including in the financial markets, examples of this are, noise traders~\cite{abmnoisetraders}, herding among traders~\cite{abmherding}, and fundamentalists~\cite{abmfundemetilists}.
 
 \subsection{InterDyne} 
-%say that ABM are sorted for dynamic analyse but not static analyse
-
 InterDyne is bespoke simulator created by Clack and associates~\cite{Chris_webPage}, it is a general-purpose simulator for exploring emergent behaviour and interaction dynamics within complex systems.\\
 InterDyne design is that of an agent-based model interacting via a harness. This creates a structure of individual autonomous agents who interact through messages sent to one another.\\ 
-Similar to other agent-based models InterDyne operates in discrete-time rather then continuous time. These quantised time chunks which move the simulation forward can be left with out proper definition, simply having things defined in a number of time steps, or they can be equated to a real time usually with the smallest time gap needed be a single time step and then all other timings being integer multiples of this. This discrete time is most important to message passing, meaning messages between agents are only sent on a integer time step.\\ 
+Similar to other agent-based models InterDyne operates in discrete-time rather then continuous time. These quantised time chunks which move the simulation forward can be left with out proper definition, simply having operations defined in a number of time steps, or they can be equated to a real time usually with the smallest time gap needed be a single time step and then all other timings being integer multiples of this. This discrete time is most important to message passing, meaning messages between agents are only sent on a integer time step.\\ 
 Massages in InterDyne are just small packets of data, such as a series of numbers.  Agents can only communicate via these messages, meaning that any emergent behaviour observed, that is not directly due to one agent, must be caused by linking of agents mediated by these messages. An agent can send private messages that are only received by a single other agents, one-to-one messages, or can send broadcast messages received by a number of agents, one-to-many messages. To facilitate this a communication topology can be made for InterDyne, this is done in the form of a directed graph determining which agents can communicate with each other. Due to the directional nature of these messages this topology could allow an agent to send messages to another but not be able to receive messages from that same agent. Messages have a defined order to them, an agent will, unless otherwise instructed, always process messages in the order in which they arrive. To change the order in which messages arrive delays can be added to communication paths between agents, this can be a static delay which always applies to messages sent from one agent to another, meaning this will arrive a set number of time steps later. Or a more complex dynamic delay, which is achieved by using another agent to mediate the passing of these messages delaying by an amount decided on in some internal logic. All messages in InterDyne are passed through a harness, this does not alter the messages or delay them\footnote{Unless instructed to using the static delay.}, but does store the messages and their order which can be used in post analyse.\\         
-Each of the agents within an InterDyne simulation can be completely unique and modelled to different levels of complexity, allowing system components to be created to the level needed for the required experiment. As a whole InterDyne simulations are deterministic, repeated experiments will return identical results. However non-determinism can be added via the agents, making some part of an agent stochastic will lead to repeated experiments on the whole returning different results. A pseudo-random element can also be added by instructing InterDyne to randomly sort the message order for any agent receiving multiple messages in one time step. This is only pseudo-random as, as long as the same seed is used each run of the simulation will order the rearranged messages in the same way.   
+Each of the agents within an InterDyne simulation can be completely unique and modelled to different levels of complexity, as is the case with most agent-based models, allowing system components to be created to the level needed for the required experiment. As a whole InterDyne simulations are deterministic, repeated experiments will return identical results. However non-determinism can be added via the agents, making some part of an agent stochastic will lead to repeated experiments on the whole returning different results. A pseudo-random element can also be added by instructing InterDyne to randomly sort the message order for any agent receiving multiple messages in one time step. This is only pseudo-random as, as long as the same seed is used each run of the simulation will order the rearranged messages in the same way.\\
+InterDyne is created to be particularly amenable to dynamic analyses of its simulations, this is achieved in part by all messages being sent via the harness allowing them to be stored in order.     
 
 
 \subsubsection{Applicability to Finance}
-
-
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{placeholder}
-	\caption{\it }
-	\label{fig:examplpowhfoilhqrowigh}
-\end{figure} 
-
-
-
 Though InterDyne is a general purpose simulator, its main use thus far has been the exploration of financial markets. In particular InterDyne has been used to explore ``Flash Crash'' of 2010, during which market prices and rational valuations became disconnected, with some stocks trading as low as a penny per share, this lead to frenzied trading and irrational prices which spread between markets causing a massive price crash~\cite{SECreport_delays}. This event lasted around 36 minutes and has been described as``one of the most turbulent periods in their history'' for the US financial markets~\cite{Impact_hft}.\\
 The hypotheses for this crash which InterDyne exists to investigate, is that this crash is an emergent phenomenon caused by the interaction between High Frequency Traders (HFTs) within the market.\\
 HFTs are a subset of algorithmic traders who normally participate in the market as arbitrageurs or market makers, they invest in ultra-high speed technology allowing them to detect, analyses and react to market condition in nanoseconds \cite{hftinformation1}. This means HFTs can trade huge quantities of assets in very short time frames, with some estimates stating that 10-40\% of all trades where initiated by them during 2016 \cite{hftmarketparticipation}.\\
