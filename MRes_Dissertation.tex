@@ -103,13 +103,13 @@
 %use the line "the work this paper is built on", interdyne project, creators or interdyne 
 
 
-%how do I refer to code? figure?
+%how do I refer to code? figure? yes figure, refer to chapter
 
 %is static analyses difficult on ABM? 
 
 %why does the language need to be as simple as possible? make it easier to formally define and learn?
 
-
+%what referencing style should I use?
 
 
 
@@ -138,8 +138,11 @@ Supervisor: Dr Christopher D. Clack}
 \maketitle 
 
 \begin{abstract}
-\noindent {\it This paper defines the semantics of agent based modelling within the Interdyne simulator. A converter has been created that links an agent based model step wise to a difference equation based language, this language is created in such a way that it is directly relatable to lambda calculus which can then be used as definition of the semantics of the agent based model.
-%talk about this helping regulators 
+\noindent {\it 
+This paper investigates a method of describing interacting systems from two opposing view points, recurrence relations and agent-baed models. These two methods take fundamentally different approaches with recurrence relations being top-down, and agent-based models being bottom-up.\\
+Connecting these two methods allows for a more complete investigation of emergent behaviour occurring within interacting systems. Agent-based models offer an attractive way of analysing emergent behaviour, with the ability to investigate individual interactions throughout a simulation. Agent-based models however tend to be less well understood and accepted by non-computer science expertise, this is in contrast to recurrence relation which are normally well understood. Creating a correctness preserving link between recurrence relations and agent-based models allows for simulations to be understood in their recurrence relation representation and hence have their agent-based model representation accepted. This is important in fields such as finance as it opens up new tools for economists and regulators to use in understanding emergence in complex markets.\\
+This research comprises of the creation of a recurrence relation language, allowing for simulations to be defined, and the fabrication of correctness preserving transformation software, that transforms the custom recurrence relation language into a agent-based model simulation, known as InterDyne.          
+
 }
 \end{abstract}
 
@@ -262,7 +265,7 @@ There are a number of different techniques to model emergent behaviour in comple
 Agent-based models have been used to model a wide range of emergent behaviour including in the financial markets, examples of this are, noise traders~\cite{abmnoisetraders}, herding among traders~\cite{abmherding}, and fundamentalists~\cite{abmfundemetilists}.
 
 \subsection{InterDyne} 
-InterDyne is bespoke simulator created by Clack and associates~\cite{Chris_webPage}, it is a general-purpose simulator for exploring emergent behaviour and interaction dynamics within complex systems.\\
+InterDyne is bespoke simulator created by Clack and his research team at UCL~\cite{Chris_webPage}, it is a general-purpose simulator for exploring emergent behaviour and interaction dynamics within complex systems.\\
 InterDyne design is that of an agent-based model interacting via a harness. This creates a structure of individual autonomous agents who interact through messages sent to one another.\\ 
 Similar to other agent-based models InterDyne operates in discrete-time rather then continuous time. These quantised time chunks which move the simulation forward can be left with out proper definition, simply having operations defined in a number of time steps, or they can be equated to a real time usually with the smallest time gap needed be a single time step and then all other timings being integer multiples of this. This discrete time is most important to message passing, meaning messages between agents are only sent on a integer time step.\\ 
 Massages in InterDyne are just small packets of data, such as a series of numbers.  Agents can only communicate via these messages, meaning that any emergent behaviour observed, that is not directly due to one agent, must be caused by linking of agents mediated by these messages. An agent can send private messages that are only received by a single other agents, one-to-one messages, or can send broadcast messages received by a number of agents, one-to-many messages. To facilitate this a communication topology can be made for InterDyne, this is done in the form of a directed graph determining which agents can communicate with each other. Due to the directional nature of these messages this topology could allow an agent to send messages to another but not be able to receive messages from that same agent. Messages have a defined order to them, an agent will, unless otherwise instructed, always process messages in the order in which they arrive. To change the order in which messages arrive delays can be added to communication paths between agents, this can be a static delay which always applies to messages sent from one agent to another, meaning this will arrive a set number of time steps later. Or a more complex dynamic delay, which is achieved by using another agent to mediate the passing of these messages delaying by an amount decided on in some internal logic. All messages in InterDyne are passed through a harness, this does not alter the messages or delay them\footnote{Unless instructed to using the static delay.}, but does store the messages and their order which can be used in post analyse.\\         
@@ -294,7 +297,7 @@ These messages allow interaction dynamics to occur within the simulation and hen
 
 
 
-\paragraph{Storing Passed Messages/Tracking}
+\paragraph{Storing Messages}
 Due to the nature of emegernt behaviour being usually unexpected, it can be very difficult to to deduce what low level structures and operations gave rise to this system level phenomenon. This is especially true when modelling a financial system that has a large number of interacting agents all sending and receiving messages, some of which can be delayed changing their expected order of arrival. The delays in the system have been suggested to have influenced the emergence of behaviour within the system, hence in investigating these systems it is important to take into account not only message counter-parties but also message timings. InterDyne facilitates post simulation analyse into this by being able to produce a trace for all time steps of the full information of; messages sent by any agent, messages received by any agent and messages being delayed before being delayed to an agent.          
 
   
@@ -323,6 +326,7 @@ InterDyne is an agent-based model simulator written in the Haskell language. An 
 	\caption{\it Structure of an InterDyne simulation containing three agents.}
 	\label{fig:harness_setupfigure}
 \end{figure} 
+%%%%%%use diagram from user manual
 By set up each agent is required to both consume and produce a message at every time step, this is done by sending each agent a potentially-infinite list of messages and requiring it to create a potentially-infinite list of messages. The inbound list contains every message the agent will receive through out the entire simulation, ordered by time, and the outbound list contains every message the agent will ever send, order by time. This is possible due to lazy evaluation of the language that InterDyne is written in, This means that only messages being used are evaluated. Since no agent should attempted to use a message from the future \footnote{If they do an error will be thrown.}, only messages that have been created so far are read.\\
 Since the set up of these list requires an element for every time step and an agent my not need to send a message during a time step, empty messages can be sent, this will result in an agent either receiving or sending an empty list. It may be the case in a simulation that an agent could be generating empty messages by mistake, to differentiate between a message empty by mistake or by choice, a message can be created containing ''Hiaton`` demonstrating that it is empty by choice.\\   
 A InterDyne simulation once created can be run by executing the ''sim`` function with relevant arguments, this function has a type,      
@@ -521,6 +525,8 @@ The second and third consideration go hand in hand, requiring that the functiona
 It was decided that this language would be created by using an already existing coding language and reducing its functionality down to what was required. This resulted in the recurrence relation language being a simplified version of the Miranda language, Miranda was chosen as it is a functional language whose structure is similar to that of a set of mathematical equations, hence making it easier to adapt for use by non-domain experts.   
 
 \subsection{Syntax/Grammer}
+%write this in a formal syntax as well BNF
+%incude that t is a key word and needs to go at the begining of timevarying reccruance relations eg t1_inv t a b c = ..
 %Syntax of the functionality, how do you write all the different elements 
 Here the syntax for the above listed functionality will be explained, in ordered of listing.\\
 Basic mathematical operations are allowed, plus $+$, minus $-$, times $*$, divide \textbackslash. The ability to make comments that will not be read is also allowed, a comment is started with ``\textbackslash\textbackslash'' and then the rest of the line is ignored.\\ 
@@ -557,6 +563,10 @@ The design of this is one where the $where$ block contains all the definitions f
 
 \subsection{Examples}
 %examples on how to use the grammar
+
+
+\lstinputlisting[language=Miranda]{inv_code_simpleexample.m}
+
 \subsubsection{Simple Example}
 %a very simple example on the use of the grammar
 \subsubsection{Complex Example}
@@ -578,6 +588,17 @@ The design of this is one where the $where$ block contains all the definitions f
 %programs wirtten in this language will be parsed into lexemes and then converted into a numeric type (?) which will be used to transfer this into lambda calcus and an ABM model
 
 
+
+\subsection{List defined outputs}
+%no time as a input
+
+This is done by knowing that t is a special character that goes at the begging of time dependent recurrence relations. Therefore %function: RR t a b c = f t a b c goes to RR a b c = [ expr t a b c | t <- [0..]] where expr t a b c = f t a b c 
+
+\subsection{Create Agents}
+\subsubsection{master function to output the messages for the agent}
+
+
+\subsection{Harness and messaging}
 
 
 
