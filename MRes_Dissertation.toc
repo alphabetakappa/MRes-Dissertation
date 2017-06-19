@@ -1,4 +1,5 @@
 \contentsline {section}{\numberline {1}Introduction}{3}
+\contentsline {subsection}{\numberline {1.1}Challenges to This Work}{3}
 \contentsline {section}{\numberline {2}Background}{3}
 \contentsline {subsection}{\numberline {2.1}Emergent Behaviour}{3}
 \contentsline {subsubsection}{\numberline {2.1.1}Interaction Dynamics}{4}
@@ -21,15 +22,18 @@
 \contentsline {subsection}{\numberline {3.3}Two Views Approach}{14}
 \contentsline {section}{\numberline {4}Bespoke Recurrence Relation Language}{15}
 \contentsline {subsection}{\numberline {4.1}Syntax/Grammer}{16}
-\contentsline {subsection}{\numberline {4.2}Examples}{17}
-\contentsline {subsubsection}{\numberline {4.2.1}Simple Example}{18}
-\contentsline {subsubsection}{\numberline {4.2.2}Complex Example}{18}
+\contentsline {subsection}{\numberline {4.2}Examples of Use}{16}
+\contentsline {subsubsection}{\numberline {4.2.1}Simple Example}{17}
 \contentsline {section}{\numberline {5}Recurrence Relation to InterDyne Converter}{18}
 \contentsline {subsection}{\numberline {5.1}Recurrence Relation Parser}{18}
-\contentsline {subsection}{\numberline {5.2}List defined outputs}{18}
-\contentsline {subsection}{\numberline {5.3}Create Agents}{18}
-\contentsline {subsubsection}{\numberline {5.3.1}master function to output the messages for the agent}{18}
-\contentsline {subsection}{\numberline {5.4}Harness and messaging}{18}
+\contentsline {subsection}{\numberline {5.2}Infinite List Outputs}{18}
+\contentsline {subsection}{\numberline {5.3}Wrapper Function}{18}
+\contentsline {subsection}{\numberline {5.4}Harness}{18}
+\contentsline {subsection}{\numberline {5.5}Create Messages}{18}
+\contentsline {subsection}{\numberline {5.6}Message Selection}{18}
+\contentsline {subsection}{\numberline {5.7}Broadcast Messages}{18}
+\contentsline {subsection}{\numberline {5.8}Type Comparison to InterDyne}{18}
+\contentsline {subsection}{\numberline {5.9}Conversion to Haskell}{18}
 \contentsline {section}{\numberline {6}Conclusion}{18}
 \contentsline {subsection}{\numberline {6.1}Further Work}{18}
 \contentsline {section}{\numberline {7}Appendix}{18}

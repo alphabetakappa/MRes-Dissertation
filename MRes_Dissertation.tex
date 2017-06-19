@@ -210,6 +210,37 @@ Comparison between recurrance relations and agent based models has be discussed 
 %
 
 
+
+%Introduction%?This chapter introduces the motivations for the research, briefly describes the design, implementation and test, presents the structure of the dissertation, and lists the contributions to science?%1.1 Motivation%1.2 Design%1.3 Implementation%1.4 Test%1.5 Structure of the dissertation%Chapter 2   Chapter 3   Chapter 4   Chapter 5  
+
+
+%This chapter presents an overview of the thesis. First, the motivation for this research is introduced along with the research topic. Furthermore, the objectives of this research are discussed. Subsequently, this chapter describes the research and the scientific contributions of this thesis. This chapter ends by describing the structure of the whole thesis and showing a list of publications relating to this thesis that have been done so far.
+
+
+
+
+
+
+
+%there is emenegce in the financial markets
+%why do we want to understand emegrence in the fincnaial markets
+%chalange with understnading emergence in the finical markets
+
+%sobjective of this paper, allow econimists to understand emergence
+%Interdyne already exists and can be uused to study emegrnce in fm
+%problem is econimists dont understadn abm
+%do understand recurrance relations
+%create a method for transforming RR into abm
+%unique to interdyne but the idea can be used to motiviate work in other abm that need explaining
+
+%set up all the challenges 
+
+%strutrue of this paper
+
+%relevnt papers/research some wher ein here to
+
+\subsection{Challenges to This Work}
+
 \section{Background}
 This section will provide a background for this paper, detailing the emergent behaviour that is of interest and the methods used to investigate this behaviour.  
 
@@ -526,6 +557,10 @@ It was decided that this language would be created by using an already existing 
 
 \subsection{Syntax/Grammer}
 %write this in a formal syntax as well BNF
+
+
+
+\subsection{Examples of Use}
 %incude that t is a key word and needs to go at the begining of timevarying reccruance relations eg t1_inv t a b c = ..
 %Syntax of the functionality, how do you write all the different elements 
 Here the syntax for the above listed functionality will be explained, in ordered of listing.\\
@@ -561,15 +596,15 @@ The design of this is one where the $where$ block contains all the definitions f
 %how is it user friendly
 %why this was choosen, for example easier to convert to lambda calcualse 
 
-\subsection{Examples}
+%\subsection{Examples}
 %examples on how to use the grammar
 
+\subsubsection{Simple Example}
 
 \lstinputlisting[language=Miranda]{inv_code_simpleexample.m}
 
-\subsubsection{Simple Example}
 %a very simple example on the use of the grammar
-\subsubsection{Complex Example}
+%\subsubsection{Complex Example}
 %what I have actually done maybe?
 
 \section{Recurrence Relation to InterDyne Converter} 
@@ -589,19 +624,46 @@ The design of this is one where the $where$ block contains all the definitions f
 
 
 
-\subsection{List defined outputs}
+\subsection{Infinite List Outputs}
 %no time as a input
+%use ! to refrence the list items
 
 This is done by knowing that t is a special character that goes at the begging of time dependent recurrence relations. Therefore %function: RR t a b c = f t a b c goes to RR a b c = [ expr t a b c | t <- [0..]] where expr t a b c = f t a b c 
 
-\subsection{Create Agents}
-\subsubsection{master function to output the messages for the agent}
+
+\subsection{Wrapper Function}
+%group into agents
+%create a wrapper agent that out puts a infinite list (in time) containing a list of the value of each RR in the wrapper for that time step
+%[[rr1_t1,rr2_t2...], [rr1_t2, rr2_t2....], ..]
+%other RR now have to call the outputs using !! and by referencing the wrapper
 
 
-\subsection{Harness and messaging}
+
+\subsection{Harness}
+%create the harness, that takes all the lists from the different wrappers and compiles them into one list which is passed to each wrapper as an input
+%this is a finite list, with each element being a difffernt wrapper
+%each wrapper is an infinite list with each element being the outputs at the time step
+%the outputs at the time step are a list of the values for each RR at that time
+
+\subsection{Create Messages}
+%each RR now sends its data as a tuple (to, from, data)
+%only sends the information that is needed (this doesnt allways need to be needed just some times is enough)
+%change logic to read this new format
+%might need to send multiple copies of a message to different wrappers, each recipient needs their own version now there is a to field that is required
 
 
+\subsection{Message Selection}
+%the harness now only gives an wrapper messages that are addressed to it
 
+
+\subsection{Broadcast Messages}
+%if multiple versions of the same message are constantly being sent to the same wrappers, turn these into broadcast messages 
+
+\subsection{Type Comparison to InterDyne}
+%make sure agents are of type Agent_t
+
+\subsection{Conversion to Haskell}
+%output the wrappers and logic as haskell code that can then be run in Interdyne 
 
 
 
@@ -611,7 +673,7 @@ This is done by knowing that t is a special character that goes at the begging o
 
 
 \subsection{Further Work}
-
+%do the correctness preserving aspect of this
  
 \section{Appendix}
 
