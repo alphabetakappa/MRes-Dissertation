@@ -111,6 +111,14 @@
 
 %what referencing style should I use?
 
+%say that difference equations are top-down vs ABM that are bottom up
+
+
+%nested where statements, are these ok? (when making infitie lists I put the functions in where statements, however they could already have a where statement)
+
+%should I make everything an infite list regardless if it has a time component?
+
+%all agent_ have time as fist component 
 
 
 
@@ -129,7 +137,9 @@
 
 %make sure code is colour coded correctly
 
-%say that differnce equations are top-down vs ABM that are bottom up
+%reader needs to think its interesting tough and say well done 
+
+
 
 \begin{document} 
 \title{A Conversion of both Semantics and Representation between Agent-Based Models and Recurrence Relations}
@@ -211,7 +221,14 @@ Comparison between recurrance relations and agent based models has be discussed 
 
 
 
-%Introduction%?This chapter introduces the motivations for the research, briefly describes the design, implementation and test, presents the structure of the dissertation, and lists the contributions to science?%1.1 Motivation%1.2 Design%1.3 Implementation%1.4 Test%1.5 Structure of the dissertation%Chapter 2   Chapter 3   Chapter 4   Chapter 5  
+%Introduction
+%?This chapter introduces the motivations for the research, briefly describes the design, implementation and test, presents the structure of the dissertation, and lists the contributions to science?
+%1.1 Motivation
+%1.2 Design
+%1.3 Implementation
+%1.4 Test
+%1.5 Structure of the dissertation
+%Chapter 2   Chapter 3   Chapter 4   Chapter 5  
 
 
 %This chapter presents an overview of the thesis. First, the motivation for this research is introduced along with the research topic. Furthermore, the objectives of this research are discussed. Subsequently, this chapter describes the research and the scientific contributions of this thesis. This chapter ends by describing the structure of the whole thesis and showing a list of publications relating to this thesis that have been done so far.
@@ -240,6 +257,15 @@ Comparison between recurrance relations and agent based models has be discussed 
 %relevnt papers/research some wher ein here to
 
 \subsection{Challenges to This Work}
+%going from recurrance relations to interdyne they are entirely different models.
+%why are they different models 
+%(shorter version of analyses of problem)
+
+%not clear if it can be broken down into smaller steps and is possible, may need one big step. Have to prove big step is equvilent which is hard. smaller steps are much easier to prove equivalenet but harder to write. 
+%is it possible to decompose into a sequence of small steps. Give example of something that cant be decompossed into small steps (then explain why my solution is not the same as this in the conclusion?) 
+
+%theoretically why is this a hard problem 
+
 
 \section{Background}
 This section will provide a background for this paper, detailing the emergent behaviour that is of interest and the methods used to investigate this behaviour.  
@@ -558,11 +584,16 @@ It was decided that this language would be created by using an already existing 
 \subsection{Syntax/Grammer}
 %write this in a formal syntax as well BNF
 
+\lstinputlisting[language=Miranda]{Syntax_Def.lit.m}
+
 
 
 \subsection{Examples of Use}
 %incude that t is a key word and needs to go at the begining of timevarying reccruance relations eg t1_inv t a b c = ..
 %Syntax of the functionality, how do you write all the different elements 
+%t is special means time 
+%c_ is used as a way of dealing with names/custome types (can not call functions)
+%varbiles are just that and cant call fucntions
 Here the syntax for the above listed functionality will be explained, in ordered of listing.\\
 Basic mathematical operations are allowed, plus $+$, minus $-$, times $*$, divide \textbackslash. The ability to make comments that will not be read is also allowed, a comment is started with ``\textbackslash\textbackslash'' and then the rest of the line is ignored.\\ 
 The main method for storing and transferring information between recurrence relations will be in the form of lists, lists follow the same rules stipulated by the Miranda language. A list can be created by putting the elements in side ``[]'' and separating them with a comma, allowing lists to be written in forms similar to:
@@ -627,6 +658,12 @@ The design of this is one where the $where$ block contains all the definitions f
 \subsection{Infinite List Outputs}
 %no time as a input
 %use ! to refrence the list items
+
+%all functions turned into lists
+%all fucntions now contain time (even if its the same output at all time steps)
+%enforce that if time is used it has to be the first argument 
+%enforce all functions take t as their first agrument whether or not they use it
+%when calling a fucntion that doesnt take time can just use t, or 0 
 
 This is done by knowing that t is a special character that goes at the begging of time dependent recurrence relations. Therefore %function: RR t a b c = f t a b c goes to RR a b c = [ expr t a b c | t <- [0..]] where expr t a b c = f t a b c 
 
