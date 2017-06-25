@@ -186,6 +186,77 @@ This research comprises of the creation of a recurrence relation language, allow
 
 
 \section{Introduction}
+Financial markets exhibit many interesting and some times unexpected events, one type of these such events are flash crashes. A notable example of this event type, is the flash crash of 2010, in this crash the E-min S\&P 500 equity futures market dropped in price by more then 5\%, during which time market prices and rational valuations became disconnected, before rebound to close to its original price~\cite{SECreport_delays, rareeventflashcrash}. This whole process occurred very rapidly, lasting approximately thirty-six minutes and has been described as``one of the most turbulent periods in their history'' for the US financial markets~\cite{Impact_hft}.\\
+A number of flash crashes have been show to originate from large sell orders, such as in the recent crash in the cryptocurrency ethereum~\cite{cryptocrash}. The initial analysis of the 2010 flash crash came to a similar conclusion, with the  joint report by the U.S. Commodity Futures Trading Commission (CFTC) and Securities \& Exchange Commission (SEC), claiming that the crash was caused by a large sell order by a mutual fund\footnote{This process is explained in more detail in Section~\ref{applicabilut_to_finance}.}~\cite{SECreport_delays}. This initial finding is not fully accepted, even by the CFTC, who have since charged a trader with spoofing leading to the crash~\cite{spoofingtrader}.\\
+A number of other causes have been suggested, with a particularly interesting suggestion being emergent behaviour between high-frequency traders known as ``hot-potato'' trading. Though not suggested as the root cause ``hot-potato'' trading was mentioned by SEC and CFTC to have occurred during the time of the crash. The idea that emergent behaviour could lead to a crash is not novel, with emergence causing a number of phase transition within physical systems, and has been suggested to be able to move a market between a stable and unstable phase before~\cite{networkcastphorynature}.\\
+The high-frequency traders being discussed here are algorithmic traders who act as market makers, both buying and selling, trading on the nanosecond scale. These traders can under certain conditions end up passing inventory in a cyclic pattern between each other, this is ``hot-potato'' trading \footnote{Both high-frequency traders and ``hot-potato'' trading are discussed in more detail in Section~\ref{applicabilut_to_finance}.}.\\
+Regulators struggle to find effective methods to reduce the likelihood of crash due to emergent behaviour. There is a lack of research on what directives could combat emergence induced flash crashes, partly because of the lack of agreement on exactly how these crashes are caused and if emergence can create them. Though research in this field is minimal, it has been shown that flash crashes can occur due to ``hot-potato'' trading~\cite{otherabmflash, DynamicCoupling_Chris}\footnote{Study \cite{DynamicCoupling_Chris} will be discussed in greater detail in section~\ref{InterDyne_section}.}. These studies took a bottom up approach by modelling the system as an agent-based model, and created a flash crash from ``hot-potato'' trading which was initiated by information delays.\\
+Though these studies have managed to create a flash crash they use agent-based model methods, which have a number of draw backs leading to them not being commonly accepted by regulators\footnote{These draw backs will be discussed in more detail in Section~\ref{Iinterdynenotenough}.}, this makes them difficult to use in policy advisement.\\
+This paper seeks to create a solution to this issue by constructing an automated transformation between a set of recurrence relations and an equivalent agent-based model. This solution will take a step-by-step approach, using a series of small correctness preserving transformations which when combined will transform between these two modelling techniques. Recurrence relations are more widely accepted by regulators and hence a should increase the acceptance of the related agent-based model, allowing this technique to be used to advice policies\footnote{This rational will be discussed further in Section~\ref{despriptionandanalysproblem}.}.\\
+This method of transformation has a number of challenges associated with it: 
+\begin{itemize}
+  \item Recurrence relations and agent-based models are opposing models, with the former being top down and the latter being bottom up. Creating a conversion between entirely different models requires the fundamental mind set to be transformed.    
+  \item It is not clear if a conversion process can even be broken down into a number of small steps. A larger step maybe be needed to move between to two stages in the transformation. Though larger steps will on the whole be easier to create proving their equivalence is much more challenging then smaller steps. %give an example of something that has been transformed and needed a large step
+\end{itemize}
+This paper is organised as follows. First an agent-based model used for modelling the financial market is described, followed by a analyses of this model and how recurrence relations can be used to combat its down sides. Section 4 details a bespoke recurrence relation language for describing a system, and Section 5 describes the step-by-step processes in which this language is transformed. Section 6 concludes the paper, detailing further work to be undertaken.    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%talk about flash crash (use some refrences from chris's unpublished paper) 
+%-what was this
+%-what was sec explanation for this (talk about sec saying it was a large sell order not hfts), this is how a large number of flash crashes have been shown to have been caused
+%-not fully accepted, some people think it was caused by hfts 
+
+%talk about hfts
+%-what are hfts
+%-how do they work
+
+%how hfts might have caused the flash crash
+%-change of phase, emergent behaviour  ~\cite{networkcastphorynature}
+%-hot potato and delays
+%-shown to have occurred during the flash crash
+
+%regurlators are trying to work out how to stop crashes and regulate hfts 
+%-how to regulate the markets and hfts and different algorthimgs, increase waiting times ect
+
+%though research in this field is minimal some has been done by ~\cite{otherabmflash, DynamicCoupling_Chris} (chris will be discussed in more detail section 2
+%-this is a bottom up approach to the problem (missing from the sec report)
+%-seeing if flash crash could be caused by hotpotato and info delays
+%-yes it can be caused by this 
+
+%Problem with regulartors using ABM (they dont understand them)
+
+%this paper seeks to create a solution be transforming in a step by step correctness preserving manner transforming Reccurrance relations (also known as differnce equations etc) into an agent-based model
+%-recurrance realtions are more mathematical and better understood
+
+
+%theoretical challenges with this
+
+%organisation of the paper
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 %"when the crisis came, the serious limitations of existing economic and financial models become apparent" J. C. Trichet president of ECB 2010
@@ -212,10 +283,10 @@ This research comprises of the creation of a recurrence relation language, allow
 %Ability to provide confidence in the semantics of the system to economists and financial services industry practitioners
 %Example ? difference equations (recurrence relations) ? provide a time-view, provides a way for economists to validate the description of the system (yes, we agree ? we understand these equations) 
 
-This research was inspired by the "Flash Crash" of 2010, this crash can be seen as a change in phase between a stable and unstable market; it has been shown that emergent behaviour in physical systems can lead to phase transitions and postulated that this could also be true within the financial markets~\cite{networkcastphorynature}. InterDyne hence exists to see if this flash crash and ones like it could be examples of this critical behaviour caused by emergence within the markets
+%This research was inspired by the "Flash Crash" of 2010, this crash can be seen as a change in phase between a stable and unstable market; it has been shown that emergent behaviour in physical systems can lead to phase transitions and postulated that this could also be true within the financial markets~\cite{networkcastphorynature}. InterDyne hence exists to see if this flash crash and ones like it could be examples of this critical behaviour caused by emergence within the markets
 
 
-Comparison between recurrance relations and agent based models has be discussed in a number of papers, Refs
+%Comparison between recurrance relations and agent based models has be discussed in a number of papers, Refs
 %modeling complex systems to observe unpretected and possibly harmful emergent behivour
 %
 
@@ -232,7 +303,6 @@ Comparison between recurrance relations and agent based models has be discussed 
 
 
 %This chapter presents an overview of the thesis. First, the motivation for this research is introduced along with the research topic. Furthermore, the objectives of this research are discussed. Subsequently, this chapter describes the research and the scientific contributions of this thesis. This chapter ends by describing the structure of the whole thesis and showing a list of publications relating to this thesis that have been done so far.
-
 
 
 
@@ -256,7 +326,7 @@ Comparison between recurrance relations and agent based models has be discussed 
 
 %relevnt papers/research some wher ein here to
 
-\subsection{Challenges to This Work}
+%\subsection{Challenges to This Work}
 %going from recurrance relations to interdyne they are entirely different models.
 %why are they different models 
 %(shorter version of analyses of problem)
@@ -321,7 +391,7 @@ Though emergence is prevalent in many disciplines, this paper is focussed on eme
 There are a number of different techniques to model emergent behaviour in complex systems, one popular method is agent-based modelling. Agent-based modelling can be considered more of a mind set then a rigid methodology, this involves describing the system in question in terms of its components and then allowing these to interact. Agent-based models allow a system to be described naturally and are hence the canonical approach to modelling emergent phenomena. This method is a bottom up approach, allowing for each component of the system, agent of the model, to be created to a relevant degree of abstraction~\cite{abmhumsystems}.\\
 Agent-based models have been used to model a wide range of emergent behaviour including in the financial markets, examples of this are, noise traders~\cite{abmnoisetraders}, herding among traders~\cite{abmherding}, and fundamentalists~\cite{abmfundemetilists}.
 
-\subsection{InterDyne} 
+\subsection{InterDyne} \label{InterDyne_section}
 InterDyne is bespoke simulator created by Clack and his research team at UCL~\cite{Chris_webPage}, it is a general-purpose simulator for exploring emergent behaviour and interaction dynamics within complex systems.\\
 InterDyne design is that of an agent-based model interacting via a harness. This creates a structure of individual autonomous agents who interact through messages sent to one another.\\ 
 Similar to other agent-based models InterDyne operates in discrete-time rather then continuous time. These quantised time chunks which move the simulation forward can be left with out proper definition, simply having operations defined in a number of time steps, or they can be equated to a real time usually with the smallest time gap needed be a single time step and then all other timings being integer multiples of this. This discrete time is most important to message passing, meaning messages between agents are only sent on a integer time step.\\ 
@@ -330,7 +400,11 @@ Each of the agents within an InterDyne simulation can be completely unique and m
 InterDyne is created to be particularly amenable to dynamic analyses of its simulations, this is achieved in part by all messages being sent via the harness allowing them to be stored in order.     
 
 
-\subsubsection{Applicability to Finance}
+\subsubsection{Applicability to Finance} \label{applicabilut_to_finance}
+%make sure I dont repeat stuff from the introduction 
+%describe how a large order can cause a flash crash
+%describe how high frequcey can cause that 
+
 Though InterDyne is a general purpose simulator, its main use thus far has been the exploration of financial markets. In particular InterDyne has been used to explore ``Flash Crash'' of 2010, during which market prices and rational valuations became disconnected, with some stocks trading as low as a penny per share, this lead to frenzied trading and irrational prices which spread between markets causing a massive price crash~\cite{SECreport_delays}. This event lasted around 36 minutes and has been described as``one of the most turbulent periods in their history'' for the US financial markets~\cite{Impact_hft}.\\
 The hypotheses for this crash which InterDyne exists to investigate, is that this crash is an emergent phenomenon caused by the interaction between High Frequency Traders (HFTs) within the market.\\
 HFTs are a subset of algorithmic traders who normally participate in the market as arbitrageurs or market makers, they invest in ultra-high speed technology allowing them to detect, analyses and react to market condition in nanoseconds \cite{hftinformation1}. This means HFTs can trade huge quantities of assets in very short time frames, with some estimates stating that 10-40\% of all trades where initiated by them during 2016 \cite{hftmarketparticipation}.\\
@@ -474,12 +548,12 @@ Once delays have been specified in this manner all messages, one-to-one and broa
 
 
 
-\section {Description and Analysis of the Problem} 
+\section {Description and Analysis of the Problem} \label{despriptionandanalysproblem}
 Though InterDyne is a functional simulation platform and has been used to run a number of experiments, most notably in Ref.~\cite{DynamicCoupling_Chris} where a model was presented showing a flash crash caused by interaction dynamics, it possesses a concern when discussing these results, especially to non-experts in computational modelling.\\
 This section will discuss the main draw backs of InterDyne and a method for countering them.  
 
 
-\subsection{Why InterDyne is Not Enough}
+\subsection{Why InterDyne is Not Enough} \label{Iinterdynenotenough}
 As already mentioned InterDyne is an agent-based model and hence possesses the same limitations as do other models of this type. A number of these limitations are of particular concern to economists, making agent-based models and their results not commonly accepted by them~\cite{econmistsnoabm, lob_noecomimists}. The most significant limitations  with this models are:
  \begin{enumerate}
   \item Producing high-level behaviour or emergent behaviour from a set of base rules, only shows that those create it and does not show that those are the only rules that could exhibit this behaviour. This is often referred to as the inverse function problem.
