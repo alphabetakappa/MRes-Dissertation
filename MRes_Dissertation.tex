@@ -120,6 +120,8 @@
 
 %all agent_ have time as fist component 
 
+%can  I use pattern matchng in my transformed program?
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -127,11 +129,13 @@
 
 %make sure I say that the time steps are of fixed width
 
-%move emergence into its own section
-
 %Compare difference equations and ABM in intro using the "TO AGENT-BASED SIMULATION FROM SYSTEM DYNAMICS" paper
 
 %rewrite the syntax/grammer section with more examples and code and detail
+
+%write the syntax section using the code to define it
+
+%rewrite the example of use section 
 
 %choose what example I am going to use to transform
 
@@ -139,18 +143,42 @@
 
 %reader needs to think its interesting tough and say well done 
 
+%make code figures 
+
+%make new figure code refered to correctly in text 
+
+%rewrite background to go with the introduction 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Re-Write intro
+
+%Re-Write Background, example emergence so it feels less like an aside. Give enough detail of Interdyne that it can be used later when creting the transfromation desgin 
+
+%Add to the description and alays what the challanges are 
+
+%Write RR langauge section 
+
+%Write Convertor section 
+
+%Write Validation
+
+%Wrtie test 
+
+%Write Conclusion and further work 
 
 
 \begin{document} 
-\title{A Conversion of both Semantics and Representation between Agent-Based Models and Recurrence Relations}
+\title{Design of A Conversion of both Semantics and Representation between Agent-Based Models and Recurrence Relations}
 \author{Leo Carlos-Sandberg\\
 Supervisor: Dr Christopher D. Clack} 
 \maketitle 
 
 \begin{abstract}
 \noindent {\it 
-This paper investigates a method of describing interacting systems from two opposing view points, recurrence relations and agent-baed models. These two methods take fundamentally different approaches with recurrence relations being top-down, and agent-based models being bottom-up.\\
-Connecting these two methods allows for a more complete investigation of emergent behaviour occurring within interacting systems. Agent-based models offer an attractive way of analysing emergent behaviour, with the ability to investigate individual interactions throughout a simulation. Agent-based models however tend to be less well understood and accepted by non-computer science expertise, this is in contrast to recurrence relation which are normally well understood. Creating a correctness preserving link between recurrence relations and agent-based models allows for simulations to be understood in their recurrence relation representation and hence have their agent-based model representation accepted. This is important in fields such as finance as it opens up new tools for economists and regulators to use in understanding emergence in complex markets.\\
+This paper investigates a method of describing interacting systems from two opposing view points, recurrence relations and agent-based models. These two methods take fundamentally different approaches with recurrence relations being top-down, and agent-based models being bottom-up.\\
+Connecting these two methods allows for a more complete investigation of emergent behaviour occurring within interacting systems. Agent-based models offer an attractive way of analysing emergent behaviour, with the ability to investigate individual interactions throughout a simulation. Agent-based models however tend to be less well understood and accepted by non-computer science experts, this is in contrast to recurrence relation which are normally well understood. Creating a correctness preserving link between recurrence relations and agent-based models allows for simulations to be understood in their recurrence relation representation and hence have their agent-based model representation accepted. This is important in fields such as finance as it opens up new tools for economists and regulators to use in understanding emergence in complex markets.\\
 This research comprises of the creation of a recurrence relation language, allowing for simulations to be defined, and the fabrication of correctness preserving transformation software, that transforms the custom recurrence relation language into a agent-based model simulation, known as InterDyne.          
 
 }
@@ -186,6 +214,8 @@ This research comprises of the creation of a recurrence relation language, allow
 
 
 \section{Introduction}
+%in intro talk about scope, some parts of this problem whose implemtation would require a large time commitemnt to coe writing but design is in scope 
+%in intro and alaysis state how different the interdyne and recurrance relations are  
 Financial markets exhibit many interesting and some times unexpected events, one type of these such events are flash crashes. A notable example of this event type, is the flash crash of 2010, in this crash the E-min S\&P 500 equity futures market dropped in price by more then 5\%, during which time market prices and rational valuations became disconnected, before rebound to close to its original price~\cite{SECreport_delays, rareeventflashcrash}. This whole process occurred very rapidly, lasting approximately thirty-six minutes and has been described as``one of the most turbulent periods in their history'' for the US financial markets~\cite{Impact_hft}.\\
 A number of flash crashes have been show to originate from large sell orders, such as in the recent crash in the cryptocurrency ethereum~\cite{cryptocrash}. The initial analysis of the 2010 flash crash came to a similar conclusion, with the  joint report by the U.S. Commodity Futures Trading Commission (CFTC) and Securities \& Exchange Commission (SEC), claiming that the crash was caused by a large sell order by a mutual fund\footnote{This process is explained in more detail in Section~\ref{applicabilut_to_finance}.}~\cite{SECreport_delays}. This initial finding is not fully accepted, even by the CFTC, who have since charged a trader with spoofing leading to the crash~\cite{spoofingtrader}.\\
 A number of other causes have been suggested, with a particularly interesting suggestion being emergent behaviour between high-frequency traders known as ``hot-potato'' trading. Though not suggested as the root cause ``hot-potato'' trading was mentioned by SEC and CFTC to have occurred during the time of the crash. The idea that emergent behaviour could lead to a crash is not novel, with emergence causing a number of phase transition within physical systems, and has been suggested to be able to move a market between a stable and unstable phase before~\cite{networkcastphorynature}.\\
@@ -198,6 +228,11 @@ This method of transformation has a number of challenges associated with it:
   \item Recurrence relations and agent-based models are opposing models, with the former being top down and the latter being bottom up. Creating a conversion between entirely different models requires the fundamental mind set to be transformed.    
   \item It is not clear if a conversion process can even be broken down into a number of small steps. A larger step maybe be needed to move between to two stages in the transformation. Though larger steps will on the whole be easier to create proving their equivalence is much more challenging then smaller steps. %give an example of something that has been transformed and needed a large step
 \end{itemize}
+%%what does main compare to in intterdyne what are the symantic problems with this 
+%should i keep the original rules at each step or can i use tuples/patternmatch etc, counter at some stage the code has to look interdyne code 
+%interlectual issue spreading lists across time 
+%what is broadcast! is all data public or private in RR?  
+%should i keep the original rules at each step or can i use tuples/patternmatch etc, counter at some stage the code has to look interdyne code 
 This paper is organised as follows. First an agent-based model used for modelling the financial market is described, followed by a analyses of this model and how recurrence relations can be used to combat its down sides. Section 4 details a bespoke recurrence relation language for describing a system, and Section 5 describes the step-by-step processes in which this language is transformed. Section 6 concludes the paper, detailing further work to be undertaken.    
 
 
@@ -338,6 +373,8 @@ This paper is organised as follows. First an agent-based model used for modellin
 
 
 \section{Background}
+%describe interdyne in a lt of detail so that the conversion later makes more sense, use diagrams
+%rewrite a lot of this section to feel better 
 This section will provide a background for this paper, detailing the emergent behaviour that is of interest and the methods used to investigate this behaviour.  
 
 \subsection{Emergent Behaviour}
@@ -549,6 +586,9 @@ Once delays have been specified in this manner all messages, one-to-one and broa
 
 
 \section {Description and Analysis of the Problem} \label{despriptionandanalysproblem}
+%desciption an analysis
+%what is the problem, why is it important, why is difficult
+%in intro and alaysis state how different the interdyne and recurrance relations are  
 Though InterDyne is a functional simulation platform and has been used to run a number of experiments, most notably in Ref.~\cite{DynamicCoupling_Chris} where a model was presented showing a flash crash caused by interaction dynamics, it possesses a concern when discussing these results, especially to non-experts in computational modelling.\\
 This section will discuss the main draw backs of InterDyne and a method for countering them.  
 
@@ -658,7 +698,18 @@ It was decided that this language would be created by using an already existing 
 \subsection{Syntax/Grammer}
 %write this in a formal syntax as well BNF
 
-\lstinputlisting[language=Miranda]{Syntax_Def.lit.m}
+
+
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{Syntax_Def.lit.m}
+	\caption{\it Simple example of recurrence relations written in custom defined language.}
+	\label{fig:parsetreecode}
+\end{figure} 
+
+
+\subsection{Rules of Use}
+%any function can access any other fucntion within the same agent at the current time (or passed times) but any function in a different agent can only acess at earliest one time step ago.
 
 
 
@@ -708,11 +759,18 @@ The design of this is one where the $where$ block contains all the definitions f
 
 \lstinputlisting[language=Miranda]{inv_code_simpleexample.m}
 
+tuples exist but can not be used by the user 
 %a very simple example on the use of the grammar
 %\subsubsection{Complex Example}
 %what I have actually done maybe?
 
+
+
+
+
 \section{Recurrence Relation to InterDyne Converter} 
+%defines the design of each step in the conversion between recurrance relations and interdyne 
+
 %how I will create the two views
 %what the converter is meant to do
 
@@ -721,11 +779,27 @@ The design of this is one where the $where$ block contains all the definitions f
 
 % Eventually, we would like to be able to express the System of Systems as a set of recurrence relations and then generate the agent-based model automatically; if this could be done in a way that preserves the semantics of the specification, then we would be confident that the static and dynamic analyses are being performed on models of the same System of Systems. 
 
+This section details the design of the transformation from a set of recurrence relations written in the previously discussed custom language into an InterDyne simulation. This transformation processes  as been split into a number of smaller steps, with each step taking the expression of the system given by the previous step and modifying it to be closer to the InterDyne formalisation.\\
+The transformation has been split into small steps to avoid any large jumps in logic between different representations. Jumps in logic can make it difficult to follow the transformation and more challenging to prove the correctness of the transformation.\\
+The aim of this section is to show the design of each of these transformative steps, and not to implement them into code or prove their correctness, however in some case the code may also be shown.\\
+To assist in the explanation of the transformation a simple example will be used through out this section Recurrence Relation Example 1 (RRE1), this example is shown in Fig.~\ref{fig:rre1}. 
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{RRE1.m}
+	\caption{\it Simple example of recurrence relations written in custom defined language.}
+	\label{fig:rre1}
+\end{figure} 
 
 \subsection{Recurrence Relation Parser}
 %explain what the parser is and how it works, in preparing these files for transfermation
 
 %programs wirtten in this language will be parsed into lexemes and then converted into a numeric type (?) which will be used to transfer this into lambda calcus and an ABM model
+
+
+The recurrence relations shown in Fig.~\ref{fig:rre1} are text, and hence the first step in transforming them is to give them a representation within code. This is done by a parser in two parts, lexical analysis and syntax analysis.\\
+Lexical analysis takes in the text file as a list of characters and converts this to a list of tokens representing items, such as function names.\\
+Syntax analysis takes this list of tokens and stores it in a parse tree that enforces structure. This parse tree can be seen in Fig.~\ref{fig:parsetreecode}.  
+ 
 
 
 
@@ -739,15 +813,54 @@ The design of this is one where the $where$ block contains all the definitions f
 %enforce all functions take t as their first agrument whether or not they use it
 %when calling a fucntion that doesnt take time can just use t, or 0 
 
-This is done by knowing that t is a special character that goes at the begging of time dependent recurrence relations. Therefore %function: RR t a b c = f t a b c goes to RR a b c = [ expr t a b c | t <- [0..]] where expr t a b c = f t a b c 
+%This is done by knowing that t is a special character that goes at the begging of time dependent recurrence relations. Therefore %function: RR t a b c = f t a b c goes to RR a b c = [ expr t a b c | t <- [0..]] where expr t a b c = f t a b c 
 
+
+%done need to write up
+
+%creates a sub wrapper that gives infitie list outputs
+%all calls now need to index into this 
+
+
+A large difference between recurrence relations and InterDyne, is that in InterDyne communication is done using list, and not function calls. These lists are infinite, with a each element representing a value at a different time step. Though these lists are infinite in practice they are only as long as the highest time reached, as values for any time after this are not needed and hence will not be calculated. To make the recurrence relations have a similar approach to this a wrapper function for each relation needs to be made, this function will produce a infinite list containing the value of the relation at each time step, this wrapper can be seen in Fig.\ref{fig:iloc}. 
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{ILOC.m}
+	\caption{\it Simple example of recurrence relations written in custom defined language.}
+	\label{fig:iloc}
+\end{figure} 
+To access a value for a particular time of a relation, the bang operator, !, now has to be used. This operator applied to a list will return a specified element of the list, for example in $List!n$ the $n^{th}$ element will be returned. 
+%\colorbox{blue}{\lstinline[basicstyle=\ttfamily\color{white}]|List!n|}?  
+Therefore the experiment will now be written in the form shown in Fig.\ref{fig:RRiloc}. 
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{RRiloc.m}
+	\caption{\it Recurrence relations with with infinite list outputs.}
+	\label{fig:RRiloc}
+\end{figure} 
+       
 
 \subsection{Wrapper Function}
 %group into agents
 %create a wrapper agent that out puts a infinite list (in time) containing a list of the value of each RR in the wrapper for that time step
 %[[rr1_t1,rr2_t2...], [rr1_t2, rr2_t2....], ..]
 %other RR now have to call the outputs using !! and by referencing the wrapper
+%agent na is reserved 
+%external function calls refering to fucntions of the same agent have been turned into internal function calls 
 
+%done need to write up 
+
+%moves the functions into agents
+%outputs a infite list in time with each item being a list of all outputs from the wrapper
+%all calls now index into this 
+
+
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{RRwfc.m}
+	\caption{\it Recurrence relations with with wrapper functions.}
+	\label{fig:RRwfc}
+\end{figure} 
 
 
 \subsection{Harness}
@@ -756,19 +869,33 @@ This is done by knowing that t is a special character that goes at the begging o
 %each wrapper is an infinite list with each element being the outputs at the time step
 %the outputs at the time step are a list of the values for each RR at that time
 
-\subsection{Create Messages}
-%each RR now sends its data as a tuple (to, from, data)
-%only sends the information that is needed (this doesnt allways need to be needed just some times is enough)
-%change logic to read this new format
-%might need to send multiple copies of a message to different wrappers, each recipient needs their own version now there is a to field that is required
+%done need to write up 
 
 
-\subsection{Message Selection}
-%the harness now only gives an wrapper messages that are addressed to it
+%takes wrapper out puts, list of all wrappers?
+%spreads the outputs across time to create a output list that is finite 
+%wrapper functions now access the harness
+%take hd of data from the harness 
+%wrapper function now loops 
+%delay queue to access further back in time values 
+%empty list input for first element of the harnesses output 
+%output message
+
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{RRhc.m}
+	\caption{\it Recurrence relations with with wrapper functions.}
+	\label{fig:RRhc}
+\end{figure} 
+
+\subsection{Direct Messages}
+%to from messsages
+%use of keys and values 
 
 
 \subsection{Broadcast Messages}
-%if multiple versions of the same message are constantly being sent to the same wrappers, turn these into broadcast messages 
+
+\section{Validation}
 
 \subsection{Type Comparison to InterDyne}
 %make sure agents are of type Agent_t
@@ -776,8 +903,12 @@ This is done by knowing that t is a special character that goes at the begging o
 \subsection{Conversion to Haskell}
 %output the wrappers and logic as haskell code that can then be run in Interdyne 
 
+\section{Testing}
+\subsection{Example 1}
 
+\subsection{Example 2}
 
+\subsection{example 3}
 
 \section{Conclusion}
 
@@ -786,9 +917,9 @@ This is done by knowing that t is a special character that goes at the begging o
 \subsection{Further Work}
 %do the correctness preserving aspect of this
  
-\section{Appendix}
+%\section{Appendix}
 
-\subsection{Appendix 1} %\label{Appendix_1}
+%\subsection{Appendix 1} %\label{Appendix_1}
 %\lstinputlisting[language=C++]{AllCode_functions.cpp}
 
 
