@@ -1,43 +1,50 @@
-\contentsline {section}{\numberline {1}Introduction}{3}
-\contentsline {section}{\numberline {2}Background}{4}
-\contentsline {subsection}{\numberline {2.1}Emergent Behaviour}{4}
-\contentsline {subsubsection}{\numberline {2.1.1}Interaction Dynamics}{5}
-\contentsline {subsubsection}{\numberline {2.1.2}Feedback Loops}{5}
-\contentsline {subsubsection}{\numberline {2.1.3}Emergence in Financial Markets}{6}
-\contentsline {subsection}{\numberline {2.2}Agent-Based Models}{7}
-\contentsline {subsection}{\numberline {2.3}InterDyne}{7}
-\contentsline {subsubsection}{\numberline {2.3.1}Applicability to Finance}{8}
-\contentsline {paragraph}{\numberline {2.3.1.1}Deterministic}{8}
-\contentsline {paragraph}{\numberline {2.3.1.2}Message Delays}{8}
-\contentsline {paragraph}{\numberline {2.3.1.3}Message Passing}{9}
-\contentsline {paragraph}{\numberline {2.3.1.4}Storing Messages}{9}
-\contentsline {paragraph}{\numberline {2.3.1.5}Discrete Time}{9}
-\contentsline {paragraph}{\numberline {2.3.1.6}Message Ordering}{9}
-\contentsline {paragraph}{\numberline {2.3.1.7}Agents}{10}
-\contentsline {subsubsection}{\numberline {2.3.2}InterDyne Detail Operation}{10}
-\contentsline {section}{\numberline {3}Description and Analysis of the Problem}{12}
-\contentsline {subsection}{\numberline {3.1}Why InterDyne is Not Enough}{13}
-\contentsline {subsection}{\numberline {3.2}Recurrences Relations}{13}
-\contentsline {subsection}{\numberline {3.3}Two Views Approach}{15}
-\contentsline {section}{\numberline {4}Bespoke Recurrence Relation Language}{16}
-\contentsline {subsection}{\numberline {4.1}Syntax/Grammer}{17}
-\contentsline {subsection}{\numberline {4.2}Rules of Use}{18}
-\contentsline {subsection}{\numberline {4.3}Examples of Use}{18}
-\contentsline {subsubsection}{\numberline {4.3.1}Simple Example}{19}
-\contentsline {section}{\numberline {5}Recurrence Relation to InterDyne Converter}{20}
-\contentsline {subsection}{\numberline {5.1}Recurrence Relation Parser}{20}
-\contentsline {subsection}{\numberline {5.2}Infinite List Outputs}{21}
-\contentsline {subsection}{\numberline {5.3}Wrapper Function}{23}
-\contentsline {subsection}{\numberline {5.4}Harness}{24}
-\contentsline {subsection}{\numberline {5.5}Direct Messages}{25}
-\contentsline {subsection}{\numberline {5.6}Broadcast Messages}{25}
-\contentsline {section}{\numberline {6}Validation}{25}
-\contentsline {subsection}{\numberline {6.1}Type Comparison to InterDyne}{25}
-\contentsline {subsection}{\numberline {6.2}Conversion to Haskell}{25}
-\contentsline {section}{\numberline {7}Testing}{25}
-\contentsline {subsection}{\numberline {7.1}Example 1}{25}
-\contentsline {subsection}{\numberline {7.2}Example 2}{25}
-\contentsline {subsection}{\numberline {7.3}example 3}{25}
-\contentsline {section}{\numberline {8}Conclusion}{25}
-\contentsline {subsection}{\numberline {8.1}Further Work}{25}
-\contentsline {section}{References}{25}
+\contentsline {section}{\numberline {1}Introduction}{4}
+\contentsline {section}{\numberline {2}Background}{6}
+\contentsline {subsection}{\numberline {2.1}Emergent Behaviour}{6}
+\contentsline {subsubsection}{\numberline {2.1.1}Interaction Dynamics}{7}
+\contentsline {subsubsection}{\numberline {2.1.2}Feedback Loops}{7}
+\contentsline {subsubsection}{\numberline {2.1.3}Emergence in Financial Markets}{8}
+\contentsline {subsection}{\numberline {2.2}Methods for Modelling Emergent Behaviour in Finance}{9}
+\contentsline {subsubsection}{\numberline {2.2.1}Recurrences Relations}{9}
+\contentsline {subsubsection}{\numberline {2.2.2}Agent-Based Models}{11}
+\contentsline {subsubsection}{\numberline {2.2.3}Review of Literature on Financial Model}{11}
+\contentsline {subsection}{\numberline {2.3}InterDyne}{11}
+\contentsline {subsubsection}{\numberline {2.3.1}Applicability to Finance}{12}
+\contentsline {paragraph}{\numberline {2.3.1.1}Deterministic}{13}
+\contentsline {paragraph}{\numberline {2.3.1.2}Message Delays}{13}
+\contentsline {paragraph}{\numberline {2.3.1.3}Message Passing}{14}
+\contentsline {paragraph}{\numberline {2.3.1.4}Storing Messages}{14}
+\contentsline {paragraph}{\numberline {2.3.1.5}Discrete Time}{14}
+\contentsline {paragraph}{\numberline {2.3.1.6}Message Ordering}{14}
+\contentsline {paragraph}{\numberline {2.3.1.7}Agents}{15}
+\contentsline {subsubsection}{\numberline {2.3.2}InterDyne Detail Operation}{15}
+\contentsline {subsection}{\numberline {2.4}Work on Step-by-Step Transformation}{17}
+\contentsline {section}{\numberline {3}Description and Analysis of the Problem}{18}
+\contentsline {subsection}{\numberline {3.1}Why InterDyne is Not Enough}{18}
+\contentsline {subsection}{\numberline {3.2}Two Views Approach}{19}
+\contentsline {section}{\numberline {4}Bespoke Recurrence Relation Language}{19}
+\contentsline {subsection}{\numberline {4.1}Syntax}{21}
+\contentsline {subsection}{\numberline {4.2}Rules of Use}{23}
+\contentsline {subsection}{\numberline {4.3}Example of Use}{23}
+\contentsline {section}{\numberline {5}Recurrence Relation to InterDyne Converter}{25}
+\contentsline {subsection}{\numberline {5.1}Recurrence Relation Parser}{26}
+\contentsline {subsection}{\numberline {5.2}Infinite List Outputs}{26}
+\contentsline {subsection}{\numberline {5.3}Wrapper Function}{28}
+\contentsline {subsection}{\numberline {5.4}Outputs}{29}
+\contentsline {subsection}{\numberline {5.5}Messages}{30}
+\contentsline {subsection}{\numberline {5.6}Queues}{31}
+\contentsline {subsection}{\numberline {5.7}Harness}{31}
+\contentsline {subsection}{\numberline {5.8}Input Messages}{32}
+\contentsline {subsection}{\numberline {5.9}Direct Messages}{33}
+\contentsline {subsection}{\numberline {5.10}Output Message}{34}
+\contentsline {subsection}{\numberline {5.11}Broadcast Messages}{35}
+\contentsline {section}{\numberline {6}Validation}{35}
+\contentsline {subsection}{\numberline {6.1}Type Comparison to InterDyne}{35}
+\contentsline {subsection}{\numberline {6.2}Conversion to Haskell}{35}
+\contentsline {section}{\numberline {7}Testing}{35}
+\contentsline {subsection}{\numberline {7.1}Example 1}{35}
+\contentsline {subsection}{\numberline {7.2}Example 2}{35}
+\contentsline {subsection}{\numberline {7.3}Example 3}{35}
+\contentsline {section}{\numberline {8}Conclusion}{35}
+\contentsline {subsection}{\numberline {8.1}Further Work}{35}
+\contentsline {section}{References}{35}
