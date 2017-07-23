@@ -1,50 +1,50 @@
 \contentsline {section}{\numberline {1}Introduction}{4}
-\contentsline {section}{\numberline {2}Background}{6}
-\contentsline {subsection}{\numberline {2.1}Emergent Behaviour}{6}
-\contentsline {subsubsection}{\numberline {2.1.1}Interaction Dynamics}{7}
-\contentsline {subsubsection}{\numberline {2.1.2}Feedback Loops}{7}
-\contentsline {subsubsection}{\numberline {2.1.3}Emergence in Financial Markets}{8}
-\contentsline {subsection}{\numberline {2.2}Methods for Modelling Emergent Behaviour in Finance}{9}
-\contentsline {subsubsection}{\numberline {2.2.1}Recurrences Relations}{9}
-\contentsline {subsubsection}{\numberline {2.2.2}Agent-Based Models}{11}
-\contentsline {subsubsection}{\numberline {2.2.3}Review of Literature on Financial Model}{11}
-\contentsline {subsection}{\numberline {2.3}InterDyne}{11}
-\contentsline {subsubsection}{\numberline {2.3.1}Applicability to Finance}{12}
-\contentsline {paragraph}{\numberline {2.3.1.1}Deterministic}{13}
-\contentsline {paragraph}{\numberline {2.3.1.2}Message Delays}{13}
-\contentsline {paragraph}{\numberline {2.3.1.3}Message Passing}{14}
-\contentsline {paragraph}{\numberline {2.3.1.4}Storing Messages}{14}
-\contentsline {paragraph}{\numberline {2.3.1.5}Discrete Time}{14}
-\contentsline {paragraph}{\numberline {2.3.1.6}Message Ordering}{14}
-\contentsline {paragraph}{\numberline {2.3.1.7}Agents}{15}
-\contentsline {subsubsection}{\numberline {2.3.2}InterDyne Detail Operation}{15}
-\contentsline {subsection}{\numberline {2.4}Work on Step-by-Step Transformation}{17}
-\contentsline {section}{\numberline {3}Description and Analysis of the Problem}{18}
-\contentsline {subsection}{\numberline {3.1}Why InterDyne is Not Enough}{18}
-\contentsline {subsection}{\numberline {3.2}Two Views Approach}{19}
-\contentsline {section}{\numberline {4}Bespoke Recurrence Relation Language}{19}
-\contentsline {subsection}{\numberline {4.1}Syntax}{21}
-\contentsline {subsection}{\numberline {4.2}Rules of Use}{23}
-\contentsline {subsection}{\numberline {4.3}Example of Use}{23}
-\contentsline {section}{\numberline {5}Recurrence Relation to InterDyne Converter}{25}
-\contentsline {subsection}{\numberline {5.1}Recurrence Relation Parser}{26}
-\contentsline {subsection}{\numberline {5.2}Infinite List Outputs}{26}
-\contentsline {subsection}{\numberline {5.3}Wrapper Function}{28}
-\contentsline {subsection}{\numberline {5.4}Outputs}{29}
-\contentsline {subsection}{\numberline {5.5}Messages}{30}
-\contentsline {subsection}{\numberline {5.6}Queues}{31}
-\contentsline {subsection}{\numberline {5.7}Harness}{31}
-\contentsline {subsection}{\numberline {5.8}Input Messages}{32}
-\contentsline {subsection}{\numberline {5.9}Direct Messages}{33}
-\contentsline {subsection}{\numberline {5.10}Output Message}{34}
-\contentsline {subsection}{\numberline {5.11}Broadcast Messages}{35}
-\contentsline {section}{\numberline {6}Validation}{35}
-\contentsline {subsection}{\numberline {6.1}Type Comparison to InterDyne}{35}
-\contentsline {subsection}{\numberline {6.2}Conversion to Haskell}{35}
-\contentsline {section}{\numberline {7}Testing}{35}
-\contentsline {subsection}{\numberline {7.1}Example 1}{35}
-\contentsline {subsection}{\numberline {7.2}Example 2}{35}
-\contentsline {subsection}{\numberline {7.3}Example 3}{35}
-\contentsline {section}{\numberline {8}Conclusion}{35}
-\contentsline {subsection}{\numberline {8.1}Further Work}{35}
-\contentsline {section}{References}{35}
+\contentsline {section}{\numberline {2}Background}{7}
+\contentsline {subsection}{\numberline {2.1}Emergent Behaviour}{7}
+\contentsline {subsubsection}{\numberline {2.1.1}Interaction Dynamics}{8}
+\contentsline {subsubsection}{\numberline {2.1.2}Feedback Loops}{8}
+\contentsline {subsubsection}{\numberline {2.1.3}Emergence in Financial Markets}{10}
+\contentsline {subsection}{\numberline {2.2}Methods for Modelling Emergent Behaviour in Finance}{10}
+\contentsline {subsubsection}{\numberline {2.2.1}Recurrences Relations}{10}
+\contentsline {subsubsection}{\numberline {2.2.2}Agent-Based Models}{12}
+\contentsline {subsubsection}{\numberline {2.2.3}Review of Literature on Financial Model}{13}
+\contentsline {subsection}{\numberline {2.3}InterDyne}{13}
+\contentsline {subsubsection}{\numberline {2.3.1}Applicability to Finance}{14}
+\contentsline {paragraph}{\numberline {2.3.1.1}Deterministic}{14}
+\contentsline {paragraph}{\numberline {2.3.1.2}Message Delays}{15}
+\contentsline {paragraph}{\numberline {2.3.1.3}Message Passing}{15}
+\contentsline {paragraph}{\numberline {2.3.1.4}Storing Messages}{15}
+\contentsline {paragraph}{\numberline {2.3.1.5}Discrete Time}{15}
+\contentsline {paragraph}{\numberline {2.3.1.6}Message Ordering}{16}
+\contentsline {paragraph}{\numberline {2.3.1.7}Agents}{16}
+\contentsline {subsubsection}{\numberline {2.3.2}InterDyne Detail Operation}{16}
+\contentsline {subsection}{\numberline {2.4}Work on Step-by-Step Transformation}{19}
+\contentsline {section}{\numberline {3}Description and Analysis of the Problem}{19}
+\contentsline {subsection}{\numberline {3.1}Why InterDyne is Not Enough}{19}
+\contentsline {subsection}{\numberline {3.2}Two Views Approach}{20}
+\contentsline {section}{\numberline {4}Bespoke Recurrence Relation Language}{21}
+\contentsline {subsection}{\numberline {4.1}Syntax}{22}
+\contentsline {subsection}{\numberline {4.2}Rules of Use}{24}
+\contentsline {subsection}{\numberline {4.3}Example of Use}{24}
+\contentsline {section}{\numberline {5}Recurrence Relation to InterDyne Converter}{26}
+\contentsline {subsection}{\numberline {5.1}Recurrence Relation Parser}{27}
+\contentsline {subsection}{\numberline {5.2}Infinite List Outputs}{27}
+\contentsline {subsection}{\numberline {5.3}Wrapper Function}{29}
+\contentsline {subsection}{\numberline {5.4}Outputs}{30}
+\contentsline {subsection}{\numberline {5.5}Messages}{31}
+\contentsline {subsection}{\numberline {5.6}Queues}{32}
+\contentsline {subsection}{\numberline {5.7}Harness}{32}
+\contentsline {subsection}{\numberline {5.8}Input Messages}{33}
+\contentsline {subsection}{\numberline {5.9}Direct Messages}{34}
+\contentsline {subsection}{\numberline {5.10}Output Message}{35}
+\contentsline {subsection}{\numberline {5.11}Broadcast Messages}{36}
+\contentsline {section}{\numberline {6}Validation}{36}
+\contentsline {subsection}{\numberline {6.1}Type Comparison to InterDyne}{36}
+\contentsline {subsection}{\numberline {6.2}Conversion to Haskell}{36}
+\contentsline {section}{\numberline {7}Testing}{36}
+\contentsline {subsection}{\numberline {7.1}Example 1}{36}
+\contentsline {subsection}{\numberline {7.2}Example 2}{36}
+\contentsline {subsection}{\numberline {7.3}Example 3}{36}
+\contentsline {section}{\numberline {8}Conclusion}{36}
+\contentsline {subsection}{\numberline {8.1}Further Work}{36}
+\contentsline {section}{References}{36}

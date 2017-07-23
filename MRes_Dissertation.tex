@@ -213,6 +213,47 @@ This research comprises of the creation of a recurrence relation language, allow
 
 
 \section{Introduction}
+%aim how to get economists to appreciate and use ABM and work based on ABM 
+
+Complex systems have been an area of deep interest for a long time in many  fields such as, physics, biology and chemistry. More recently they have become an area of increased interest in the fields of economics and finance, especially as the markets which many researchers are interested in have become increasingly automated and interconnected.\\
+Complex systems are of such interest to researchers because of the types of behaviour they can produce, emergence in these systems is of particular interest do to the fact that it can be very difficult to detect and predict, and have a large, some times, damaging impact on the system.\\
+Emergent behaviour can occur in a large number of ways, but more often the behaviour of interest is created over a time period. In general there are two ways of viewing systems in time, these are either continuous, where the system progress through time smoothly. Or discrete, where the system takes equal quantised steps through time, with each step advancing the system.\\
+Focussing on discrete time there are two main methods which can be used to model system set up in this way, recurrence relations and agent-based models. These two methods take fundamentally different views of a system, recurrence relations take a top down view and can be seen as a set of mathematical equations which make calls for the values of each other. Agent-based models take a bottom up approach and model different elements of the system as individual agents which communicate via messages passed between each other.\\
+Both these methods are a viable way of modelling complex systems and have both been used for a long time in a large number of fields [REFS???]. Recurrence relations have a number of advantages such as:
+\begin{itemize}
+  \item Being well understood in a large number of fields. 
+  \item Giving a formal mathematical definition of the whole system.
+  \item Showing an obvious link between equations within the system. 
+  \item Giving a static representation of the system.  
+\end{itemize}
+Agent-based modelling benefits include:
+\begin{itemize}
+  \item Being able to encode unique agents, with varying levels of complexity.
+  \item Not having a defined behaviour for the system as a whole, as it is a bottom up approach.
+  \item Giving a dynamic representation of the systems evolution. 
+  \item Plainly showing the passing of information between agents. 
+\end{itemize}          
+The ability of agent-based models to track the communication between agents and their bottom up approach makes them particularly adapt at analysing emergent behaviour.\\  
+As mentioned there has been a growing interest into complex systems and emergence within them in finance, a large part of this interest is on regulating theres systems to stop the creation of destructive emergent behaviour, this has been especially true when looking at high-frequency trading, which has been accused of causing a number of negative effects within the markets. This trading takes place at high speeds comparable to the tickets on a computers internal clock, meaning models of this trading typically while take a discrete time approach.\\
+In literature on finance and economics there is a notable preference for recurrence relations over agent-based models, shown in Section~\ref{litreviewofabmrr}. This preference appears to be caused by agent-based models not resonating with researchers with less pure science backgrounds, such economists and industry expertise, and hence being less widely accepted.\\
+This presents a problem for agent-based models and for researchers who wish to use them, making it less likely that researchers will choose to take an agent-based model approach, hence losing a valuable tool in investigating emergence, and that those who do will find it harder to publish and convince others of the results of their work.\\
+This paper seeks to present a method where by agent-based models will resonate better with experts such as economists, and hence that they will be used more frequently and the research based upon them will be better accepted.\\    
+The approach this paper takes is to connect an agent-based model to a set of recurrence relations, allowing the already accepted approach of recurrence relations to be a method for explaining and formalising the agent-based model. This connection between the models is coined as the two-views approach.\\
+For this to be achieved there has to be confidence that the two views do indeed represent the same system, hence a correction preserving transformation needs to be achieved between the models. To reduce the difficulties in proving correctness and to assist a reader in understanding the transformation, the transformation should operate in a step-by-step manner.\\
+This step-by-step transformation will take a set of recurrence relations and convert them into an agent-based model. This direction has been chosen opposed to the reverse as the aim is to encourage sceptics to engage with agent-based models and not as a why of simply proving the correctness of individual research using agent-based models. This trajectory will allow an individual to follow a set of recurrence relations as they are slowly converted in a set of simple steps to an agent-based model, showing how these two models can be linked and relate.\\
+ 
+
+
+
+
+
+
+
+
+
+
+
+
 
 \begin{itemize}
   \item Introduce emergent behaviour (more importantly emergence in discrete time systems) 
@@ -225,7 +266,7 @@ This research comprises of the creation of a recurrence relation language, allow
   \item How to solve this problem? Can we use RR to give a formalisation to ABM? Yes its called two-views (a connection between the models)
   \item How would this be done? Need to have confidence that a RR formulation of a problem is identical to that of a ABM formalisation of the problem. Do in a step by step translation between the two models 
   \item RR to ABM, why? To encourage economists to engage with he modelling technique with using a familiar model, we are trying to make ABM a understood and valid model not just a why of writing RR
-  \item Important: in hypotheses formalisation, communicate between fields with different expertise like science and economics,  lot of good publish work has been done that hasn't resonated with economists so can be used to normalise the approach, 
+  \item Important: in making ABM a usable modelling system and also: in hypotheses formalisation, communicate between fields with different expertise like science and economics,  lot of good publish work has been done that hasn't resonated with economists so can be used to normalise the approach,  (also always for a two-views way of viewing problems being good for both static and dynamic analys)
   \item Timely: increased interest in ABM to understand complex behaviour of financial markets (lots of ref) 
   , this can be used to support other work done using ABM, and in making it a more relatable technique  
   \item This has three main parts: designing a transformation, creating code to do this, proving correctness (using lambda calculus) 
@@ -240,6 +281,12 @@ This research comprises of the creation of a recurrence relation language, allow
   \item InterDyne is chosen as the example of an ABM (because: interesting features to do with interaction dynamics, have access to the sources code, designed to model finance, local expertise), costume RR language 
   \item Organisation of the paper 
 \end{itemize}
+
+
+
+
+
+
 
 %twovies holds regardless of what abm 
 %have confidence that a RR formulation of a problem is identical to a given abm of the problem, and how I would do this. step y step translaftion between the models 
@@ -606,7 +653,7 @@ Though through static analysis recurrence relations can be used to view the hist
 There are a number of different techniques to model emergent behaviour in complex systems, one popular method is agent-based modelling. Agent-based modelling can be considered more of a mind set then a rigid methodology, this involves describing the system in question in terms of its components and then allowing these to interact. Agent-based models allow a system to be described naturally and are hence the canonical approach to modelling emergent phenomena. This method is a bottom up approach, allowing for each component of the system, agent of the model, to be created to a relevant degree of abstraction~\cite{abmhumsystems}.\\
 Agent-based models have been used to model a wide range of emergent behaviour including in the financial markets, examples of this are, noise traders~\cite{abmnoisetraders}, herding among traders~\cite{abmherding}, and fundamentalists~\cite{abmfundemetilists}.
 
-\subsubsection{Review of Literature on Financial Model}
+\subsubsection{Review of Literature on Financial Model} \label{litreviewofabmrr}
 
 \begin{itemize}
   \item Compare papers on RR and ABM and show that RR are used in finance papers more then ABM and hence the need for my project 
