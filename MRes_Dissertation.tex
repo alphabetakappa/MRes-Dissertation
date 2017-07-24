@@ -211,15 +211,14 @@ This research comprises of the creation of a recurrence relation language, allow
 %~\cite{GouldBook} 
 %~\ref{s_the_ising_model} 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
-%aim how to get economists to appreciate and use ABM and work based on ABM 
-
 Complex systems have been an area of deep interest for a long time in many  fields such as, physics, biology and chemistry. More recently they have become an area of increased interest in the fields of economics and finance, especially as the markets which many researchers are interested in have become increasingly automated and interconnected.\\
 Complex systems are of such interest to researchers because of the types of behaviour they can produce, emergence in these systems is of particular interest do to the fact that it can be very difficult to detect and predict, and have a large, some times, damaging impact on the system.\\
 Emergent behaviour can occur in a large number of ways, but more often the behaviour of interest is created over a time period. In general there are two ways of viewing systems in time, these are either continuous, where the system progress through time smoothly. Or discrete, where the system takes equal quantised steps through time, with each step advancing the system.\\
 Focussing on discrete time there are two main methods which can be used to model system set up in this way, recurrence relations and agent-based models. These two methods take fundamentally different views of a system, recurrence relations take a top down view and can be seen as a set of mathematical equations which make calls for the values of each other. Agent-based models take a bottom up approach and model different elements of the system as individual agents which communicate via messages passed between each other.\\
-Both these methods are a viable way of modelling complex systems and have both been used for a long time in a large number of fields [REFS???]. Recurrence relations have a number of advantages such as:
+Both these methods are a viable way of modelling complex systems and have both been used for a long time in a large number of fields [REFS???]. %REFS????
+Recurrence relations have a number of advantages such as:
 \begin{itemize}
   \item Being well understood in a large number of fields. 
   \item Giving a formal mathematical definition of the whole system.
@@ -239,180 +238,37 @@ In literature on finance and economics there is a notable preference for recurre
 This presents a problem for agent-based models and for researchers who wish to use them, making it less likely that researchers will choose to take an agent-based model approach, hence losing a valuable tool in investigating emergence, and that those who do will find it harder to publish and convince others of the results of their work.\\
 This paper seeks to present a method where by agent-based models will resonate better with experts such as economists, and hence that they will be used more frequently and the research based upon them will be better accepted.\\    
 The approach this paper takes is to connect an agent-based model to a set of recurrence relations, allowing the already accepted approach of recurrence relations to be a method for explaining and formalising the agent-based model. This connection between the models is coined as the two-views approach.\\
-For this to be achieved there has to be confidence that the two views do indeed represent the same system, hence a correction preserving transformation needs to be achieved between the models. To reduce the difficulties in proving correctness and to assist a reader in understanding the transformation, the transformation should operate in a step-by-step manner.\\
+For this to be achieved there has to be confidence that the two views do indeed represent the same system, hence a correction preserving transformation needs to be achieved between the models. To reduce the difficulties in proving correctness and to assist a reader in understanding the transformation, the transformation should operate in a step-by-step manner, this is shown by the literature and expanded on in Section~\ref{whyusestepbystep}\\ 
 This step-by-step transformation will take a set of recurrence relations and convert them into an agent-based model. This direction has been chosen opposed to the reverse as the aim is to encourage sceptics to engage with agent-based models and not as a why of simply proving the correctness of individual research using agent-based models. This trajectory will allow an individual to follow a set of recurrence relations as they are slowly converted in a set of simple steps to an agent-based model, showing how these two models can be linked and relate.\\
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
+Creating this transformative method has a number of important in two aspects, increasing the acceptance of agent-based models and creating a model for viewing systems in two perspectives. Increasing the acceptance of agent-based models has a number of benefits including: 
 \begin{itemize}
-  \item Introduce emergent behaviour (more importantly emergence in discrete time systems) 
-  \item Methods for modelling emergence, recurrence relations and ABM  
-  \item what ABM and RR are (in short, expanded on later) 
-  \item Brief benefits of ABM and RR to be expanded later in analyses (not about ABM not being understood)
-  \item Emergence in finance 
-  \item There are problems with ABM leading to it not being widely accepted in finance (shown in section blah) 
-  \item Why is this a problem? Lots of work has been done in ABM already, and its a good tool since it gives a different perspective  
-  \item How to solve this problem? Can we use RR to give a formalisation to ABM? Yes its called two-views (a connection between the models)
-  \item How would this be done? Need to have confidence that a RR formulation of a problem is identical to that of a ABM formalisation of the problem. Do in a step by step translation between the two models 
-  \item RR to ABM, why? To encourage economists to engage with he modelling technique with using a familiar model, we are trying to make ABM a understood and valid model not just a why of writing RR
-  \item Important: in making ABM a usable modelling system and also: in hypotheses formalisation, communicate between fields with different expertise like science and economics,  lot of good publish work has been done that hasn't resonated with economists so can be used to normalise the approach,  (also always for a two-views way of viewing problems being good for both static and dynamic analys)
-  \item Timely: increased interest in ABM to understand complex behaviour of financial markets (lots of ref) 
-  , this can be used to support other work done using ABM, and in making it a more relatable technique  
-  \item This has three main parts: designing a transformation, creating code to do this, proving correctness (using lambda calculus) 
-  \item Project Scope: this project is to designing the transformation 
-  \item Difficulties in doing this (explained in detail in sec..): \begin{itemize}
-  \item two paradigms are completely different 
-  \item Differences between function calls and messages
-  \item name control, in a way that allows for a useful and tangible ABM
-  \item Show problem as a whole despite splintering 
-  \item small steps can be hard to design but large steps are harder to prove correctness of 
+   \item Increasing the use of agent-based models in new research, where their benefits would be more suited. Hence increasing the ease in which emergence can be investigated within the financial system. 
+   \item Allow for work already done using agent-based models to be re-evaluated with a greater understanding to the methods used. 
 \end{itemize}
-  \item InterDyne is chosen as the example of an ABM (because: interesting features to do with interaction dynamics, have access to the sources code, designed to model finance, local expertise), costume RR language 
-  \item Organisation of the paper 
-\end{itemize}
-
-
-
-
-
-
-
-%twovies holds regardless of what abm 
-%have confidence that a RR formulation of a problem is identical to a given abm of the problem, and how I would do this. step y step translaftion between the models 
-%choose interdyne as it has interesting feature to do with interaction dynamics, have acess to the sources code, and its been designed to model finance, local expertise, approach choose is interdyne is just an example of abm 
-
-%Important 
-
-%!what is the problem that I am addressing!
-
-%!why is it an important problem!
-%-important because of two views, which is important in processes of hypothiso fomulisation 
-%-more then one experemt in different fields, can be used to communicate between fields (useful to have two different vies), in fumulating the hyphissm, having the write model 
-%-lot of good published work that has been done in abm of finaical markets that hasnt resonated with ecomisits, because the apporach is not usual. 
-%-why do it this way around, encourage econimist to engage with this form of moduling with use of RR, 
-%-put timlness here
- 
- %is this a timely project, what is it that can be done now that couldnt done before 
-%-new increased intrest in agent based models in a way to understan the complex behviour of finacial markets (lots of refrences) 
- 
-%!why is it difficult!
-%-two paridimes are so completely different
-%-difernce between function calls and message passing 
-%-issue of naming and name control (reuccrnace relations call any function from any wehre else, in agent based model you dont nessarsily want to do that, therefore need a concept of which functions together corrispond to a single agent, (for the finall agent based model to e interelgble and useful there has to be some user user input into selsecitng which RR to group into agents)) be done autmitaically neeeds user input about two views 
-%-in chapter read 
-%-why is it that econimists cant understand abm immidetly, they feel the problem has been splinter, and there is no understanding of how the problem comes together (no fomrul description)
-%-DEVS model does give you overarching symatic (why is it not approate to model interarction dynamics) 
-
-
-
-
-
-%for literate review
-%compare abm and non abm of finacial markets and say that ecomists publish different papers 
-%check if any one has done this before or anything similar 
-%translating from RR to anything else 
-%tralsing from anything to an agent based model 
-%any one written anything on porcess fo program transformation by small steps, (lots in the late 80s), le brain phd theise (2000), desgined a programing langauge, approach he took to turn it into a functional langauge using step by step transoting (clover) 
-%object flaw, paper 
-%the clover rewrite rules, paper (this is the one i want)
-%introducing clover and object oriented  functional langue, paper 
-
-
-
-%in intro talk about scope, some parts of this problem whose implemtation would require a large time commitemnt to coe writing but design is in scope 
-%in intro and alaysis state how different the interdyne and recurrance relations are  
-Financial markets exhibit many interesting and some times unexpected events, one type of these such events are flash crashes. A notable example of this event type, is the flash crash of 2010, in this crash the E-min S\&P 500 equity futures market dropped in price by more then 5\%, during which time market prices and rational valuations became disconnected, before rebound to close to its original price~\cite{SECreport_delays, rareeventflashcrash}. This whole process occurred very rapidly, lasting approximately thirty-six minutes and has been described as``one of the most turbulent periods in their history'' for the US financial markets~\cite{Impact_hft}.\\
-A number of flash crashes have been show to originate from large sell orders, such as in the recent crash in the cryptocurrency ethereum~\cite{cryptocrash}. The initial analysis of the 2010 flash crash came to a similar conclusion, with the  joint report by the U.S. Commodity Futures Trading Commission (CFTC) and Securities \& Exchange Commission (SEC), claiming that the crash was caused by a large sell order by a mutual fund\footnote{This process is explained in more detail in Section~\ref{applicabilut_to_finance}.}~\cite{SECreport_delays}. This initial finding is not fully accepted, even by the CFTC, who have since charged a trader with spoofing leading to the crash~\cite{spoofingtrader}.\\
-A number of other causes have been suggested, with a particularly interesting suggestion being emergent behaviour between high-frequency traders known as ``hot-potato'' trading. Though not suggested as the root cause ``hot-potato'' trading was mentioned by SEC and CFTC to have occurred during the time of the crash. The idea that emergent behaviour could lead to a crash is not novel, with emergence causing a number of phase transition within physical systems, and has been suggested to be able to move a market between a stable and unstable phase before~\cite{networkcastphorynature}.\\
-The high-frequency traders being discussed here are algorithmic traders who act as market makers, both buying and selling, trading on the nanosecond scale. These traders can under certain conditions end up passing inventory in a cyclic pattern between each other, this is ``hot-potato'' trading \footnote{Both high-frequency traders and ``hot-potato'' trading are discussed in more detail in Section~\ref{applicabilut_to_finance}.}.\\
-Regulators struggle to find effective methods to reduce the likelihood of crash due to emergent behaviour. There is a lack of research on what directives could combat emergence induced flash crashes, partly because of the lack of agreement on exactly how these crashes are caused and if emergence can create them. Though research in this field is minimal, it has been shown that flash crashes can occur due to ``hot-potato'' trading~\cite{otherabmflash, DynamicCoupling_Chris}\footnote{Study \cite{DynamicCoupling_Chris} will be discussed in greater detail in section~\ref{InterDyne_section}.}. These studies took a bottom up approach by modelling the system as an agent-based model, and created a flash crash from ``hot-potato'' trading which was initiated by information delays.\\
-Though these studies have managed to create a flash crash they use agent-based model methods, which have a number of draw backs leading to them not being commonly accepted by regulators\footnote{These draw backs will be discussed in more detail in Section~\ref{Iinterdynenotenough}.}, this makes them difficult to use in policy advisement.\\
-This paper seeks to create a solution to this issue by constructing an automated transformation between a set of recurrence relations and an equivalent agent-based model. This solution will take a step-by-step approach, using a series of small correctness preserving transformations which when combined will transform between these two modelling techniques. Recurrence relations are more widely accepted by regulators and hence a should increase the acceptance of the related agent-based model, allowing this technique to be used to advice policies\footnote{This rational will be discussed further in Section~\ref{despriptionandanalysproblem}.}.\\
-This method of transformation has a number of challenges associated with it: 
+The creation of the two-views model always a number of unique benefits by providing a new tool for analyse of complex systems: 
+ \begin{itemize}
+    \item Adds a new technique for viewing and modelling complex systems.
+    \item Adds a new tool that can be used for hypotheses formalisation and communication of ideas between researchers. 
+    \item Adds a model that is suitable for both static and dynamic analyses. 
+ \end{itemize}
+The timing of this paper fits with the increased interest in agent-based models within finance, for modelling the complex behaviour of the markets [REFS???????]. %REFS????
+This work is designed to be able to support other work done using agent-based models and help further the understanding of agent-based models during this time of interest.\\
+To achieve this transformation between a set of recurrence relations and a agent-based model, three steps need to be undertaken, designing the step-by-step transformation between the two models, creating an automated process to do these steps, and proving the correctness of each step. This papers scope is the first step, designing the step-by-step transformation, the second step is trivial after the first albeit with a large time commitment.\\
+Undertaking this first step poses a large number of conceptual challenges, including:
 \begin{itemize}
-  \item Recurrence relations and agent-based models are opposing models, with the former being top down and the latter being bottom up. Creating a conversion between entirely different models requires the fundamental mind set to be transformed.    
-  \item It is not clear if a conversion process can even be broken down into a number of small steps. A larger step maybe be needed to move between to two stages in the transformation. Though larger steps will on the whole be easier to create proving their equivalence is much more challenging then smaller steps. %give an example of something that has been transformed and needed a large step
+   \item The two paradigms of the models are completely different and opposing. 
+   \item How are function calls related to message passing?
+   \item How can the idea of agents having a infinite list through out time of their values be derived from the recurrence relations? 
+   \item How can the idea of private and public information introduced, and what data should fall into each category? 
+   \item How can public broadcast data be introduce, and what data classifies to be treated as such? 
+   \item How can time limited information be introduced?
+   \item How can name control be introduced in a tangible way into a recurrence relations that have no notion of agents. 
+   \item How can output messages containing message information be introduced? 
+   \item How can the recurrence relations be split in a way which does not splinter the model? 
+   \item How can small, and hence more susceptible to prove of correctness, steps be used to transform the model? 
 \end{itemize}
-%%what does main compare to in intterdyne what are the symantic problems with this 
-%should i keep the original rules at each step or can i use tuples/patternmatch etc, counter at some stage the code has to look interdyne code 
-%interlectual issue spreading lists across time 
-%what is broadcast! is all data public or private in RR?  
-%should i keep the original rules at each step or can i use tuples/patternmatch etc, counter at some stage the code has to look interdyne code 
-This paper is organised as follows. First an agent-based model used for modelling the financial market is described, followed by a analyses of this model and how recurrence relations can be used to combat its down sides. Section 4 details a bespoke recurrence relation language for describing a system, and Section 5 describes the step-by-step processes in which this language is transformed. Section 6 concludes the paper, detailing further work to be undertaken.    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%talk about flash crash (use some refrences from chris's unpublished paper) 
-%-what was this
-%-what was sec explanation for this (talk about sec saying it was a large sell order not hfts), this is how a large number of flash crashes have been shown to have been caused
-%-not fully accepted, some people think it was caused by hfts 
-
-%talk about hfts
-%-what are hfts
-%-how do they work
-
-%how hfts might have caused the flash crash
-%-change of phase, emergent behaviour  ~\cite{networkcastphorynature}
-%-hot potato and delays
-%-shown to have occurred during the flash crash
-
-%regurlators are trying to work out how to stop crashes and regulate hfts 
-%-how to regulate the markets and hfts and different algorthimgs, increase waiting times ect
-
-%though research in this field is minimal some has been done by ~\cite{otherabmflash, DynamicCoupling_Chris} (chris will be discussed in more detail section 2
-%-this is a bottom up approach to the problem (missing from the sec report)
-%-seeing if flash crash could be caused by hotpotato and info delays
-%-yes it can be caused by this 
-
-%Problem with regulartors using ABM (they dont understand them)
-
-%this paper seeks to create a solution be transforming in a step by step correctness preserving manner transforming Reccurrance relations (also known as differnce equations etc) into an agent-based model
-%-recurrance realtions are more mathematical and better understood
-
-
-%theoretical challenges with this
-
-%organisation of the paper
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%"when the crisis came, the serious limitations of existing economic and financial models become apparent" J. C. Trichet president of ECB 2010
-%this is probably refering to loans but can say that the same applies to trading
-
+To show a conversion between the two types of models a particular example of each must be chosen, for this paper a custom recurrence relation language was designed to be transformed into the agent-based model known as InterDyne. InterDyne was chosen in particular due to it being designed from the bottom up to model and investigate emergent behaviour within the financial markets, this software was also a convenient choice due to access to the source code and local expertise.\\    
+This papers layout is as follows. First a background is given detailing, emergent behaviour generally and in the financial markets, a description and review of the literature of both recurrence relations and agent-based models, and a in-depth description of InterDyne. Secondly a description and analysis of the problems with agent-based models and how a two-view approach addresses them. Thirdly a description of the design, formal syntax, and use, of the custom recurrence relation language. Fourthly the design and a example of the step-by-step transformation between the two models. Fifthly a validation that the transformed example does indeed represent a InterDyne simulation. Sixthly a test of a number of examples for correctness of functionality. Lastly the paper is concluded and summarised with notes for further work given.     
 %regulation is shifting from micro to macro-prudential perspective 
 %managing individual risk to managing systemic risk
 
@@ -422,103 +278,40 @@ This paper is organised as follows. First an agent-based model used for modellin
 %page 10 
 %googled "fallacy of division emergent behaviour"
 
-%introduce finicail markets
-%Market Micrustrue, very research field at the cutting edge
-%the need for interdyne, ergence in finciall markets is really investigated
-%why i am doing what i am doing (need to example complex scientific predictions to econimsits etc)
-%what i am doing (making a trasfeermation between DE and Agent based modeling)
-%say that i am follwoing on from the work chris has done
+%no formal description of the problem
 
-
-%prove that the simulations are right
-%Ability to provide confidence in the semantics of the system to economists and financial services industry practitioners
-%Example ? difference equations (recurrence relations) ? provide a time-view, provides a way for economists to validate the description of the system (yes, we agree ? we understand these equations) 
-
-%This research was inspired by the "Flash Crash" of 2010, this crash can be seen as a change in phase between a stable and unstable market; it has been shown that emergent behaviour in physical systems can lead to phase transitions and postulated that this could also be true within the financial markets~\cite{networkcastphorynature}. InterDyne hence exists to see if this flash crash and ones like it could be examples of this critical behaviour caused by emergence within the markets
-
-
-%Comparison between recurrance relations and agent based models has be discussed in a number of papers, Refs
-%modeling complex systems to observe unpretected and possibly harmful emergent behivour
-%
-
-
-
-%Introduction
-%?This chapter introduces the motivations for the research, briefly describes the design, implementation and test, presents the structure of the dissertation, and lists the contributions to science?
-%1.1 Motivation
-%1.2 Design
-%1.3 Implementation
-%1.4 Test
-%1.5 Structure of the dissertation
-%Chapter 2   Chapter 3   Chapter 4   Chapter 5  
-
-
-%This chapter presents an overview of the thesis. First, the motivation for this research is introduced along with the research topic. Furthermore, the objectives of this research are discussed. Subsequently, this chapter describes the research and the scientific contributions of this thesis. This chapter ends by describing the structure of the whole thesis and showing a list of publications relating to this thesis that have been done so far.
+%-DEVS model does give you overarching symatic (why is it not approate to model interarction dynamics) 
 
 
 
 
 
 
-%there is emenegce in the financial markets
-%why do we want to understand emegrence in the fincnaial markets
-%chalange with understnading emergence in the finical markets
-
-%sobjective of this paper, allow econimists to understand emergence
-%Interdyne already exists and can be uused to study emegrnce in fm
-%problem is econimists dont understadn abm
-%do understand recurrance relations
-%create a method for transforming RR into abm
-%unique to interdyne but the idea can be used to motiviate work in other abm that need explaining
-
-%set up all the challenges 
-
-%strutrue of this paper
-
-%relevnt papers/research some wher ein here to
-
-%\subsection{Challenges to This Work}
-%going from recurrance relations to interdyne they are entirely different models.
-%why are they different models 
-%(shorter version of analyses of problem)
-
-%not clear if it can be broken down into smaller steps and is possible, may need one big step. Have to prove big step is equvilent which is hard. smaller steps are much easier to prove equivalenet but harder to write. 
-%is it possible to decompose into a sequence of small steps. Give example of something that cant be decompossed into small steps (then explain why my solution is not the same as this in the conclusion?) 
-
-%theoretically why is this a hard problem 
 
 
 
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Background}
-\begin{itemize}
-  \item Say why this section is here (expands upon, emergence in finance, why we should instigate this, why has investigated this and how, interdyne, other peoples work on transformation) 
-  \item Talk about what this section will cover and organisation 
-\end{itemize}
+This section aims to introduce the emergent behaviour of interest in the financial markets, how recurrence relations and agent-based models can be used to model it. A short literature review showing the absence of work using agent-based models within finance, and a description of a select agent-based model that has been designed for the financial markets. 
 
-
-%for literate review
-%compare abm and non abm of finacial markets and say that ecomists publish different papers 
-%check if any one has done this before or anything similar 
-%translating from RR to anything else 
-%tralsing from anything to an agent based model 
-%any one written anything on porcess fo program transformation by small steps, (lots in the late 80s), le brain phd theise (2000), desgined a programing langauge, approach he took to turn it into a functional langauge using step by step transoting (clover) 
-%object flaw, paper 
-%the clover rewrite rules, paper (this is the one i want)
-%introducing clover and object oriented  functional langue, paper 
-
-
-
-
-
-%describe interdyne in a lt of detail so that the conversion later makes more sense, use diagrams
-%rewrite a lot of this section to feel better 
-This section will provide a background for this paper, detailing the emergent behaviour that is of interest and the methods used to investigate this behaviour.  
-
-
-
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Emergent Behaviour}
+%what is emegent bejvioru?
+%who cares, and why do they care? (regurlators and govements, lose a lot of money) (since the financial amrekts are super complex it is a fair assumtion that emegrence may take place in them, if this is the case, negartive emergent behviour could take plave in the markets. This could cause the markets to become quickly unstable or act in unexpexcted ways. This is something that regualrtors want to know about, they want to stop the markets being unstable or doing very unexpecte things, espcially if people can manpulate the markets into doing this. Therefore research into emegrnce is very useful)
+%what are some examples of emergent behviour in finance (a number of things have been noted as possible emeegnce in the markets, most notable flash crashes)
+%discrete emergnt behviour (of particalar interest for regulators is HFTs and they are damn fast, so time is discrete)
+
+
+
 \begin{itemize}
   \item What is emergence (feed back loops, interaction dynamics)
   \item emergence in finance (crashes etc)
@@ -538,12 +331,29 @@ With this simple set up very complex patterns evolving through time can be creat
 Emergent behaviour can be seen occurring naturally in many other cases, with physics offering a number of well explored examples. For instance the n-body problem~\cite{nbodyproblem}, this historically is explained as n planets interacting in such a way as to produce complex behaviour, despite each individual body following Newtonian laws. An interesting aspect of the n-body problem is that it can be reduced down to three bodies and still exhibit complex emergent behaviour. This example shows that a system need not be overly complex or large to display emergent behaviour, and that by showing the existence of emergence in a simplistic system one can infer its presence in more complex versions of that system.   
 
 
-\subsubsection{Interaction Dynamics}
+
+
+
+
+Financial markets exhibit many interesting and some times unexpected events, one type of these such events are flash crashes. A notable example of this event type, is the flash crash of 2010, in this crash the E-min S\&P 500 equity futures market dropped in price by more then 5\%, during which time market prices and rational valuations became disconnected, before rebound to close to its original price~\cite{SECreport_delays, rareeventflashcrash}. This whole process occurred very rapidly, lasting approximately thirty-six minutes and has been described as``one of the most turbulent periods in their history'' for the US financial markets~\cite{Impact_hft}.\\
+A number of flash crashes have been show to originate from large sell orders, such as in the recent crash in the cryptocurrency ethereum~\cite{cryptocrash}. The initial analysis of the 2010 flash crash came to a similar conclusion, with the  joint report by the U.S. Commodity Futures Trading Commission (CFTC) and Securities \& Exchange Commission (SEC), claiming that the crash was caused by a large sell order by a mutual fund\footnote{This process is explained in more detail in Section~\ref{applicabilut_to_finance}.}~\cite{SECreport_delays}. This initial finding is not fully accepted, even by the CFTC, who have since charged a trader with spoofing leading to the crash~\cite{spoofingtrader}.\\
+A number of other causes have been suggested, with a particularly interesting suggestion being emergent behaviour between high-frequency traders known as ``hot-potato'' trading. Though not suggested as the root cause ``hot-potato'' trading was mentioned by SEC and CFTC to have occurred during the time of the crash. The idea that emergent behaviour could lead to a crash is not novel, with emergence causing a number of phase transition within physical systems, and has been suggested to be able to move a market between a stable and unstable phase before~\cite{networkcastphorynature}.\\
+The high-frequency traders being discussed here are algorithmic traders who act as market makers, both buying and selling, trading on the nanosecond scale. These traders can under certain conditions end up passing inventory in a cyclic pattern between each other, this is ``hot-potato'' trading \footnote{Both high-frequency traders and ``hot-potato'' trading are discussed in more detail in Section~\ref{applicabilut_to_finance}.}.\\
+Regulators struggle to find effective methods to reduce the likelihood of crash due to emergent behaviour. There is a lack of research on what directives could combat emergence induced flash crashes, partly because of the lack of agreement on exactly how these crashes are caused and if emergence can create them. Though research in this field is minimal, it has been shown that flash crashes can occur due to ``hot-potato'' trading~\cite{otherabmflash, DynamicCoupling_Chris}\footnote{Study \cite{DynamicCoupling_Chris} will be discussed in greater detail in section~\ref{InterDyne_section}.}. These studies took a bottom up approach by modelling the system as an agent-based model, and created a flash crash from ``hot-potato'' trading which was initiated by information delays.\\
+Though these studies have managed to create a flash crash they use agent-based model methods, which have a number of draw backs leading to them not being commonly accepted by regulators\footnote{These draw backs will be discussed in more detail in Section~\ref{Iinterdynenotenough}.}, this makes them difficult to use in policy advisement.\\
+
+
+
+
+
+
+
+%\subsubsection{Interaction Dynamics}
 The emergent behaviour that is of interest to this paper is caused by interaction dynamics, this is the communication between different elements of a system. For instance in the above example of an n-body system, communication takes the form of gravitational interactions. Therefore the emergent behaviour of the system and the reason why each body does not have zero acceleration, is do to the gravitational interactions between the different bodies.  Gravity acts as a messenger in this system, telling each body about the mass and momentum of the others, and hence causing the other bodies to react, removing this messenger also removes the emergence and all the bodies would continue with constant velocities unless they physically collide~\cite{newtonconstantvelocity}.\\
 Though this example deals with a very physical system, emergence may be created due to any form of communication between entities. An example of this is emergent behaviour in social systems where individuals can communicate and observe each other, but do not physically effect one another, this can lead to the forming or break down of social cooperation~\cite{socialemrgence}.
 
 
-\subsubsection{Feedback Loops}
+%\subsubsection{Feedback Loops}
 Emergent behaviour from interaction dynamics can take a number of forms, with a prominent type being feedback loops.\\
 Feedback loops are where the input information to an entity is in some way dependent on the output information of that same entity, normally from a previous moment in time. In their simplest form this can just be a single entity supplying an input to its self, shown in Fig.~\ref{fig:exampleselffeedback}. For example if in Fig.~\ref{fig:exampleselffeedback}, $E1$ is a function that creates an output that is twice its input, given the initial input $1$ this would create the series of inputs: $1,2,4,8,....$.
 \begin{figure}[H]
@@ -566,9 +376,12 @@ Feedback loops can be present in a system in two ways, either they can be a cons
 Due to the potential complexity of feedback loops both in construction and in time, they can be difficult to detect, therefore methods are usually used to expose them. For static loops, forms of static analysis can be used such as, analysing initial setup, this is possible since the loops do not change through out time. Dynamic loops can be much harder to observe and analyses, an important aspect to detecting these loops is the interactions, messages sent between different entities within the system. Since the loops can evolve over time being able to track and analyse these messages over a time series is vitally important for the analysis of these loops, this time dependent analyse is called dynamic analyse.  
 
 
-\subsubsection{Emergence in Financial Markets}
+%\subsubsection{Emergence in Financial Markets}
 Though emergence is prevalent in many disciplines, this paper is focussed on emergence in financial markets. The financial markets can be thought of as a large complex interacting system, which is the ideal environment for emergent behaviour. Events such as the formation of patterns, bubbles and crashes can all be seen as emergent behaviour caused by a variety of feedback loops~\cite{bubblesandcrashes}. This is similar to the complex interaction between short range and long range feedback loops in chemical reactions leading to pattern formation~\cite{turningchemical}.
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Methods for Modelling Emergent Behaviour in Finance}
 \begin{itemize}
   \item In Discrete time!
@@ -654,6 +467,8 @@ There are a number of different techniques to model emergent behaviour in comple
 Agent-based models have been used to model a wide range of emergent behaviour including in the financial markets, examples of this are, noise traders~\cite{abmnoisetraders}, herding among traders~\cite{abmherding}, and fundamentalists~\cite{abmfundemetilists}.
 
 \subsubsection{Review of Literature on Financial Model} \label{litreviewofabmrr}
+%compare abm and non abm of finacial markets and say that ecomists publish different papers 
+
 
 \begin{itemize}
   \item Compare papers on RR and ABM and show that RR are used in finance papers more then ABM and hence the need for my project 
@@ -674,7 +489,7 @@ Agent-based models have been used to model a wide range of emergent behaviour in
 
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{InterDyne} \label{InterDyne_section}
 \begin{itemize}
   \item Introduce InterDyne as the ABM which will be used here 
@@ -682,6 +497,11 @@ Agent-based models have been used to model a wide range of emergent behaviour in
   \item Say that we are using it because it is designed to investigate finance etc
   \item
 \end{itemize}
+
+
+
+%describe interdyne in a lt of detail so that the conversion later makes more sense, use diagrams
+%rewrite a lot of this section to feel better 
 
 
 
@@ -789,11 +609,6 @@ As mentioned earlier InterDyne allows for both a topology of allowed interaction
 Once delays have been specified in this manner all messages, one-to-one and broadcast, are delayed by the stated amounts between the defined agents. Dynamic delays are not shown here, but are achieved with use of another agent acting as a go between \cite{Chris_webPage}. 
  
 
-\subsection{Work on Step-by-Step Transformation}
-\begin{itemize}
-  \item work by other people on step-by-step transformation and how it relates 
-\end{itemize}
-
 
 
 
@@ -857,7 +672,7 @@ Once delays have been specified in this manner all messages, one-to-one and broa
 
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section {Description and Analysis of the Problem} \label{despriptionandanalysproblem}
 \begin{itemize}
   \item Introduce the idea that agent based models and InterDyne have flaws
@@ -873,6 +688,8 @@ Though InterDyne is a functional simulation platform and has been used to run a 
 This section will discuss the main draw backs of InterDyne and a method for countering them.  
 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Why InterDyne is Not Enough} \label{Iinterdynenotenough}
 
 \begin{itemize}
@@ -896,6 +713,9 @@ The first limitation is shared by man modelling techniques and is a by product o
 The second limitation can be reduced by analysis of the sensitivity of the outcomes to parameter selections, this is shown in Ref.~\cite{econmistsnoabm}.\\
 The third limitation is of particular interest, though the other limitations can lead to questions of the validity of findings from agent-based models, the understanding of the actual model and experiment being undertaken is hindered by this limitation. A resolution to this problem was put forward by Ref.~\cite{econmistsnoabm}, in which a formal definition of the specification of the an agent-based model was given in terms of a set of recurrence relations. This solution not only provides a formal definition of an agent-based model but also does so in a way which is relatable to non-programmers, such as economists.     
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Two Views Approach} 
 
 \begin{itemize}
@@ -919,7 +739,37 @@ As can be seen from the previous discussions neither agent-based models, in the 
 Therefore a more ideal model, would be representable in both recurrence relations and as an agent-based model.  This model would be suited to both static analyses, while expressed as recurrence relations, and dynamic analyses, when in the form of an agent-based model. A model that can correctly transform between a set of recurrence relations and an agent-based model, would provide the agent-based model with a formal definition in the form of the recurrence relations. This method will be referred to as the two views approach, with recurrence relations, and agent-based modelling seen as two complementary views of the same system.\\
 To create a model tool which will allow for the two views approach, three aspects most be covered, an agent-based model,the recurrence relations, and a convertor for transforming between them. The agent-based model as already been created in the form of InterDyne and as already discussed fulfils all the needed requirements for the systems being modelled. The latter two aspects however have not been previously produced and will be the focus of this paper.      
 
+\subsubsection{Step-by-Step Transformations} \label{whyusestepbystep}
+%a small literay review on why to use a step by step transformtion to go between the two vies 
 
+%for literate review
+%check if any one has done this before or anything similar 
+%translating from RR to anything else 
+%tralsing from anything to an agent based model 
+%any one written anything on porcess fo program transformation by small steps, (lots in the late 80s), le brain phd theise (2000), desgined a programing langauge, approach he took to turn it into a functional langauge using step by step transoting (clover) 
+%object flaw, paper 
+%the clover rewrite rules, paper (this is the one i want)
+%introducing clover and object oriented  functional langue, paper 
+
+
+%for literate review
+%compare abm and non abm of finacial markets and say that ecomists publish different papers 
+%check if any one has done this before or anything similar 
+%translating from RR to anything else 
+%tralsing from anything to an agent based model 
+%any one written anything on porcess fo program transformation by small steps, (lots in the late 80s), le brain phd theise (2000), desgined a programing langauge, approach he took to turn it into a functional langauge using step by step transoting (clover) 
+%object flaw, paper 
+%the clover rewrite rules, paper (this is the one i want)
+%introducing clover and object oriented  functional langue, paper 
+
+%EXPLAIN?? explain why a step-by-step processes should be taken refrencing other work using step by step transformations
+%https://www.semanticscholar.org/paper/The-Clover-Rewrite-Rules-a-Translation-from-Oofp-t-Braine-Clack/4402741aa70e4cae37839f196b5741fd6b843428
+%https://pdfs.semanticscholar.org/5b13/9a35dbc63e516dd51f2cd6672d2d7b5c21b6.pdf?_ga=2.246578180.1291348853.1500637404-583838121.1500637404
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Bespoke Recurrence Relation Language}
 
 \begin{itemize}
@@ -953,6 +803,8 @@ The second and third consideration go hand in hand, requiring that the functiona
 \end{itemize}
 It was decided that this language would be created by using an already existing coding language and reducing its functionality down to what was required. This resulted in the recurrence relation language being a simplified version of the Miranda language, Miranda was chosen as it is a functional language whose structure is similar to that of a set of mathematical equations, hence making it easier to adapt for use by non-domain experts.   
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Syntax}
 %write this in a formal syntax as well BNF
 
@@ -970,6 +822,7 @@ It was decided that this language would be created by using an already existing 
 \end{figure} 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Rules of Use}
 %any function can access any other fucntion within the same agent at the current time (or passed times) but any function in a different agent can only acess at earliest one time step ago.
 
@@ -977,6 +830,10 @@ It was decided that this language would be created by using an already existing 
   \item Explain how to write something in this language and what the language can and cannot do in more detail 
 \end{itemize}
 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Example of Use}
 %incude that t is a key word and needs to go at the begining of timevarying reccruance relations eg t1_inv t a b c = ..
 %Syntax of the functionality, how do you write all the different elements 
@@ -1036,7 +893,7 @@ tuples exist but can not be used by the user
 
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Recurrence Relation to InterDyne Converter} 
 
 \begin{itemize}
@@ -1068,6 +925,8 @@ To assist in the explanation of the transformation a simple example will be used
 	\label{fig:rre1}
 \end{figure} 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Recurrence Relation Parser}
 %explain what the parser is and how it works, in preparing these files for transfermation
 
@@ -1087,6 +946,7 @@ Syntax analysis takes this list of tokens and stores it in a parse tree that enf
 \end{figure} 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Infinite List Outputs}
 %no time as a input
 %use ! to refrence the list items
@@ -1123,7 +983,7 @@ Therefore the experiment will now be written in the form shown in Fig.\ref{fig:R
 	\label{fig:RRiloc}
 \end{figure} 
        
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Wrapper Function}
 %group into agents
 %create a wrapper agent that out puts a infinite list (in time) containing a list of the value of each RR in the wrapper for that time step
@@ -1146,7 +1006,7 @@ Therefore the experiment will now be written in the form shown in Fig.\ref{fig:R
 	\label{fig:RRwfc}
 \end{figure} 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Outputs}
 
 \begin{figure}[H]
@@ -1156,6 +1016,8 @@ Therefore the experiment will now be written in the form shown in Fig.\ref{fig:R
 	\label{fig:RRopts}
 \end{figure} 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Messages}
 
 \begin{figure}[H]
@@ -1165,9 +1027,12 @@ Therefore the experiment will now be written in the form shown in Fig.\ref{fig:R
 	\label{fig:RRmes5}
 \end{figure} 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Queues}
 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Harness}
 %create the harness, that takes all the lists from the different wrappers and compiles them into one list which is passed to each wrapper as an input
 %this is a finite list, with each element being a difffernt wrapper
@@ -1193,6 +1058,9 @@ Therefore the experiment will now be written in the form shown in Fig.\ref{fig:R
 	\label{fig:RRhc}
 \end{figure} 
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Input Messages}
 %where an agent gets a list of messages to read 
 
@@ -1203,6 +1071,8 @@ Therefore the experiment will now be written in the form shown in Fig.\ref{fig:R
 	\label{fig:RRim}
 \end{figure} 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Direct Messages}
 %to from messsages
 %use of keys and values 
@@ -1214,6 +1084,8 @@ Therefore the experiment will now be written in the form shown in Fig.\ref{fig:R
 	\label{fig:RRdm}
 \end{figure} 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Output Message}
 
 %add a message telling the harness to output the write value 
@@ -1225,8 +1097,12 @@ Therefore the experiment will now be written in the form shown in Fig.\ref{fig:R
 	\label{fig:RRom}
 \end{figure} 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Broadcast Messages}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Validation}
 
 \begin{itemize}
@@ -1235,24 +1111,35 @@ Therefore the experiment will now be written in the form shown in Fig.\ref{fig:R
   \item also by checking coding syntax 
 \end{itemize}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Type Comparison to InterDyne}
 %make sure agents are of type Agent_t
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Conversion to Haskell}
 %output the wrappers and logic as haskell code that can then be run in Interdyne 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Testing}
 
 \begin{itemize}
   \item checking that this conversion still produces the same results as the RR 
 \end{itemize}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Example 1}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Example 2}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Example 3}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
 
 %Questions
