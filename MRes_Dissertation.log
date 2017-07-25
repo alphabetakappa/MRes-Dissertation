@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  24 JUL 2017 21:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  25 JUL 2017 21:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -569,18 +569,18 @@ Package color Info: Driver file: pdftex.def on input line 144.
 (./MRes_Dissertation.aux)
 \openout1 = `MRes_Dissertation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 172.
-LaTeX Font Info:    ... okay on input line 172.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 172.
-LaTeX Font Info:    ... okay on input line 172.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 172.
-LaTeX Font Info:    ... okay on input line 172.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 172.
-LaTeX Font Info:    ... okay on input line 172.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 172.
-LaTeX Font Info:    ... okay on input line 172.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 172.
-LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
 
 (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -644,15 +644,15 @@ Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Info: Redefining \celsius on input line 172.
-Package gensymb Info: Faking symbols for \degree and \celsius on input line 172
+LaTeX Info: Redefining \celsius on input line 121.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 121
 .
 
 
 Package gensymb Warning: Not defining \perthousand.
 
-LaTeX Info: Redefining \ohm on input line 172.
-Package gensymb Info: Using \Omega for \ohm on input line 172.
+LaTeX Info: Redefining \ohm on input line 121.
+Package gensymb Info: Using \Omega for \ohm on input line 121.
 
 Package gensymb Warning: Not defining \micro.
 
@@ -734,39 +734,38 @@ Package gensymb Warning: Not defining \micro.
  [2
 
 ] [3]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 223.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 173.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 223.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 173.
  [4
 
 ] [5] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 360--366
+<selffeedback.png, id=29, 197.73875pt x 173.64874pt>
+File: selffeedback.png Graphic file (type png)
+ <use selffeedback.png>
+Package pdftex.def Info: selffeedback.png used on input line 279.
+(pdftex.def)             Requested size: 98.86913pt x 86.82416pt.
+
+<twofeedback.png, id=31, 240.9pt x 259.97125pt>
+File: twofeedback.png Graphic file (type png)
+ <use twofeedback.png>
+Package pdftex.def Info: twofeedback.png used on input line 286.
+(pdftex.def)             Requested size: 120.44969pt x 129.9853pt.
+ [7 <./selffeedback.png>] [8 <./twofeedback.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 317--323
 
  []
 
-[7] <selffeedback.png, id=36, 197.73875pt x 173.64874pt>
-File: selffeedback.png Graphic file (type png)
-
-<use selffeedback.png>
-Package pdftex.def Info: selffeedback.png used on input line 383.
-(pdftex.def)             Requested size: 98.86913pt x 86.82416pt.
- <twofeedback.png, id=38, 240.9pt x 259.97125pt>
-File: twofeedback.png Graphic file (type png)
-
-<use twofeedback.png>
-Package pdftex.def Info: twofeedback.png used on input line 390.
-(pdftex.def)             Requested size: 120.44969pt x 129.9853pt.
- [8 <./selffeedback.png>] [9 <./twofeedback.png>] [10]
-[11] [12] [13] [14] [15] <harness_setup.png, id=72, 505.89pt x 445.665pt>
+[9] [10] [11] [12] [13] [14] [15]
+<harness_setup.png, id=72, 505.89pt x 445.665pt>
 File: harness_setup.png Graphic file (type png)
-
-<use harness_setup.png>
-Package pdftex.def Info: harness_setup.png used on input line 596.
+ <use harness_setup.png>
+Package pdftex.def Info: harness_setup.png used on input line 537.
 (pdftex.def)             Requested size: 252.94437pt x 222.83195pt.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -801,7 +800,7 @@ Overfull \vbox (70.76486pt too high) has occurred while \output is active []
 
 [22] (./exp_list_variations.m) (./expl_varibles.m) (./expl_simplerecurrance.m)
 (./expl_whereblocks.m [23]) (./expl_ifelse.m) (./exp_layout_gen.m)
-Underfull \hbox (badness 10000) in paragraph at lines 857--858
+Underfull \hbox (badness 10000) in paragraph at lines 823--824
 
  []
 
@@ -809,26 +808,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 857--858
 (./RRiloc2.m) [26] (./RRwfc3.m) [27] (./RRopts4.m) [28] (./RRmes5.m) [29]
 (./RRhc7.m) [30] (./RRim8.m) [31] (./RRdm9.m) [32] (./RRom10.m) [33] [34]
 (./MRes_Dissertation.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 4--9
+Underfull \hbox (badness 10000) in paragraph at lines 35--40
 []\OT1/cmr/m/n/10 U.S. Com-mod-ity Fu-tures Trad-ing Com-mis-sion, U.S. Se-cu-r
 i-ties, and Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 4--9
+Underfull \hbox (badness 10000) in paragraph at lines 35--40
 \OT1/cmr/m/n/10 change Com-mis-sion.  Find-ings re-gard-ing the mar-ket events 
 of may 6, 2010.
  []
 
 [35]
-Underfull \hbox (badness 10000) in paragraph at lines 118--121
-[]\OT1/cmr/m/n/10 Christopher D. Clack.  The in-ter-dyne sim-u-la-tor (2011-).
+Overfull \hbox (24.52104pt too wide) in paragraph at lines 101--104
+[]\OT1/cmr/m/n/10 Duane Q. Nykamp.  Re-cur-rence re-la-tion def-i-ni-tion.  htt
+p://mathinsight.org/definition/recurrence[]relation,
  []
 
 
-Overfull \hbox (24.52104pt too wide) in paragraph at lines 156--159
-[]\OT1/cmr/m/n/10 Duane Q. Nykamp.  Re-cur-rence re-la-tion def-i-ni-tion.  htt
-p://mathinsight.org/definition/recurrence[]relation,
+Underfull \hbox (badness 10000) in paragraph at lines 139--142
+[]\OT1/cmr/m/n/10 Christopher D. Clack.  The in-ter-dyne sim-u-la-tor (2011-).
  []
 
 [36])
@@ -840,7 +839,7 @@ See the caption package documentation for explanation.
 Here is how much of TeX's memory you used:
  7389 strings out of 493014
  105636 string characters out of 6133350
- 883683 words of memory out of 5000000
+ 882683 words of memory out of 5000000
  10736 multiletter control sequences out of 15000+600000
  10321 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -863,7 +862,7 @@ pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pf
 b></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><
 /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on MRes_Dissertation.pdf (37 pages, 432463 bytes).
+Output written on MRes_Dissertation.pdf (37 pages, 432961 bytes).
 PDF statistics:
  205 PDF objects out of 1000 (max. 8388607)
  140 compressed objects within 2 object streams

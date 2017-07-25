@@ -1,5 +1,36 @@
 \begin{thebibliography}{10}
 
+\bibitem{EB_systemofsystemsGLangford}
+John~S. Osmundson, Thomas~V. Huynh, and Gary~O. Langford.
+\newblock Emergent behavior in systems of systems.
+\newblock In {\em Conference on Systems Engineering Research (CSER)}, 2008.
+
+\bibitem{fallacyofcompostionBook}
+Norman Ehrentreich.
+\newblock {\em Agent-Based Modeling: The Santa Fe Institute Artificial Stock
+  Market Model}.
+\newblock Springer, 2008.
+
+\bibitem{gameoflifepage}
+Eugene M.~Izhikevich et~al.
+\newblock Game of life.
+\newblock {\em Scholarpedia}, 10(6):1816, 2015.
+
+\bibitem{nbodyproblem}
+Douglas~C. Heggie.
+\newblock The classical gravitational n-body problem.
+\newblock astro-ph/0503600, 2005.
+
+\bibitem{newtonconstantvelocity}
+Isaac Newton, I.~Bernard Cohen, and Anne Whitman.
+\newblock {\em The Principia: Mathematical Principles of Natural Philosophy}.
+\newblock Univ of California Press, 1999.
+
+\bibitem{socialemrgence}
+Dirk Helbing.
+\newblock {\em Social Self-Organization}.
+\newblock Springer, 2012.
+
 \bibitem{SECreport_delays}
 U.S. Commodity Futures~Trading Commission, U.S. Securities, and Exchange
   Commission.
@@ -50,37 +81,6 @@ Christopher~D. Clack and Dmitrijs~Zaparanuks Elias~Court.
 \newblock Dynamic coupling and market instability.
 \newblock Working Paper, 2014.
 
-\bibitem{EB_systemofsystemsGLangford}
-John~S. Osmundson, Thomas~V. Huynh, and Gary~O. Langford.
-\newblock Emergent behavior in systems of systems.
-\newblock In {\em Conference on Systems Engineering Research (CSER)}, 2008.
-
-\bibitem{fallacyofcompostionBook}
-Norman Ehrentreich.
-\newblock {\em Agent-Based Modeling: The Santa Fe Institute Artificial Stock
-  Market Model}.
-\newblock Springer, 2008.
-
-\bibitem{gameoflifepage}
-Eugene M.~Izhikevich et~al.
-\newblock Game of life.
-\newblock {\em Scholarpedia}, 10(6):1816, 2015.
-
-\bibitem{nbodyproblem}
-Douglas~C. Heggie.
-\newblock The classical gravitational n-body problem.
-\newblock astro-ph/0503600, 2005.
-
-\bibitem{newtonconstantvelocity}
-Isaac Newton, I.~Bernard Cohen, and Anne Whitman.
-\newblock {\em The Principia: Mathematical Principles of Natural Philosophy}.
-\newblock Univ of California Press, 1999.
-
-\bibitem{socialemrgence}
-Dirk Helbing.
-\newblock {\em Social Self-Organization}.
-\newblock Springer, 2012.
-
 \bibitem{bubblesandcrashes}
 Jochen Fromm.
 \newblock Types and forms of emergence.
@@ -91,6 +91,27 @@ Alan Turing.
 \newblock The chemical basis of morphogenesis.
 \newblock {\em Philosophical Transactions of the Royal Society of London},
   237(641):37--72, 1952.
+
+\bibitem{recurrelationbook}
+Jet Wimp.
+\newblock {\em Computation with Recurrence Relations}.
+\newblock Pitman Advanced Publishing Program, 1984.
+
+\bibitem{recurrealtionwebpage}
+Duane~Q. Nykamp.
+\newblock Recurrence relation definition.
+\newblock http://mathinsight.org/definition/recurrence\_relation, 6 2017.
+
+\bibitem{econmistsnoabm}
+R.~Leombruni and M.~Richiardi.
+\newblock Why are economists sceptical about agent-based simulations?
+\newblock {\em Physica A: Statistical Mechanics and its Applications},
+  355(1):103--109, 2005.
+
+\bibitem{willevaluteargsa}
+Chris Clack and Simon~L. Peyton~Jones.
+\newblock {\em Strictness analysis --- a practical approach}, pages 35--49.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 1985.
 
 \bibitem{abmhumsystems}
 Eric Bonabeau.
@@ -136,30 +157,9 @@ Elias Court.
 \newblock The instability of market-making algoritms.
 \newblock MEng Dissertation, 2013.
 
-\bibitem{econmistsnoabm}
-R.~Leombruni and M.~Richiardi.
-\newblock Why are economists sceptical about agent-based simulations?
-\newblock {\em Physica A: Statistical Mechanics and its Applications},
-  355(1):103--109, 2005.
-
 \bibitem{lob_noecomimists}
 M.~Gould, M.~Porter, and S.~Williams.
 \newblock Limit order books.
 \newblock {\em Quantitative Finance}, 13(11):1709--1742, 2013.
-
-\bibitem{recurrelationbook}
-Jet Wimp.
-\newblock {\em Computation with Recurrence Relations}.
-\newblock Pitman Advanced Publishing Program, 1984.
-
-\bibitem{recurrealtionwebpage}
-Duane~Q. Nykamp.
-\newblock Recurrence relation definition.
-\newblock http://mathinsight.org/definition/recurrence\_relation, 6 2017.
-
-\bibitem{willevaluteargsa}
-Chris Clack and Simon~L. Peyton~Jones.
-\newblock {\em Strictness analysis --- a practical approach}, pages 35--49.
-\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 1985.
 
 \end{thebibliography}

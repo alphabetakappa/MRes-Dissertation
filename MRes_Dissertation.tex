@@ -90,64 +90,13 @@
 %	\includegraphics[scale=0.2]{rhul_logo}
 %\end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%questions for chris
-%is there a paper for the creation of InterDyne that can be referenced, or is the webpage all there is? ref webpage
-
-%why do we need simple models of the finical markets, used to build the tools and methods that can then be used to analyse complex models/real fincial markets
-
-%when to use et al , should i say clack and students [refrences]
-
-%feedback loops that always return the same value, no dependces therefore not part of a loop 
-
-%use the line "the work this paper is built on", interdyne project, creators or interdyne 
-
-
-%how do I refer to code? figure? yes figure, refer to chapter
-
-%is static analyses difficult on ABM? 
-
-%why does the language need to be as simple as possible? make it easier to formally define and learn?
-
-%what referencing style should I use?
-
-%say that difference equations are top-down vs ABM that are bottom up
-
-
-%nested where statements, are these ok? (when making infitie lists I put the functions in where statements, however they could already have a where statement)
-
-%should I make everything an infite list regardless if it has a time component?
-
-%all agent_ have time as fist component 
-
-%can  I use pattern matchng in my transformed program?
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Things i need to do
 
-%make sure I say that the time steps are of fixed width
 
-%Compare difference equations and ABM in intro using the "TO AGENT-BASED SIMULATION FROM SYSTEM DYNAMICS" paper
 
-%rewrite the syntax/grammer section with more examples and code and detail
 
-%write the syntax section using the code to define it
-
-%rewrite the example of use section 
-
-%choose what example I am going to use to transform
-
-%make sure code is colour coded correctly
-
-%reader needs to think its interesting tough and say well done 
-
-%make code figures 
-
-%make new figure code refered to correctly in text 
-
-%rewrite background to go with the introduction 
 
 
 
@@ -170,7 +119,7 @@
 
 
 \begin{document} 
-\title{Design of a Transformation between a Set of Recurrence Relations and a Agent-Based Model}
+\title{Correctness-Preserving Translation from First Order Recurrence Relation to an Agent-Based Representation} 
 \author{Leo Carlos-Sandberg\\
 Supervisor: Dr Christopher D. Clack} 
 \maketitle 
@@ -178,8 +127,9 @@ Supervisor: Dr Christopher D. Clack}
 \begin{abstract}
 \noindent {\it 
 This paper investigates a method of describing interacting systems from two opposing view points, recurrence relations and agent-based models. These two methods take fundamentally different approaches with recurrence relations being top-down, and agent-based models being bottom-up.\\
-Connecting these two methods allows for a more complete investigation of emergent behaviour occurring within interacting systems. Agent-based models offer an attractive way of analysing emergent behaviour, with the ability to investigate individual interactions throughout a simulation. Agent-based models however tend to be less well understood and accepted by non-computer science experts, this is in contrast to recurrence relation which are normally well understood. Creating a correctness preserving link between recurrence relations and agent-based models allows for simulations to be understood in their recurrence relation representation and hence have their agent-based model representation accepted. This is important in fields such as finance as it opens up new tools for economists and regulators to use in understanding emergence in complex markets.\\
-This research comprises of the creation of a recurrence relation language, allowing for simulations to be defined, and the design of a step-by-step process by which a set of recurrence relations defined in this language can be converted into an agent-based model known as InterDyne.        
+Connecting these two methods allows for a more complete investigation of emergent behaviour occurring within interacting systems. Agent-based models offer an attractive way of analysing emergent behaviour, with the ability to investigate individual interactions as message passing throughout a simulation. Agent-based models however tend to be less well understood and accepted by those outside computer science, this is in contrast to recurrence relation which are normally well understood. Creating a correctness preserving link between recurrence relations and agent-based models allows for simulations to be understood in their recurrence relation representation and hence have their agent-based model representation accepted. This is important in fields such as finance as it opens up new tools for economists and regulators to use in understanding emergence in complex markets.\\
+This research comprises the definition of a simple recurrence relation language, to define simulations, and the design of a step-by-step process by which a set of recurrence relations defined in this language can be converted into an agent-based model representation, the InterDyne simulator is chosen as a target representation for this transformation. 
+
 }
 \end{abstract}
 
@@ -282,8 +232,11 @@ This papers layout is as follows. First a background is given detailing, emergen
 
 %-DEVS model does give you overarching symatic (why is it not approate to model interarction dynamics) 
 
+%lots of abm and used a lot just not by ecconmiists 
 
+%dont mention proof or conversion, or say the conversions is not part of this project but has been parital done any way 
 
+%Compare difference equations and ABM in intro using the "TO AGENT-BASED SIMULATION FROM SYSTEM DYNAMICS" paper
 
 
 
@@ -301,24 +254,11 @@ This papers layout is as follows. First a background is given detailing, emergen
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Background}
-This section aims to introduce the emergent behaviour of interest in the financial markets, how recurrence relations and agent-based models can be used to model it. A short literature review showing the absence of work using agent-based models within finance, and a description of a select agent-based model that has been designed for the financial markets. 
+This section aims to introduce the emergent behaviour of interest in the financial markets, how recurrence relations and agent-based models can be used to model it. A short literature review showing the absence of work using agent-based models within finance by economist, and a description of a selected agent-based model that has been designed for the financial markets. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Emergent Behaviour}
-%what is emegent bejvioru?
-%who cares, and why do they care? (regurlators and govements, lose a lot of money) (since the financial amrekts are super complex it is a fair assumtion that emegrence may take place in them, if this is the case, negartive emergent behviour could take plave in the markets. This could cause the markets to become quickly unstable or act in unexpexcted ways. This is something that regualrtors want to know about, they want to stop the markets being unstable or doing very unexpecte things, espcially if people can manpulate the markets into doing this. Therefore research into emegrnce is very useful)
-%what are some examples of emergent behviour in finance (a number of things have been noted as possible emeegnce in the markets, most notable flash crashes)
-%discrete emergnt behviour (of particalar interest for regulators is HFTs and they are damn fast, so time is discrete)
-
-
-
-\begin{itemize}
-  \item What is emergence (feed back loops, interaction dynamics)
-  \item emergence in finance (crashes etc)
-  \item why is this important (prevent/ predict crashes etc)
-\end{itemize}
-
-Emergent behaviour is a term used to describe macro-behaviour of a system that is not obvious from analysis of the micro-behaviour of the system, more formally this is behaviour that can not be predicted through analysis of any single component of a system \cite{EB_systemofsystemsGLangford}.\\
+Emergent behaviour is a term used to describe macro-level behaviour of a system that is not obvious from analysis of the micro-level behaviour of the system, more formally this is behaviour that can not be predicted through analysis of any single component of a system \cite{EB_systemofsystemsGLangford}.\\
 A misunderstanding of emergence can lead to the fallacy of division, this is that a property of the system as a whole most also be a property of an individual component of the system; water for example has a number of properties including being able to be cooled down to become ice and heated to become steam, saying the same must also be true of a molecule of water however is incorrect. This concept continues into economics, being called the fallacy of composition, where what is true for the whole economy my not hold for an individual and vice versa~\cite{fallacyofcompostionBook}.\\       
 A simple way to demonstrate emergence is in the Game of Life~\cite{gameoflifepage}, which is an example of cellular automaton; this game takes place on an infinite two-dimensional grid in which cells can either be `alive', coloured for example green, or `dead', a different colour usually black. Wether a cell is `alive' or `dead' is based on a set of simple rules:   
 \begin{enumerate}
@@ -328,34 +268,12 @@ A simple way to demonstrate emergence is in the Game of Life~\cite{gameoflifepag
   \item `Dead' cells with exactly three 'alive' neighbours will transition to `alive' at the next time step.
 \end{enumerate}
 With this simple set up very complex patterns evolving through time can be created, these patterns can be seen as emergence, with an individual cell not being able to encapsulate this behaviour. Natural phenomena similar to this is the formation of symmetries and patterns within snowflakes.\\
-Emergent behaviour can be seen occurring naturally in many other cases, with physics offering a number of well explored examples. For instance the n-body problem~\cite{nbodyproblem}, this historically is explained as n planets interacting in such a way as to produce complex behaviour, despite each individual body following Newtonian laws. An interesting aspect of the n-body problem is that it can be reduced down to three bodies and still exhibit complex emergent behaviour. This example shows that a system need not be overly complex or large to display emergent behaviour, and that by showing the existence of emergence in a simplistic system one can infer its presence in more complex versions of that system.   
-
-
-
-
-
-
-Financial markets exhibit many interesting and some times unexpected events, one type of these such events are flash crashes. A notable example of this event type, is the flash crash of 2010, in this crash the E-min S\&P 500 equity futures market dropped in price by more then 5\%, during which time market prices and rational valuations became disconnected, before rebound to close to its original price~\cite{SECreport_delays, rareeventflashcrash}. This whole process occurred very rapidly, lasting approximately thirty-six minutes and has been described as``one of the most turbulent periods in their history'' for the US financial markets~\cite{Impact_hft}.\\
-A number of flash crashes have been show to originate from large sell orders, such as in the recent crash in the cryptocurrency ethereum~\cite{cryptocrash}. The initial analysis of the 2010 flash crash came to a similar conclusion, with the  joint report by the U.S. Commodity Futures Trading Commission (CFTC) and Securities \& Exchange Commission (SEC), claiming that the crash was caused by a large sell order by a mutual fund\footnote{This process is explained in more detail in Section~\ref{applicabilut_to_finance}.}~\cite{SECreport_delays}. This initial finding is not fully accepted, even by the CFTC, who have since charged a trader with spoofing leading to the crash~\cite{spoofingtrader}.\\
-A number of other causes have been suggested, with a particularly interesting suggestion being emergent behaviour between high-frequency traders known as ``hot-potato'' trading. Though not suggested as the root cause ``hot-potato'' trading was mentioned by SEC and CFTC to have occurred during the time of the crash. The idea that emergent behaviour could lead to a crash is not novel, with emergence causing a number of phase transition within physical systems, and has been suggested to be able to move a market between a stable and unstable phase before~\cite{networkcastphorynature}.\\
-The high-frequency traders being discussed here are algorithmic traders who act as market makers, both buying and selling, trading on the nanosecond scale. These traders can under certain conditions end up passing inventory in a cyclic pattern between each other, this is ``hot-potato'' trading \footnote{Both high-frequency traders and ``hot-potato'' trading are discussed in more detail in Section~\ref{applicabilut_to_finance}.}.\\
-Regulators struggle to find effective methods to reduce the likelihood of crash due to emergent behaviour. There is a lack of research on what directives could combat emergence induced flash crashes, partly because of the lack of agreement on exactly how these crashes are caused and if emergence can create them. Though research in this field is minimal, it has been shown that flash crashes can occur due to ``hot-potato'' trading~\cite{otherabmflash, DynamicCoupling_Chris}\footnote{Study \cite{DynamicCoupling_Chris} will be discussed in greater detail in section~\ref{InterDyne_section}.}. These studies took a bottom up approach by modelling the system as an agent-based model, and created a flash crash from ``hot-potato'' trading which was initiated by information delays.\\
-Though these studies have managed to create a flash crash they use agent-based model methods, which have a number of draw backs leading to them not being commonly accepted by regulators\footnote{These draw backs will be discussed in more detail in Section~\ref{Iinterdynenotenough}.}, this makes them difficult to use in policy advisement.\\
-
-
-
-
-
-
-
-%\subsubsection{Interaction Dynamics}
-The emergent behaviour that is of interest to this paper is caused by interaction dynamics, this is the communication between different elements of a system. For instance in the above example of an n-body system, communication takes the form of gravitational interactions. Therefore the emergent behaviour of the system and the reason why each body does not have zero acceleration, is do to the gravitational interactions between the different bodies.  Gravity acts as a messenger in this system, telling each body about the mass and momentum of the others, and hence causing the other bodies to react, removing this messenger also removes the emergence and all the bodies would continue with constant velocities unless they physically collide~\cite{newtonconstantvelocity}.\\
-Though this example deals with a very physical system, emergence may be created due to any form of communication between entities. An example of this is emergent behaviour in social systems where individuals can communicate and observe each other, but do not physically effect one another, this can lead to the forming or break down of social cooperation~\cite{socialemrgence}.
-
-
-%\subsubsection{Feedback Loops}
-Emergent behaviour from interaction dynamics can take a number of forms, with a prominent type being feedback loops.\\
-Feedback loops are where the input information to an entity is in some way dependent on the output information of that same entity, normally from a previous moment in time. In their simplest form this can just be a single entity supplying an input to its self, shown in Fig.~\ref{fig:exampleselffeedback}. For example if in Fig.~\ref{fig:exampleselffeedback}, $E1$ is a function that creates an output that is twice its input, given the initial input $1$ this would create the series of inputs: $1,2,4,8,....$.
+Emergent behaviour can be seen occurring naturally in many other cases, with physics offering a number of well explored examples. For instance the n-body problem~\cite{nbodyproblem}, this historically is explained as n planets interacting in such a way as to produce complex behaviour, despite each individual body following Newtonian laws. An interesting aspect of the n-body problem is that it can be reduced down to three bodies and still exhibit complex emergent behaviour. This example shows that a system need not be overly complex or large to display emergent behaviour, and that by showing the existence of emergence in a simplistic system one can infer its presence in more complex versions of that system.\\
+The emergent behaviour within the n-body problem is caused by interaction dynamics, this is the communication between different elements of a system. The interactions here takes the form of gravitational pulls, if these pulls were not present then the system as a whole, and every individual present would maintain a constant velocity, unless they physically collided~\cite{newtonconstantvelocity}.\\
+Though this example deals with a very physical system, emergence may be created due to many different form of communication between entities. Such as verbal and visual communication in social systems, which can lead to  emergent behaviour including the break down in social cooperation~\cite{socialemrgence}.\\
+Looking at the financial markets one can see how they represent a interaction based system, with a large number of independent or semi-independent entities interacting with each other through different methods, such as market trades.\\
+One prominent type of emergence that can occur in an interaction dynamic based system, are feedback loops. Feedback loops are where the input information to an entity is in some way dependent on the output information of that same entity, normally from a previous moment in time. In their simplest form this can just be a single entity supplying an input to its self, shown in Fig.~\ref{fig:exampleselffeedback}.\\
+In finance this could be seen as a simple trader who decides how much to sell based solely on their inventory at the previous time step. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{selffeedback}
@@ -373,7 +291,43 @@ A loop such as the one in Fig.~\ref{fig:exampletwofeedback}, is only considered 
 These example are very simple, feedback loops can be much more complex, encompassing any number of entities, each of whom can have very complex algorithms for transforming their inputs. Feedback loops can operate across time, meaning that an event in the past can eventually feedback to a present decision. For a feedback loop containing a large number of entities the time scale on which the feedback occurs can be come significantly large.\\
 Though feedback loops are often assumed to be a negative property, some can be stabilising due to a benign effect.\\
 Feedback loops can be present in a system in two ways, either they can be a constant fixture, called a static feedback loop, or they can form and change, called a dynamic feedback loop. A static feedback loop is present in the system from the start whether this is intentional and known, or unintentional and unknown to the members of the system. Dynamic feedback loops may not be present at the start and can form and change over time, with new entities joining or leaving them, allowing them to increase or decrease in size or effect, to split or merge, or to disappear.\\
-Due to the potential complexity of feedback loops both in construction and in time, they can be difficult to detect, therefore methods are usually used to expose them. For static loops, forms of static analysis can be used such as, analysing initial setup, this is possible since the loops do not change through out time. Dynamic loops can be much harder to observe and analyses, an important aspect to detecting these loops is the interactions, messages sent between different entities within the system. Since the loops can evolve over time being able to track and analyse these messages over a time series is vitally important for the analysis of these loops, this time dependent analyse is called dynamic analyse.  
+Due to the potential complexity of feedback loops both in construction and in time, they can be difficult to detect, therefore methods are usually used to expose them. For static loops, forms of static analysis can be used such as, analysing initial setup, this is possible since the loops do not change through out time. Dynamic loops can be much harder to observe and analyses, an important aspect to detecting these loops is the interactions, messages sent between different entities within the system. Since the loops can evolve over time being able to track and analyse these messages over a time series is vitally important for the analysis of these loops, this time dependent analyse is called dynamic analyse.\\
+Since feedback loops can be destabilising and hence damage the system in which they occur, there is a large amount of interest from researchers interested in regulation on the understanding of these loops with in the financial markets.  
+
+
+
+
+
+
+   
+
+
+
+
+\begin{itemize}
+   \item what is emergent behaviour? 
+   \item it is a fair assumption that emergent behaviour also occurs in the financial markets
+   \item how this can occur, well feedback loops
+   \item feedback loops can be damaging this leads to the interest of researcher in regulation, looking for ways to stop feedback loops that cause large monetary lose, and in extreme cases damage the economy.
+   \item an example of Behaviour of this kind are flash crashes.
+   \item a well known flash crash is the one 2010, give an explanation of this crash
+\end{itemize}
+
+
+
+Financial markets exhibit many interesting and some times unexpected events, one type of these such events are flash crashes. A notable example of this event type, is the flash crash of 2010, in this crash the E-min S\&P 500 equity futures market dropped in price by more then 5\%, during which time market prices and rational valuations became disconnected, before rebound to close to its original price~\cite{SECreport_delays, rareeventflashcrash}. This whole process occurred very rapidly, lasting approximately thirty-six minutes and has been described as``one of the most turbulent periods in their history'' for the US financial markets~\cite{Impact_hft}.\\
+A number of flash crashes have been show to originate from large sell orders, such as in the recent crash in the cryptocurrency ethereum~\cite{cryptocrash}. The initial analysis of the 2010 flash crash came to a similar conclusion, with the  joint report by the U.S. Commodity Futures Trading Commission (CFTC) and Securities \& Exchange Commission (SEC), claiming that the crash was caused by a large sell order by a mutual fund\footnote{This process is explained in more detail in Section~\ref{applicabilut_to_finance}.}~\cite{SECreport_delays}. This initial finding is not fully accepted, even by the CFTC, who have since charged a trader with spoofing leading to the crash~\cite{spoofingtrader}.\\
+A number of other causes have been suggested, with a particularly interesting suggestion being emergent behaviour between high-frequency traders known as ``hot-potato'' trading. Though not suggested as the root cause ``hot-potato'' trading was mentioned by SEC and CFTC to have occurred during the time of the crash. The idea that emergent behaviour could lead to a crash is not novel, with emergence causing a number of phase transition within physical systems, and has been suggested to be able to move a market between a stable and unstable phase before~\cite{networkcastphorynature}.\\
+The high-frequency traders being discussed here are algorithmic traders who act as market makers, both buying and selling, trading on the nanosecond scale. These traders can under certain conditions end up passing inventory in a cyclic pattern between each other, this is ``hot-potato'' trading \footnote{Both high-frequency traders and ``hot-potato'' trading are discussed in more detail in Section~\ref{applicabilut_to_finance}.}.\\
+Regulators struggle to find effective methods to reduce the likelihood of crash due to emergent behaviour. There is a lack of research on what directives could combat emergence induced flash crashes, partly because of the lack of agreement on exactly how these crashes are caused and if emergence can create them. Though research in this field is minimal, it has been shown that flash crashes can occur due to ``hot-potato'' trading~\cite{otherabmflash, DynamicCoupling_Chris}\footnote{Study \cite{DynamicCoupling_Chris} will be discussed in greater detail in section~\ref{InterDyne_section}.}. These studies took a bottom up approach by modelling the system as an agent-based model, and created a flash crash from ``hot-potato'' trading which was initiated by information delays.\\
+Though these studies have managed to create a flash crash they use agent-based model methods, which have a number of draw backs leading to them not being commonly accepted by regulators\footnote{These draw backs will be discussed in more detail in Section~\ref{Iinterdynenotenough}.}, this makes them difficult to use in policy advisement.\\
+
+
+
+
+
+
+
 
 
 %\subsubsection{Emergence in Financial Markets}
@@ -690,7 +644,7 @@ This section will discuss the main draw backs of InterDyne and a method for coun
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Why InterDyne is Not Enough} \label{Iinterdynenotenough}
+\subsection{Why Agent-Based Models Are Not Enough} \label{Iinterdynenotenough}
 
 \begin{itemize}
   \item Say why agent based model and Interdyne are not always accepted
@@ -927,7 +881,7 @@ To assist in the explanation of the transformation a simple example will be used
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Recurrence Relation Parser}
+\subsection{Recurrence Relation Parser (done)}  
 %explain what the parser is and how it works, in preparing these files for transfermation
 
 %programs wirtten in this language will be parsed into lexemes and then converted into a numeric type (?) which will be used to transfer this into lambda calcus and an ABM model
@@ -947,7 +901,7 @@ Syntax analysis takes this list of tokens and stores it in a parse tree that enf
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Infinite List Outputs}
+\subsection{Infinite List Outputs (done)}
 %no time as a input
 %use ! to refrence the list items
 
@@ -984,7 +938,7 @@ Therefore the experiment will now be written in the form shown in Fig.\ref{fig:R
 \end{figure} 
        
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Wrapper Function}
+\subsection{Wrapper Function (done)}
 %group into agents
 %create a wrapper agent that out puts a infinite list (in time) containing a list of the value of each RR in the wrapper for that time step
 %[[rr1_t1,rr2_t2...], [rr1_t2, rr2_t2....], ..]
@@ -1007,7 +961,7 @@ Therefore the experiment will now be written in the form shown in Fig.\ref{fig:R
 \end{figure} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Outputs}
+\subsection{Outputs (done)}
 
 \begin{figure}[H]
 	\centering

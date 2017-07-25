@@ -16,7 +16,7 @@
 \contentsline {paragraph}{\numberline {2.3.1.7}Agents}{16}
 \contentsline {subsubsection}{\numberline {2.3.2}InterDyne Detail Operation}{16}
 \contentsline {section}{\numberline {3}Description and Analysis of the Problem}{18}
-\contentsline {subsection}{\numberline {3.1}Why InterDyne is Not Enough}{19}
+\contentsline {subsection}{\numberline {3.1}Why Agent-Based Models Are Not Enough}{19}
 \contentsline {subsection}{\numberline {3.2}Two Views Approach}{20}
 \contentsline {subsubsection}{\numberline {3.2.1}Step-by-Step Transformations}{20}
 \contentsline {section}{\numberline {4}Bespoke Recurrence Relation Language}{20}
@@ -24,10 +24,10 @@
 \contentsline {subsection}{\numberline {4.2}Rules of Use}{23}
 \contentsline {subsection}{\numberline {4.3}Example of Use}{23}
 \contentsline {section}{\numberline {5}Recurrence Relation to InterDyne Converter}{25}
-\contentsline {subsection}{\numberline {5.1}Recurrence Relation Parser}{26}
-\contentsline {subsection}{\numberline {5.2}Infinite List Outputs}{26}
-\contentsline {subsection}{\numberline {5.3}Wrapper Function}{28}
-\contentsline {subsection}{\numberline {5.4}Outputs}{29}
+\contentsline {subsection}{\numberline {5.1}Recurrence Relation Parser (done)}{26}
+\contentsline {subsection}{\numberline {5.2}Infinite List Outputs (done)}{26}
+\contentsline {subsection}{\numberline {5.3}Wrapper Function (done)}{28}
+\contentsline {subsection}{\numberline {5.4}Outputs (done)}{29}
 \contentsline {subsection}{\numberline {5.5}Messages}{30}
 \contentsline {subsection}{\numberline {5.6}Queues}{31}
 \contentsline {subsection}{\numberline {5.7}Harness}{31}
