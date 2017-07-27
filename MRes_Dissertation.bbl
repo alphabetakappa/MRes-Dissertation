@@ -31,56 +31,6 @@ Dirk Helbing.
 \newblock {\em Social Self-Organization}.
 \newblock Springer, 2012.
 
-\bibitem{SECreport_delays}
-U.S. Commodity Futures~Trading Commission, U.S. Securities, and Exchange
-  Commission.
-\newblock Findings regarding the market events of may 6, 2010.
-\newblock https://www.sec.gov/news/studies/2010/marketevents-report.pdf,
-  September 2010.
-
-\bibitem{rareeventflashcrash}
-Dragos Bozdog, Ionut Florescu, Khaldoun Khashanah, and Jim Wang.
-\newblock Rare events analysis for high-frequency equity data.
-\newblock {\em Wilmott Journal}, pages 74--81, 2011.
-
-\bibitem{Impact_hft}
-Andrei Kirilenko, Albert~S. Kyle, Mehrdad Samadi, and Tugkan Tuzun.
-\newblock The flash crash: The impact of high frequency trading on an
-  electronic market.
-\newblock Working Paper, SSRN. http://ssrn.com/abstract=1686004 (accessed May
-  13, 2017)., 2014.
-
-\bibitem{cryptocrash}
-Arjun Kharpal.
-\newblock Ethereum briefly crashed from \$319 to 10 cents in seconds on one
-  exchange after `multimillion dollar' trade.
-\newblock
-  http://www.cnbc.com/2017/06/22/ethereum-price-crash-10-cents-gdax-exchange-after-multimillion-dollar-trade.html,
-  June 2017.
-
-\bibitem{spoofingtrader}
-Brian Louis and Janan Hanna.
-\newblock Flash crash trader sarao pleads guilty to fraud, spoofing.
-\newblock
-  https://www.bloomberg.com/news/articles/2016-11-09/accused-flash-crash-trader-sarao-to-plead-guilty-in-chicago,
-  November 2016.
-
-\bibitem{networkcastphorynature}
-Hankyu Moon and Tsai-Ching Lu.
-\newblock Network catastrophe: Self-organized patterns reveal both the
-  instability and the structure of complex networks.
-\newblock {\em Scientific Reports}, 2015.
-
-\bibitem{otherabmflash}
-Tommi~A. Vuorenmaa and Liang Wang.
-\newblock An agent-based model of the flash crash of may.
-\newblock {\em Working Paper}, 2014.
-
-\bibitem{DynamicCoupling_Chris}
-Christopher~D. Clack and Dmitrijs~Zaparanuks Elias~Court.
-\newblock Dynamic coupling and market instability.
-\newblock Working Paper, 2014.
-
 \bibitem{bubblesandcrashes}
 Jochen Fromm.
 \newblock Types and forms of emergence.
@@ -91,6 +41,60 @@ Alan Turing.
 \newblock The chemical basis of morphogenesis.
 \newblock {\em Philosophical Transactions of the Royal Society of London},
   237(641):37--72, 1952.
+
+\bibitem{rareeventflashcrash}
+Dragos Bozdog, Ionut Florescu, Khaldoun Khashanah, and Jim Wang.
+\newblock Rare events analysis for high-frequency equity data.
+\newblock {\em Wilmott Journal}, pages 74--81, 2011.
+
+\bibitem{SECreport_delays}
+U.S. Commodity Futures~Trading Commission, U.S. Securities, and Exchange
+  Commission.
+\newblock Findings regarding the market events of may 6, 2010.
+\newblock https://www.sec.gov/news/studies/2010/marketevents-report.pdf,
+  September 2010.
+
+\bibitem{Impact_hft}
+Andrei Kirilenko, Albert~S. Kyle, Mehrdad Samadi, and Tugkan Tuzun.
+\newblock The flash crash: The impact of high frequency trading on an
+  electronic market.
+\newblock Working Paper, SSRN. http://ssrn.com/abstract=1686004 (accessed May
+  13, 2017)., 2014.
+
+\bibitem{DynamicCoupling_Chris}
+Christopher~D. Clack and Dmitrijs~Zaparanuks Elias~Court.
+\newblock Dynamic coupling and market instability.
+\newblock Working Paper, 2014.
+
+\bibitem{otherabmflash}
+Tommi~A. Vuorenmaa and Liang Wang.
+\newblock An agent-based model of the flash crash of may.
+\newblock {\em Working Paper}, 2014.
+
+\bibitem{hftinformation1}
+Peter Gomber, Martin Haferkorn, and Bus~Inf Syst.
+\newblock High-frequency-trading.
+\newblock {\em Business \& Information Systems Engineering}, 5:97--99, April
+  2013.
+
+\bibitem{hftmarketparticipation}
+Irene Aldridge and Steven Krawciw.
+\newblock {\em Real-Time Risk: What Investors Should Know About FinTech,
+  High-Frequency Trading, and Flash Crashes}.
+\newblock Wiley, 2017.
+
+\bibitem{Elias_Paper}
+Elias Court.
+\newblock The instability of market-making algoritms.
+\newblock MEng Dissertation, 2013.
+
+\bibitem{cryptocrash}
+Arjun Kharpal.
+\newblock Ethereum briefly crashed from \$319 to 10 cents in seconds on one
+  exchange after `multimillion dollar' trade.
+\newblock
+  http://www.cnbc.com/2017/06/22/ethereum-price-crash-10-cents-gdax-exchange-after-multimillion-dollar-trade.html,
+  June 2017.
 
 \bibitem{recurrelationbook}
 Jet Wimp.
@@ -139,23 +143,6 @@ Jeffrey~A. Frankel and Kenneth~A. Froot.
 Christopher~D. Clack.
 \newblock The interdyne simulator (2011-).
 \newblock http://www.resnovae.org.uk/fccsuclacuk/research, 11 2016.
-
-\bibitem{hftinformation1}
-Peter Gomber, Martin Haferkorn, and Bus~Inf Syst.
-\newblock High-frequency-trading.
-\newblock {\em Business \& Information Systems Engineering}, 5:97--99, April
-  2013.
-
-\bibitem{hftmarketparticipation}
-Irene Aldridge and Steven Krawciw.
-\newblock {\em Real-Time Risk: What Investors Should Know About FinTech,
-  High-Frequency Trading, and Flash Crashes}.
-\newblock Wiley, 2017.
-
-\bibitem{Elias_Paper}
-Elias Court.
-\newblock The instability of market-making algoritms.
-\newblock MEng Dissertation, 2013.
 
 \bibitem{lob_noecomimists}
 M.~Gould, M.~Porter, and S.~Williams.

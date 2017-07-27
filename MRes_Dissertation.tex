@@ -163,14 +163,13 @@ This research comprises the definition of a simple recurrence relation language,
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
-Complex systems have been an area of deep interest for a long time in many  fields such as, physics, biology and chemistry. More recently they have become an area of increased interest in the fields of economics and finance, especially as the markets which many researchers are interested in have become increasingly automated and interconnected.\\
-Complex systems are of such interest to researchers because of the types of behaviour they can produce, emergence in these systems is of particular interest do to the fact that it can be very difficult to detect and predict, and have a large, some times, damaging impact on the system.\\
+Complex systems have been an area of deep interest for a long time in many  fields such as, physics, biology and chemistry. More recently this is true in the fields of economics and finance, especially as the markets have become increasingly automated and interconnected. These systems can exhibit unexpected and hard to predict behaviour, known as emergence, which can some times, have a large impact and damage a system.\\ 
 Emergent behaviour can occur in a large number of ways, but more often the behaviour of interest is created over a time period. In general there are two ways of viewing systems in time, these are either continuous, where the system progress through time smoothly. Or discrete, where the system takes equal quantised steps through time, with each step advancing the system.\\
-Focussing on discrete time there are two main methods which can be used to model system set up in this way, recurrence relations and agent-based models. These two methods take fundamentally different views of a system, recurrence relations take a top down view and can be seen as a set of mathematical equations which make calls for the values of each other. Agent-based models take a bottom up approach and model different elements of the system as individual agents which communicate via messages passed between each other.\\
-Both these methods are a viable way of modelling complex systems and have both been used for a long time in a large number of fields [REFS???]. %REFS????
+For discrete time systems two particular modelling techniques that can be used are, recurrence relations and agent-based models. These two methods take fundamentally different views of a system, recurrence relations take a top down view and can be seen as a set of mathematical equations which make calls for the values of each other. Agent-based models take a bottom up approach and model different elements of the system as individual agents which communicate via messages passed between each other.\\
+Both of these techniques have been extensively used in the modelling of complex systems, in a larger range of fields [REFS???]. %REFS????
 Recurrence relations have a number of advantages such as:
 \begin{itemize}
-  \item Being well understood in a large number of fields. 
+%  \item Being well understood in a large number of fields. 
   \item Giving a formal mathematical definition of the whole system.
   \item Showing an obvious link between equations within the system. 
   \item Giving a static representation of the system.  
@@ -183,28 +182,14 @@ Agent-based modelling benefits include:
   \item Plainly showing the passing of information between agents. 
 \end{itemize}          
 The ability of agent-based models to track the communication between agents and their bottom up approach makes them particularly adapt at analysing emergent behaviour.\\  
-As mentioned there has been a growing interest into complex systems and emergence within them in finance, a large part of this interest is on regulating theres systems to stop the creation of destructive emergent behaviour, this has been especially true when looking at high-frequency trading, which has been accused of causing a number of negative effects within the markets. This trading takes place at high speeds comparable to the tickets on a computers internal clock, meaning models of this trading typically while take a discrete time approach.\\
-In literature on finance and economics there is a notable preference for recurrence relations over agent-based models, shown in Section~\ref{litreviewofabmrr}. This preference appears to be caused by agent-based models not resonating with researchers with less pure science backgrounds, such economists and industry expertise, and hence being less widely accepted.\\
-This presents a problem for agent-based models and for researchers who wish to use them, making it less likely that researchers will choose to take an agent-based model approach, hence losing a valuable tool in investigating emergence, and that those who do will find it harder to publish and convince others of the results of their work.\\
+As mentioned there has been a growing interest into complex systems and emergence in finance, a large part of this interest is on regulating theses systems to stop the creation of destructive emergent behaviour. This has been especially true when looking at high-frequency trading, which has been accused of causing a number of negative effects within the markets, including flash crashes. This trading takes place at high speeds comparable to the tickets on a computers internal clock, meaning models of this type of trading typically will take a discrete time approach.\\
+Though both agent-based model and recurrence relations have been used within finance, there is a notable preference among researchers grounded in economics to use recurrence relations, shown in Section~\ref{litreviewofabmrr}. This preference appears to be caused by agent-based models not resonating with these researchers, leading to them passing over using the models as well as results be other researchers using the models being less widely accepted.\\
+This lack of acceptance presents a problem for work on emergence within the financial system, agent-based models are a strong tool in investigating emergent behaviour, ignoring them seriously limit the ability to research this area, and a large amount of research has already been done in this area using agent-based model, if this work is only accepted by a subsection of the community its impact will be substantially lessened.\\     
 This paper seeks to present a method where by agent-based models will resonate better with experts such as economists, and hence that they will be used more frequently and the research based upon them will be better accepted.\\    
-The approach this paper takes is to connect an agent-based model to a set of recurrence relations, allowing the already accepted approach of recurrence relations to be a method for explaining and formalising the agent-based model. This connection between the models is coined as the two-views approach.\\
-For this to be achieved there has to be confidence that the two views do indeed represent the same system, hence a correction preserving transformation needs to be achieved between the models. To reduce the difficulties in proving correctness and to assist a reader in understanding the transformation, the transformation should operate in a step-by-step manner, this is shown by the literature and expanded on in Section~\ref{whyusestepbystep}\\ 
-This step-by-step transformation will take a set of recurrence relations and convert them into an agent-based model. This direction has been chosen opposed to the reverse as the aim is to encourage sceptics to engage with agent-based models and not as a why of simply proving the correctness of individual research using agent-based models. This trajectory will allow an individual to follow a set of recurrence relations as they are slowly converted in a set of simple steps to an agent-based model, showing how these two models can be linked and relate.\\
-Creating this transformative method has a number of important in two aspects, increasing the acceptance of agent-based models and creating a model for viewing systems in two perspectives. Increasing the acceptance of agent-based models has a number of benefits including: 
-\begin{itemize}
-   \item Increasing the use of agent-based models in new research, where their benefits would be more suited. Hence increasing the ease in which emergence can be investigated within the financial system. 
-   \item Allow for work already done using agent-based models to be re-evaluated with a greater understanding to the methods used. 
-\end{itemize}
-The creation of the two-views model always a number of unique benefits by providing a new tool for analyse of complex systems: 
- \begin{itemize}
-    \item Adds a new technique for viewing and modelling complex systems.
-    \item Adds a new tool that can be used for hypotheses formalisation and communication of ideas between researchers. 
-    \item Adds a model that is suitable for both static and dynamic analyses. 
- \end{itemize}
-The timing of this paper fits with the increased interest in agent-based models within finance, for modelling the complex behaviour of the markets [REFS???????]. %REFS????
-This work is designed to be able to support other work done using agent-based models and help further the understanding of agent-based models during this time of interest.\\
-To achieve this transformation between a set of recurrence relations and a agent-based model, three steps need to be undertaken, designing the step-by-step transformation between the two models, creating an automated process to do these steps, and proving the correctness of each step. This papers scope is the first step, designing the step-by-step transformation, the second step is trivial after the first albeit with a large time commitment.\\
-Undertaking this first step poses a large number of conceptual challenges, including:
+This raises the question, how can agent-based models be explained to a sceptic in such a way that they will accept them? This papers approach is to connect agent-based models and recurrence relations together, allowing the already accepted recurrence relations to become the formalism of the agent-based model.\\ 
+For this approach to work, there has to be confidence that the connection between the recurrence relations and agent-based model, has a significance and is correct. Hence the next question is what is a meaningful connect? A correctness preserving transformation was chosen as a connection, allowing the recurrence relations and agent-based model to be two views of the same system, hence giving meaning to the agent-based model of the system in terms of recurrence relations. This approach is coined as the two views \\    
+This transformation takes a set of recurrence relations and turns them into an agent-based model, this direction has been chosen opposed to the reverse as the aim is to encourage sceptics to engage with agent-based models, so allows them to start with the familiar before the transformation.\\ 
+To achieve this transformation from a set of recurrence relations to a agent-based model, a number of conceptual challenges needed to be addressed. These problems are discussed in greater depth in Section~\ref{twoviewsapproach} but including: 
 \begin{itemize}
    \item The two paradigms of the models are completely different and opposing. 
    \item How are function calls related to message passing?
@@ -217,8 +202,27 @@ Undertaking this first step poses a large number of conceptual challenges, inclu
    \item How can the recurrence relations be split in a way which does not splinter the model? 
    \item How can small, and hence more susceptible to prove of correctness, steps be used to transform the model? 
 \end{itemize}
+To create a transformation that allows these issues to be overcome and to increase the easy in proofing the correctness of this conversion, a step-by-step approach was taken, where the transformation is done in a series of small correctness preserving steps.\\  
+This papers aim is hence to create the design of each of these steps, in the process of transforming from a set of recurrence relations to an agent-based model.\\ 
+Creating this transformative method has  two important aspects, increasing the acceptance of agent-based models and creating a model for viewing systems in two perspectives. Increasing the acceptance of agent-based models has a number of benefits including: 
+\begin{itemize}
+   \item Increasing the use of agent-based models in new research, where their benefits would be more suited. Hence increasing the ease in which emergence can be investigated within the financial system. 
+   \item Allow for work already done using agent-based models to be re-evaluated with a greater understanding to the methods used. 
+\end{itemize}
+The creation of the two views model always a number of unique benefits by providing a new tool for analyse of complex systems: 
+ \begin{itemize}
+    \item Adds a new technique for viewing and modelling complex systems.
+    \item Adds a new tool that can be used for hypotheses formalisation and communication of ideas between researchers. 
+    \item Adds a model that is suitable for both static and dynamic analyses. 
+ \end{itemize}
+The timing of this paper fits with the increased interest in agent-based models within finance, for modelling the complex behaviour of the markets [REFS???????]. %REFS????
+This work is designed to be able to support other work done using agent-based models and help further the understanding of agent-based models during this time of interest.\\
 To show a conversion between the two types of models a particular example of each must be chosen, for this paper a custom recurrence relation language was designed to be transformed into the agent-based model known as InterDyne. InterDyne was chosen in particular due to it being designed from the bottom up to model and investigate emergent behaviour within the financial markets, this software was also a convenient choice due to access to the source code and local expertise.\\    
 This papers layout is as follows. First a background is given detailing, emergent behaviour generally and in the financial markets, a description and review of the literature of both recurrence relations and agent-based models, and a in-depth description of InterDyne. Secondly a description and analysis of the problems with agent-based models and how a two-view approach addresses them. Thirdly a description of the design, formal syntax, and use, of the custom recurrence relation language. Fourthly the design and a example of the step-by-step transformation between the two models. Fifthly a validation that the transformed example does indeed represent a InterDyne simulation. Sixthly a test of a number of examples for correctness of functionality. Lastly the paper is concluded and summarised with notes for further work given.     
+%This connection between the models is coined as the two-views approach.\\
+
+
+
 %regulation is shifting from micro to macro-prudential perspective 
 %managing individual risk to managing systemic risk
 
@@ -232,13 +236,13 @@ This papers layout is as follows. First a background is given detailing, emergen
 
 %-DEVS model does give you overarching symatic (why is it not approate to model interarction dynamics) 
 
-%lots of abm and used a lot just not by ecconmiists 
 
-%dont mention proof or conversion, or say the conversions is not part of this project but has been parital done any way 
 
 %Compare difference equations and ABM in intro using the "TO AGENT-BASED SIMULATION FROM SYSTEM DYNAMICS" paper
 
 
+
+%in project scope: show some limited implementation. Say initial aim was to design, but not implement the translation steps. However, the project has succeeded in all of the design aims and additionally succeeded in implementing several of the translation steps."
 
 
 
@@ -270,9 +274,8 @@ A simple way to demonstrate emergence is in the Game of Life~\cite{gameoflifepag
 With this simple set up very complex patterns evolving through time can be created, these patterns can be seen as emergence, with an individual cell not being able to encapsulate this behaviour. Natural phenomena similar to this is the formation of symmetries and patterns within snowflakes.\\
 Emergent behaviour can be seen occurring naturally in many other cases, with physics offering a number of well explored examples. For instance the n-body problem~\cite{nbodyproblem}, this historically is explained as n planets interacting in such a way as to produce complex behaviour, despite each individual body following Newtonian laws. An interesting aspect of the n-body problem is that it can be reduced down to three bodies and still exhibit complex emergent behaviour. This example shows that a system need not be overly complex or large to display emergent behaviour, and that by showing the existence of emergence in a simplistic system one can infer its presence in more complex versions of that system.\\
 The emergent behaviour within the n-body problem is caused by interaction dynamics, this is the communication between different elements of a system. The interactions here takes the form of gravitational pulls, if these pulls were not present then the system as a whole, and every individual present would maintain a constant velocity, unless they physically collided~\cite{newtonconstantvelocity}.\\
-Though this example deals with a very physical system, emergence may be created due to many different form of communication between entities. Such as verbal and visual communication in social systems, which can lead to  emergent behaviour including the break down in social cooperation~\cite{socialemrgence}.\\
-Looking at the financial markets one can see how they represent a interaction based system, with a large number of independent or semi-independent entities interacting with each other through different methods, such as market trades.\\
-One prominent type of emergence that can occur in an interaction dynamic based system, are feedback loops. Feedback loops are where the input information to an entity is in some way dependent on the output information of that same entity, normally from a previous moment in time. In their simplest form this can just be a single entity supplying an input to its self, shown in Fig.~\ref{fig:exampleselffeedback}.\\
+Though this example deals with a physical phenomenon, interaction based emergence is present in many different systems. Interactions in these systems can take the form of verbal and visual communication in social systems with negative emergent behaviour in this case being the break down of social cooperation~\cite{socialemrgence}. The financial markets can be thought of as a complex system, with interaction dynamics, hence one can assume that the markets would exhibit emergence. This is true and the financial markets have seen to exhibit a large selection of emergent behaviour, such as the formation of patterns, bubbles and crashes~\cite{bubblesandcrashes}. These particular examples derive from feedback loops with in the markets, in a similar process to that of the interaction between short range and long range feedback loops in chemical reactions~\cite{turningchemical}.\\     
+Feedback loops are a prominent type of emergent behaviour that can occur from interaction dynamics. Feedback loops are where the input information to an entity is in some way dependent on the output information of that same entity, normally from a previous moment in time. In their simplest form this can just be a single entity supplying an input to its self, shown in Fig.~\ref{fig:exampleselffeedback}.\\
 In finance this could be seen as a simple trader who decides how much to sell based solely on their inventory at the previous time step. 
 \begin{figure}[H]
 	\centering
@@ -292,47 +295,13 @@ These example are very simple, feedback loops can be much more complex, encompas
 Though feedback loops are often assumed to be a negative property, some can be stabilising due to a benign effect.\\
 Feedback loops can be present in a system in two ways, either they can be a constant fixture, called a static feedback loop, or they can form and change, called a dynamic feedback loop. A static feedback loop is present in the system from the start whether this is intentional and known, or unintentional and unknown to the members of the system. Dynamic feedback loops may not be present at the start and can form and change over time, with new entities joining or leaving them, allowing them to increase or decrease in size or effect, to split or merge, or to disappear.\\
 Due to the potential complexity of feedback loops both in construction and in time, they can be difficult to detect, therefore methods are usually used to expose them. For static loops, forms of static analysis can be used such as, analysing initial setup, this is possible since the loops do not change through out time. Dynamic loops can be much harder to observe and analyses, an important aspect to detecting these loops is the interactions, messages sent between different entities within the system. Since the loops can evolve over time being able to track and analyse these messages over a time series is vitally important for the analysis of these loops, this time dependent analyse is called dynamic analyse.\\
-Since feedback loops can be destabilising and hence damage the system in which they occur, there is a large amount of interest from researchers interested in regulation on the understanding of these loops with in the financial markets.  
-
-
-
-
-
-
-   
-
-
-
-
-\begin{itemize}
-   \item what is emergent behaviour? 
-   \item it is a fair assumption that emergent behaviour also occurs in the financial markets
-   \item how this can occur, well feedback loops
-   \item feedback loops can be damaging this leads to the interest of researcher in regulation, looking for ways to stop feedback loops that cause large monetary lose, and in extreme cases damage the economy.
-   \item an example of Behaviour of this kind are flash crashes.
-   \item a well known flash crash is the one 2010, give an explanation of this crash
-\end{itemize}
-
-
-
-Financial markets exhibit many interesting and some times unexpected events, one type of these such events are flash crashes. A notable example of this event type, is the flash crash of 2010, in this crash the E-min S\&P 500 equity futures market dropped in price by more then 5\%, during which time market prices and rational valuations became disconnected, before rebound to close to its original price~\cite{SECreport_delays, rareeventflashcrash}. This whole process occurred very rapidly, lasting approximately thirty-six minutes and has been described as``one of the most turbulent periods in their history'' for the US financial markets~\cite{Impact_hft}.\\
-A number of flash crashes have been show to originate from large sell orders, such as in the recent crash in the cryptocurrency ethereum~\cite{cryptocrash}. The initial analysis of the 2010 flash crash came to a similar conclusion, with the  joint report by the U.S. Commodity Futures Trading Commission (CFTC) and Securities \& Exchange Commission (SEC), claiming that the crash was caused by a large sell order by a mutual fund\footnote{This process is explained in more detail in Section~\ref{applicabilut_to_finance}.}~\cite{SECreport_delays}. This initial finding is not fully accepted, even by the CFTC, who have since charged a trader with spoofing leading to the crash~\cite{spoofingtrader}.\\
-A number of other causes have been suggested, with a particularly interesting suggestion being emergent behaviour between high-frequency traders known as ``hot-potato'' trading. Though not suggested as the root cause ``hot-potato'' trading was mentioned by SEC and CFTC to have occurred during the time of the crash. The idea that emergent behaviour could lead to a crash is not novel, with emergence causing a number of phase transition within physical systems, and has been suggested to be able to move a market between a stable and unstable phase before~\cite{networkcastphorynature}.\\
-The high-frequency traders being discussed here are algorithmic traders who act as market makers, both buying and selling, trading on the nanosecond scale. These traders can under certain conditions end up passing inventory in a cyclic pattern between each other, this is ``hot-potato'' trading \footnote{Both high-frequency traders and ``hot-potato'' trading are discussed in more detail in Section~\ref{applicabilut_to_finance}.}.\\
-Regulators struggle to find effective methods to reduce the likelihood of crash due to emergent behaviour. There is a lack of research on what directives could combat emergence induced flash crashes, partly because of the lack of agreement on exactly how these crashes are caused and if emergence can create them. Though research in this field is minimal, it has been shown that flash crashes can occur due to ``hot-potato'' trading~\cite{otherabmflash, DynamicCoupling_Chris}\footnote{Study \cite{DynamicCoupling_Chris} will be discussed in greater detail in section~\ref{InterDyne_section}.}. These studies took a bottom up approach by modelling the system as an agent-based model, and created a flash crash from ``hot-potato'' trading which was initiated by information delays.\\
-Though these studies have managed to create a flash crash they use agent-based model methods, which have a number of draw backs leading to them not being commonly accepted by regulators\footnote{These draw backs will be discussed in more detail in Section~\ref{Iinterdynenotenough}.}, this makes them difficult to use in policy advisement.\\
-
-
-
-
-
-
-
-
-
-%\subsubsection{Emergence in Financial Markets}
-Though emergence is prevalent in many disciplines, this paper is focussed on emergence in financial markets. The financial markets can be thought of as a large complex interacting system, which is the ideal environment for emergent behaviour. Events such as the formation of patterns, bubbles and crashes can all be seen as emergent behaviour caused by a variety of feedback loops~\cite{bubblesandcrashes}. This is similar to the complex interaction between short range and long range feedback loops in chemical reactions leading to pattern formation~\cite{turningchemical}.
-
+Since feedback loops can be destabilising and damaging to the system in which they occur, there is interest in studying this emergence in the aim to prevent monetary loss and damage to the economy.\\
+A notable form of emergence behaviour, due to feedback loops, that takes place within the electronic markets are flash crashes. A flash crash is an event during which time the trading price of a security drops very rapidly, becoming disconnected from its fundamental, before then recovering~\cite{rareeventflashcrash}. A particularly famous flash crash is that of 2010, in which the E-min S\&P 500 equity futures market dropped in price by more then 5\%, before rebound to close to its original price~\cite{SECreport_delays, rareeventflashcrash}. This whole process occurred very rapidly, lasting approximately thirty-six minutes and has been described as``one of the most turbulent periods in their history'' for the US financial markets~\cite{Impact_hft}.\\
+Research done by Ref~\cite{DynamicCoupling_Chris, otherabmflash}, describes how the crash may have unfolded due to a feedback loop between High-Frequency Traders (HFTs), known as `hot-potato'' trading.\\
+HFTs are a subset of algorithmic traders who normally participate in the market as arbitrageurs or market makers, they invest in ultra-high speed technology allowing them to detect, analyses and react to market condition in nanoseconds \cite{hftinformation1}. This means HFTs can trade huge quantities of assets in very short time frames, with some estimates stating that 10-40\% of all trades where initiated by them during 2016 \cite{hftmarketparticipation}.\\
+The feedback loop of ``Hot Potato'' trading, is when inventory imbalance is repeatedly passed between HFTs market makers. A market maker is a trader who is required to have both a bid and a ask on the order book at all times, this means in theory that they are constantly buying and selling, a high frequency market maker as expected should be buying and selling very very often. Market makers make a profit from the spread and not long positions, hence they want to keep inventories low to avoid the market moving against them. To achieve this market makers have strict inventory limits that if they pass will cause them to go into what is know as a ``panic state'', during this state the trader will sell of an amount of its inventory to return back into its normal trading region. This inventory now sold by the market maker can be bought by another market maker causing them to in turn go into ``panic'' and sell, this process is ``Hot Potato'' trading and can in theory continue indefinitely~\cite{Elias_Paper}.\\
+This constant selling and buying of inventory can artificially inflate the trading volume of the market, changing how many traders operate and potentially leading to a flash crash.\\
+Flash crashes have occurred on a number of occasions and in a large selection of markets, with a more recent example being a crash of the cryptocurrency ethereum~\cite{cryptocrash}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -670,7 +639,7 @@ The third limitation is of particular interest, though the other limitations can
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Two Views Approach} 
+\subsection{Two Views Approach} \label{twoviewsapproach} 
 
 \begin{itemize}
   \item What is Two-Views
@@ -1083,46 +1052,11 @@ Therefore the experiment will now be written in the form shown in Fig.\ref{fig:R
   \item checking that this conversion still produces the same results as the RR 
 \end{itemize}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Example 1}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Example 2}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Example 3}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
+%in project scope: show some limited implementation. Say initial aim was to design, but not implement the translation steps. However, the project has succeeded in all of the design aims and additionally succeeded in implementing several of the translation steps."
 
-%Questions
-
-%how do I pass a list through for, values that are needed from previous time steps?
-%how do I send a message for just one time?
-%if I bullet point my dissertation can you read it? 
-%Does a global function work in the InterDyne frame work 
-%Do I need explain code, like the function map etc 
-%i presume I need to explain the operation of the convertor even if it has not been written 
-%Though there can be a black hole, there isn't definitely a black whole 
-
-%to look back in time you have to pass a list contaiing those values through the recursion of the wrapper, however wont this valiate the type defintion of the wrapper?
-
-%How should a fucntion access its own value at a previous time step? this should be by passing a list through the recursion as well?
-
-%All fucntions within a wrapper can access all other functions within the same wrapper at time step t, but can only access functions in other wrappers at t-1
-%This is needed for both functionality and makes sense when creating agents with multiple parts which can be seen to operate at the same time
-
-%How do I send a message to the harness at this stage sense to and from dont exist?
-
-%When to and from do exist should a subfunction a wrapper be written like
-
-%msg = (0, id, _f1!t), if t = 3
-%msg = ..., otherwise
-
-%Is [!t]:recursion, a backwards list? does it make [...,t3,t2,t1] instead of [t1,t2,t3,...]
-
-%Do I need another step where I make the types correct?
 
 
 
