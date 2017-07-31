@@ -118,14 +118,24 @@
 %Write Conclusion and further work 
 
 
+
+
+
+
+
+%increase margin size! 
+%abm dynamic, and RR analytic (not top down and bottom up) well abm are bottom up but rr may not be top down 
 \begin{document} 
-\title{Correctness-Preserving Translation from First Order Recurrence Relation to an Agent-Based Representation} 
+\title{Translating from First Order Recurrence Relations to an Agent-Based Representation} 
 \author{Leo Carlos-Sandberg\\
 Supervisor: Dr Christopher D. Clack} 
 \maketitle 
 
 \begin{abstract}
 \noindent {\it 
+%move two-views to later one, (if you say we will use two views (no -), two-views approach)
+%start talking about, the ability to translate from one view point to another to demsotrate their equilvnece
+%and why are we translating  
 This paper investigates a method of describing interacting systems from two opposing view points, recurrence relations and agent-based models. These two methods take fundamentally different approaches with recurrence relations being top-down, and agent-based models being bottom-up.\\
 Connecting these two methods allows for a more complete investigation of emergent behaviour occurring within interacting systems. Agent-based models offer an attractive way of analysing emergent behaviour, with the ability to investigate individual interactions as message passing throughout a simulation. Agent-based models however tend to be less well understood and accepted by those outside computer science, this is in contrast to recurrence relation which are normally well understood. Creating a correctness preserving link between recurrence relations and agent-based models allows for simulations to be understood in their recurrence relation representation and hence have their agent-based model representation accepted. This is important in fields such as finance as it opens up new tools for economists and regulators to use in understanding emergence in complex markets.\\
 This research comprises the definition of a simple recurrence relation language, to define simulations, and the design of a step-by-step process by which a set of recurrence relations defined in this language can be converted into an agent-based model representation, the InterDyne simulator is chosen as a target representation for this transformation. 
@@ -163,32 +173,57 @@ This research comprises the definition of a simple recurrence relation language,
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
-Complex systems have been an area of deep interest for a long time in many  fields such as, physics, biology and chemistry. More recently this is true in the fields of economics and finance, especially as the markets have become increasingly automated and interconnected. These systems can exhibit unexpected and hard to predict behaviour, known as emergence, which can some times, have a large impact and damage a system.\\ 
-Emergent behaviour can occur in a large number of ways, but more often the behaviour of interest is created over a time period. In general there are two ways of viewing systems in time, these are either continuous, where the system progress through time smoothly. Or discrete, where the system takes equal quantised steps through time, with each step advancing the system.\\
-For discrete time systems two particular modelling techniques that can be used are, recurrence relations and agent-based models. These two methods take fundamentally different views of a system, recurrence relations take a top down view and can be seen as a set of mathematical equations which make calls for the values of each other. Agent-based models take a bottom up approach and model different elements of the system as individual agents which communicate via messages passed between each other.\\
+Complex systems have been an area of interest for a long time in many  fields such as physics, biology and chemistry [REFS????]. %get very very old reference to this 
+ More recently this is true in the fields of economics and finance [REFS?????], especially as the financial markets have become increasingly automated and interconnected. 
+%These systems can exhibit unexpected and hard to predict behaviour, known as emergence, which can some times, have a large impact and damage a system.\\ 
+Of particular interest is emergent behaviour in complex systems given by name "".
+% not this any more (These systems can exhibit behaviour that is unexpected  and hard to predict, and which can have a large impact and  cause damage. )
+%define emergence (very short) from chapter fromm 2005 types and forms of emergence (arxiv preprint nlin/0506028)  
+ %hard to predict because it cant be reduced down to the definition of the compent parts 
+ %page 3 top in fromm paper 2.1 is a definition (check his references reference all three) 
+ 
+Emergent behaviour can occur in a large number of ways, but more often the behaviour of interest is created over a time period. In general there are two ways of viewing systems in time, these are either continuous (where the system progress through time smoothly) or discrete (where the system takes equal quantised steps through time, with each step advancing the system).
+
+For discrete time systems two particular modelling techniques that can be used are, recurrence relations and agent-based models. %These two methods take fundamentally different views of a system, recurrence relations take a top down view and can be seen as a set of mathematical equations which make calls for the values of each other. Agent-based models take a bottom up approach and model different elements of the system as individual agents which communicate via messages passed between each other.\\
+%analytic verses dynamic approaches 
+
 Both of these techniques have been extensively used in the modelling of complex systems, in a larger range of fields [REFS???]. %REFS????
-Recurrence relations have a number of advantages such as:
+Recurrence relations have a number of advantages such as [REFS???]:
 \begin{itemize}
 %  \item Being well understood in a large number of fields. 
   \item Giving a formal mathematical definition of the whole system.
   \item Showing an obvious link between equations within the system. 
   \item Giving a static representation of the system.  
 \end{itemize}
-Agent-based modelling benefits include:
+Agent-based modelling benefits include [REFS???]:
 \begin{itemize}
   \item Being able to encode unique agents, with varying levels of complexity.
-  \item Not having a defined behaviour for the system as a whole, as it is a bottom up approach.
-  \item Giving a dynamic representation of the systems evolution. 
-  \item Plainly showing the passing of information between agents. 
+  \item Giving a dynamic representation of the system's evolution. 
+  \item Plainly showing the passing of information between agents.
+  \item Easily expandable by adding more agents.  
 \end{itemize}          
-The ability of agent-based models to track the communication between agents and their bottom up approach makes them particularly adapt at analysing emergent behaviour.\\  
-As mentioned there has been a growing interest into complex systems and emergence in finance, a large part of this interest is on regulating theses systems to stop the creation of destructive emergent behaviour. This has been especially true when looking at high-frequency trading, which has been accused of causing a number of negative effects within the markets, including flash crashes. This trading takes place at high speeds comparable to the tickets on a computers internal clock, meaning models of this type of trading typically will take a discrete time approach.\\
-Though both agent-based model and recurrence relations have been used within finance, there is a notable preference among researchers grounded in economics to use recurrence relations, shown in Section~\ref{litreviewofabmrr}. This preference appears to be caused by agent-based models not resonating with these researchers, leading to them passing over using the models as well as results be other researchers using the models being less widely accepted.\\
-This lack of acceptance presents a problem for work on emergence within the financial system, agent-based models are a strong tool in investigating emergent behaviour, ignoring them seriously limit the ability to research this area, and a large amount of research has already been done in this area using agent-based model, if this work is only accepted by a subsection of the community its impact will be substantially lessened.\\     
-This paper seeks to present a method where by agent-based models will resonate better with experts such as economists, and hence that they will be used more frequently and the research based upon them will be better accepted.\\    
-This raises the question, how can agent-based models be explained to a sceptic in such a way that they will accept them? This papers approach is to connect agent-based models and recurrence relations together, allowing the already accepted recurrence relations to become the formalism of the agent-based model.\\ 
-For this approach to work, there has to be confidence that the connection between the recurrence relations and agent-based model, has a significance and is correct. Hence the next question is what is a meaningful connect? A correctness preserving transformation was chosen as a connection, allowing the recurrence relations and agent-based model to be two views of the same system, hence giving meaning to the agent-based model of the system in terms of recurrence relations. This approach is coined as the two views \\    
-This transformation takes a set of recurrence relations and turns them into an agent-based model, this direction has been chosen opposed to the reverse as the aim is to encourage sceptics to engage with agent-based models, so allows them to start with the familiar before the transformation.\\ 
+The ability of agent-based models to track the communication between agents and their bottom up approach makes them particularly adept at analysing emergent behaviour. 
+
+As mentioned there has been a growing interest into complex systems and emergence in finance, a large part of this interest is on regulating these systems to stop the creation of destructive emergent behaviour [REFS????]. This has been especially true when looking at high-frequency trading, which has been accused of causing a number of negative effects within the markets, including flash crashes [REFS???]. 
+%This trading takes place at high speeds comparable to the ticks on a computers internal clock, meaning models of this type of trading typically will take a discrete time approach.\\
+%just say computer trading is discrete (use chapter for help)
+
+Though both agent-based models and recurrence relations have been used within finance, there is a notable preference among researchers grounded in economics to use recurrence relations.\footnote{This is discussed further in Section~\ref{litreviewofabmrr}.} This preference appears to be caused by agent-based models not resonating with these researchers, 
+%leading to them passing over using the models as well as results be other researchers using the models being less widely accepted.\\
+%rewrite this sentence break it up
+
+%break this sentence up 
+This lack of acceptance presents a problem for work on emergence within the financial system; agent-based models are a strong tool in investigating emergent behaviour, ignoring them seriously limit the ability to research this area, and a large amount of research has already been done in this area using agent-based model, if this work is only accepted by a subsection of the community its impact will be substantially lessened.     
+
+This paper seeks to present a method whereby agent-based models will resonate better with experts such as economists, and with the hope that they will be used more frequently and the research based upon them will be better accepted.   
+
+%be a political, dont get at econmimist at all just talk about the two different models and how 
+This raises the question, how can agent-based models be explained to a sceptic in such a way that they will accept them? This papers approach is to connect agent-based models and recurrence relations together, allowing the already accepted recurrence relations to become the formalism of the agent-based model.
+
+For this approach to work, there has to be confidence that the connection between the recurrence relations and agent-based model, has a significance and is correct. Hence the next question is what is a meaningful connect? A correctness preserving transformation was chosen as a connection, allowing the recurrence relations and agent-based model to be two views of the same system, hence giving meaning to the agent-based model of the system in terms of recurrence relations. This approach is coined as the two views.     
+
+This transformation takes a set of recurrence relations and turns them into an agent-based model, this direction has been chosen opposed to the reverse as the aim is to encourage sceptics to engage with agent-based models, so allows them to start with the familiar before the transformation. 
+
 To achieve this transformation from a set of recurrence relations to a agent-based model, a number of conceptual challenges needed to be addressed. These problems are discussed in greater depth in Section~\ref{twoviewsapproach} but including: 
 \begin{itemize}
    \item The two paradigms of the models are completely different and opposing. 
@@ -202,8 +237,10 @@ To achieve this transformation from a set of recurrence relations to a agent-bas
    \item How can the recurrence relations be split in a way which does not splinter the model? 
    \item How can small, and hence more susceptible to prove of correctness, steps be used to transform the model? 
 \end{itemize}
-To create a transformation that allows these issues to be overcome and to increase the easy in proofing the correctness of this conversion, a step-by-step approach was taken, where the transformation is done in a series of small correctness preserving steps.\\  
-This papers aim is hence to create the design of each of these steps, in the process of transforming from a set of recurrence relations to an agent-based model.\\ 
+To create a transformation that allows these issues to be overcome and to increase the easy in proofing the correctness of this conversion, a step-by-step approach was taken, where the transformation is done in a series of small correctness preserving steps. 
+
+This papers aim is hence to create the design of each of these steps, in the process of transforming from a set of recurrence relations to an agent-based model.
+
 Creating this transformative method has  two important aspects, increasing the acceptance of agent-based models and creating a model for viewing systems in two perspectives. Increasing the acceptance of agent-based models has a number of benefits including: 
 \begin{itemize}
    \item Increasing the use of agent-based models in new research, where their benefits would be more suited. Hence increasing the ease in which emergence can be investigated within the financial system. 
@@ -216,8 +253,10 @@ The creation of the two views model always a number of unique benefits by provid
     \item Adds a model that is suitable for both static and dynamic analyses. 
  \end{itemize}
 The timing of this paper fits with the increased interest in agent-based models within finance, for modelling the complex behaviour of the markets [REFS???????]. %REFS????
-This work is designed to be able to support other work done using agent-based models and help further the understanding of agent-based models during this time of interest.\\
-To show a conversion between the two types of models a particular example of each must be chosen, for this paper a custom recurrence relation language was designed to be transformed into the agent-based model known as InterDyne. InterDyne was chosen in particular due to it being designed from the bottom up to model and investigate emergent behaviour within the financial markets, this software was also a convenient choice due to access to the source code and local expertise.\\    
+This work is designed to be able to support other work done using agent-based models and help further the understanding of agent-based models during this time of interest.
+
+To show a conversion between the two types of models a particular example of each must be chosen, for this paper a custom recurrence relation language was designed to be transformed into the agent-based model known as InterDyne. InterDyne was chosen in particular due to it being designed from the bottom up to model and investigate emergent behaviour within the financial markets, this software was also a convenient choice due to access to the source code and local expertise.   
+
 This papers layout is as follows. First a background is given detailing, emergent behaviour generally and in the financial markets, a description and review of the literature of both recurrence relations and agent-based models, and a in-depth description of InterDyne. Secondly a description and analysis of the problems with agent-based models and how a two-view approach addresses them. Thirdly a description of the design, formal syntax, and use, of the custom recurrence relation language. Fourthly the design and a example of the step-by-step transformation between the two models. Fifthly a validation that the transformed example does indeed represent a InterDyne simulation. Sixthly a test of a number of examples for correctness of functionality. Lastly the paper is concluded and summarised with notes for further work given.     
 %This connection between the models is coined as the two-views approach.\\
 
@@ -245,16 +284,23 @@ This papers layout is as follows. First a background is given detailing, emergen
 %in project scope: show some limited implementation. Say initial aim was to design, but not implement the translation steps. However, the project has succeeded in all of the design aims and additionally succeeded in implementing several of the translation steps."
 
 
+%This makes agent-based models in many cases the most natural way for describing systems composed of ``behavioural'' entities~\cite{techsadsProbsabm}.
+
+%In many cases, ABM is most natural for describing and simulating a system composed of ?behavioral? entities. Whether one is attempting to describe a traffic jam, the stock market, voters, or how an organization works, ABM makes the model seem closer to reality. For example, it is more natural to describe how vehicles move in a lane than to come up with the equations that govern the dynamics of the density of vehicles. Because the density equations result from the behavior of vehicles, the ABM approach will also enable the user to study aggregate properties. (from paper techsadsProbsabm)
+
+%The flexibility of ABM can be observed along multiple dimensions. For example, it is easy to add more agents to an agent-based model. ABM also provides a natural framework for tuning the complexity of the agents: behavior, degree of rationality, ability to learn and evolve, and rules of interactions. Another dimension of flexibility is the ability to change levels of description and aggregation: one can easily play with aggregate agents, subgroups of agents, and single agents, with different levels of description coexisting in a given model. One may want to use ABM when the appropriate level of description or complexity is not known ahead of time and finding it requires some tinkering. (from paper  techsadsProbsabm)
+
+%https://www.ijcsi.org/papers/IJCSI-9-1-3-115-119.pdf
 
 
 
+%Abandoning the consistency requirements of RE equilibrium removes the need for solving the models as one single block: in principle AB models can be fully modularised, with endless possibilities for recombination and extension. However, this feature has not been exploited so far. Existing AB models are mostly one-off exercises which do not travel across research groups and whose ?working life? does not usually extend beyond the grant that originated them. Code is not re-used, except possibly by the authors themselves; alternative assumptions are not tested, results are not generalised. In short, knowledge accumulates at a slow pace. The reason for this ?modelling individualism?, as we might call it, is to be searched in the struggle to win the ?modelling race?, in line with existing incentives in terms of (short-term) publications and funding opportunities.
+%https://www.nuffield.ox.ac.uk/economics/papers/2015/ABMfuture-v12.pdf
+
+%https://www.ripublication.com/ijaer16/ijaerv11n8_23.pdf (says that abm might be much better then other models)
 
 
-
-
-
-
-
+%Such methods are unfamiliar (or unappealing) to most theorists in the leading research departments and rarely published in the top professional journals. Farmer and Foley attribute this in part to the failure of a particular set of macroeconomic policies, and the resulting ascendancy of the rational expectations hypothesis:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Background}
@@ -262,8 +308,10 @@ This section aims to introduce the emergent behaviour of interest in the financi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Emergent Behaviour}
-Emergent behaviour is a term used to describe macro-level behaviour of a system that is not obvious from analysis of the micro-level behaviour of the system, more formally this is behaviour that can not be predicted through analysis of any single component of a system \cite{EB_systemofsystemsGLangford}.\\
-A misunderstanding of emergence can lead to the fallacy of division, this is that a property of the system as a whole most also be a property of an individual component of the system; water for example has a number of properties including being able to be cooled down to become ice and heated to become steam, saying the same must also be true of a molecule of water however is incorrect. This concept continues into economics, being called the fallacy of composition, where what is true for the whole economy my not hold for an individual and vice versa~\cite{fallacyofcompostionBook}.\\       
+Emergent behaviour is a term used to describe macro-level behaviour of a system that is not obvious from analysis of the micro-level behaviour of the system, more formally this is behaviour that can not be predicted through analysis of any single component of a system \cite{EB_systemofsystemsGLangford}.
+
+A misunderstanding of emergence can lead to the fallacy of division, this is that a property of the system as a whole most also be a property of an individual component of the system; water for example has a number of properties including being able to be cooled down to become ice and heated to become steam, saying the same must also be true of a molecule of water however is incorrect. This concept continues into economics, being called the fallacy of composition, where what is true for the whole economy my not hold for an individual and vice versa~\cite{fallacyofcompostionBook}.
+       
 A simple way to demonstrate emergence is in the Game of Life~\cite{gameoflifepage}, which is an example of cellular automaton; this game takes place on an infinite two-dimensional grid in which cells can either be `alive', coloured for example green, or `dead', a different colour usually black. Wether a cell is `alive' or `dead' is based on a set of simple rules:   
 \begin{enumerate}
   \item `Alive' cells will transition to be `dead' cells in the next time step if they have few than two `alive' neighbours.
@@ -271,11 +319,16 @@ A simple way to demonstrate emergence is in the Game of Life~\cite{gameoflifepag
   \item `Alive' cells will transition to be 'dead' cells in the next time step if they have more than three `alive' neighbours.
   \item `Dead' cells with exactly three 'alive' neighbours will transition to `alive' at the next time step.
 \end{enumerate}
-With this simple set up very complex patterns evolving through time can be created, these patterns can be seen as emergence, with an individual cell not being able to encapsulate this behaviour. Natural phenomena similar to this is the formation of symmetries and patterns within snowflakes.\\
-Emergent behaviour can be seen occurring naturally in many other cases, with physics offering a number of well explored examples. For instance the n-body problem~\cite{nbodyproblem}, this historically is explained as n planets interacting in such a way as to produce complex behaviour, despite each individual body following Newtonian laws. An interesting aspect of the n-body problem is that it can be reduced down to three bodies and still exhibit complex emergent behaviour. This example shows that a system need not be overly complex or large to display emergent behaviour, and that by showing the existence of emergence in a simplistic system one can infer its presence in more complex versions of that system.\\
-The emergent behaviour within the n-body problem is caused by interaction dynamics, this is the communication between different elements of a system. The interactions here takes the form of gravitational pulls, if these pulls were not present then the system as a whole, and every individual present would maintain a constant velocity, unless they physically collided~\cite{newtonconstantvelocity}.\\
-Though this example deals with a physical phenomenon, interaction based emergence is present in many different systems. Interactions in these systems can take the form of verbal and visual communication in social systems with negative emergent behaviour in this case being the break down of social cooperation~\cite{socialemrgence}. The financial markets can be thought of as a complex system, with interaction dynamics, hence one can assume that the markets would exhibit emergence. This is true and the financial markets have seen to exhibit a large selection of emergent behaviour, such as the formation of patterns, bubbles and crashes~\cite{bubblesandcrashes}. These particular examples derive from feedback loops with in the markets, in a similar process to that of the interaction between short range and long range feedback loops in chemical reactions~\cite{turningchemical}.\\     
-Feedback loops are a prominent type of emergent behaviour that can occur from interaction dynamics. Feedback loops are where the input information to an entity is in some way dependent on the output information of that same entity, normally from a previous moment in time. In their simplest form this can just be a single entity supplying an input to its self, shown in Fig.~\ref{fig:exampleselffeedback}.\\
+With this simple set up very complex patterns evolving through time can be created, these patterns can be seen as emergence, with an individual cell not being able to encapsulate this behaviour. Natural phenomena similar to this is the formation of symmetries and patterns within snowflakes.
+
+Emergent behaviour can be seen occurring naturally in many other cases, with physics offering a number of well explored examples. For instance the n-body problem~\cite{nbodyproblem}, this historically is explained as n planets interacting in such a way as to produce complex behaviour, despite each individual body following Newtonian laws. An interesting aspect of the n-body problem is that it can be reduced down to three bodies and still exhibit complex emergent behaviour. This example shows that a system need not be overly complex or large to display emergent behaviour, and that by showing the existence of emergence in a simplistic system one can infer its presence in more complex versions of that system.
+
+The emergent behaviour within the n-body problem is caused by interaction dynamics, this is the communication between different elements of a system. The interactions here takes the form of gravitational pulls, if these pulls were not present then the system as a whole, and every individual present would maintain a constant velocity, unless they physically collided~\cite{newtonconstantvelocity}.
+
+Though this example deals with a physical phenomenon, interaction based emergence is present in many different systems. Interactions in these systems can take the form of verbal and visual communication in social systems with negative emergent behaviour in this case being the break down of social cooperation~\cite{socialemrgence}. The financial markets can be thought of as a complex system, with interaction dynamics, hence one can assume that the markets would exhibit emergence. This is true and the financial markets have seen to exhibit a large selection of emergent behaviour, such as the formation of patterns, bubbles and crashes~\cite{bubblesandcrashes}. These particular examples derive from feedback loops with in the markets, in a similar process to that of the interaction between short range and long range feedback loops in chemical reactions~\cite{turningchemical}.     
+
+Feedback loops are a prominent type of emergent behaviour that can occur from interaction dynamics. Feedback loops are where the input information to an entity is in some way dependent on the output information of that same entity, normally from a previous moment in time. In their simplest form this can just be a single entity supplying an input to its self, shown in Fig.~\ref{fig:exampleselffeedback}.
+
 In finance this could be seen as a simple trader who decides how much to sell based solely on their inventory at the previous time step. 
 \begin{figure}[H]
 	\centering
@@ -290,46 +343,40 @@ Feedback loops can be encompass multiple entities, in Fig.~\ref{fig:exampletwofe
 	\caption{\it Feedback loop between two entities, with each output being transformed by the other entity before becoming an input.}
 	\label{fig:exampletwofeedback}
 \end{figure} 
-A loop such as the one in Fig.~\ref{fig:exampletwofeedback}, is only considered a feedback loop if information is passed through out the entire loop. If $E3$ produced a constant output, or an output that does not depend upon its input from $E2$, then this would not be a feedback loop as the new input to $E2$ does not depend on its output.\\
-These example are very simple, feedback loops can be much more complex, encompassing any number of entities, each of whom can have very complex algorithms for transforming their inputs. Feedback loops can operate across time, meaning that an event in the past can eventually feedback to a present decision. For a feedback loop containing a large number of entities the time scale on which the feedback occurs can be come significantly large.\\
-Though feedback loops are often assumed to be a negative property, some can be stabilising due to a benign effect.\\
-Feedback loops can be present in a system in two ways, either they can be a constant fixture, called a static feedback loop, or they can form and change, called a dynamic feedback loop. A static feedback loop is present in the system from the start whether this is intentional and known, or unintentional and unknown to the members of the system. Dynamic feedback loops may not be present at the start and can form and change over time, with new entities joining or leaving them, allowing them to increase or decrease in size or effect, to split or merge, or to disappear.\\
-Due to the potential complexity of feedback loops both in construction and in time, they can be difficult to detect, therefore methods are usually used to expose them. For static loops, forms of static analysis can be used such as, analysing initial setup, this is possible since the loops do not change through out time. Dynamic loops can be much harder to observe and analyses, an important aspect to detecting these loops is the interactions, messages sent between different entities within the system. Since the loops can evolve over time being able to track and analyse these messages over a time series is vitally important for the analysis of these loops, this time dependent analyse is called dynamic analyse.\\
-Since feedback loops can be destabilising and damaging to the system in which they occur, there is interest in studying this emergence in the aim to prevent monetary loss and damage to the economy.\\
-A notable form of emergence behaviour, due to feedback loops, that takes place within the electronic markets are flash crashes. A flash crash is an event during which time the trading price of a security drops very rapidly, becoming disconnected from its fundamental, before then recovering~\cite{rareeventflashcrash}. A particularly famous flash crash is that of 2010, in which the E-min S\&P 500 equity futures market dropped in price by more then 5\%, before rebound to close to its original price~\cite{SECreport_delays, rareeventflashcrash}. This whole process occurred very rapidly, lasting approximately thirty-six minutes and has been described as``one of the most turbulent periods in their history'' for the US financial markets~\cite{Impact_hft}.\\
-Research done by Ref~\cite{DynamicCoupling_Chris, otherabmflash}, describes how the crash may have unfolded due to a feedback loop between High-Frequency Traders (HFTs), known as `hot-potato'' trading.\\
-HFTs are a subset of algorithmic traders who normally participate in the market as arbitrageurs or market makers, they invest in ultra-high speed technology allowing them to detect, analyses and react to market condition in nanoseconds \cite{hftinformation1}. This means HFTs can trade huge quantities of assets in very short time frames, with some estimates stating that 10-40\% of all trades where initiated by them during 2016 \cite{hftmarketparticipation}.\\
-The feedback loop of ``Hot Potato'' trading, is when inventory imbalance is repeatedly passed between HFTs market makers. A market maker is a trader who is required to have both a bid and a ask on the order book at all times, this means in theory that they are constantly buying and selling, a high frequency market maker as expected should be buying and selling very very often. Market makers make a profit from the spread and not long positions, hence they want to keep inventories low to avoid the market moving against them. To achieve this market makers have strict inventory limits that if they pass will cause them to go into what is know as a ``panic state'', during this state the trader will sell of an amount of its inventory to return back into its normal trading region. This inventory now sold by the market maker can be bought by another market maker causing them to in turn go into ``panic'' and sell, this process is ``Hot Potato'' trading and can in theory continue indefinitely~\cite{Elias_Paper}.\\
-This constant selling and buying of inventory can artificially inflate the trading volume of the market, changing how many traders operate and potentially leading to a flash crash.\\
+A loop such as the one in Fig.~\ref{fig:exampletwofeedback}, is only considered a feedback loop if information is passed through out the entire loop. If $E3$ produced a constant output, or an output that does not depend upon its input from $E2$, then this would not be a feedback loop as the new input to $E2$ does not depend on its output.
+
+These example are very simple, feedback loops can be much more complex, encompassing any number of entities, each of whom can have very complex algorithms for transforming their inputs. Feedback loops can operate across time, meaning that an event in the past can eventually feedback to a present decision. For a feedback loop containing a large number of entities the time scale on which the feedback occurs can be come significantly large.
+
+Though feedback loops are often assumed to be a negative property, some can be stabilising due to a benign effect.
+
+Feedback loops can be present in a system in two ways, either they can be a constant fixture, called a static feedback loop, or they can form and change, called a dynamic feedback loop. A static feedback loop is present in the system from the start whether this is intentional and known, or unintentional and unknown to the members of the system. Dynamic feedback loops may not be present at the start and can form and change over time, with new entities joining or leaving them, allowing them to increase or decrease in size or effect, to split or merge, or to disappear.
+
+Due to the potential complexity of feedback loops both in construction and in time, they can be difficult to detect, therefore methods are usually used to expose them. For static loops, forms of static analysis can be used such as, analysing initial setup, this is possible since the loops do not change through out time. Dynamic loops can be much harder to observe and analyses, an important aspect to detecting these loops is the interactions, messages sent between different entities within the system. Since the loops can evolve over time being able to track and analyse these messages over a time series is vitally important for the analysis of these loops, this time dependent analyse is called dynamic analyse.
+
+Since feedback loops can be destabilising and damaging to the system in which they occur, there is interest in studying this emergence in the aim to prevent monetary loss and damage to the economy.
+
+A notable form of emergence behaviour, due to feedback loops, that takes place within the electronic markets are flash crashes. A flash crash is an event during which time the trading price of a security drops very rapidly, becoming disconnected from its fundamental, before then recovering~\cite{rareeventflashcrash}. A particularly famous flash crash is that of 2010, in which the E-min S\&P 500 equity futures market dropped in price by more then 5\%, before rebound to close to its original price~\cite{SECreport_delays, rareeventflashcrash}. This whole process occurred very rapidly, lasting approximately thirty-six minutes and has been described as``one of the most turbulent periods in their history'' for the US financial markets~\cite{Impact_hft}.
+
+Research done by Ref~\cite{DynamicCoupling_Chris, otherabmflash}, describes how the crash may have unfolded due to a feedback loop between High-Frequency Traders (HFTs), known as `hot-potato'' trading.
+
+HFTs are a subset of algorithmic traders who normally participate in the market as arbitrageurs or market makers, they invest in ultra-high speed technology allowing them to detect, analyses and react to market condition in nanoseconds \cite{hftinformation1}. This means HFTs can trade huge quantities of assets in very short time frames, with some estimates stating that 10-40\% of all trades where initiated by them during 2016 \cite{hftmarketparticipation}.
+
+The feedback loop of ``Hot Potato'' trading, is when inventory imbalance is repeatedly passed between HFTs market makers. A market maker is a trader who is required to have both a bid and a ask on the order book at all times, this means in theory that they are constantly buying and selling, a high frequency market maker as expected should be buying and selling very very often. Market makers make a profit from the spread and not long positions, hence they want to keep inventories low to avoid the market moving against them. To achieve this market makers have strict inventory limits that if they pass will cause them to go into what is know as a ``panic state'', during this state the trader will sell of an amount of its inventory to return back into its normal trading region. This inventory now sold by the market maker can be bought by another market maker causing them to in turn go into ``panic'' and sell, this process is ``Hot Potato'' trading and can in theory continue indefinitely~\cite{Elias_Paper}.
+
+This constant selling and buying of inventory can artificially inflate the trading volume of the market, changing how many traders operate and potentially leading to a flash crash.
+
 Flash crashes have occurred on a number of occasions and in a large selection of markets, with a more recent example being a crash of the cryptocurrency ethereum~\cite{cryptocrash}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Methods for Modelling Emergent Behaviour in Finance}
-\begin{itemize}
-  \item In Discrete time!
-  \item Discuss different methods for modelling financial emergent behaviour (papers)
-  \item compare where non-ABM and ABM papers are published (re-affirm need for this work)
-  \item  What is a ABM 
-\end{itemize}
+There are many different methods available for modelling system that may exhibit emergent behaviour, such as: 1-period, 2-period and multi-period models, probabilist models, like hidden Markov models, ordinary differential equations and partial differential equations [REFS??????]. This paper focusses on two models, recurrence relations and agent-based models, both these models offer an attractive method for modelling discrete systems.
+
+Here these two modelling techniques will be described and their use in finance will be compared.  
 
 \subsubsection{Recurrences Relations} 
+Recurrence relations connect a discrete set of elements in a sequence, these elements are normally either numbers or functions, they can be used to define these sequences or produce the elements in them. They can be seen as equations that give the next term in a sequence based on the previous term or terms, hence defining said sequence. Recurrence relations are often used to define coefficients in series expansions, moments of weight functions, and members of families of special functions~\cite{recurrelationbook}.
 
-\begin{itemize}
-  \item Say that there is an alternative modelling technique which doesn't share the same problems 
-  \item Introduce Recurrence Relations, what they are etc 
-  \item Show and describe them, to a level that any one should be able to understand what they are 
-  \item talk about emergence in them
-  \item Show why loops and emergence are not necessarily bad or hard wired obviously into the system
-  \item Say their benefits and down sides  \begin{itemize}
-  \item can't follow messages in a system
-  \item can view history of states 
-  \item are well accepted 
-  \item can have a formal definition 
-\end{itemize}
-\end{itemize}
-
-Recurrence relations connect a discrete set of elements in sequence, these elements are normally either numbers or functions, they can be used to define these sequences of produce the elements in them. They can be seen as equations that give the next term in a sequence based on the previous term or terms, hence defining said sequence. Recurrence relations are often used to define coefficients in series expansions, moments of weight functions, and members of families of special functions~\cite{recurrelationbook}.\\
 The most simplistic form of a recurrence relation is one where the next term depends only on the immediately preceding term. If the $n^{th}$ element in the sequence is defined as  $x_{n}$, then this recurrence relation can be written as,    
 \begin{equation}
 x_{n+1} = f(x_{n}),
@@ -338,17 +385,19 @@ where $f()$ is a function that calculates the next term based on the previous on
 \begin{equation}
 x_{n+1} = f(x_{n-1}, x_{n-2}),
 \end{equation}
-with $f()$ now taking two inputs to produce the new term in the sequence~\cite{recurrealtionwebpage}.\\
+with $f()$ now taking two inputs to produce the new term in the sequence~\cite{recurrealtionwebpage}.
+
 Recurrence relations can also be used to define a sequence through time, in the simplest case the enumerate $n$, can be set to represent time $t$, this is applicable to discrete time as it requires set steps between the different times. Just as in the previous examples, the simplest recurrence relation is,  
 \begin{equation}
 x_{t+1} = f(x_{t}),
 \end{equation}
-where $x_{t}$ is the term at time $t$ and $f()$ gives the term at $t+1$ based on the term at $t$. Again this can be expanded to include terms from a number of previous time steps, allowing the memory of the sequence to be shown.\\  
+where $x_{t}$ is the term at time $t$ and $f()$ gives the term at $t+1$ based on the term at $t$. Again this can be expanded to include terms from a number of previous time steps, allowing the memory of the sequence to be shown.
+ 
 A recurrences relation for defining a sequences may as well as depending upon previous terms, also depend upon some parameter, $\alpha$, this would give, in its simplest case, 
 \begin{equation}
 x_{n+1} = f(x_{n}; \alpha).
 \end{equation}
-The next term in the sequence may not only depend on previous terms within its own sequence and paramters, it can also be conditional on another sequence. For example one sequence through out time, $x$, may depend on another sequence through out time, $y$, a simple recurrence relation for this could be,
+The next term in the sequence may not only depend on previous terms within its own sequence and parameters, it can also be conditional on another sequence. For example one sequence through out time, $x$, may depend on another sequence through out time, $y$, a simple recurrence relation for this could be,
 \begin{equation}
 x_{t+1} = f(x_{t}, y_{t}),
 \end{equation}
@@ -360,55 +409,79 @@ Though it could also indirectly depend on its self, if $y$ was defined by a recu
 \begin{equation}
 y_{t+1} = f(x_{t}).
 \end{equation}
-These cross sequence associations allow for complex interactions to be represented as time series defined by recurrence relations, this is a method which can be applied to agent-based modelling.\\
-Reference~\cite{econmistsnoabm} showed how an agent-based model looking at the microstructure of the financial markets, can be exhibited in the form of recurrence relations. In their approach each agent with in an $n$ agent model is considered to be well described by a state variable, $x_{i, t}$. The state variable describes the agent at each time step, where $i$ is the identity of the agent $(i \in 1,2,....,n)$, and $t$ is the time step at which the agent is being described, i.e. $x_{1,5}$ describes the first agent at the fifth time step. These state variables are defined by the recurrence relation,     
-\begin{equation} \label{eq:notimedelayrecur}
-x_{i, t+1} = f_{i}(x_{i, t}, x_{-i,t}; \alpha_{i}),
-\end{equation}
-where $f_{i}()$ is a function unique to agent $i$, that can take the state of the agent at the previous time step, $x_{i, t}$, the state of any other agent at the previous time step, $x_{-i, t}$\footnote{The $-i$ is used to refer to all other agents in the system. So if $i=1$, $-i$ refers to agents $2,3,4,....,n$, for an $n$ agent system.}, and a bespoke parameter $\alpha_{i}$.\\
-This method works by describing each agent as a sequence of state variables, these sequences are then interlinked by having dependencies to each other, allowing both the agents and their interactions to be represented. A simple example of this could be two agents, $x_{1}$ and $x_{2}$, that are coupled to each other and only depend on the others value at the previous time step and a parameter, represented by the recurrence relations,     
-\begin{equation}
-x_{1, t+1} = f_{1}(x_{2,t}; \alpha_{1}),
-\end{equation}
-\begin{equation}
-x_{2, t+1} = f_{2}(x_{1,t}; \alpha_{2}).
-\end{equation}
-This formulation only shows relationships to the previous time steps, however information delays can be added to the system by allowing the recurrence relations to have a longer memory. A recurrence relation that uses a state variable from three time steps ago, could be considered to have a time delay of three time steps in receiving this information. The generalisation of the model needed to allow for this, is a recurrence relation of the form, 
-\begin{equation}
-x_{i, t+1} = f_{i}(x_{i, t}, x_{i, -t} x_{-i,t}, x_{-i, -t}; \alpha_{i}).
-\end{equation}
-This is similar to Eq.~\ref{eq:notimedelayrecur} but contains two new terms $x_{i, -t}$ and $x_{-i, -t}$, these terms are used to refer to any time steps before the previous one, time $t$. This more general equation can now reference any state variable from any previous time, from any agent, as well as its bespoke parameter, to compute the next term in its sequence.\\  
-This models can be solved for macro-level properties by iteratively solving each state variable, $x_{i, t}$, given some initial conditions. This method of assessing the model gives it a formal definition, and one that is accessible by a larger range of experts then classic agent-based models. Recurrence relations in a number of forms are commonly used in economics and finance and hence are familiar and relatable to economists, this makes them a far more effective tool for describing models to these domain experts then agent-based models.\\
-This iterative method for solving the equations makes any dependencies between systems apparent, as if $x_{2, t}$ is present in the definition of $x_{1, t+1}$, one can say that $x_{1,t+1}$ depends on $x_{2,t}$. This transparency of dependencies makes this formulation amenable to static analysis, allowing the recurrence relations to be investigated to return their static dependencies.\\
-Although all recurrence relations will contain some form of recursive, since this is an intrinsic property, this will not necessarily be negative or destabilising. For example a dependency on a state at a previous time step may not be destabilising to the system, however the reverse would be a case where the state variable at $t+1$ depended on its self, this would be a destabilising loop. Static analysis hence could be used to detect hard-wired destabilising loops, such as the one just mentioned.\\
-Static analyse of the system can become difficult when the functions $f_{i}()$ contain conditional statements relating to their inputs, this can cause inputs not to be used at certain times hence meaning dependencies will not be as obvious as simply the inputs given, this is a problem of determining wether a function will necessarily evaluate all its arguments~\cite{willevaluteargsa}.\\
-Though through static analysis recurrence relations can be used to view the history of the state variables of a single agent, however the history of messages between pairs of agents is not easily detectable with static analysis. The interaction history is found through dynamic analysis which is not well suited to recurrence relations, as they lack a clear ability to follow the passing of messages within the system.   
+These cross sequence associations allow for complex interactions to be represented as time series defined by recurrence relations.
+
+Recurrence relations have a number of benefits given by their construction, such as:
+\begin{itemize}
+    \item Giving a formal mathematical definition of the whole system.
+    \item Showing an obvious link between equations within the system.
+    \item Giving a static representation of the system.
+\end{itemize}
+
+A formal mathematic definition of the whole system being model is given when using recurrence relations due to three factors: the way in which they model the whole system as a entity, the static view point they give to the system and the mathematical stye which they take~\cite{rrformulism}.  %is this right?
+
+Links within sets of recurrence relations are hard coded into the equations, making these relationships amenable to static analysis.      
+
+This model lays out both the functionality of each equation and the relation between them in such a way to give a static representation of the system as a whole. 
+
+This model however has difficulties in design as it can be challenging in creating a large continuous description of a system containing many components, also the function calls as a method of information passing can make dynamically tracking the flow of information during a simulation hard [REFS????].   
 
 
 \subsubsection{Agent-Based Models}
-There are a number of different techniques to model emergent behaviour in complex systems, one popular method is agent-based modelling. Agent-based modelling can be considered more of a mind set then a rigid methodology, this involves describing the system in question in terms of its components and then allowing these to interact. Agent-based models allow a system to be described naturally and are hence the canonical approach to modelling emergent phenomena. This method is a bottom up approach, allowing for each component of the system, agent of the model, to be created to a relevant degree of abstraction~\cite{abmhumsystems}.\\
+A modelling technique that takes a more dynamic approach is agent-based modelling. Agent-based modelling can be considered more of a mind set then a rigid methodology, this involves describing the system in question in terms of its components and then allowing these to interact. Agent-based models allow a system to be described naturally and are hence the canonical approach to modelling emergent phenomena. This method is a bottom up approach, allowing for each component of the system, agent of the model, to be created to a relevant degree of abstraction~\cite{abmhumsystems}.
+
 Agent-based models have been used to model a wide range of emergent behaviour including in the financial markets, examples of this are, noise traders~\cite{abmnoisetraders}, herding among traders~\cite{abmherding}, and fundamentalists~\cite{abmfundemetilists}.
 
-\subsubsection{Review of Literature on Financial Model} \label{litreviewofabmrr}
-%compare abm and non abm of finacial markets and say that ecomists publish different papers 
-
-
+Agent-based models are particularly suited to system which, contain a number of autonomous components. Each component can be modelled independently and then allowed to interact through messages sent between each other. This allows for a obvious visual design of the system, such as that shown in Fig.~\ref{fig:abmii}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{abmii}
+	\caption{\it Visualisation of the allowed interactions between five different agents, represented by black circles, with red lines representing the message paths.}
+	\label{fig:abmii}
+\end{figure} 
+The main aspect of this model is the agents used. Though every system modelled can have drastically different agents, there are a few characteristics which should be in place for a agent to be considered an agent~\cite{MN2010, abmtsd}:
 \begin{itemize}
-  \item Compare papers on RR and ABM and show that RR are used in finance papers more then ABM and hence the need for my project 
+   \item An agent is self contained, unique and identifiable, this requires an agent to have boundaries which can easily be used to determine what is and what is not part of the agent. 
+   \item An agent autonomous and it can act independently during its interactions with other agents. Its has behaviour and decisions that can be associated with information acquired  during communication with other agents. 
+   \item An agents state varies over time, representing variables associated with its current position. 
+   \item An agent behaviour is influenced by dynamic interactions with other agents. 
 \end{itemize}
 
-%RR
-%https://link.springer.com/chapter/10.1007/978-3-642-46938-1_3 (book)
-%https://books.google.co.uk/books?hl=en&lr=&id=o-clBQAAQBAJ&oi=fnd&pg=PA1&dq=recurrence+relations+finance+modelling&ots=v2yOVKquNP&sig=i0q6iZq3FHx_HEtvI4fsCQfmLD4#v=onepage&q=recurrence%20relations&f=false (book)
-%https://books.google.co.uk/books?hl=en&lr=&id=7iGsCQAAQBAJ&oi=fnd&pg=PA185&dq=recurrence+relations+finance+modelling&ots=SPbejTEzwk&sig=qzu1gMUBiMCUtAFq1TSbP7YPKEc#v=onepage&q=recurrence&f=false (book)
-%https://link.springer.com/chapter/10.1007%2F978-3-540-71297-8_41?LI=true (paper)
-%http://www.jstor.org/stable/3481708?seq=1#page_scan_tab_contents (paper)
-%https://www.researchgate.net/profile/Thomas_Mikosch/publication/2703398_Sample_ACF_of_Multivariate_Stochastic_Recurrence_Equations_With_Application_to_GARCH/links/54255bc90cf26120b7ac91db.pdf (paper draft)
-%http://www.annualreviews.org/doi/abs/10.1146/annurev.economics.050708.142940 (paper)
-%http://www.sciencedirect.com/science/article/pii/S0362546X97002356 (paper)
-%http://www.sciencedirect.com/science/article/pii/S157400210502023X (paper)
-%https://search.proquest.com/openview/f6cf1c4d1288dc7c9c2f34b31ab058e4/1?pq-origsite=gscholar&cbl=18750&diss=y (phd)
-%
+This modelling technique has a number of benefits originating from its construction, these include:
+\begin{itemize}
+   \item Being able to independently create each agent to varying degrees of complexity. 
+   \item Giving a clear visual representation of the systems interconnectedness.
+   \item Giving a dynamic representation of the system.
+   \item Easily expandable by adding more agents.  
+\end{itemize} 
+
+Since each agent in the system can be completely autonomous and independent from each other, save for message passing, this allows for them to be created individually. Hence each agent can describe its relevant component to a relevant degree of complexity, making the creation of a simulation more intuitive and sectioned. This makes agent-based models in many cases the most natural way for describing systems composed of ``behavioural'' entities~\cite{techsadsProbsabm}.
+
+Do due the set up of this model the a network representing the communication between different agents is easy to construct, this allows for topologies to be visualised and can aid in the creation of a simulation.    
+
+The use of messages and bottom up approach this model takes allows for a more dynamic view of a system to be achieved, messages can be more easily tracked through out the systems evolution allowing for events to be more easily pinpointed and analysed.  
+
+The use of independent agents makes this technique very amenable to expansion, new agents can be added normally with little to no change to previously existing agents. This allows these simulations to be confidently expanded to look at more complex systems, or to add new elements to an existing system.  
+
+These aspects of this approach make the modelling technique well qualified for modelling and analyse of emergent behaviour within systems of interacting components. However this approach does contain some draw backs including a one-to-many problem (where though some high level behaviour may be noted in the system this does not mean the only way of achieving this behaviour is the current system design) and the lack of a formal definition for the system as a whole [REFS???].  
+
+
+
+\subsubsection{Review of Published Literature on Financial Model} \label{litreviewofabmrr} %dont like this title 
+%abm and rr are amoung many models used in econmics /
+%both have a large amount of papers published on them /
+%RR is published in a lrge range of journals including a numous times in top journals /
+%this show the wide spread acceptance for this modelling technique/
+%though abm have had a large number of publications 
+%they are noticebly absent in top journals 
+%shows lack of wide spread acceptance of model 
+
+Both recurrence relations and agent-based models have been in modelling the financial markets and have had a number of papers published on them.
+
+Recurrence relations have seen wide spread use in economics appearing in a large selection of journals, including numerous times in top journals~\cite{rra10, rra1, rra2, rra3, rra4, rra5, rra6, rra7, rra8, rra9}. This wide spread use of the technique implies the acceptance of recurrence relations within financial modelling.      
+
+Agent-based models also have a large selection of papers published on them relating to economics and finance~\cite{ abma2, abma3, abma4}. However these papers are noticeably absent from top economics journals and tend to be published in the Journal of Economic Behavior \& Organization and the Journal of Economic Development \& Control~\cite{whereabmp, farmerfoleynature}. The lack of agent-based models present in top economic journals combined with the number of papers published in other journals shows the lack of wide spread acceptance for this technique~\cite{agbntj}.
+
 
 
 
@@ -609,6 +682,52 @@ Once delays have been specified in this manner all messages, one-to-one and broa
 %in intro and alaysis state how different the interdyne and recurrance relations are  
 Though InterDyne is a functional simulation platform and has been used to run a number of experiments, most notably in Ref.~\cite{DynamicCoupling_Chris} where a model was presented showing a flash crash caused by interaction dynamics, it possesses a concern when discussing these results, especially to non-experts in computational modelling.\\
 This section will discuss the main draw backs of InterDyne and a method for countering them.  
+
+
+
+
+
+
+
+
+
+
+
+These cross sequence associations allow for complex interactions to be represented as time series defined by recurrence relations, this is a method which can be applied to agent-based modelling.
+
+Reference~\cite{econmistsnoabm} showed how an agent-based model looking at the microstructure of the financial markets, can be exhibited in the form of recurrence relations. In their approach each agent with in an $n$ agent model is considered to be well described by a state variable, $x_{i, t}$. The state variable describes the agent at each time step, where $i$ is the identity of the agent $(i \in 1,2,....,n)$, and $t$ is the time step at which the agent is being described, i.e. $x_{1,5}$ describes the first agent at the fifth time step. These state variables are defined by the recurrence relation,     
+\begin{equation} \label{eq:notimedelayrecur}
+x_{i, t+1} = f_{i}(x_{i, t}, x_{-i,t}; \alpha_{i}),
+\end{equation}
+where $f_{i}()$ is a function unique to agent $i$, that can take the state of the agent at the previous time step, $x_{i, t}$, the state of any other agent at the previous time step, $x_{-i, t}$\footnote{The $-i$ is used to refer to all other agents in the system. So if $i=1$, $-i$ refers to agents $2,3,4,....,n$, for an $n$ agent system.}, and a bespoke parameter $\alpha_{i}$.
+
+This method works by describing each agent as a sequence of state variables, these sequences are then interlinked by having dependencies to each other, allowing both the agents and their interactions to be represented. A simple example of this could be two agents, $x_{1}$ and $x_{2}$, that are coupled to each other and only depend on the others value at the previous time step and a parameter, represented by the recurrence relations,     
+\begin{equation}
+x_{1, t+1} = f_{1}(x_{2,t}; \alpha_{1}),
+\end{equation}
+\begin{equation}
+x_{2, t+1} = f_{2}(x_{1,t}; \alpha_{2}).
+\end{equation}
+This formulation only shows relationships to the previous time steps, however information delays can be added to the system by allowing the recurrence relations to have a longer memory. A recurrence relation that uses a state variable from three time steps ago, could be considered to have a time delay of three time steps in receiving this information. The generalisation of the model needed to allow for this, is a recurrence relation of the form, 
+\begin{equation}
+x_{i, t+1} = f_{i}(x_{i, t}, x_{i, -t} x_{-i,t}, x_{-i, -t}; \alpha_{i}).
+\end{equation}
+This is similar to Eq.~\ref{eq:notimedelayrecur} but contains two new terms $x_{i, -t}$ and $x_{-i, -t}$, these terms are used to refer to any time steps before the previous one, time $t$. This more general equation can now reference any state variable from any previous time, from any agent, as well as its bespoke parameter, to compute the next term in its sequence.
+ 
+This models can be solved for macro-level properties by iteratively solving each state variable, $x_{i, t}$, given some initial conditions. This method of assessing the model gives it a formal definition, and one that is accessible by a larger range of experts then classic agent-based models. Recurrence relations in a number of forms are commonly used in economics and finance and hence are familiar and relatable to economists, this makes them a far more effective tool for describing models to these domain experts then agent-based models.
+
+This iterative method for solving the equations makes any dependencies between systems apparent, as if $x_{2, t}$ is present in the definition of $x_{1, t+1}$, one can say that $x_{1,t+1}$ depends on $x_{2,t}$. This transparency of dependencies makes this formulation amenable to static analysis, allowing the recurrence relations to be investigated to return their static dependencies.
+
+Although all recurrence relations will contain some form of recursive, since this is an intrinsic property, this will not necessarily be negative or destabiliszing. For example a dependency on a state at a previous time step may not be destabilising to the system, however the reverse would be a case where the state variable at $t+1$ depended on its self, this would be a destabilising loop. Static analysis hence could be used to detect hard-wired destabilising loops, such as the one just mentioned.
+
+Static analyse of the system can become difficult when the functions $f_{i}()$ contain conditional statements relating to their inputs, this can cause inputs not to be used at certain times hence meaning dependencies will not be as obvious as simply the inputs given, this is a problem of determining wether a function will necessarily evaluate all its arguments~\cite{willevaluteargsa}.
+
+Though through static analysis recurrence relations can be used to view the history of the state variables of a single agent, however the history of messages between pairs of agents is not easily detectable with static analysis. The interaction history is found through dynamic analysis which is not well suited to recurrence relations, as they lack a clear ability to follow the passing of messages within the system.   
+
+
+
+
+
 
 
 
@@ -817,7 +936,7 @@ tuples exist but can not be used by the user
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Recurrence Relation to InterDyne Converter} 
+\section{Translation from Recurrence Relations to InterDyne} 
 
 \begin{itemize}
   \item Re say what the convertor is and what is meant to do
@@ -1026,7 +1145,7 @@ Therefore the experiment will now be written in the form shown in Fig.\ref{fig:R
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Validation}
+\section{Testing and Validation}
 
 \begin{itemize}
   \item What is the validation for? checking that the conversion actual matches with an ABM (in this case InterDyne)
@@ -1044,13 +1163,12 @@ Therefore the experiment will now be written in the form shown in Fig.\ref{fig:R
 \subsection{Conversion to Haskell}
 %output the wrappers and logic as haskell code that can then be run in Interdyne 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Testing}
+\subsection{Testing}
 
 \begin{itemize}
   \item checking that this conversion still produces the same results as the RR 
 \end{itemize}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

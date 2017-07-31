@@ -106,16 +106,12 @@ Duane~Q. Nykamp.
 \newblock Recurrence relation definition.
 \newblock http://mathinsight.org/definition/recurrence\_relation, 6 2017.
 
-\bibitem{econmistsnoabm}
-R.~Leombruni and M.~Richiardi.
-\newblock Why are economists sceptical about agent-based simulations?
-\newblock {\em Physica A: Statistical Mechanics and its Applications},
-  355(1):103--109, 2005.
-
-\bibitem{willevaluteargsa}
-Chris Clack and Simon~L. Peyton~Jones.
-\newblock {\em Strictness analysis --- a practical approach}, pages 35--49.
-\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 1985.
+\bibitem{rrformulism}
+John~M. Hollerbach.
+\newblock A recursive lagrangian formulation of maniputator dynamics and a
+  comparative study of dynamics formulation complexity.
+\newblock {\em IEEE Transactions on Systems, Man, and Cybernetics}, 10,
+  November 1980.
 
 \bibitem{abmhumsystems}
 Eric Bonabeau.
@@ -139,10 +135,124 @@ Jeffrey~A. Frankel and Kenneth~A. Froot.
 \newblock Chartists, fundamentalists and the demand for dollars.
 \newblock {\em National Bureau of Economic Research}, 1986.
 
+\bibitem{MN2010}
+Charles~M. Macal and Michael~J. North.
+\newblock Tutorial on agent-based modelling and simulation.
+\newblock {\em J. Simulation}, 4:151--162, 09 2010.
+
+\bibitem{abmtsd}
+Charles~M. Macal.
+\newblock To agent-based simulation from system dynamics.
+\newblock In {\em Proceedings of the 2010 Winter Simulation Conference}, 2010.
+
+\bibitem{techsadsProbsabm}
+Ali Bazghandi.
+\newblock Techniques, advantages and problems of agent based modeling for
+  traffic simulation.
+\newblock {\em International Journal of Computer Science Issues}, 9(3), 2012.
+
+\bibitem{rra10}
+Marian Kwapisz.
+\newblock On difference equations arising in mathematics of finance.
+\newblock {\em Nonlinear Analysis: Theory, Methods \& Applications}, 30, 1997.
+
+\bibitem{rra1}
+Nancy~L. Stokey.
+\newblock {\em Recursive Methods in Economic Dynamics}.
+\newblock Harvard University Press, 1989.
+
+\bibitem{rra2}
+Lars Ljungqvist and Thomas~J. Sargent.
+\newblock {\em Recursive Macroeconomic Theory}.
+\newblock MIT Press, 2004.
+
+\bibitem{rra3}
+Charles M.~C. Lee, James Myers, and Bhaskaran Swaminathan.
+\newblock What is the intrinsic value of the dow.
+\newblock {\em The Journal of Finance}, 1999.
+
+\bibitem{rra4}
+Myles~M. Dryden.
+\newblock Share price movements: A markovian approach.
+\newblock {\em The Journal of Finance}, 1969.
+
+\bibitem{rra5}
+Stefan Niemann and Paul Pichler.
+\newblock Collateral, liquidity and debt sustainability.
+\newblock {\em The Economic Journal}, 2017.
+
+\bibitem{rra6}
+Sandeep Kapur and Allan Timmermann.
+\newblock Relative performance evaluation contracts and asset market
+  equilibrium.
+\newblock {\em The Economic Journal}, 2005.
+
+\bibitem{rra7}
+Chaim Fershtman and Ariel Pakes.
+\newblock Dynamic games with asymmetric information: A framework for empirical
+  work.
+\newblock {\em The Quarterly Journal of Economics}, 2012.
+
+\bibitem{rra8}
+Gauti~B. Eggertsson and Paul Krugman.
+\newblock Debt, deleveraging, and the liquidity trap: A fisher-minsky-koo
+  approach.
+\newblock {\em The Quarterly Journal of Economics}, 2012.
+
+\bibitem{rra9}
+Cars~H. Hommes.
+\newblock Heterogeneous agent models in economics and finance.
+\newblock {\em Handbook of Computational Economics}, 2, 2006.
+
+\bibitem{abma2}
+Leigh Tesfatsion.
+\newblock Agent-based computational economics: modeling economies as complex
+  adaptive systems.
+\newblock {\em Information Sciences}, 149, 2003.
+
+\bibitem{abma3}
+Leigh Tesfatsion.
+\newblock Introduction to the special issue on agent-based computional
+  economics.
+\newblock {\em Journal of Economic Dynamics and Control}, 25, 2001.
+
+\bibitem{abma4}
+Simone Alfarano, Thomas Lux, and Friedrich Wagner.
+\newblock Estimation of agent-based models: The case of an asymmetric herding
+  model.
+\newblock {\em Computational Economics}, 26, 2005.
+
+\bibitem{whereabmp}
+Matteo Richiardi.
+\newblock The future of agent-based modelling.
+\newblock {\em Economics Papers}, 2015.
+
+\bibitem{farmerfoleynature}
+J.~Doyne Farmer and Duncan Foley.
+\newblock The economy needs agent-based modelling.
+\newblock {\em Nature}, 460:685--686, 2009.
+
+\bibitem{agbntj}
+Dirk Helbing and S.~Balietti.
+\newblock {\em Social Self-Organization, Agent-Based Simulations and
+  Experiments to Study Emergent Social Behavior}.
+\newblock Springer, 2012.
+
 \bibitem{Chris_webPage}
 Christopher~D. Clack.
 \newblock The interdyne simulator (2011-).
 \newblock http://www.resnovae.org.uk/fccsuclacuk/research, 11 2016.
+
+\bibitem{econmistsnoabm}
+R.~Leombruni and M.~Richiardi.
+\newblock Why are economists sceptical about agent-based simulations?
+\newblock {\em Physica A: Statistical Mechanics and its Applications},
+  355(1):103--109, 2005.
+
+\bibitem{willevaluteargsa}
+Chris Clack and Simon~L. Peyton~Jones.
+\newblock {\em Strictness analysis --- a practical approach}, pages 35--49.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 1985.
 
 \bibitem{lob_noecomimists}
 M.~Gould, M.~Porter, and S.~Williams.
