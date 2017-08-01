@@ -1,66 +1,41 @@
+simulation ::= Simulation [definition] experiment
 
+definition ::= Function [char] [char] [argument] expression
 
->program ::= Program [definition] experiment
+argument::= Argument expression
 
+experiment::= Experiment [initcon] experimentrun
 
+initcon::= Initcon [char] expression
 
+experimentrun::= Emptyrun|Experimentrun expression
 
->definition ::= Name [char] expression | Function [char] [char] [argument] expression | InterVariable [char] expression |  IntFunction [char] [argument] expression
+expression::= Emptyexpression
+              |Ifthenelse expression expression expression
+              |Brackets expression
+              |List [expression]
+              |Operation expression op expression
+              |IntFunct [char] [argument]
+              |ExtFunct [char] [char] [argument]
+              |IntVar [char]
+              |ExVar [char] [argument]
+              |Specialfunc specfunc expression
+              |Number num
+              |Where expression [subdefinition]
 
+op::= Plus
+      |Minus
+      |Multiply
+      |Divide
+      |Lessthan
+      |Greaterthan
+      |Equals
+      |Notequals
+      |Lessequ
+      |Greaterequ
+      |Listadd
+      |Bang
 
+specfunc::= Listhead|Listtail
 
->argument::= Argument expression
-
-
-
-
->experiment::= Experiment [globalvariables] experimentbody experimentrun
-
-
-
->globalvariables::= Globalvariables [char] [argument] expression
-
-
-
->experimentbody::= Emptybody|Expbody [argument] expression
-
-
-
->experimentrun::= Emptyrun|Exprun expression
-
-
-
-
->expression::= Emptyexpression ||primarly used to intiate loops and should not ever exist in the final out put
->              |Ifelse expression expression expression ||this is the if statement taking: if condition, true code, else code
->              |Brackets expression
->              |List [expression] ||for []
->              |Operation expression op expression
->              |Funint [char] [argument] ||internal function
->              |Funext [char] [char] [argument] ||externally defined functions
->              |Varint [char]
->              |Varex [char] [argument]
->              |Constantvar [char]
->              |Specialfunc specfunc expression
->              |Number num
->              |Where expression [definition]
->              |Mainfunc [argument] ||this is the actual program itself
-
-
->op::= Plus
->      |Minus
->      |Multiply
->      |Divide
->      |Lessthan
->      |Greaterthan
->      |Equals
->      |Notequals
->      |Lessequ
->      |Greaterequ
->      |Listadd
->      |Bang
-
-
-
->specfunc::= Listhead|Listtail
-
+subdefinition ::= IntVariable [char] expression |  IntFunction [char] [argument] expression

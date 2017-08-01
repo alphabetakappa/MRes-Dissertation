@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  31 JUL 2017 21:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  1 AUG 2017 23:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -756,38 +756,28 @@ File: twofeedback.png Graphic file (type png)
  <use twofeedback.png>
 Package pdftex.def Info: twofeedback.png used on input line 342.
 (pdftex.def)             Requested size: 120.44969pt x 129.9853pt.
- [6 <./selffeedback.png>] [7 <./twofeedback.png>] [8]
-<abmii.png, id=48, 423.5825pt x 442.65375pt>
+ [6 <./selffeedback.png>] [7 <./twofeedback.png>] [8] [9]
+<abmii.png, id=51, 423.5825pt x 442.65375pt>
 File: abmii.png Graphic file (type png)
  <use abmii.png>
-Package pdftex.def Info: abmii.png used on input line 438.
+Package pdftex.def Info: abmii.png used on input line 445.
 (pdftex.def)             Requested size: 211.79073pt x 221.32632pt.
- [9] [10 <./abmii.png>] [11] [12] [13] [14] <harness_setup.png, id=69, 505.89pt
- x 445.665pt>
+ [10 <./abmii.png>] [11] [12] <harness_setup.png, id=62, 380.42125pt x 419.5675
+pt>
 File: harness_setup.png Graphic file (type png)
 
 <use harness_setup.png>
-Package pdftex.def Info: harness_setup.png used on input line 580.
-(pdftex.def)             Requested size: 252.94437pt x 222.83195pt.
-
+Package pdftex.def Info: harness_setup.png used on input line 539.
+(pdftex.def)             Requested size: 190.21014pt x 209.78323pt.
+ [13 <./harness_setup.png>]
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang2.sty
 File: lstlang2.sty 2015/06/04 1.6 listings language file
-) [15 <./harness_setup.png>] (./simplerunInterdyne.hs
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 1.
-
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/omlcmr.fd
-File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <8> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1.
-)
-(./fullunInterdyne.hs) (./complexagentwrapper.hs) (./message_simple.hs)
-[16] (./message_data.hs) (./message_broadcast.hs) (./interdynewithdelays.hs)
-[17] [18] [19] [20]
-(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
+(./complexagentwrapper.hs) [14] (./interdynewithdelays.hs) [15] [16] [17]
+[18] [19] (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang2.sty
@@ -795,20 +785,26 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 )
 (./Syntax_Def.lit.m
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 8.
-) [21]
-Overfull \vbox (70.76486pt too high) has occurred while \output is active []
-
-
-[22] (./exp_list_variations.m) (./expl_varibles.m) (./expl_simplerecurrance.m)
-(./expl_whereblocks.m [23]) (./expl_ifelse.m) (./exp_layout_gen.m)
-Underfull \hbox (badness 10000) in paragraph at lines 912--913
-
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 11.
+) [20]
+Overfull \hbox (2.46329pt too wide) in paragraph at lines 826--827
+[]\OT1/cmr/m/n/10 If state-ments with in this lan-guage are writ-ten as $\OML/c
+mm/m/it/10 if$ $condition$ $then$ $expression$ $else$ $expression$\OT1/cmr/m/n/
+10 .
  []
 
-(./inv_code_simpleexample.m [24]) (./RRE1.m) [25] (./eparsetree.m) (./ILOC.m)
-(./RRiloc2.m) [26] (./RRwfc3.m) [27] (./RRopts4.m) [28] (./RRmes5.m) [29]
-(./RRhc7.m) [30] (./RRim8.m) [31] (./RRdm9.m) [32] (./RRom10.m) [33] [34]
+(./1layout.m) (./2experment.m) [21] (./3initcons.m) (./4rrsim.m) (./5rrint.m)
+(./6rrif.m
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 1.
+ (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omlcmr.fd
+File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <8> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1.
+)
+(./7rrwhere.m) [22] (./8full.m) (./RRE1.m) [23] (./eparsetree.m) (./ILOC.m)
+(./RRiloc2.m) [24] (./RRwfc3.m) [25] (./RRopts4.m) [26] (./RRmes5.m) [27]
+(./RRhc7.m) [28] (./RRim8.m) [29] (./RRdm9.m) [30] (./RRom10.m) [31] [32]
 (./MRes_Dissertation.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 51--56
 []\OT1/cmr/m/n/10 U.S. Com-mod-ity Fu-tures Trad-ing Com-mis-sion, U.S. Se-cu-r
@@ -821,15 +817,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 51--56
 of may 6, 2010.
  []
 
-[35]
-Overfull \hbox (24.52104pt too wide) in paragraph at lines 105--108
+[33] [34]
+Overfull \hbox (24.52104pt too wide) in paragraph at lines 202--205
 []\OT1/cmr/m/n/10 Duane Q. Nykamp.  Re-cur-rence re-la-tion def-i-ni-tion.  htt
 p://mathinsight.org/definition/recurrence[]relation,
  []
 
-[36]
-Underfull \hbox (badness 10000) in paragraph at lines 242--245
+
+Underfull \hbox (badness 10000) in paragraph at lines 252--255
 []\OT1/cmr/m/n/10 Christopher D. Clack.  The in-ter-dyne sim-u-la-tor (2011-).
+ []
+
+
+Overfull \hbox (97.1155pt too wide) in paragraph at lines 257--262
+[]\OT1/cmr/m/n/10 Christopher D. Clack.  In-ter-dyne user man-ual.  http://www.
+resnovae.org.uk/fccsuclacuk/images/docs/research/InterDyne-
  []
 
 )
@@ -837,19 +839,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 242--245
 Package caption Warning: Unused \captionsetup[sub] on input line 11.
 See the caption package documentation for explanation.
 
-[37] (./MRes_Dissertation.aux)
+[35] (./MRes_Dissertation.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 7414 strings out of 493014
- 105856 string characters out of 6133350
- 882449 words of memory out of 5000000
- 10760 multiletter control sequences out of 15000+600000
+ 7373 strings out of 493014
+ 105024 string characters out of 6133350
+ 879294 words of memory out of 5000000
+ 10731 multiletter control sequences out of 15000+600000
  10321 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,8n,43p,1661b,1818s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,8n,43p,1504b,1730s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
@@ -868,10 +870,10 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2016/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2016/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2016/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on MRes_Dissertation.pdf (37 pages, 538231 bytes).
+Output written on MRes_Dissertation.pdf (35 pages, 488396 bytes).
 PDF statistics:
- 207 PDF objects out of 1000 (max. 8388607)
- 140 compressed objects within 2 object streams
+ 198 PDF objects out of 1000 (max. 8388607)
+ 133 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

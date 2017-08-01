@@ -369,10 +369,17 @@ Flash crashes have occurred on a number of occasions and in a large selection of
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Methods for Modelling Emergent Behaviour in Finance}
-There are many different methods available for modelling system that may exhibit emergent behaviour, such as: 1-period, 2-period and multi-period models, probabilist models, like hidden Markov models, ordinary differential equations and partial differential equations [REFS??????]. This paper focusses on two models, recurrence relations and agent-based models, both these models offer an attractive method for modelling discrete systems.
+\subsection{Methods for Modelling Emergent Behaviour in Finance}  \label{litreviewofabmrr} 
+There are many different methods available for modelling system that may exhibit emergent behaviour, such as: 1-period, 2-period and multi-period models, probabilist models, like hidden Markov models, ordinary differential equations and partial differential equations [REFS??????]. This paper focusses on two models that can be used for discrete non-equilibrium system, recurrence relations and agent-based models. 
 
-Here these two modelling techniques will be described and their use in finance will be compared.  
+Both recurrence relations and agent-based models have been used in modelling the financial markets and have had a number of papers published on them.
+
+Recurrence relations have seen wide spread use in economics appearing in a large selection of journals, including numerous times in top journals~\cite{rra10, rra1, rra2, rra3, rra4, rra5, rra6, rra7, rra8, rra9}. This wide spread use of the technique implies the acceptance of recurrence relations within financial modelling.      
+
+Agent-based models also have a large selection of papers published on them relating to economics and finance~\cite{ abma2, abma3, abma4}. However these papers are noticeably absent from top economics journals (with some exceptions, such as Ref.\cite{abmexp1} and~\cite{abmexp2}) and tend to be published in the Journal of Economic Behavior \& Organization and the Journal of Economic Development \& Control~\cite{whereabmp, farmerfoleynature}. The lack of agent-based models present in top economic journals combined with the number of papers published in other journals shows the lack of wide spread acceptance for this technique~\cite{agbntj}.
+
+Here these two modelling techniques will be described.  
+
 
 \subsubsection{Recurrences Relations} 
 Recurrence relations connect a discrete set of elements in a sequence, these elements are normally either numbers or functions, they can be used to define these sequences or produce the elements in them. They can be seen as equations that give the next term in a sequence based on the previous term or terms, hence defining said sequence. Recurrence relations are often used to define coefficients in series expansions, moments of weight functions, and members of families of special functions~\cite{recurrelationbook}.
@@ -467,202 +474,110 @@ These aspects of this approach make the modelling technique well qualified for m
 
 
 
-\subsubsection{Review of Published Literature on Financial Model} \label{litreviewofabmrr} %dont like this title 
-%abm and rr are amoung many models used in econmics /
-%both have a large amount of papers published on them /
-%RR is published in a lrge range of journals including a numous times in top journals /
-%this show the wide spread acceptance for this modelling technique/
-%though abm have had a large number of publications 
-%they are noticebly absent in top journals 
-%shows lack of wide spread acceptance of model 
-
-Both recurrence relations and agent-based models have been in modelling the financial markets and have had a number of papers published on them.
-
-Recurrence relations have seen wide spread use in economics appearing in a large selection of journals, including numerous times in top journals~\cite{rra10, rra1, rra2, rra3, rra4, rra5, rra6, rra7, rra8, rra9}. This wide spread use of the technique implies the acceptance of recurrence relations within financial modelling.      
-
-Agent-based models also have a large selection of papers published on them relating to economics and finance~\cite{ abma2, abma3, abma4}. However these papers are noticeably absent from top economics journals and tend to be published in the Journal of Economic Behavior \& Organization and the Journal of Economic Development \& Control~\cite{whereabmp, farmerfoleynature}. The lack of agent-based models present in top economic journals combined with the number of papers published in other journals shows the lack of wide spread acceptance for this technique~\cite{agbntj}.
-
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{InterDyne} \label{InterDyne_section}
-\begin{itemize}
-  \item Introduce InterDyne as the ABM which will be used here 
-  \item Give a brief description of InterDyne 
-  \item Say that we are using it because it is designed to investigate finance etc
-  \item
-\end{itemize}
+An example of an agent-based model used in modelling the financial markets is InterDyne. InterDyne is bespoke simulator created by Clack and his research team at UCL~\cite{Chris_webPage}, it is a general-purpose simulator for exploring emergent behaviour and interaction dynamics within complex non-equilibrium systems.
 
+InterDyne design is that of an agent-based model interacting via a harness. This creates a structure of individual autonomous agents who interact through messages sent through a harness to one another.
+ 
+Similar to other agent-based models InterDyne operates in discrete-time rather then continuous time. These quantised time chunks, which move the simulation forward, can be left without proper definition (allowing operations to be defined in a number of time steps) or they can be equated to a real time (usually with the smallest time gap needed being a single time step and then all other timings being integer multiples of this). This discrete time is most important to message passing, with messages between agents are only sent on a integer time step.
 
+Massages in InterDyne are just small packets of data, such as a series of numbers. An agent can send private messages that are only received by a single other agent (one-to-one messages), or it can send public broadcast messages received by any number of other agents, subscribed to a channel (one-to-many messages). To facilitate this a communication topology can be made for InterDyne, this is done in the form of a directed graph determining which agents can communicate with each other. Due to the directional nature of these messages this topology could allow an agent to send messages to another but not be able to receive messages from that same agent. Messages have a defined order to them, an agent will, unless otherwise instructed, always process messages in the order in which they arrive. To change the order in which messages arrive delays can be added to communication paths between agents, this can be a static delay which always applies to messages sent from one agent to another, meaning this will arrive a set number of time steps later. Or a more complex dynamic delay, which is achieved by using another agent to mediate the passing of these messages delaying by an amount decided on in some internal logic. All messages in InterDyne are passed through a harness, this does not alter the messages or delay them\footnote{Unless instructed to, using a static delay.}, but does store the messages and their order which can be used in post analyse.
+        
+Each of the agents within an InterDyne simulation can be completely unique and modelled to different levels of complexity, as is the case with most agent-based models. As a whole InterDyne simulations are deterministic, repeated experiments will return identical results. However non-determinism can be added via the agents, making some part of an agent stochastic will lead to repeated experiments on the whole returning different results. A pseudo-random element can also be added by instructing InterDyne to randomly sort the message order for any agent receiving multiple messages in one time step. This is only pseudo-random as, as long as the same seed is used each run of the simulation will order the rearranged messages in the same way.\footnote{If an agent receives multiple messages at the same time step and the pseudo-random element is not being used, these messages will order based on the identifiers of their sender agents.}
 
-%describe interdyne in a lt of detail so that the conversion later makes more sense, use diagrams
-%rewrite a lot of this section to feel better 
-
-
-
-
-InterDyne is bespoke simulator created by Clack and his research team at UCL~\cite{Chris_webPage}, it is a general-purpose simulator for exploring emergent behaviour and interaction dynamics within complex systems.\\
-InterDyne design is that of an agent-based model interacting via a harness. This creates a structure of individual autonomous agents who interact through messages sent to one another.\\ 
-Similar to other agent-based models InterDyne operates in discrete-time rather then continuous time. These quantised time chunks which move the simulation forward can be left with out proper definition, simply having operations defined in a number of time steps, or they can be equated to a real time usually with the smallest time gap needed be a single time step and then all other timings being integer multiples of this. This discrete time is most important to message passing, meaning messages between agents are only sent on a integer time step.\\ 
-Massages in InterDyne are just small packets of data, such as a series of numbers.  Agents can only communicate via these messages, meaning that any emergent behaviour observed, that is not directly due to one agent, must be caused by linking of agents mediated by these messages. An agent can send private messages that are only received by a single other agents, one-to-one messages, or can send broadcast messages received by a number of agents, one-to-many messages. To facilitate this a communication topology can be made for InterDyne, this is done in the form of a directed graph determining which agents can communicate with each other. Due to the directional nature of these messages this topology could allow an agent to send messages to another but not be able to receive messages from that same agent. Messages have a defined order to them, an agent will, unless otherwise instructed, always process messages in the order in which they arrive. To change the order in which messages arrive delays can be added to communication paths between agents, this can be a static delay which always applies to messages sent from one agent to another, meaning this will arrive a set number of time steps later. Or a more complex dynamic delay, which is achieved by using another agent to mediate the passing of these messages delaying by an amount decided on in some internal logic. All messages in InterDyne are passed through a harness, this does not alter the messages or delay them\footnote{Unless instructed to using the static delay.}, but does store the messages and their order which can be used in post analyse.\\         
-Each of the agents within an InterDyne simulation can be completely unique and modelled to different levels of complexity, as is the case with most agent-based models, allowing system components to be created to the level needed for the required experiment. As a whole InterDyne simulations are deterministic, repeated experiments will return identical results. However non-determinism can be added via the agents, making some part of an agent stochastic will lead to repeated experiments on the whole returning different results. A pseudo-random element can also be added by instructing InterDyne to randomly sort the message order for any agent receiving multiple messages in one time step. This is only pseudo-random as, as long as the same seed is used each run of the simulation will order the rearranged messages in the same way.\\
 InterDyne is created to be particularly amenable to dynamic analyses of its simulations, this is achieved in part by all messages being sent via the harness allowing them to be stored in order.     
 
 
 \subsubsection{Applicability to Finance} \label{applicabilut_to_finance}
-%make sure I dont repeat stuff from the introduction 
-%describe how a large order can cause a flash crash
-%describe how high frequcey can cause that 
-
-\begin{itemize}
-  \item Explain the flash crash and that InterDyne is made to model it
-  \item Explain how InterDyne is suited to modelling the flash crash 
-  \item this should be a shortish section as it is not completely relevant (probably lose subheadings) 
-\end{itemize}
-
-Though InterDyne is a general purpose simulator, its main use thus far has been the exploration of financial markets. In particular InterDyne has been used to explore ``Flash Crash'' of 2010, during which market prices and rational valuations became disconnected, with some stocks trading as low as a penny per share, this lead to frenzied trading and irrational prices which spread between markets causing a massive price crash~\cite{SECreport_delays}. This event lasted around 36 minutes and has been described as``one of the most turbulent periods in their history'' for the US financial markets~\cite{Impact_hft}.\\
-The hypotheses for this crash which InterDyne exists to investigate, is that this crash is an emergent phenomenon caused by the interaction between High Frequency Traders (HFTs) within the market.\\
-HFTs are a subset of algorithmic traders who normally participate in the market as arbitrageurs or market makers, they invest in ultra-high speed technology allowing them to detect, analyses and react to market condition in nanoseconds \cite{hftinformation1}. This means HFTs can trade huge quantities of assets in very short time frames, with some estimates stating that 10-40\% of all trades where initiated by them during 2016 \cite{hftmarketparticipation}.\\
-The type of interaction between these traders suggested to have caused the crash is ``Hot Potato'' trading, this is when inventory imbalance is repeatedly passed between HFTs market makers. A market maker is a trader who is required to have both a bid and a ask on the order book at all times, this means in theory that they are constantly buying and selling, a high frequency market maker as expected should be buying and selling very very often. Market makers make a profit from the spread and not long positions, hence they want to keep inventories low to avoid the market moving against them. To achieve this market makers have strict inventory limits that if they pass will cause them to go into what is know as a ``panic state'', during this state the trader will sell of an amount of its inventory to return back into its normal trading region. This inventory now solid by the market maker can be bought by another market maker causing them to in turn go into ``panic'' and sell, this process is ``Hot Potato'' trading and can in theory continue indefinitely~\cite{Elias_Paper}.\\
-``Hot Potato'' trading was observed in the market during the ``Flash Crash''~\cite{SECreport_delays}, this is thought to have been caused by a combination of an initial large sell order by a mutual fund and delays in communication between HFTs maker makers and the exchange on which they were operating on, causing them to buy more inventory then they wanted and go into a ``panic state'' and hence a ``Hot Potato'' feedback loop.\\       %rewrite this a bit, add more detail
-This section explains in more detail this hypotheses and how InterDyne is set up to investigate it.  
+InterDyne has been designed with modelling flash crashes in the financial markets in mind and has a number of features that make it well suited to this purpose. 
 
 \paragraph{Deterministic}
-The deterministic nature of InterDyne allows for experiments to be run multiple times with the same result always returned, this allows for changes to the experiment setup to be investigated. For example changing the number of traders in the market and comparing this to a previous run allows for an investigation into how many traders are required for emergent behaviour to be observed.\\
-This becomes particularly interesting when comparing the interactions between market makers to that of the n-body problem, like with this problem one could expect emergent behaviour might occur to some extent in a large group of market makers, however the question of wether the emergence persists in a comparable market to the three-body problem and how this compares to a larger market can be investigated.   
+The deterministic nature of InterDyne allows for experiments to be run multiple times with the same result always returned, this allows for changes to the experiment setup to be investigated. For example changing the number of traders in the market and comparing this to a previous run allows for an investigation into how many traders are required for emergent behaviour to be observed.
 
+This becomes particularly interesting when comparing the interactions between market makers to that of the n-body problem. Like with this problem one could expect emergent behaviour might occur to some extent in a large group of market makers, however the question of whether emergence persists in a comparable market to the three-body problem and how this compares to a larger market can be investigated.   
 
 \paragraph{Message Delays}
-Allowing the delaying of messages is intrinsically important to the investigation of the hypotheses since the existence of delays is proposed as one of the main aspects in the ``Hot Potato'' trading that occurred. Delays exist between all aspects of the market which can account for the processing time of the different elements and the transmission time of messages between them. Some of these delays will be static but it has been preposed that the delays related to the exchange actually increased during the crashing, further worsening the situation~\cite{SECreport_delays}.\\
-Static delays in built in InterDyne can be used to investigate the crash to see if it can occur without the need for dynamically varying delays. Dynamic delays created with agents can then be used to further investigate the events that occurred during the crash, allowing a situation to be set up where as more messages are sent to and from the exchange its delays increase.  Asymmetric delays can be specified between two agents allowing further investigation into the environment in which a crash is mostly likely to occur and how delays could be altered to reduce this out come. 
+Allowing for messages to be delayed is needed to facilitate hypotheses involving delays as a factor for emergent behaviour. Delays have been suggested to have caused ``hot potato'' trading during a flash crash, these delays can exist due to processing time and transmission time of messages~\cite{SECreport_delays}.
 
-\paragraph{Message Passing}
-To observe the decided system level behaviour, a flash crash, two different methods can be use; the behaviour can be encoded into the program forcing it occur at a system level, or the system can be setup to allow the behaviour to emerge at the system level. For a true understanding of emegernt behaviour the latter approach is more relevant, this requires the different agents within the simulation to be able to communicate directly with one another. In modelling the financial market these communications are in the form of messages sent between different entities, for example a trader could send a message to an exchange detailing a limit order they wish to issue and an exchange could send back a message containing a confirmation of this order.\\
-These messages allow interaction dynamics to occur within the simulation and hence for emergent behaviour derived from interaction dynamics to naturally present within the system. 
-
-
-
+InterDyne allows for both symmetric and asymmetric, delays. These delays can be static or dynamic, with dynamic delays requiring a special intermediary agent. 
 
 \paragraph{Storing Messages}
-Due to the nature of emegernt behaviour being usually unexpected, it can be very difficult to to deduce what low level structures and operations gave rise to this system level phenomenon. This is especially true when modelling a financial system that has a large number of interacting agents all sending and receiving messages, some of which can be delayed changing their expected order of arrival. The delays in the system have been suggested to have influenced the emergence of behaviour within the system, hence in investigating these systems it is important to take into account not only message counter-parties but also message timings. InterDyne facilitates post simulation analyse into this by being able to produce a trace for all time steps of the full information of; messages sent by any agent, messages received by any agent and messages being delayed before being delayed to an agent.          
-
+InterDyne facilitates analyses of simulations be allowing for the messages between agents to be stored and viewed as a trace. This can include all messages as well as timings, messages can also be sent directly to the harness which will be added to the trace file. 
   
-\paragraph{Discrete Time}
-Though it is easy to assume that the financial markets operate in continuous time this is in fact not always the case. For electronic markets that trade through an exchange their time is set by the exchange, orders are not processed and messages are not sent back till the exchange decides to do so. These electronic exchanges them selfs operate in discrete time, this is unavoidable and is a product of the systems being run on computers, a computer runs based on an internal clock that ticks in discrete intervals based on a change in a square-wave oscillating voltage. This change in voltage is so fast that to a human it seems continuous, however HFTs operate themselves at such high speeds that the system clock time gaps are comparable and hence need to be considered. Therefore models simulating HFTs interactions to this detail must take account of this discrete time, hence InterDynes discrete time nature is a good match to model HFTs interactions.     
-     
-
 \paragraph{Message Ordering}
-The order in which messages are processed can be very important, for an exchange, for example, it can change whose limit order has priority at a given price and whose market order executes the lowest prices. Changing these factors can make or break feedback loops within the system, meaning if message ordering is not properly dealt with the correct emegernt behaviour may not be observed. Hence InterDyne stores messages in the order they are received by an agent, taking into account delays to the messages. This however can not be done when multiple messages are received at the same time step, due to the nature of discrete time there is no way for the agents to know which message arrived first, therefore two options are presented by InterDyne; messages are ordered according to their agent identifier %say what this is in a foot note?
-or messages are randomised and executed in the  emerging order. This randomisation is handled in the same manner every run of the simulation \footnote{This can be changed using a new seed if so desired} hence resulting in the same order and therefore not effecting the deterministic nature of the experiment.  
-
-
-\paragraph{Agents}
-%expand this section
-
-A benefit of agent based models of other alternatives is the ability to encode agents as unique traders instead of having to model the general behaviour of a number of traders. This allows for unique behaviour of varying complexity to be given to different agents, facilitating experimentation with different trading strategies, allowing different questions to be investigated, such as, does a trading strategy need to be complex for emergence to be observed? 
+The order in which messages are processed can be very important. For example in an exchange, it can change whose limit order has priority at a given price and whose market order executes the lowest prices. Changing these factors can make or break feedback loops within the system, meaning if message ordering is not properly dealt with the correct emergent behaviour may not be observed. Hence InterDyne stores messages in the order they are received by an agent, taking into account delays to the messages. This however can not be done when multiple messages are received at the same time step, due to the nature of discrete time there is no way for the agents to know which message arrived first. Therefore two options are presented by InterDyne; messages are ordered according to their agent identifier or messages are randomised and executed in the emerging order.
 
 
 
+\subsubsection{InterDyne Detailed Operation}
 
-\subsubsection{InterDyne Detail Operation}
 
-\begin{itemize}
-  \item Explain in detail InterDynes operation
-  \item The detail level here should be enough that the conversion later makes sense 
-  \item Diagram of InterDynes operation 
-  \item Introduce the harness and agents, as well as their types 
-\end{itemize}
+%1 Basic InterDyne Structure %2 Running a Simulation %3 Time %4 Agents %	4.1 PassingAgentInformationtosim%5 The Trace File %6 Interaction and Messages %7 Delays and Topology %	7.1 Delays
+%	7.2 Topology %8 Determinism and Non-Determinism
 
-InterDyne is an agent-based model simulator written in the Haskell language. An InterDyne simulations structure, shown in Fig.~\ref{fig:harness_setupfigure}, consistent of a number of independent agents, sending messages to a ``Simulation Harness'', this harness then (i) sends these messages to the relevant counter party or parties \footnote{In the case of broadcast messages}, (ii) saves these messages to a trace file.   
+%-here i say how interdyne works and what it looks like /
+%-basic ideas and lay out of interdyne (with a diagram of what it looks like)/ 
+%-topology and delays 
+%-what a message looks like 
+%-what is an agent in interdyne and what is its type
+%-what is the harness in interdyne and what is its type
+%-how do you run an interdyne experiment 
+
+InterDyne is a written in the functional language Haskell. The structure of an InterDyne model is show in Fig.~\ref{fig:harness_setupfigure}, this structure contains a number of agents and a simulator harness. These agents send two types of messages, either one-to-one or one-to-many (broadcast) messages. Both these messages are sent to the harness, the harness then resends these messages to the appropriate agents, one-to-one messages are sent to their target agent and one-to-many messages are sent to any agent subscribed to the relevant broadcast channel. Messages can also be sent directly to the harness and not rerouted to another agent. At the end of the simulation the harness will produce a trace file containing information on all the messages sent for post-hoc analysis.    
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{harness_setup}
-	\caption{\it Structure of an InterDyne simulation containing three agents.}
+	\caption{\it Structure of an InterDyne simulation containing three agents. The messages sent by the agents to the harness and from the harness are coloured red. The trace file and messages sent to the trace file are coloured orange. The messages sent from the harness to the broadcast channels and then back to the agents are coloured blue~\cite{interdynemanual}.}
 	\label{fig:harness_setupfigure}
 \end{figure} 
-%%%%%%use diagram from user manual
-By set up each agent is required to both consume and produce a message at every time step, this is done by sending each agent a potentially-infinite list of messages and requiring it to create a potentially-infinite list of messages. The inbound list contains every message the agent will receive through out the entire simulation, ordered by time, and the outbound list contains every message the agent will ever send, order by time. This is possible due to lazy evaluation of the language that InterDyne is written in, This means that only messages being used are evaluated. Since no agent should attempted to use a message from the future \footnote{If they do an error will be thrown.}, only messages that have been created so far are read.\\
-Since the set up of these list requires an element for every time step and an agent my not need to send a message during a time step, empty messages can be sent, this will result in an agent either receiving or sending an empty list. It may be the case in a simulation that an agent could be generating empty messages by mistake, to differentiate between a message empty by mistake or by choice, a message can be created containing ''Hiaton`` demonstrating that it is empty by choice.\\   
-A InterDyne simulation once created can be run by executing the ''sim`` function with relevant arguments, this function has a type,      
-\lstinputlisting[language=Haskell]{simplerunInterdyne.hs}
-corresponding to, number of time steps, list of ``runtime arguments'', and a two tuple with the agents function and broadcast channels to which it is subscribed.\\
-Agents within a simulation are defined by ID numbers, with the first agent having ID=1, followed by the second agent with ID=2,  ID=0 is used to represent the ``simulator harness''. These ID numbers are used to specify which agents messages are coming from and going to. This however can be difficult to keep track of within large experiments for the experimenter, therefore InterDyne allows for agents to be referred to by a name. This example shows InterDyne being run with the use of names for identification:     
-\lstinputlisting[language=Haskell]{fullunInterdyne.hs}
-This simulation will run for 60 time steps, with three agents subscribed to a number of broadcast channels, for example the third agent is subscribed to channel 2 and 3. There is a single run time argument convert, that can convert an ID to a name and a name to an ID. This is a simplistic call of the function sim, but shows how an experiment run could be setup and executed.\\   
-In the example one can notice that the agents called all were to referred to as wrappers, this is because agents in InterDyne are typically, though not necessarily, written in two sections; ``wrapper'' and ``logic'' functions. The ``wrapper'' function, called in the example, can be thought of as the true agent, it handles message receiving and sending, as well as updating the local state of the function, hence this function is the one that interacts with the other agents and the harness. The ``logic'' function rests inside the ``wrapper'' function and computes the messages to be sent, hence this contains the functionality of the agent. An example of a ``wrapper'' function containing a ``logic'' function is shown here:
-\lstinputlisting[language=Haskell]{complexagentwrapper.hs}
-This agent will output a list containing message m, which is the output of the ``logic'' function for that given time period based on the received messages. The wrapper is a recursive function with each recursion being a new time step. It takes as inputs, st the local stat variable, args the run time arguments, a list of all messages to it, and its ID.  The list of messages has a three tuple for each time, containing the current time, list of all messages sent to the agent directly, and a list of all messages sent to the agent from broadcast channels.\\ 
-InterDyne supports a wide range of messages in an array of complexities, to allow for a variety of interactions to take place. Messages, which are either one-to-one or broadcast, must all contain a pair of integers which represent the sending agents ID and the receiving agent or broadcast channels ID, the rest of the message depends on the type of message being sent. For example one could send a one-to-one message containing a list of (key, value) pairs, 
-\lstinputlisting[language=Haskell]{message_simple.hs}
-or a message carrying a string, 
-\lstinputlisting[language=Haskell]{message_data.hs}
-Broadcast messages content is defined by a broad type, which defined further within its type definition, 
-\lstinputlisting[language=Haskell]{message_broadcast.hs}
-As previously stated ID=0 represents the harness, messages sent to this ID are printed to an output file, output is also achieved in InterDyne by storing all messages of type Datamessage, which are saved to a different file then those sent to ID=0.\\  
-As mentioned earlier InterDyne allows for both a topology of allowed interactions and delays along interaction paths to be defined. This can be done by passing two runtime arguments to the ``sim'' function \footnote{Both the arguments must be given.}, (i) a function that when given two agent IDs will return a delay for the interaction between them in time steps, and (ii) the maximum delay that returned by this function, i.e. the maximum delay present in the system. The previous example expanded with delays is shown here: 
-\lstinputlisting[language=Haskell]{interdynewithdelays.hs}
-Once delays have been specified in this manner all messages, one-to-one and broadcast, are delayed by the stated amounts between the defined agents. Dynamic delays are not shown here, but are achieved with use of another agent acting as a go between \cite{Chris_webPage}. 
- 
+%-topology and delays 
+InterDyne has a intrinsic delay, which means any message sent will not be received until the next time step, message sent at $t$ will be received the earliest at $t+1$. This is in part due to the fact that the harness compiles all messages from a single time step before sending them to their targets and hence initiating the next time step. The harness can be seen as the driver in the simulation sending out the message and forcing the agents to send there next message.   
+
+Longer delays can also be added using InterDynes topology, this allows for any two agents to be selected (a sender and a receiver) and for a delay between them to be given. This topology takes the form of a directed graph, with the agents acting as the nodes and the interaction routes as the links, this allows for the delays to be asymmetrical. Using this a delay for a path could also be set as a abort message, making a particular communication route unusable.  
+
+Adding delays is done through run time arguments, here two run time arguments must be added, one stating the maximum delay in the system and the other listing the delays. To show the maximum delay the argument $(Arg (Str$  $``maxDelay", 10)))$ is used, where $10$ is the maximum delay. To add the list of delays the argument $(DelayArg (Str$  $``DelayArg", delay))$ is used, where $delay$ is a function that takes two agents and returns the delay between the first and the second. 
+%-what a message looks like 
+
+Messages sent between agents can in theory be as complex as needed, these messages do however have to comprise of these components: 
+\begin{itemize}
+   \item A tag indicating the type of message being sent, e.g. a broadcast message.
+   \item A tuple of two integers, with the first being the sending agents ID and the second being either the receiving agents ID or the receiving broadcast channels ID.  
+   \item The data that is being sent. 
+\end{itemize}
+An example of this is a one-to-one message, which would look like $Message$ $(1, 2)$ $data$, where $data$ is the information being sent from agent $1$ to agent $2$ 
+
+A broadcast message, which looks like $Broadcastmessage$ $(3, 1)$ $broadcastdata$, can be received by agents subscribed to its channel, in this case $1$. All agent subscriptions have to be announced at the beginning of a simulation and can not be changed during it. This is done by adding the subscription channel to the list in a tuple passed as an argument, for example this could look like $(agent1, [1])$, for agent 1 subscribed to broadcast channel one.
+
+Empty messages can also be sent, if the message is required to be known to be intentionally empty and not a mistake the a message can be sent containing ``Hiaton''. This is done at the beginning of the run to allow for the harness to send a first message. 
+%-what is an agent in interdyne and what is its type
+
+InterDyne is designed in such a way that agents both taken in and produce a seemingly infinite list of messages. This is achieved through lazy evaluation in Haskell, which in short means that any element in the list will not be calculated until it is absolutely needed. This allows for an infinite list as long as no agent tries to read further into the list then what as already been calculated. In achieving this an agent must at each time step, allows read in a message (even if it is then not used) and produce a list of messages (even if this is a empty list). An agent will hence iterate over the list of incoming messages, at each time step adding a new output message to its list of output messages.  
+
+Agents in InterDyne are topically, though not required to be, written in two parts, a wrapper function and a logic function. The wrapper will manage the reading of inbound messages to the agent and generate its outbound messages, it will also update the local state of the agent. While a logic function is called by the wrapper to calculate the messages to be sent and there content. A agent written following this design could have a form similar to that of the agent show in Fig.~\ref{fig:wrapperfrominterdyne}. This agents wrapper recursively calls its self on the inbound message list, consuming the head of the list\footnote{This design dictates that the head of the list is the messages for the current time step.} and producing a list of outbound messages using a logic function.  
+\begin{figure}[H]
+	\centering
+        \lstinputlisting[language=Haskell]{complexagentwrapper.hs}
+	\caption{\it Simple wrapper function, which creates a list of output messages by iterating through a list of inbound messages and calling the sub-function $logic$.}
+	\label{fig:wrapperfrominterdyne}
+\end{figure} 
+%-what is the harness in interdyne and what is its type
+
+The simulator harness is an intrinsic part of the simulator, it drives the simulation, handles message passing and produces the output trace file. %need to put more here, whats its type, what does it look like?
+
+%-how do you run an interdyne experiment 
+
+Running an InterDyne experiment is done by calling the simulator with relevant inputs, an example example of this is shown in Fig.~\ref{fig:runninginterdyne}.
+\begin{figure}[H]
+	\centering
+        \lstinputlisting[language=Haskell]{interdynewithdelays.hs}
+	\caption{\it A run of an experiment in InterDyne containing delays.}
+	\label{fig:runninginterdyne}
+\end{figure} 
 
 
 
 
-
-
-%\subsection{Examples}
-
-
-%Day and Huang [Day, R. And Huang, W., ?Bulls, Bears and Market Sheep?, Jourmal of Economic Behaviour and Organisation, 1990] for example have demonstrated how interactions between two simple but different trading strategies and a market-maker can cause complex emergent features of stock market prices such as alternating periods of rising (?bull market?) and falling (?bear market?) with sudden switching between the two at irregular intervals. Further, Lyons [Lyons, R.K. ?A Simultaneous Trade Model of the Foreign Exchange Hot Potato?, Journal of International Economics 42 (1997) 275?298] has shown how a feedback loop can emerge between foreign exchange dealers, causing them to repeatedly transfer inventory between themselves.  Yet these are simple models of interaction.  Our aim is to develop a framework for modelling and analysing more complex emergent behaviour that arises from the dynamics of interaction, and in the context of our case study to analyse behaviour that may increase risk to the stability of the financial markets.
-
-%\subsubsection{Hot Potato} 
-%what is hot potato
-%fx market
-
-%this is a dynamic feedback loop
-%how is it caused 
-%when has it happened 
-
-%what is a hft (probably need a subsectuion on this)
-	%how do they work
-	%what do they do
-	%market makers
-	%inventory limits
-	%why do simple versions of them still work
-
-%This feedback effect has been shown, in the InterDyne simulator, to create instabilities in market prices and even lead to crashes~\cite{DynamicCoupling_Chris}.   
-
-
-
-
-
-
-%\subsubsection{Flash Crash}
-%lob version of hot potato
- 
-%what is the flash crash
-%when have they happned 
-%other theories to why they happen?
-%what we think causes them
-	%emergence from feedback loops in hfts
-%why they are important
-%A flash crash is defined as a quick drop and then recovery in securities prices, with the most infamous  crash occurring on the 6th of May 2010 and lasting for around 20 minutes in which time almost one trillion dollars of market value was lost~\cite{Vikram_Paper}.\\
-%There is no consensus on the exact cause of the flash crash, however a number of theories exist. The theory that InterDyne models is that the flash crash was caused by an interaction effect between High Frequency Trader Market Makers, known as the hot potato effect~\cite{Elias_Paper}. 
-
-
-
-%There are numerous examples of emergent behaviour in the financial markets caused by interaction dynamics within the SoS, here we will look at how the US markets ?Flash Crash? of May 6th 2010 [CFTC-SEC, 2010. ?Findings regarding the market events of May 6, 2010?] may have been caused by these interaction dynamics. 
-%The term ?Flash Crash? here is used to describe an event within a financial market where the price of commodities plummets extremely quickly before rapidly rebounding. This kind of behaviour tends to go hand and hand with commodities becoming disconnected from their fundamental value, such as stocks for companies trading at far lower prices despite the fact that mothering has change about the company in question.
-%The crash in question occurred within the E-mini S&P 500 market, EXPLAIN WHAT THIS MARKET IS, lasting approximately thirty minutes [REF] with the prices for some stocks falling as low as a penny a share [REF].
-%FIGURE OF FLASH CRASH??? 
-%There has been a large amount of speculation about the cause of this crash with blame levelled at a large sale by a mutual fund, spoofing by a independent trader and the hot potato effect between High Frequency Traders (HFTs), it is the later that we are interested in here.
-%HFTs are algorithmic traders who use equipment that allows them to operate at nanosecond speeds [REF], this means huge amounts of trading can occur between HFTs before a human can process what has happened.  Not sure how to phrase this but want to say that a lot can go wrong before a human realises 
-%HFTs often operate as a Market Maker, these are entities that both buy and sell with the market under a set of rules, such as having to always have a bid and ask on the order book, they are then rewarded by having discounts applied to their trades. Market Makers make their profit of the difference in price between buying and selling assets and not of the fluctuation in price of an asset over time. They would not buy assets with the aim of selling them in a few days as they think the price would increase, instead they buy and sell the assets normally within a few milliseconds. As such having a large inventory of any asset is considered to be risky by the Market Maker and they will normally have thresholds on their stock, if these thresholds are passed, they have more stock then they want, they will enter an aggressive selling phase, quickly reducing their stock back below their thresholds. When this occurs the HFT is said to be in a panic state, the inventory at which this panic state occurs can be dynamic, changing demanding on the perceived risk within the market and how the Market Maker is trying to preform. 
-%Since HFTs can place orders so quickly and make their profit of buying and selling they will normally have orders near or at the touch, the best bid and ask. This means that if you trade on the market you are likely to execute your trade with a market maker first SAY WHAT PERCENTAGE OF TRADES THE MARKET MAKERS ARE RESPONSIBLE FOR [REF]. This means that if a Market Maker goes into panic it is likely to sell its stock to another Market Maker; this creates links between the Market Makers as they will buy and sell to each other during panic states.  
-%There are a number of methods used for exiting a panic state, enough inventory can be solid to bring the Market Maker back to exactly its limit, more can be solid to bring it below its limit by a set amount or all the inventory can be solid to reduce the risk to the Market Maker to zero. Each of these different options changes how much stock will be passed on to another Market Maker during the panic state.
-%The question then arises, what happens if the Market Maker who buys this excesses stock is already near its inventory limit? In this case the receiving Market Maker can also enter panic, causing it to sell its inventory back to the market. As can be imagined in the right market conditions, this inventory can be picked up by another Market Maker who is also close to their limit and hence the processes can continue. If this inventory passing between the Market Makers forms a feed bank loop, where the initial Market Maker receives the stock again before selling it on for a second time, it can be said that ?Hot Potato? effect is occurring, this is simply the processes of passing inventory around traders in a loop.    
-%There are a number of reason a Market Maker could be near its limits or go into panic, it could be already near its limits and then be forced to buy more inventory by the exchange rules. It could dynamically shift its risk limits changing its inventory boundaries causing it to go into panic or at least approach its limits or it could make a number of assumptions about its sell orders which may be incorrect. 
-%A reason assumption are made is because of time delays with in the system. 
 
 
 
@@ -675,6 +590,12 @@ Once delays have been specified in this manner all messages, one-to-one and broa
   \item Say that though they have been used for experiments their results are not always accepted 
   \item Explain the layout of this section 
 \end{itemize}
+
+
+We want to look at emergent behaviour that comes from interaction dynamics, this relays on viewing the communication between the different components of a system as messaging passing. Agent-based models naturally support this view  making them well suited to analysing emergent behaviour. However most agent-based models do not have a well defined formalisation for the system as a whole, which makes it difficult to perform system wide analytics. 
+recurrence relations naturally suportan system wide analys, but do not support a message passing view of cummonicatiio.
+What we want is a way of viewing a system using both models, hence being able to have the benefits of being able to view the passing of information  this is the two views approach 
+
 
 
 %desciption an analysis
@@ -813,124 +734,167 @@ To create a model tool which will allow for the two views approach, three aspect
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Bespoke Recurrence Relation Language}
-
-\begin{itemize}
-  \item Introduce this as the RR that are going to be used for the conversition
-  \item why use a custom language? need to restrict the user enough to make the language comparable to Lambda calculus while maintaining all needed functionality, easiest to do this with own language, also need know full definition of language for parsing 
-  \item what functionality does the language have? 
-\end{itemize}
-
-
-Recurrence relations are used across a wide range of disciplines and as such have many different forms of notation, since these recurrence relations are going to act as an import for the convertor program, having a wide range of possibly conflicting notations is not ideal. Therefore it was decided that a bespoke notation for the recurrence relation input should be used, this language will force recurrence relations to be written in a set form for input into the convertor.\\
-In designing this language a few main considerations had to be taken into account:    
+The first step in this translation is selecting a recurrence relation, which to translate from. Recurrence relations are used across a wide range of disciplines and as such have many different forms of notation {\color{red} [REFS????]}. It was however decided to create a bespoke recurrence relation language for use in this translation, this was done for a number of reasons:
 \begin{enumerate}
-  \item The language needs to be able be both understood by and written by non-computer scientists, such as economists and mathematicians. 
-  \item The language needs to be as simple as possible, to keep it easy to formally define and learn.
-  \item The language still needs to contain enough functionality to fully specify the problems being modelled.
-\end{enumerate}
-The first consideration is taken into account by choosing the language to based in a more mathematical style then one that heavily relays on a computational style.%not sure about this sentence
-The second and third consideration go hand in hand, requiring that the functionality of the language be as simple as possible while still allowing for the problem to be expressed. As such it is pertinent to decide what functionality is required by the language, this functionality is:      
+  \item Need to have a strict set of rules for the language to allow for automated parsing. 
+  \item Need to restrict the functionality of the language to keep it as simple as possible, allowing easy comparison to mathimatical forms such as Lambda calculus. 
+  \item Need to maintain required functionality for modelling complex systems in the language.  
+\end{enumerate} 
+
+As noted in the third point, this language as to have a certain level of functionality. It was decided that the language should have the following function:
 \begin{itemize}
-  \item The use of basic mathematical operations.
-  \item The use of lists.
-  \item The ability to call the head of a list. %hd
-  \item The ability to call the tail of a list. %tl
-  \item The ability to add to the head of a list. %:
+  \item The use of basic mathematical operations.% ($+, *, /, -$).
+  \item The use of lists.%($[]$).
+  \item The ability to call the head of a list.% ($hd$). %hd
+  \item The ability to call the tail of a list.% ($tl$). %tl
+  \item The ability to add to the head of a list.% ($:$). %:
+  \item The ability to index into a list.% ($!$).
+  \item The ability to use brackets.% ($()$). 
   \item The ability to declare variables.  
   \item The ability to define a unique name for each recurrence relation.
+  \item The ability to define unique names for groups of recurrence relations. 
   \item The ability to define a recurrence relation that uses inputs.
-  \item The use of where blocks.
-  \item The use of if else statements. 
-  \item The ability to specify an entire experiment and initial conditions.  
+  \item The use of sub functions within recurrence relations. 
+  \item The ability for recurrence relations to pattern match initial conditions.  
+  \item The use of where blocks.% ($where$).
+  \item The use of if else statements.% ($if$ $then$ $else$). 
+  \item The ability to specify an entire experiment.  
 \end{itemize}
-It was decided that this language would be created by using an already existing coding language and reducing its functionality down to what was required. This resulted in the recurrence relation language being a simplified version of the Miranda language, Miranda was chosen as it is a functional language whose structure is similar to that of a set of mathematical equations, hence making it easier to adapt for use by non-domain experts.   
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Syntax}
-%write this in a formal syntax as well BNF
+The formal syntax for this language is shown in Fig.~\ref{fig:parsetreecode}, this syntax is written in a style consistent with type definitions within the Miranda language. This style is that of a type followed by its values, the left hand side of $::=$ is the type and can take the form of any one of its values, on the right hand side. 
 
-\begin{itemize}
-  \item show the formalised syntax of the language here   (neaten this up a lot)
-  \item explain the syntax  
-\end{itemize}
+A simulation is defined as type $simulation$, which has two parts. A list of recurrence relations (list of type $definition$) and information about the simulation (of type $experiment$). 
 
+A definition of a recurrence relation is defined as type $definition$, has one values $Function$. The value $Function$ contains to list of characters which hold the group name and the name of the recurrence relation, a list of the arguments (type $argument$) and a expression for the functionality of the recurrence relation (type $expression$). 
+
+A argument, whether it be used for the definition of a recurrence relation or used for calling one, has one value $Argument$. This value is associated with an expression of the actual argument (type $expression$). 
+
+The $experiment$ must take the value of $Experiment$ which has two parts, a list of initial conditions (type $initcon$) and a function call for the result of the simulation (type $experimentrun$). 
+
+An initial condition for the recurrence relations is listed as a value $Initcon$ which has a name and an expression associated with it (type $[char]$ and $expression$ respectively), this name is used to connect the initial condition to the relevant recurrence relations. 
+
+The $experimentrun$ can have two values, either being empty (value $Emptyrun$) or to have a function call (value $Experimentrun$). If there is a function call this has an associated $expression$ with it. 
+
+An $expression$ can produce any expression for a recurrence relation that the language will allow, $expression$ can recursively call itself to create more complex expressions or  can call other types such as $argument$, $subdefinition$, $op$ and $specfunc$.    
+
+The use of operations is through the type $op$, this type has a value relating to all operations that use two values.
+
+Two operations are allowed that only use one value, returning the head of a list (value $Listhead$) and returning the tail of a list (value $Listtail$). 
+
+The type $subdefinition$ has two values for either internal variables in a where statement ($IntVariable$) or internal functions within a where statement ($IntFunction$).  
 
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[language=Miranda]{Syntax_Def.lit.m}
-	\caption{\it Simple example of recurrence relations written in custom defined language.}
+	\caption{\it Formal definition of syntax within bespoke recurrence relation, written in style of Miranda type definitions.}
 	\label{fig:parsetreecode}
 \end{figure} 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Rules of Use}
-%any function can access any other fucntion within the same agent at the current time (or passed times) but any function in a different agent can only acess at earliest one time step ago.
 
-\begin{itemize}
-  \item Explain how to write something in this language and what the language can and cannot do in more detail 
-\end{itemize}
 
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Example of Use}
-%incude that t is a key word and needs to go at the begining of timevarying reccruance relations eg t1_inv t a b c = ..
-%Syntax of the functionality, how do you write all the different elements 
-%t is special means time 
-%c_ is used as a way of dealing with names/custome types (can not call functions)
-%varbiles are just that and cant call fucntions
+\subsection{Naming Conventions}
+This language has a strict naming convention, as well as some restricted names. Naming conventions are in place for recurrence relation definitions, where blocks, sub-functions, variables, initial conditions and  if statements. 
 
+A recurrence relation be defined in four parts, $name$ $arguments$ $=$ $expression$. The name must be formatted in the manner $group\_name$, where $group$ is the name of the group the recurrence relation belongs to and $name$ is the name of the particular recurrence relation. Multiple recurrence relations can belong to the same group, and hence have the same group name, however only one relation in each group can have a set name. This language requires that all recurrence relations take at least one argument, and that time $t$ has to be the first argument. Time $t$ does not need to be utilised within the relation but it must be in the definition.     
 
+A recurrence relation can have sub definitions relating to it, this is done through the use of a where block. A where block is written after the expression for a recurrence relation and starts with the keyword $where$. After this local definitions for internal functions and variables can be defined. 
+
+Internal functions must be formatted in the manner $\_name$, where $name$ is the name for the function. These functions can only be accessed by the recurrence relation they are within. 
+
+Local variables can be defined using the formate $name$, this name can be anything as long as it does not clash with restricted names. 
+
+Initial conditions are listed in a special location in the layout, which will be show in Sec.~\ref{wellformedprogs}, and are defined in three parts $name$ $=$ $expression$. This name can be seen as a variable and can be anything not in the restricted name list. 
+
+If statements with in this language are written as $if$ $condition$ $then$ $expression$ $else$ $expression$. Where if the condition is true, then the first expression is run and if not the second expression is.  
+
+There are a number of names and naming conventions which can not be used and can be seen as restricted, these are:
 \begin{itemize}
-  \item Show and explain an example of the language (some explain that will be converted) 
+  \item The use of $\_$, unless it is being used for its designated purpose in recurrence relations and internal functions. 
+  \item The use of the name $main$.
+  \item The use of the name $init$.
+  \item The use of the name $where$, unless used to make a where statement.
+  \item The use of symbols, unless for their mathematical purpose.  
 \end{itemize}
 
-Here the syntax for the above listed functionality will be explained, in ordered of listing.\\
-Basic mathematical operations are allowed, plus $+$, minus $-$, times $*$, divide \textbackslash. The ability to make comments that will not be read is also allowed, a comment is started with ``\textbackslash\textbackslash'' and then the rest of the line is ignored.\\ 
-The main method for storing and transferring information between recurrence relations will be in the form of lists, lists follow the same rules stipulated by the Miranda language. A list can be created by putting the elements in side ``[]'' and separating them with a comma, allowing lists to be written in forms similar to:
-\lstinputlisting[language=Miranda]{exp_list_variations.m}
-However all elements in these lists must be of the same type.\\
-The head of a list will be extractable using the command $hd$, this will return the first element of a list, for example $hd$ called on the list $[1,2,3]$ would return $1$. Similarly the tail of a list can be called using $tl$, for example calling $tl$ on $[1,2,3]$ would return $3$.\\  
-Elements can be added to a list using the command $:$, this can be applied in the form $4:[1,2,3] = [4,1,2,3]$.\\
-Variables can be declared in the language, these are names that are attached to fixed values, and can be written in the form: 
-\lstinputlisting[language=Miranda]{expl_varibles.m}
-A variable name must state with the identifier $c\_$, this indicates that the object is a constant, this underscore is then followed by the unique name of the variable, an equals, and then the value to which the variable refers.\\   
-A recurrence relation is defined in a similar way to a variable, but can take inputs and represents a function:
-\lstinputlisting[language=Miranda]{expl_simplerecurrance.m}
-The name must state with a identifier of what agent, $agent\_$, this recurrence relation belongs to, in this language all recurrence relations belong to an agent. A group of recurrence relations that belong to an agent will interact with each other but only have a single recurrence relation that interacts with a different agent, group of recurrence relations. After the agent identifier, the unique name of that recurrence relation within the agent is given, recurrence relations belonging to different agents may have the same name but with an agent the name must be unique. Then the inputs for this recurrence relation are given, there may be one or more inputs\footnote{A recurrence relation with no inputs is just a variable.} separated with a space between them. Then after the equals the function for the recurrence relation is give, this function may call on other recurrence relations.\\
-A where block is used to define functions and variables unique to a certain recurrence relation, one can be written as follows:
-\lstinputlisting[language=Miranda]{expl_whereblocks.m}
-Inside a $where$ block which is identified by ${}$ any number of functions and variables can be defined, with each new one appearing on a new line.\\
-This language facilitates the use of if else statements, this allows for different behaviour based on the inputs to the recurrence relation, this can be written in the form:
-\lstinputlisting[language=Miranda]{expl_ifelse.m}
-Using the command $myif$ declares that an if else statement is being used, then within brackets the condition for the if statement is given, this can use $<, >, \leq, \geq, =,$ etc. If this statement is true then the $then$ part of the statement is executed, if this is false the $else$ part is used.\\
- An experiment can be defined with initial conditions in the following way:
-\lstinputlisting[language=Miranda]{exp_layout_gen.m}
-The design of this is one where the $where$ block contains all the definitions for the recurrence relations in the experiment. Above this the $main$ defines an experiment to run, such as a recurrence relation that you want to iterate ten times. The initial conditions are defined above this, these can have multiple different values depending on an input parameter. At the top $run\_main$ gives a list of the $main$ with different values of $runnumber$ which corresponds to different values of the initial conditions.\\
+
+\subsection{Well Formed Programs} \label{wellformedprogs}
+This language has a strict style and layout, this covers a number of aspects: layout, experiment, initial conditions and recurrence relations.  
+
+The layout of an simulation should match that shown in Fig.~\ref{fig:1exofla}, with $main$ signifying the experiment, $init$ the initial conditions and $where$ the list of recurrence relations. 
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{1layout.m}
+	\caption{\it Layout of a simulation.}
+	\label{fig:1exofla}
+\end{figure} 
+
+An experiment is written as a function call, with a certain set of arguments. Figure~\ref{fig:2exofla} shows a experiment that will return the value of the recurrence relation $i\_f1$ at time $3$.
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{2experment.m}
+	\caption{\it Function call for value at time 3 in recurrence relation 1\_f1.}
+	\label{fig:2exofla}
+\end{figure} 
  
+The initial conditions, which use will be shown later, are defined as shown in Fig.~\ref{fig:3exofla}. There is no defined  limit to the amount of initial conditions that can be defined. 
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{3initcons.m}
+	\caption{\it Definition of two initial conditions, q and k.}
+	\label{fig:3exofla}
+\end{figure} 
+ 
+A simple recurrence relation can be written as shown in Fig.~\ref{fig:4exofla}, this recurrence relation belongs to group $i$, is named $f1$ and takes one argument which is time $t$. The expression of this relation is to call itself at the previous time step and to add that to a call for another recurrence relation, from group $j$, at the previous time step. 
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{4rrsim.m}
+	\caption{\it A simple recurrence relation, belonging to group i that adds its value at the previous time step to that of j\_f1 at the previous time step.}
+	\label{fig:4exofla}
+\end{figure} 
+ 
+Initial conditions can added to recurrence relations using pattern matching, as shown in Fig.~\ref{fig:5exofla}. The recurrence relation is first written with the value for which the initial condition will be sent and this is sent to equal the initial condition, then the full recurrence relation is written.  
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{5rrint.m}
+	\caption{\it Recurrence relation containing pattern matching for initial conditions.}
+	\label{fig:5exofla}
+\end{figure} 
+ 
+An if statement, shown in Fig.~\ref{fig:6exofla}, can contain very complex components it is hence good practice to encase each expression with in a set of brackets to maintain legibility and correct functionality.  
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{6rrif.m}
+	\caption{\it Recurrence relation using an if statement.}
+	\label{fig:6exofla}
+\end{figure} 
+ 
+A where statement is used to provided additional functionality to a recurrence relation and can be used to make a expression more legible and help reduce human errors. Figure~\ref{fig:7exofla} shows the use of a where statement to add an internal variable and an internal function to a recurrence relation. 
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{7rrwhere.m}
+	\caption{\it A recurrence relation containing a where statement to add a internal function and a internal variable.}
+	\label{fig:7exofla}
+\end{figure} 
+
+This style and layout is brought together to produce a full simulation, as shown in Fig.~\ref{fig:8exofla}.
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{8full.m}
+	\caption{\it A simulation in the bespoke recurrence relation language.}
+	\label{fig:8exofla}
+\end{figure} 
 
 
 
-%what the new language looks like 
-%what each bit means
-%what is allowed to be written
-%how to write certain things
-%how is it user friendly
-%why this was choosen, for example easier to convert to lambda calcualse 
-
-%\subsection{Examples}
-%examples on how to use the grammar
-
-
-\lstinputlisting[language=Miranda]{inv_code_simpleexample.m}
-
-tuples exist but can not be used by the user 
-%a very simple example on the use of the grammar
-%\subsubsection{Complex Example}
-%what I have actually done maybe?
 
 
 

@@ -96,61 +96,6 @@ Arjun Kharpal.
   http://www.cnbc.com/2017/06/22/ethereum-price-crash-10-cents-gdax-exchange-after-multimillion-dollar-trade.html,
   June 2017.
 
-\bibitem{recurrelationbook}
-Jet Wimp.
-\newblock {\em Computation with Recurrence Relations}.
-\newblock Pitman Advanced Publishing Program, 1984.
-
-\bibitem{recurrealtionwebpage}
-Duane~Q. Nykamp.
-\newblock Recurrence relation definition.
-\newblock http://mathinsight.org/definition/recurrence\_relation, 6 2017.
-
-\bibitem{rrformulism}
-John~M. Hollerbach.
-\newblock A recursive lagrangian formulation of maniputator dynamics and a
-  comparative study of dynamics formulation complexity.
-\newblock {\em IEEE Transactions on Systems, Man, and Cybernetics}, 10,
-  November 1980.
-
-\bibitem{abmhumsystems}
-Eric Bonabeau.
-\newblock Agent-based modeling: Methods and techniques for simulating human
-  systems.
-\newblock {\em The National Academy of Sciences}, 99(3), 2002.
-
-\bibitem{abmnoisetraders}
-J.~Bradford~De Long, Andrei Shleifer, Lawrence~H. Summers, and Robert~J.
-  Waldmann.
-\newblock Noise trader risk in financial markets.
-\newblock {\em Journal of Political Economy}, 98(4):703--738, 1990.
-
-\bibitem{abmherding}
-Alan Kirman.
-\newblock Ants, rationality, and recruitment.
-\newblock {\em The Quartely Journal of Economis}, 108(1):137--156, 1993.
-
-\bibitem{abmfundemetilists}
-Jeffrey~A. Frankel and Kenneth~A. Froot.
-\newblock Chartists, fundamentalists and the demand for dollars.
-\newblock {\em National Bureau of Economic Research}, 1986.
-
-\bibitem{MN2010}
-Charles~M. Macal and Michael~J. North.
-\newblock Tutorial on agent-based modelling and simulation.
-\newblock {\em J. Simulation}, 4:151--162, 09 2010.
-
-\bibitem{abmtsd}
-Charles~M. Macal.
-\newblock To agent-based simulation from system dynamics.
-\newblock In {\em Proceedings of the 2010 Winter Simulation Conference}, 2010.
-
-\bibitem{techsadsProbsabm}
-Ali Bazghandi.
-\newblock Techniques, advantages and problems of agent based modeling for
-  traffic simulation.
-\newblock {\em International Journal of Computer Science Issues}, 9(3), 2012.
-
 \bibitem{rra10}
 Marian Kwapisz.
 \newblock On difference equations arising in mathematics of finance.
@@ -222,6 +167,16 @@ Simone Alfarano, Thomas Lux, and Friedrich Wagner.
   model.
 \newblock {\em Computational Economics}, 26, 2005.
 
+\bibitem{abmexp1}
+Thomas~C. Schelling.
+\newblock Models of segregtion.
+\newblock {\em American Economic Review}, 59(2):488--493, 1969.
+
+\bibitem{abmexp2}
+Herbert Gintis.
+\newblock The dynamics of general equilibrium.
+\newblock {\em The Economic Journal}, 117:1280--1309, 2007.
+
 \bibitem{whereabmp}
 Matteo Richiardi.
 \newblock The future of agent-based modelling.
@@ -238,10 +193,72 @@ Dirk Helbing and S.~Balietti.
   Experiments to Study Emergent Social Behavior}.
 \newblock Springer, 2012.
 
+\bibitem{recurrelationbook}
+Jet Wimp.
+\newblock {\em Computation with Recurrence Relations}.
+\newblock Pitman Advanced Publishing Program, 1984.
+
+\bibitem{recurrealtionwebpage}
+Duane~Q. Nykamp.
+\newblock Recurrence relation definition.
+\newblock http://mathinsight.org/definition/recurrence\_relation, 6 2017.
+
+\bibitem{rrformulism}
+John~M. Hollerbach.
+\newblock A recursive lagrangian formulation of maniputator dynamics and a
+  comparative study of dynamics formulation complexity.
+\newblock {\em IEEE Transactions on Systems, Man, and Cybernetics}, 10,
+  November 1980.
+
+\bibitem{abmhumsystems}
+Eric Bonabeau.
+\newblock Agent-based modeling: Methods and techniques for simulating human
+  systems.
+\newblock {\em The National Academy of Sciences}, 99(3), 2002.
+
+\bibitem{abmnoisetraders}
+J.~Bradford~De Long, Andrei Shleifer, Lawrence~H. Summers, and Robert~J.
+  Waldmann.
+\newblock Noise trader risk in financial markets.
+\newblock {\em Journal of Political Economy}, 98(4):703--738, 1990.
+
+\bibitem{abmherding}
+Alan Kirman.
+\newblock Ants, rationality, and recruitment.
+\newblock {\em The Quartely Journal of Economis}, 108(1):137--156, 1993.
+
+\bibitem{abmfundemetilists}
+Jeffrey~A. Frankel and Kenneth~A. Froot.
+\newblock Chartists, fundamentalists and the demand for dollars.
+\newblock {\em National Bureau of Economic Research}, 1986.
+
+\bibitem{MN2010}
+Charles~M. Macal and Michael~J. North.
+\newblock Tutorial on agent-based modelling and simulation.
+\newblock {\em J. Simulation}, 4:151--162, 09 2010.
+
+\bibitem{abmtsd}
+Charles~M. Macal.
+\newblock To agent-based simulation from system dynamics.
+\newblock In {\em Proceedings of the 2010 Winter Simulation Conference}, 2010.
+
+\bibitem{techsadsProbsabm}
+Ali Bazghandi.
+\newblock Techniques, advantages and problems of agent based modeling for
+  traffic simulation.
+\newblock {\em International Journal of Computer Science Issues}, 9(3), 2012.
+
 \bibitem{Chris_webPage}
 Christopher~D. Clack.
 \newblock The interdyne simulator (2011-).
 \newblock http://www.resnovae.org.uk/fccsuclacuk/research, 11 2016.
+
+\bibitem{interdynemanual}
+Christopher~D. Clack.
+\newblock Interdyne user manual.
+\newblock
+  http://www.resnovae.org.uk/fccsuclacuk/images/docs/research/InterDyne-User-Manual.pdf,
+  08 2017.
 
 \bibitem{econmistsnoabm}
 R.~Leombruni and M.~Richiardi.
