@@ -302,9 +302,21 @@ This papers layout is as follows. First a background is given detailing, emergen
 
 %Such methods are unfamiliar (or unappealing) to most theorists in the leading research departments and rarely published in the top professional journals. Farmer and Foley attribute this in part to the failure of a particular set of macroeconomic policies, and the resulting ascendancy of the rational expectations hypothesis:
 
+
+%talk abou tht eneed for the strucutre of recurrance relations needing inital condition and driving expression 
+
+
+
+%We want to look at emergent behaviour that comes from interaction dynamics, this relays on viewing the communication between the different components of a system as messaging passing. Agent-based models naturally support this view  making them well suited to analysing emergent behaviour. However most agent-based models do not have a well defined formalisation for the system as a whole, which makes it difficult to perform system wide analytics. 
+%recurrence relations naturally suportan system wide analys, but do not support a message passing view of cummonicatiio.
+%What we want is a way of viewing a system using both models, hence being able to have the benefits of being able to view the passing of information  this is the two views approach t
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Background}
-This section aims to introduce the emergent behaviour of interest in the financial markets, how recurrence relations and agent-based models can be used to model it. A short literature review showing the absence of work using agent-based models within finance by economist, and a description of a selected agent-based model that has been designed for the financial markets. 
+This section covers a description of emergent behaviour, feedback loops as type of this behaviour and their appearance in the financial markets. Recurrence relations and agent-based models are introduced as a method for modelling emegernt behaviour, and they are described. InterDyne is introduced as an example of an agent-based model designed for the financial markets. Its applicability to modelling aspects of the financial market will be discussed and description of its design will also be given.   
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Emergent Behaviour}
@@ -376,7 +388,7 @@ Both recurrence relations and agent-based models have been used in modelling the
 
 Recurrence relations have seen wide spread use in economics appearing in a large selection of journals, including numerous times in top journals~\cite{rra10, rra1, rra2, rra3, rra4, rra5, rra6, rra7, rra8, rra9}. This wide spread use of the technique implies the acceptance of recurrence relations within financial modelling.      
 
-Agent-based models also have a large selection of papers published on them relating to economics and finance~\cite{ abma2, abma3, abma4}. However these papers are noticeably absent from top economics journals (with some exceptions, such as Ref.\cite{abmexp1} and~\cite{abmexp2}) and tend to be published in the Journal of Economic Behavior \& Organization and the Journal of Economic Development \& Control~\cite{whereabmp, farmerfoleynature}. The lack of agent-based models present in top economic journals combined with the number of papers published in other journals shows the lack of wide spread acceptance for this technique~\cite{agbntj}.
+Agent-based models also have a large selection of papers published on them relating to economics and finance~\cite{ abma2, abma3, abma4}. However these papers are noticeably absent from top economics journals (with some exceptions, such as Ref.\cite{abmexp1} and~\cite{abmexp2}) and tend to be published in the Journal of Economic Behavior \& Organization and the Journal of Economic Development \& Control~\cite{whereabmp, farmerfoleynature}. The lack of agent-based models present in top economic journals combined with the number of papers published in other journals shows the lack of wide spread acceptance for this technique~\cite{agbntj, econmistsnoabm, lob_noecomimists}.
 
 Here these two modelling techniques will be described.  
 
@@ -432,6 +444,46 @@ Links within sets of recurrence relations are hard coded into the equations, mak
 This model lays out both the functionality of each equation and the relation between them in such a way to give a static representation of the system as a whole. 
 
 This model however has difficulties in design as it can be challenging in creating a large continuous description of a system containing many components, also the function calls as a method of information passing can make dynamically tracking the flow of information during a simulation hard [REFS????].   
+
+
+
+
+%These cross sequence associations allow for complex interactions to be represented as time series defined by recurrence relations, this is a method which can be applied to agent-based modelling.
+
+%Reference~\cite{econmistsnoabm} showed how an agent-based model looking at the microstructure of the financial markets, can be exhibited in the form of recurrence relations. In their approach each agent with in an $n$ agent model is considered to be well described by a state variable, $x_{i, t}$. The state variable describes the agent at each time step, where $i$ is the identity of the agent $(i \in 1,2,....,n)$, and $t$ is the time step at which the agent is being described, i.e. $x_{1,5}$ describes the first agent at the fifth time step. These state variables are defined by the recurrence relation,     
+%\begin{equation} \label{eq:notimedelayrecur}
+%x_{i, t+1} = f_{i}(x_{i, t}, x_{-i,t}; \alpha_{i}),
+%\end{equation}
+%where $f_{i}()$ is a function unique to agent $i$, that can take the state of the agent at the previous time step, $x_{i, t}$, the state of any other agent at the previous time step, $x_{-i, t}$\footnote{The $-i$ is used to refer to all other agents in the system. So if $i=1$, $-i$ refers to agents $2,3,4,....,n$, for an $n$ agent system.}, and a bespoke parameter $\alpha_{i}$.
+
+%This method works by describing each agent as a sequence of state variables, these sequences are then interlinked by having dependencies to each other, allowing both the agents and their interactions to be represented. A simple example of this could be two agents, $x_{1}$ and $x_{2}$, that are coupled to each other and only depend on the others value at the previous time step and a parameter, represented by the recurrence relations,     
+%\begin{equation}
+%x_{1, t+1} = f_{1}(x_{2,t}; \alpha_{1}),
+%\end{equation}
+%\begin{equation}
+%x_{2, t+1} = f_{2}(x_{1,t}; \alpha_{2}).
+%\end{equation}
+%This formulation only shows relationships to the previous time steps, however information delays can be added to the system by allowing the recurrence relations to have a longer memory. A recurrence relation that uses a state variable from three time steps ago, could be considered to have a time delay of three time steps in receiving this information. The generalisation of the model needed to allow for this, is a recurrence relation of the form, 
+%\begin{equation}
+%x_{i, t+1} = f_{i}(x_{i, t}, x_{i, -t} x_{-i,t}, x_{-i, -t}; \alpha_{i}).
+%\end{equation}
+%This is similar to Eq.~\ref{eq:notimedelayrecur} but contains two new terms $x_{i, -t}$ and $x_{-i, -t}$, these terms are used to refer to any time steps before the previous one, time $t$. This more general equation can now reference any state variable from any previous time, from any agent, as well as its bespoke parameter, to compute the next term in its sequence.
+ 
+%This models can be solved for macro-level properties by iteratively solving each state variable, $x_{i, t}$, given some initial conditions. This method of assessing the model gives it a formal definition, and one that is accessible by a larger range of experts then classic agent-based models. Recurrence relations in a number of forms are commonly used in economics and finance and hence are familiar and relatable to economists, this makes them a far more effective tool for describing models to these domain experts then agent-based models.
+
+%This iterative method for solving the equations makes any dependencies between systems apparent, as if $x_{2, t}$ is present in the definition of $x_{1, t+1}$, one can say that $x_{1,t+1}$ depends on $x_{2,t}$. This transparency of dependencies makes this formulation amenable to static analysis, allowing the recurrence relations to be investigated to return their static dependencies.
+
+%Although all recurrence relations will contain some form of recursive, since this is an intrinsic property, this will not necessarily be negative or destabiliszing. For example a dependency on a state at a previous time step may not be destabilising to the system, however the reverse would be a case where the state variable at $t+1$ depended on its self, this would be a destabilising loop. Static analysis hence could be used to detect hard-wired destabilising loops, such as the one just mentioned.
+
+%Static analyse of the system can become difficult when the functions $f_{i}()$ contain conditional statements relating to their inputs, this can cause inputs not to be used at certain times hence meaning dependencies will not be as obvious as simply the inputs given, this is a problem of determining wether a function will necessarily evaluate all its arguments~\cite{willevaluteargsa}.
+
+%Though through static analysis recurrence relations can be used to view the history of the state variables of a single agent, however the history of messages between pairs of agents is not easily detectable with static analysis. The interaction history is found through dynamic analysis which is not well suited to recurrence relations, as they lack a clear ability to follow the passing of messages within the system.   
+
+
+
+
+
+
 
 
 \subsubsection{Agent-Based Models}
@@ -511,19 +563,6 @@ The order in which messages are processed can be very important. For example in 
 
 
 \subsubsection{InterDyne Detailed Operation}
-
-
-%1 Basic InterDyne Structure %2 Running a Simulation %3 Time %4 Agents %	4.1 PassingAgentInformationtosim%5 The Trace File %6 Interaction and Messages %7 Delays and Topology %	7.1 Delays
-%	7.2 Topology %8 Determinism and Non-Determinism
-
-%-here i say how interdyne works and what it looks like /
-%-basic ideas and lay out of interdyne (with a diagram of what it looks like)/ 
-%-topology and delays 
-%-what a message looks like 
-%-what is an agent in interdyne and what is its type
-%-what is the harness in interdyne and what is its type
-%-how do you run an interdyne experiment 
-
 InterDyne is a written in the functional language Haskell. The structure of an InterDyne model is show in Fig.~\ref{fig:harness_setupfigure}, this structure contains a number of agents and a simulator harness. These agents send two types of messages, either one-to-one or one-to-many (broadcast) messages. Both these messages are sent to the harness, the harness then resends these messages to the appropriate agents, one-to-one messages are sent to their target agent and one-to-many messages are sent to any agent subscribed to the relevant broadcast channel. Messages can also be sent directly to the harness and not rerouted to another agent. At the end of the simulation the harness will produce a trace file containing information on all the messages sent for post-hoc analysis.    
 \begin{figure}[H]
 	\centering
@@ -565,6 +604,9 @@ Agents in InterDyne are topically, though not required to be, written in two par
 
 The simulator harness is an intrinsic part of the simulator, it drives the simulation, handles message passing and produces the output trace file. %need to put more here, whats its type, what does it look like?
 
+%dont say paper 
+%The simulator harness is embodied in the function called sim, the actual function sim in interdyne contains not only code to run the simulation but also code associated with writing to trace files and other admistrative funtions. for the purpioses of this project, we use the following reduced sprecification of the fucntion sim which captures the all of the core fuctionality for managing message passing for agents and driving evaluation of the simualtion
+
 %-how do you run an interdyne experiment 
 
 Running an InterDyne experiment is done by calling the simulator with relevant inputs, an example example of this is shown in Fig.~\ref{fig:runninginterdyne}.
@@ -585,124 +627,33 @@ Running an InterDyne experiment is done by calling the simulator with relevant i
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section {Description and Analysis of the Problem} \label{despriptionandanalysproblem}
+
+Investigating emergent behaviour originating from interaction dynamics, within a complex system, relays on viewing the communication between different components of the system as messages being passed. These messages can then be analysed to assess the communication and its pattern that lead to the creation of the emergent behaviour, this approach is amenable to the discovery of phenomena, such as dynamic feedback loops. A model investigating emergent behaviour hence must be able to view communication as messages being passed between different components. For results from this model to be broadly accepted, in fields such as economics, the model as a whole must also be well defined.      
+
+Agent-based models naturally support a message passing view making them well suited to analysing and investigating emergent behaviour. However most agent-based models, though having each individual agent be fully specified, do not have a well defined formalisation for the system as a whole. This makes it challenging to perform system wide analytics on most agent-based model. Recurrence relations naturally support a system wide analysis, due to the full definition of their models. However their formulation does not support a message passing view of communication between components, making it difficult to analyse emergent behaviour with them directly. 
+
+This creates a problem as neither model is perfect for the task at hand. A resolution to this problem suggested by Ref.~\cite{econmistsnoabm}, is to give a formal definition of the specification of an agent-based model as a set of recurrence relations.This can be seen as viewing a system in two ways, as a recurrence relation model and as a agent-based model, a two-views approach.
+
+%what is this section going to cover 
+
+
+\subsection{Method for Achieving a Two-Views Approach}
 \begin{itemize}
-  \item Introduce the idea that agent based models and InterDyne have flaws
-  \item Say that though they have been used for experiments their results are not always accepted 
-  \item Explain the layout of this section 
+  \item How can this solution be achieved (translation form rr to abm)
+  \item How will this translation be done (research review conclude step by step aproach)
+  \item what is the project? (make rr language, convert in a step-by-step manner to InterDyne)
 \end{itemize}
 
 
-We want to look at emergent behaviour that comes from interaction dynamics, this relays on viewing the communication between the different components of a system as messaging passing. Agent-based models naturally support this view  making them well suited to analysing emergent behaviour. However most agent-based models do not have a well defined formalisation for the system as a whole, which makes it difficult to perform system wide analytics. 
-recurrence relations naturally suportan system wide analys, but do not support a message passing view of cummonicatiio.
-What we want is a way of viewing a system using both models, hence being able to have the benefits of being able to view the passing of information  this is the two views approach 
+%%%%%%How can this solution be achieved (translation form rr to abm)
+
+%%%%%%what is a translation between rr and abm
+
+%%%%%%what direction should this translation take and why? rr -> abm
+
+%%%%%%How will this translation be done? look at work other people have done on translations (step-by-step) 
 
 
-
-%desciption an analysis
-%what is the problem, why is it important, why is difficult
-%in intro and alaysis state how different the interdyne and recurrance relations are  
-Though InterDyne is a functional simulation platform and has been used to run a number of experiments, most notably in Ref.~\cite{DynamicCoupling_Chris} where a model was presented showing a flash crash caused by interaction dynamics, it possesses a concern when discussing these results, especially to non-experts in computational modelling.\\
-This section will discuss the main draw backs of InterDyne and a method for countering them.  
-
-
-
-
-
-
-
-
-
-
-
-These cross sequence associations allow for complex interactions to be represented as time series defined by recurrence relations, this is a method which can be applied to agent-based modelling.
-
-Reference~\cite{econmistsnoabm} showed how an agent-based model looking at the microstructure of the financial markets, can be exhibited in the form of recurrence relations. In their approach each agent with in an $n$ agent model is considered to be well described by a state variable, $x_{i, t}$. The state variable describes the agent at each time step, where $i$ is the identity of the agent $(i \in 1,2,....,n)$, and $t$ is the time step at which the agent is being described, i.e. $x_{1,5}$ describes the first agent at the fifth time step. These state variables are defined by the recurrence relation,     
-\begin{equation} \label{eq:notimedelayrecur}
-x_{i, t+1} = f_{i}(x_{i, t}, x_{-i,t}; \alpha_{i}),
-\end{equation}
-where $f_{i}()$ is a function unique to agent $i$, that can take the state of the agent at the previous time step, $x_{i, t}$, the state of any other agent at the previous time step, $x_{-i, t}$\footnote{The $-i$ is used to refer to all other agents in the system. So if $i=1$, $-i$ refers to agents $2,3,4,....,n$, for an $n$ agent system.}, and a bespoke parameter $\alpha_{i}$.
-
-This method works by describing each agent as a sequence of state variables, these sequences are then interlinked by having dependencies to each other, allowing both the agents and their interactions to be represented. A simple example of this could be two agents, $x_{1}$ and $x_{2}$, that are coupled to each other and only depend on the others value at the previous time step and a parameter, represented by the recurrence relations,     
-\begin{equation}
-x_{1, t+1} = f_{1}(x_{2,t}; \alpha_{1}),
-\end{equation}
-\begin{equation}
-x_{2, t+1} = f_{2}(x_{1,t}; \alpha_{2}).
-\end{equation}
-This formulation only shows relationships to the previous time steps, however information delays can be added to the system by allowing the recurrence relations to have a longer memory. A recurrence relation that uses a state variable from three time steps ago, could be considered to have a time delay of three time steps in receiving this information. The generalisation of the model needed to allow for this, is a recurrence relation of the form, 
-\begin{equation}
-x_{i, t+1} = f_{i}(x_{i, t}, x_{i, -t} x_{-i,t}, x_{-i, -t}; \alpha_{i}).
-\end{equation}
-This is similar to Eq.~\ref{eq:notimedelayrecur} but contains two new terms $x_{i, -t}$ and $x_{-i, -t}$, these terms are used to refer to any time steps before the previous one, time $t$. This more general equation can now reference any state variable from any previous time, from any agent, as well as its bespoke parameter, to compute the next term in its sequence.
- 
-This models can be solved for macro-level properties by iteratively solving each state variable, $x_{i, t}$, given some initial conditions. This method of assessing the model gives it a formal definition, and one that is accessible by a larger range of experts then classic agent-based models. Recurrence relations in a number of forms are commonly used in economics and finance and hence are familiar and relatable to economists, this makes them a far more effective tool for describing models to these domain experts then agent-based models.
-
-This iterative method for solving the equations makes any dependencies between systems apparent, as if $x_{2, t}$ is present in the definition of $x_{1, t+1}$, one can say that $x_{1,t+1}$ depends on $x_{2,t}$. This transparency of dependencies makes this formulation amenable to static analysis, allowing the recurrence relations to be investigated to return their static dependencies.
-
-Although all recurrence relations will contain some form of recursive, since this is an intrinsic property, this will not necessarily be negative or destabiliszing. For example a dependency on a state at a previous time step may not be destabilising to the system, however the reverse would be a case where the state variable at $t+1$ depended on its self, this would be a destabilising loop. Static analysis hence could be used to detect hard-wired destabilising loops, such as the one just mentioned.
-
-Static analyse of the system can become difficult when the functions $f_{i}()$ contain conditional statements relating to their inputs, this can cause inputs not to be used at certain times hence meaning dependencies will not be as obvious as simply the inputs given, this is a problem of determining wether a function will necessarily evaluate all its arguments~\cite{willevaluteargsa}.
-
-Though through static analysis recurrence relations can be used to view the history of the state variables of a single agent, however the history of messages between pairs of agents is not easily detectable with static analysis. The interaction history is found through dynamic analysis which is not well suited to recurrence relations, as they lack a clear ability to follow the passing of messages within the system.   
-
-
-
-
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Why Agent-Based Models Are Not Enough} \label{Iinterdynenotenough}
-
-\begin{itemize}
-  \item Say why agent based model and Interdyne are not always accepted
-  \item list the down side of agent based models \begin{itemize}
-  \item inverse function problem
-  \item tracking parameter effects
-  \item model as a whole lacking formal definition 
-\end{itemize}
-  \item Explain this issues in detail 
-  \item Mention positive of ABM, such as easier to track messages and hence emergence and good for dynamic analysis 
-\end{itemize}
-
-As already mentioned InterDyne is an agent-based model and hence possesses the same limitations as do other models of this type. A number of these limitations are of particular concern to economists, making agent-based models and their results not commonly accepted by them~\cite{econmistsnoabm, lob_noecomimists}. The most significant limitations  with this models are:
- \begin{enumerate}
-  \item Producing high-level behaviour or emergent behaviour from a set of base rules, only shows that those create it and does not show that those are the only rules that could exhibit this behaviour. This is often referred to as the inverse function problem.
-  \item Tracking the affect of an input parameter on the output of the agent-based model can be very difficult, and parameter-estimation may be done in a fashion that will not represent all of the possible outcomes of the model. 
-  \item Despite each agent within a simulation being fully specified the model as a whole will lack a formal definition. 
-\end{enumerate}
-The first limitation is shared by man modelling techniques and is a by product of studying emergent behaviour, more then one scenario may lead to the same emergence. This limitation should be considered more as a consideration when analysing results from experimentation, it is generally speaking useful to find a set of conditions that lead to an emergent behaviour, but should be noted that it can not be said that it is the only one without further research.\\
-The second limitation can be reduced by analysis of the sensitivity of the outcomes to parameter selections, this is shown in Ref.~\cite{econmistsnoabm}.\\
-The third limitation is of particular interest, though the other limitations can lead to questions of the validity of findings from agent-based models, the understanding of the actual model and experiment being undertaken is hindered by this limitation. A resolution to this problem was put forward by Ref.~\cite{econmistsnoabm}, in which a formal definition of the specification of the an agent-based model was given in terms of a set of recurrence relations. This solution not only provides a formal definition of an agent-based model but also does so in a way which is relatable to non-programmers, such as economists.     
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Two Views Approach} \label{twoviewsapproach} 
-
-\begin{itemize}
-  \item What is Two-Views
-  \item why have two-views: \begin{itemize}
-  \item its a way of being able to look from two perspectives, good for hypotheses formalisation 
-  \item an intro into ABM for economists
-  \item can provide more faith in ABM 
-  \item Communication tool between fields (science and economics)
-\end{itemize}
-  \item Difficulties in two-views: \begin{itemize}
-  \item two paradigms are completely different
-  \item Differences between function calls and messages
-  \item name control, in a way that allows for a useful and tangible ABM
-  \item Show problem as a whole despite splintering
-\end{itemize}
-  \item explain benefits and difficulties in detail 
-\end{itemize}
-
-As can be seen from the previous discussions neither agent-based models, in the form of InterDyne, or recurrence relations offer an optimal modelling technique whose results can be analysed to the level desired. With InterDyne suffering from a lack of a formal definition and difficulties for static analysis, and recurrence relations being unsuitable to preform dynamic analyses on. Looking at the benefits of the two techniques, InterDyne is well suited to dynamic analyses, and recurrence relations provided a formal definition and are appropriate for static analyses, one can see that they match each others draw backs.\\ 
-Therefore a more ideal model, would be representable in both recurrence relations and as an agent-based model.  This model would be suited to both static analyses, while expressed as recurrence relations, and dynamic analyses, when in the form of an agent-based model. A model that can correctly transform between a set of recurrence relations and an agent-based model, would provide the agent-based model with a formal definition in the form of the recurrence relations. This method will be referred to as the two views approach, with recurrence relations, and agent-based modelling seen as two complementary views of the same system.\\
-To create a model tool which will allow for the two views approach, three aspects most be covered, an agent-based model,the recurrence relations, and a convertor for transforming between them. The agent-based model as already been created in the form of InterDyne and as already discussed fulfils all the needed requirements for the systems being modelled. The latter two aspects however have not been previously produced and will be the focus of this paper.      
-
-\subsubsection{Step-by-Step Transformations} \label{whyusestepbystep}
 %a small literay review on why to use a step by step transformtion to go between the two vies 
 
 %for literate review
@@ -732,16 +683,82 @@ To create a model tool which will allow for the two views approach, three aspect
 
 
 
+
+%%%%%%what is the project? (make rr language, convert in a step-by-step manner to InterDyne)
+
+%Though InterDyne is a functional simulation platform and has been used to run a number of experiments, most notably in Ref.~\cite{DynamicCoupling_Chris} where a model was presented showing a flash crash caused by interaction dynamics, it possesses a concern when discussing these results, especially to non-experts in computational modelling.\\
+
+%To create a model tool which will allow for the two views approach, three aspects most be covered, an agent-based model,the recurrence relations, and a convertor for transforming between them. The agent-based model as already been created in the form of InterDyne and as already discussed fulfils all the needed requirements for the systems being modelled. The latter two aspects however have not been previously produced and will be the focus of this paper.   
+
+
+
+
+
+\subsection{Challenges with the Two-Views Approach} \label{twoviewsapproach} 
+\begin{itemize}
+  \item what are the challenges with this method (list in intro) 
+\end{itemize}
+
+%what is the problem, why is it important, why is difficult
+\begin{itemize}
+   \item The two paradigms of the models are completely different and opposing. 
+   \item How are function calls related to message passing?
+   \item How can the idea of agents having a infinite list through out time of their values be derived from the recurrence relations? 
+   \item How can the idea of private and public information introduced, and what data should fall into each category? 
+   \item How can public broadcast data be introduce, and what data classifies to be treated as such? 
+   \item How can time limited information be introduced?
+   \item How can name control be introduced in a tangible way into a recurrence relations that have no notion of agents. 
+   \item How can output messages containing message information be introduced? 
+   \item How can the recurrence relations be split in a way which does not splinter the model? 
+   \item How can small, and hence more susceptible to prove of correctness, steps be used to transform the model? 
+\end{itemize}
+
+
+
+
+
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 \section{Bespoke Recurrence Relation Language}
+%change order of sections
+
+
+%There is a logical step here considere the set of recurrance relations to be the model of the system. this model is amenable to analysis (can analysis the model  (which is the set of rr ), with out running experiment) but sometimes we want to analysis/understand the dynamic behviour of that model given certain starting conditions. and one way of doing this is to define an expression that calcualtes some value, in the contex of this model (the rr) this expression will give the intial values 
+
+%set of rr are not an experment they are a model
+
+%tracing the equations (an experment)  
+
+
+%need to set out inital conditons/values because we want to explore as different expemenrets what happens as we trace the equations given differeent starting conditions. 
+%Drive the expemernet by evaluting a certain expression 
+%need
+%-set of rr
+%-some way of setting out intial conditions
+%-a driving expression 
+%this is what we need for our input syntax. 
+
+
+
+
 The first step in this translation is selecting a recurrence relation, which to translate from. Recurrence relations are used across a wide range of disciplines and as such have many different forms of notation {\color{red} [REFS????]}. It was however decided to create a bespoke recurrence relation language for use in this translation, this was done for a number of reasons:
 \begin{enumerate}
   \item Need to have a strict set of rules for the language to allow for automated parsing. 
-  \item Need to restrict the functionality of the language to keep it as simple as possible, allowing easy comparison to mathimatical forms such as Lambda calculus. 
-  \item Need to maintain required functionality for modelling complex systems in the language.  
+  \item Need to restrict the functionality of the language to keep it as simple as possible, to facilitate the automated translation. Only introducing complexity where necessary.  
+  \item Need to maintain sufficient functionality for modelling complex systems in the language.  
 \end{enumerate} 
 
-As noted in the third point, this language as to have a certain level of functionality. It was decided that the language should have the following function:
+As noted in the third point, this language as to have a certain level of functionality. 
+%The initial syntax will support the syntax shown in fig 7
+
+It was decided that the language should have the following function:
+%dont have this list 
 \begin{itemize}
   \item The use of basic mathematical operations.% ($+, *, /, -$).
   \item The use of lists.%($[]$).
@@ -765,6 +782,23 @@ As noted in the third point, this language as to have a certain level of functio
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Syntax}
+%lexemes as well!!!!! (look at any program and know that it is of the right syntax) with BNF (on wiki simple) (add as figure) (concrete syntax)
+%Bnf of parse tree is abstract syntax
+
+%talk about bnf, saying what the langauge can do (from the list above)
+
+%now how we implement using miranda
+%lexer
+%parser
+%parse tree 
+
+%can say using miranda (refer to the miranda textbook)
+%(in chapter 6)
+%type name ::= algerbaic type dfintion 
+% ::= paremneted value | paremented value
+%::= Name <-construtor 
+%::= Name num <-associated data
+ %to help specifiy this precises here is the miranda algibrict type 
 The formal syntax for this language is shown in Fig.~\ref{fig:parsetreecode}, this syntax is written in a style consistent with type definitions within the Miranda language. This style is that of a type followed by its values, the left hand side of $::=$ is the type and can take the form of any one of its values, on the right hand side. 
 
 A simulation is defined as type $simulation$, which has two parts. A list of recurrence relations (list of type $definition$) and information about the simulation (of type $experiment$). 
@@ -826,7 +860,7 @@ There are a number of names and naming conventions which can not be used and can
 \end{itemize}
 
 
-\subsection{Well Formed Programs} \label{wellformedprogs}
+\subsection{Well Formed Programs} \label{wellformedprogs} 
 This language has a strict style and layout, this covers a number of aspects: layout, experiment, initial conditions and recurrence relations.  
 
 The layout of an simulation should match that shown in Fig.~\ref{fig:1exofla}, with $main$ signifying the experiment, $init$ the initial conditions and $where$ the list of recurrence relations. 
@@ -902,6 +936,8 @@ This style and layout is brought together to produce a full simulation, as shown
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Translation from Recurrence Relations to InterDyne} 
 
+%we define the overal transflation as a sequnce of num steps, each stephas a specific purpose as set out below 
+
 \begin{itemize}
   \item Re say what the convertor is and what is meant to do
   \item Re say project scope and that here the converter is only being designed 
@@ -934,6 +970,15 @@ To assist in the explanation of the transformation a simple example will be used
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Recurrence Relation Parser (done)}  
+%explain how you get from the previous step to the current step 
+%both before and after still adhere to the original bnf (apart from a list of stuff)
+
+%validate design step (call it symatic consideration) 
+%argume informally that each step does not change the meanning of the code, talk whats the step has doen and why it hasnt changed the meaning
+
+
+
+
 %explain what the parser is and how it works, in preparing these files for transfermation
 
 %programs wirtten in this language will be parsed into lexemes and then converted into a numeric type (?) which will be used to transfer this into lambda calcus and an ABM model
@@ -1110,6 +1155,14 @@ Therefore the experiment will now be written in the form shown in Fig.\ref{fig:R
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Testing and Validation}
+%test the translation code to see for bugs (my code)
+%edge cases (empty file, rr that has a black hole (should give an output that has a black hole), ..)
+
+
+%validate the my code 
+%check it give the right outputs 
+
+
 
 \begin{itemize}
   \item What is the validation for? checking that the conversion actual matches with an ABM (in this case InterDyne)
@@ -1139,6 +1192,12 @@ Therefore the experiment will now be written in the form shown in Fig.\ref{fig:R
 \section{Conclusion}
 %in project scope: show some limited implementation. Say initial aim was to design, but not implement the translation steps. However, the project has succeeded in all of the design aims and additionally succeeded in implementing several of the translation steps."
 
+
+
+
+%talk about what are the other benfits of creating this translation technique
+
+%say i did more work then i intened to 
 
 
 
