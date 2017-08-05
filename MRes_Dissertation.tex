@@ -683,7 +683,7 @@ The next consideration is how this translation will be achieved. Inspiration can
 %%%%%%what is the project? (make rr language, convert in a step-by-step manner to InterDyne)
 A two-views approach can hence be created by translating in a step-by-step fashion from a recurrence relation language to an agent-based model. The agent-based model used in this translation is InterDyne and the recurrence relation language used is discussed in Section~\ref{beskoperecurrancerealtion}. InterDyne was selected due to a number of factors, most importantly InterDyne was designed from the bottom up to model and investigate emergent behaviour with the financial markets, with research already being conducted using it to this end~\cite{DynamicCoupling_Chris}, this software was also a convenient choice due to access to the source code and local expertise.
 
-\subsection{Review of Similar Work}
+\subsection{Review of Similar Work}\label{simwork}
 The idea of using recurrence relations to give a formal definition to an agent-based model is not a novel one and falls under the general heading of using formal systems to prove properties of agent-based models. Work in this area has covered formal using game theory, discrete systems, classifier agents and equation-based models~\cite{taabm}. The use of recurrence relations falls under the classification of an equation-based model, these have been used in a number of papers looking to give a formalisation to agent-based models. Here three papers, Refs~\cite{ebmabmi}, \cite{econmistsnoabm} and \cite{abmtsd}, looking at this area will be reviewed and discussed, along with DEVS formalism introduced in Ref.~\cite{introdevs}.
 
 Before reviewing these papers, it is worth considering the more obvious question of does a formalism need to be given by another modelling technique to allow for the analyses of an agent-based model? Reference~\cite{taabm} present a method formalism for the analysis of agent-based models, looking in particular at performance. 
@@ -724,31 +724,27 @@ DEVS is able to provide a theoretical foundation for analyses of a number of cri
 
 
 \subsection{Challenges with the Two-Views Approach} \label{twoviewsapproach} 
-\begin{itemize}
-  \item what are the challenges with this method (list in intro) 
-\end{itemize}
-%not all the problems have to be over come: the aim of this paper is to aquaint econmist with abm and hence the proof of every type of rr model is not needed, only enough to get an understanding. then abm can just do there things
-%this combats the idea that certain situations most statiscal representations are very diffcult to translate into an agent based model 
+The approach taken in this project of creating a step-by-step translation between a recurrence relation description of a system to a agent-based model description on the same system has a number of challenges associated with it. In this section the difficulties with this project will be described. 
 
-%To achieve this transformation from a set of recurrence relations to a agent-based model, a number of conceptual challenges needed to be addressed. These problems are discussed in greater depth in Section 3.2 but including:
+As noted in Section~\ref{simwork}, when looking at work done by other researchers in this area, a main challenge was how to model systems that have no counter part in a agent-based model. This problem exists mostly due to modelling probabilist systems and macro-level systems, which are counter to the view an agent-based model takes. In this project however the focus will be on systems which are modelled at the micro-level and without probabilist aspects, though stochastic aspects will be allowed within the micro-level view.
 
-%what is the problem, why is it important, why is difficult
-\begin{itemize}
-   \item how to model things that have no counter part in abm, such as statistical quantities 
-   \item The two paradigms of the models are completely different and opposing. 
-   \item How are function calls related to message passing?
-   \item How can the idea of agents having a infinite list through out time of their values be derived from the recurrence relations? 
-   \item How can the idea of private and public information introduced, and what data should fall into each category? 
-   \item How can public broadcast data be introduce, and what data classifies to be treated as such? 
-   \item How can time limited information be introduced?
-   \item How can name control be introduced in a tangible way into a recurrence relations that have no notion of agents. 
-   \item How can output messages containing message information be introduced? 
-   \item How can the recurrence relations be split in a way which does not splinter the model? 
-   \item How can small, and hence more susceptible to prove of correctness, steps be used to transform the model? 
-\end{itemize}
+An problem overshadowing most aspects of this project is  that the two paradigms being translated between are completely different and in some ways opposing. Recurrence relation models take a analytic approach where as agent-based models take a dynamic one.   
 
+The formulation of how information is exchanged within these two models is also in contrast. Recurrence relations take a static view with information passed via function calls, opposed to the agent-based model approach of dynamically sending the information between agents using message passing. This represents a difference in the way information is seen in these models, in recurrence relations information is freely available and the equation wishing to use it simply has to make a function call. Where as in agent-based modelling information is given by its creator to only other agents selected by its creator, hence agents can not use information which has not been already sent to them.
 
+The agent-based model selected for use, InterDyne, operates by making every agent take in an infinite list of their inputs and output an infinite list of their outputs. Creating this view of the system from a recurrence relation model, which is created as a snapshot of a current time step is challenging. 
 
+In InterDyne both direct and broadcast messages exist, these two messaging types can be seen as the use of private and public date in that order. Recurrence relations do not have an inbuilt method of distinguishing between different types of data as all information is passed by direct function calls, reconciling these two view points creates another challenge. 
+
+In recurrence relations information from any previous time step can be easily accessed, where as in InterDyne information is only available for the time step at which it was received. This creates the idea of time limited information with InterDyne that is not present within a recurrence relations model.   
+
+Agent-based models have name control, indicating the different agents and functions within them. However introducing name control to  recurrence relations, that have no sense of agents, in a why in which it is tangible to the agent-based model is a challenge. 
+
+The introduction of sending information in the form of a messages as a concept, to recurrence relations poses its own difficulties. Recurrence relations information is passed directly as values, where as messages contain information such as message type, and to and from fields. 
+
+There has been criticism that agent-based models splinter a model, finding a way to split the recurrence relations into agents with out splintering the model creates another challenge. 
+
+This approach is to create a series of small steps between a recurrence relation model and an agent-based model, the smaller the steps are the easier it is for a reader to follow the process. However a challenge is finding how to create these small steps as it may often be easier to create large but less comprehensible steps.   
 
 
 

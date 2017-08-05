@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  5 AUG 2017 12:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  5 AUG 2017 13:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -787,7 +787,7 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 11.
 ) [20] [21]
-Overfull \hbox (2.46329pt too wide) in paragraph at lines 885--886
+Overfull \hbox (2.46329pt too wide) in paragraph at lines 881--882
 []\OT1/cmr/m/n/10 If state-ments with in this lan-guage are writ-ten as $\OML/c
 mm/m/it/10 if$ $condition$ $then$ $expression$ $else$ $expression$\OT1/cmr/m/n/
 10 .
@@ -841,10 +841,10 @@ See the caption package documentation for explanation.
 
 [37] (./MRes_Dissertation.aux) ) 
 Here is how much of TeX's memory you used:
- 7381 strings out of 493014
- 105106 string characters out of 6133350
- 878302 words of memory out of 5000000
- 10738 multiletter control sequences out of 15000+600000
+ 7382 strings out of 493014
+ 105115 string characters out of 6133350
+ 878313 words of memory out of 5000000
+ 10739 multiletter control sequences out of 15000+600000
  10622 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,8n,43p,1504b,1730s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -867,7 +867,7 @@ pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pf
 b></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><
 /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on MRes_Dissertation.pdf (37 pages, 497386 bytes).
+Output written on MRes_Dissertation.pdf (37 pages, 499296 bytes).
 PDF statistics:
  211 PDF objects out of 1000 (max. 8388607)
  143 compressed objects within 2 object streams
