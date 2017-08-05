@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  3 AUG 2017 12:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  5 AUG 2017 12:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -748,26 +748,26 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 <selffeedback.png, id=29, 197.73875pt x 173.64874pt>
 File: selffeedback.png Graphic file (type png)
  <use selffeedback.png>
-Package pdftex.def Info: selffeedback.png used on input line 347.
+Package pdftex.def Info: selffeedback.png used on input line 375.
 (pdftex.def)             Requested size: 98.86913pt x 86.82416pt.
 
 <twofeedback.png, id=31, 240.9pt x 259.97125pt>
 File: twofeedback.png Graphic file (type png)
  <use twofeedback.png>
-Package pdftex.def Info: twofeedback.png used on input line 354.
+Package pdftex.def Info: twofeedback.png used on input line 382.
 (pdftex.def)             Requested size: 120.44969pt x 129.9853pt.
  [6 <./selffeedback.png>] [7 <./twofeedback.png>] [8] [9]
 <abmii.png, id=51, 423.5825pt x 442.65375pt>
 File: abmii.png Graphic file (type png)
  <use abmii.png>
-Package pdftex.def Info: abmii.png used on input line 497.
+Package pdftex.def Info: abmii.png used on input line 525.
 (pdftex.def)             Requested size: 211.79073pt x 221.32632pt.
  [10 <./abmii.png>] [11] [12] <harness_setup.png, id=62, 380.42125pt x 419.5675
 pt>
 File: harness_setup.png Graphic file (type png)
 
 <use harness_setup.png>
-Package pdftex.def Info: harness_setup.png used on input line 569.
+Package pdftex.def Info: harness_setup.png used on input line 597.
 (pdftex.def)             Requested size: 190.21014pt x 209.78323pt.
  [13 <./harness_setup.png>]
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -776,8 +776,8 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang2.sty
 File: lstlang2.sty 2015/06/04 1.6 listings language file
 )
-(./complexagentwrapper.hs) [14] (./interdynewithdelays.hs) [15] [16]
-(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
+(./complexagentwrapper.hs) [14] (./interdynewithdelays.hs) [15] [16] [17]
+[18] [19] (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang2.sty
@@ -786,14 +786,14 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 (./Syntax_Def.lit.m
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 11.
-) [17] [18]
-Overfull \hbox (2.46329pt too wide) in paragraph at lines 851--852
+) [20] [21]
+Overfull \hbox (2.46329pt too wide) in paragraph at lines 885--886
 []\OT1/cmr/m/n/10 If state-ments with in this lan-guage are writ-ten as $\OML/c
 mm/m/it/10 if$ $condition$ $then$ $expression$ $else$ $expression$\OT1/cmr/m/n/
 10 .
  []
 
-(./1layout.m) (./2experment.m) (./3initcons.m) [19] (./4rrsim.m) (./5rrint.m)
+(./1layout.m) (./2experment.m) (./3initcons.m) [22] (./4rrsim.m) (./5rrint.m)
 (./6rrif.m
 LaTeX Font Info:    Try loading font information for OML+cmr on input line 1.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omlcmr.fd
@@ -802,9 +802,9 @@ File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <8> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 1.
 )
-(./7rrwhere.m) (./8full.m) [20] (./RRE1.m) [21] (./eparsetree.m) (./ILOC.m)
-(./RRiloc2.m) [22] (./RRwfc3.m) [23] (./RRopts4.m) [24] (./RRmes5.m) [25]
-(./RRhc7.m) [26] (./RRim8.m) [27] (./RRdm9.m) [28] (./RRom10.m) [29] [30]
+(./7rrwhere.m) (./8full.m) [23] (./RRE1.m) [24] (./eparsetree.m) (./ILOC.m)
+(./RRiloc2.m) [25] (./RRwfc3.m) [26] (./RRopts4.m) [27] (./RRmes5.m) [28]
+(./RRhc7.m) [29] (./RRim8.m) [30] (./RRdm9.m) [31] (./RRom10.m) [32] [33]
 (./MRes_Dissertation.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 51--56
 []\OT1/cmr/m/n/10 U.S. Com-mod-ity Fu-tures Trad-ing Com-mis-sion, U.S. Se-cu-r
@@ -817,41 +817,42 @@ Underfull \hbox (badness 10000) in paragraph at lines 51--56
 of may 6, 2010.
  []
 
-[31] [32]
-Overfull \hbox (24.52104pt too wide) in paragraph at lines 202--205
+[34] [35]
+Overfull \hbox (24.52104pt too wide) in paragraph at lines 213--216
 []\OT1/cmr/m/n/10 Duane Q. Nykamp.  Re-cur-rence re-la-tion def-i-ni-tion.  htt
 p://mathinsight.org/definition/recurrence[]relation,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 252--255
+Underfull \hbox (badness 10000) in paragraph at lines 263--266
 []\OT1/cmr/m/n/10 Christopher D. Clack.  The in-ter-dyne sim-u-la-tor (2011-).
  []
 
 
-Overfull \hbox (97.1155pt too wide) in paragraph at lines 257--262
+Overfull \hbox (97.1155pt too wide) in paragraph at lines 268--273
 []\OT1/cmr/m/n/10 Christopher D. Clack.  In-ter-dyne user man-ual.  http://www.
 resnovae.org.uk/fccsuclacuk/images/docs/research/InterDyne-
  []
 
-)
+[36])
 
 Package caption Warning: Unused \captionsetup[sub] on input line 11.
 See the caption package documentation for explanation.
 
-[33] (./MRes_Dissertation.aux) ) 
+[37] (./MRes_Dissertation.aux) ) 
 Here is how much of TeX's memory you used:
- 7370 strings out of 493014
- 104964 string characters out of 6133350
- 879261 words of memory out of 5000000
- 10728 multiletter control sequences out of 15000+600000
- 10321 words of font info for 37 fonts, out of 8000000 for 9000
+ 7381 strings out of 493014
+ 105106 string characters out of 6133350
+ 878302 words of memory out of 5000000
+ 10738 multiletter control sequences out of 15000+600000
+ 10622 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,8n,43p,1504b,1730s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmmi8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/a
@@ -866,10 +867,10 @@ pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pf
 b></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><
 /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on MRes_Dissertation.pdf (33 pages, 478469 bytes).
+Output written on MRes_Dissertation.pdf (37 pages, 497386 bytes).
 PDF statistics:
- 192 PDF objects out of 1000 (max. 8388607)
- 129 compressed objects within 2 object streams
+ 211 PDF objects out of 1000 (max. 8388607)
+ 143 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

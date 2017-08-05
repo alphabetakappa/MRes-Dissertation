@@ -193,6 +193,17 @@ Dirk Helbing and S.~Balietti.
   Experiments to Study Emergent Social Behavior}.
 \newblock Springer, 2012.
 
+\bibitem{econmistsnoabm}
+R.~Leombruni and M.~Richiardi.
+\newblock Why are economists sceptical about agent-based simulations?
+\newblock {\em Physica A: Statistical Mechanics and its Applications},
+  355(1):103--109, 2005.
+
+\bibitem{lob_noecomimists}
+M.~Gould, M.~Porter, and S.~Williams.
+\newblock Limit order books.
+\newblock {\em Quantitative Finance}, 13(11):1709--1742, 2013.
+
 \bibitem{recurrelationbook}
 Jet Wimp.
 \newblock {\em Computation with Recurrence Relations}.
@@ -260,20 +271,52 @@ Christopher~D. Clack.
   http://www.resnovae.org.uk/fccsuclacuk/images/docs/research/InterDyne-User-Manual.pdf,
   08 2017.
 
-\bibitem{econmistsnoabm}
-R.~Leombruni and M.~Richiardi.
-\newblock Why are economists sceptical about agent-based simulations?
-\newblock {\em Physica A: Statistical Mechanics and its Applications},
-  355(1):103--109, 2005.
+\bibitem{clovertrans}
+Lee Braine and Chris Clack.
+\newblock The clover rewrite rules: A translation from oofp to fp.
+\newblock Draft, 1997.
 
-\bibitem{willevaluteargsa}
-Chris Clack and Simon~L. Peyton~Jones.
-\newblock {\em Strictness analysis --- a practical approach}, pages 35--49.
-\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 1985.
+\bibitem{transproggotmod}
+William~A. Wulf.
+\newblock A case against the goto.
+\newblock In {\em Proceedings of the ACM Annual Conference - Volume 2}, 1972.
 
-\bibitem{lob_noecomimists}
-M.~Gould, M.~Porter, and S.~Williams.
-\newblock Limit order books.
-\newblock {\em Quantitative Finance}, 13(11):1709--1742, 2013.
+\bibitem{stepcorentconv}
+Erik Brunvand and Robert~F. Sproull.
+\newblock Translating concurrent programs into delay-insensitive circuits.
+\newblock In {\em ICCAD}, 1989.
+
+\bibitem{taabm}
+Michael~J. North.
+\newblock A theoretical formalism for analyzing agent-based models.
+\newblock {\em Complex Adaptive Systems Modeling}, 2(1):3, May 2014.
+
+\bibitem{ebmabmi}
+Antonio C.~R. Costa, Fernanda~M. Jeannes, and Ulisses~A. Cava.
+\newblock Equation-based models as formal specifications of agent-based models
+  for social simulation: Preliminary issues.
+\newblock In {\em 2010 Second Brazilian Workshop on Social Simulation}, pages
+  119--126, 2010.
+
+\bibitem{introdevs}
+Bernard Zeigler, Tag Kim, and Herbert Praehofer.
+\newblock {\em Theory of Modeling and Simulation 2nd Edition}.
+\newblock Academic Press, 2000.
+
+\bibitem{raspceated}
+MJ~North.
+\newblock A theoretical foundation for computional agent-based modeling.
+\newblock In {\em In 2012 World Congress on Social Simulation}, 2012.
+
+\bibitem{coupleddevs}
+Jean-Sebastien Bolduc and Hans Vangheluwe.
+\newblock A modeling and simulation package for classic hierarchical devs.
+\newblock {\em MSDL, School of Computer McGill University, Tech. Rep}, 2002.
+
+\bibitem{dynamicdevs}
+Hui Shang and Gabriel Wainer.
+\newblock A simulation algorithim for dynamic structure devs.
+\newblock {\em Simulation Conference, 2006. WSC 06. Proceedings of the Winter},
+  2006.
 
 \end{thebibliography}

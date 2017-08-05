@@ -312,6 +312,34 @@ This papers layout is as follows. First a background is given detailing, emergen
 %What we want is a way of viewing a system using both models, hence being able to have the benefits of being able to view the passing of information  this is the two views approach t
 
 
+%Recently AB models have started to outnumber DE models, but understanding of AB philosophy and methodology is much less widespread than familiarity with DE techniques
+
+%in a number of fields RR are more accepted then abm 
+%https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5221574/
+
+
+%good refrence for comparing agent based models and differenc equations 
+%https://pdfs.semanticscholar.org/eff5/1151b58ba82c0bd7c3dd96cc30984067a5a0.pdf
+
+
+%Today, computer-simulation in the natural sciences and engineering mostly rely on equation-based modeling (e.g. of the dynamics of gases, fluids, or solid bodies). Such an approach would certainly be hard to transfer to the social sciences, as most system behaviors have not been formalized mathematically. A method that seems to be more suited for the computer simulation of socio-economic systems is agent-based modeling (ABM)
+%refer
+%N. Gilbert, K.G. Troitzsch, Simulation for the Social Scientist. (Open University Press, England, 2005)
+%J.M. Epstein, R. Axtell, Growing artificial societies. (Cambridge, MA, 1996)
+% J.M. Epstein, Generative Social Science: Studies in Agent-Based Computational Modeling. Princeton Studies in Complexity. (Princeton University Press, Princeton, 2007)
+
+
+
+%Parunak et al. (1998) compare agent-based modeling and equation-based modeling. They conclude in part that agent-based modeling is best for spatial problems and individual choices, while equation-based modeling is best for geographically concentrated problems driven by well-defined mathematical rules. Specific equation-based formalisms for analyzing simulations include partial recursive functions, difference equations, and dynamical systems.
+
+%that rr can be used for abm
+%Epstein (2007) invalidates the commonly cited dichotomy between computational agent-based models and equation-based models by proving, albeit informally, that all computational agent-based models can be expressed using partial recursive functions. Epstein begins his proof by observing that because any standard computer program is effectively Turing complete, then programs for computational agent-based models must be so as well. Epstein then notes that there is an equivalent partial recursive function for every Turing machine. Therefore, there are sets of partial recursive functions for every computational agent-based model. These partial recursive functions are equations that fully specify any given computational agent-based model. Epstein also uses the partial recursive functions approach to argue informally that computational agent-based models, particularly those in the social sciences, are deductive in nature.
+
+
+%Taking EBM as formal specification of systems properties has a number of advantages, among which the most important are:
+%it means having a formal, higher-level specification for the behavior of the ABM to be designed;
+%it allows the precise checking of the behaviors of the implemented ABM, thus guaranteeing a sound basis for the exploration of the features of the system being studied, which the EBM abstracted away;
+%the conjunction of the two models is conceptually stronger than the consideration of each model alone, as the EBM may be seen as the modeling of the macro-level of the system being studied, while the ABM may be seen as its implementation at the micro-level.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -634,61 +662,62 @@ Agent-based models naturally support a message passing view making them well sui
 
 This creates a problem as neither model is perfect for the task at hand. A resolution to this problem suggested by Ref.~\cite{econmistsnoabm}, is to give a formal definition of the specification of an agent-based model as a set of recurrence relations.This can be seen as viewing a system in two ways, as a recurrence relation model and as a agent-based model, a two-views approach.
 
-%what is this section going to cover 
-
+This section how a two-views approach can be created and problems associated with the design of this method. 
 
 \subsection{Method for Achieving a Two-Views Approach}
-\begin{itemize}
-  \item How can this solution be achieved (translation form rr to abm)
-  \item How will this translation be done (research review conclude step by step aproach)
-  \item what is the project? (make rr language, convert in a step-by-step manner to InterDyne)
-\end{itemize}
-
-
 %%%%%%How can this solution be achieved (translation form rr to abm)
+A two-views approach, where recurrence relations define the formalisation of an agent-based model, must consist of a connection between the two models. This connection must be able to show that the recurrence relations and the agent-based model represent each other.  
+
+%we know a translation is possible as all abm can be written in a rr form
+%Epstein (2007) invalidates the commonly cited dichotomy between computational agent-based models and equation-based models by proving, albeit informally, that all computational agent-based models can be expressed using partial recursive functions. Epstein begins his proof by observing that because any standard computer program is effectively Turing complete, then programs for computational agent-based models must be so as well. Epstein then notes that there is an equivalent partial recursive function for every Turing machine. Therefore, there are sets of partial recursive functions for every computational agent-based model. These partial recursive functions are equations that fully specify any given computational agent-based model. Epstein also uses the partial recursive functions approach to argue informally that computational agent-based models, particularly those in the social sciences, are deductive in nature.
 
 %%%%%%what is a translation between rr and abm
+A translation between between a set of recurrence relations representing a system to an agent-based model representing the same system. This will give a connection between the two models which is able to demonstrate the equivalence of the recurrence relations and the agent-based model, hence allowing for the former to act as the formalism for the latter.   
 
 %%%%%%what direction should this translation take and why? rr -> abm
+An important consideration in creating a translation between the two methods is, which direction this translation should take. For the purpose of defining the formalisation of an agent-based model and hence increasing its acceptance for a reader, a recurrence relations to agent-based model trajectory is preferred. This ordering will allow a read to start with a formalised description and translate this formalisation to cover an agent-based model, as opposed to starting with an unformalised model and translating to a formalised one.     
 
 %%%%%%How will this translation be done? look at work other people have done on translations (step-by-step) 
-
-
-%a small literay review on why to use a step by step transformtion to go between the two vies 
-
-%for literate review
-%check if any one has done this before or anything similar 
-%translating from RR to anything else 
-%tralsing from anything to an agent based model 
-%any one written anything on porcess fo program transformation by small steps, (lots in the late 80s), le brain phd theise (2000), desgined a programing langauge, approach he took to turn it into a functional langauge using step by step transoting (clover) 
-%object flaw, paper 
-%the clover rewrite rules, paper (this is the one i want)
-%introducing clover and object oriented  functional langue, paper 
-
-
-%for literate review
-%compare abm and non abm of finacial markets and say that ecomists publish different papers 
-%check if any one has done this before or anything similar 
-%translating from RR to anything else 
-%tralsing from anything to an agent based model 
-%any one written anything on porcess fo program transformation by small steps, (lots in the late 80s), le brain phd theise (2000), desgined a programing langauge, approach he took to turn it into a functional langauge using step by step transoting (clover) 
-%object flaw, paper 
-%the clover rewrite rules, paper (this is the one i want)
-%introducing clover and object oriented  functional langue, paper 
-
-%EXPLAIN?? explain why a step-by-step processes should be taken refrencing other work using step by step transformations
-%https://www.semanticscholar.org/paper/The-Clover-Rewrite-Rules-a-Translation-from-Oofp-t-Braine-Clack/4402741aa70e4cae37839f196b5741fd6b843428
-%https://pdfs.semanticscholar.org/5b13/9a35dbc63e516dd51f2cd6672d2d7b5c21b6.pdf?_ga=2.246578180.1291348853.1500637404-583838121.1500637404
-
-
-
-
+The next consideration is how this translation will be achieved. Inspiration can be drawn from other works investigating the design of translations, such as Refs.~\cite{clovertrans},  \cite{transproggotmod} and  \cite{stepcorentconv}. These three papers discuss translations between program representations in a way in which, the final representation will faithfully represent the initial. The approach taken by these papers is to increment the translation in step-by-step manner, where each step slightly transforms the previous to be closer to the final form. The benefit of this method is that if each step on the translation can be proven to be correct then the whole translation can be seen as correct. 
 
 %%%%%%what is the project? (make rr language, convert in a step-by-step manner to InterDyne)
+A two-views approach can hence be created by translating in a step-by-step fashion from a recurrence relation language to an agent-based model. The agent-based model used in this translation is InterDyne and the recurrence relation language used is discussed in Section~\ref{beskoperecurrancerealtion}. InterDyne was selected due to a number of factors, most importantly InterDyne was designed from the bottom up to model and investigate emergent behaviour with the financial markets, with research already being conducted using it to this end~\cite{DynamicCoupling_Chris}, this software was also a convenient choice due to access to the source code and local expertise.
 
-%Though InterDyne is a functional simulation platform and has been used to run a number of experiments, most notably in Ref.~\cite{DynamicCoupling_Chris} where a model was presented showing a flash crash caused by interaction dynamics, it possesses a concern when discussing these results, especially to non-experts in computational modelling.\\
+\subsection{Review of Similar Work}
+The idea of using recurrence relations to give a formal definition to an agent-based model is not a novel one and falls under the general heading of using formal systems to prove properties of agent-based models. Work in this area has covered formal using game theory, discrete systems, classifier agents and equation-based models~\cite{taabm}. The use of recurrence relations falls under the classification of an equation-based model, these have been used in a number of papers looking to give a formalisation to agent-based models. Here three papers, Refs~\cite{ebmabmi}, \cite{econmistsnoabm} and \cite{abmtsd}, looking at this area will be reviewed and discussed, along with DEVS formalism introduced in Ref.~\cite{introdevs}.
 
-%To create a model tool which will allow for the two views approach, three aspects most be covered, an agent-based model,the recurrence relations, and a convertor for transforming between them. The agent-based model as already been created in the form of InterDyne and as already discussed fulfils all the needed requirements for the systems being modelled. The latter two aspects however have not been previously produced and will be the focus of this paper.   
+Before reviewing these papers, it is worth considering the more obvious question of does a formalism need to be given by another modelling technique to allow for the analyses of an agent-based model? Reference~\cite{taabm} present a method formalism for the analysis of agent-based models, looking in particular at performance. 
+
+This paper looks to prove findings from agent-based models, in particular the focus is on existing agent-based software such as Swarm, Repast 3 and others. This paper notes that these pieces of software use a modular imperative architecture with factored agents, spaces, a scheduler, logs, and an interface. Hence this paper presents a theoretical formalism for analysing a modular imperative agent-based model.    
+
+This this formalism is presented using an abstract machine specification of the modular imperative agent-based modelling architecture. A  Random Access Stored-Program (RASP) architecture was chosen for the abstract machine, this architecture had been created in an earlier paper (Ref.~\cite{raspceated}) and was chosen due to its similarities to real computer systems. This is opposed to other options including Turing machines and $\lambda$-calculus, as they are less well matched with real computer systems.     
+
+One of this papers motivations for using this technique over an equation-based model formalisation, is that the authors feel that this formulation of the agent-based model in terms of an equation-based model would be unnatural and possibly unrecognisable to those accustomed to agent-based models. This consideration is not as important to the work presented in this dissertation, since here the aim is to familiarise those accustomed with equation-based models to agent-based models and not the reverse. The same argument applies to the use of RASP over alternatives such as $\lambda$-calculus, this dissertation is more interested in creating a formalism which is relatable to economist over computer scientists.   
+
+The first paper to be examined is Ref.~\cite{ebmabmi}, this paper considers the formalisation of agent-based models by creating their implementation guided by equation-based models, an (equation-based model)-oriented design.  
+
+This paper looks at an example with interacting entities with given strategies, however these strategies could change upon interactions. In this example the equation-based model took a probabilist and macro-view approach where the agent-based model, due to its nature, to a micro-view approach. The analyses of these two models showed that though the systems appeared to be the same the micro-view approach could create slightly different outcomes depending on the number of agents chosen. This difference comes from the fact that the individual agents in the agent-based model were created to match a macro-level description given by the equation-based model, however due to the autonomous nature of the agents only their general behaviour can match and in certain circumstances even this did not correctly produce the behaviour.
+
+This paper concludes summarising the benefits of this approach in validating an agent-based model, here an agent-based model is known to be a faithful representation of the system as long as the equation-based model is a faithful representation. However the question of whether the age-based model is correctly implemented still rests with that model. 
+
+The main difficulties faced by this paper appear to be the transformation from a macro-level view (equation-based model) to a micro-level (agent-based model) view, this is particularly apart due to the statistical nature of the equation-based model. Though they succeeded in creating a formalisation of their model the differences in results between runs still raises questions over the equality between the two view points. To avoid this issue, taking a more micro-level focussed equation-based model should suffice.
+
+The next paper is Ref.~\cite{econmistsnoabm}, this paper is based on a similar principle to this project in that it seeks to bridge the conceptual gap around  agent-based models in economics. It tackles this problem by introducing an equation-based formalism to describe both agent-based models and analytical models, though of interest here is their work on former. 
+
+The agent-based model is formalised by specifying how each agent\textsc{\char13}s state within the model changes between each time step. This is done by defining agent attributes using vectors of state variables and then applying time-indexed difference equations to specify each agents state change. This allows for expression of the agent-based model in terms of difference equations, which they then use to look at parameter estimation. 
+
+Their work shows the ability to prefer estimations on agent-based models, counter to some criticism that has been levelled at agent-based models. Some difficulty in this approach can come from agent-based models with complicated algorithmic behaviour within the agents, specifying these models as difference equations can be challenging task. The work in this paper does not directly suffer from this problem as all systems are first described as recurrence relations before being translated into agent-based models, meaning that the equation view will only be as complex as the original writer intends.  
+
+Th last paper to be looked at is Ref.~\cite{abmtsd}, this paper investigates relating Forrester\textsc{\char13}s System Dynamics (SD) model to an agent-based model. System dynamics models consist of a set of difference equations, so this can be seen as a comparison between difference equations and agent-based models. This paper presents a formal specifications for both the Forrester\textsc{\char13}s and agent-based models, these specifications are then compared to show their equivalence. Was equivalence has been proven the specification of a Forrester\textsc{\char13}s model can be used to derive an agent-based model that is an correct representation of the same system.
+
+This technique its applied to an SIR epidemic model, creating an Forrester\textsc{\char13}s and agent-based model representation. These two descriptions of the system are then evaluated and have their results compared. The findings show that though both models show similar behaviour, there is not an exact match between them. This is due to the probabilistic nature of the system being modelled and the different approach that an agent-based model takes to these kind of systems. 
+
+This paper, though showing equivalence, does so in a more abstract manner then a direct translation between the two models. The difference in experimental results from the two models is down to the use of describing the system in a probabilist fashion, this can be avoided by describing a system in a more micro-level view.    
+
+A discussion relating to the formalism of agent-based models would be amiss with out mentioning the Discrete Event System Specification (DEVS)~\cite{introdevs}. DEVS is a theoretical formalism designed for analysing complicated simulations, which it does by describing simulations as hierarchical Moore machines, with additional timing information added to the state transitions. DEVS has a few variants including classic DEVS (this is the core abstraction), coupled DEVS (allows for hierarchical nesting of the Moore machines~\cite{coupleddevs}) and Dynamic Structuring DEVS (attempts to allow for dynamic behaviour~\cite{dynamicdevs}).
+
+DEVS is able to provide a theoretical foundation for analyses of a number of critical computational properties of agent-based models, including properties such as decidability. In theory DEVS has the ability to represent any computational model, including agent-based models, as following the Church-Turing thesis any computing system as complex as a Moore machine (which DEVS is) can be used to calculate any function. However though DEVS is capable of representing an agent-based model it is not necessarily the best approach. Despite the work done in Ref.~\cite{dynamicdevs}, DEVS is still not an ideal match for models that can dynamically behaviour, such as agent-based models where agent behaviour can be dynamically generated. Classic DEVS imposes boundaries between states and behaviours making dynamic behaviour difficult to represent, where as Dynamic Structuring DEVS introduces new constraints that have a similar effect in limiting utility. DEVS also does not include conventions of agent-based models that impact the limits of their computational properties, making it again difficult to use DEVS as a formal basis for agent-based modelling~\cite{taabm}.  
+
 
 
 
@@ -698,9 +727,14 @@ This creates a problem as neither model is perfect for the task at hand. A resol
 \begin{itemize}
   \item what are the challenges with this method (list in intro) 
 \end{itemize}
+%not all the problems have to be over come: the aim of this paper is to aquaint econmist with abm and hence the proof of every type of rr model is not needed, only enough to get an understanding. then abm can just do there things
+%this combats the idea that certain situations most statiscal representations are very diffcult to translate into an agent based model 
+
+%To achieve this transformation from a set of recurrence relations to a agent-based model, a number of conceptual challenges needed to be addressed. These problems are discussed in greater depth in Section 3.2 but including:
 
 %what is the problem, why is it important, why is difficult
 \begin{itemize}
+   \item how to model things that have no counter part in abm, such as statistical quantities 
    \item The two paradigms of the models are completely different and opposing. 
    \item How are function calls related to message passing?
    \item How can the idea of agents having a infinite list through out time of their values be derived from the recurrence relations? 
@@ -725,7 +759,7 @@ This creates a problem as neither model is perfect for the task at hand. A resol
 
 
 
-\section{Bespoke Recurrence Relation Language}
+\section{Bespoke Recurrence Relation Language} \label{beskoperecurrancerealtion}
 %change order of sections
 
 
