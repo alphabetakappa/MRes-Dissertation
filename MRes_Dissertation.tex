@@ -97,26 +97,14 @@
 
 
 
+%chris help
+
+%how should I split my code as its to long
+
+% in section 5.5 your code has thd3.hd, why is this hd there? you have already headed the inputs list hence returning a list of the wrappers for that time step. So why head again? is this becasue each set of messages are in their own list?
 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Re-Write intro
-
-%Re-Write Background, example emergence so it feels less like an aside. Give enough detail of Interdyne that it can be used later when creting the transfromation desgin 
-
-%Add to the description and alays what the challanges are 
-
-%Write RR langauge section 
-
-%Write Convertor section 
-
-%Write Validation
-
-%Wrtie test 
-
-%Write Conclusion and further work 
-
+%how does . work as i cant get it to work thd3.hd
 
 
 
@@ -964,42 +952,241 @@ This style and layout is brought together to produce a full simulation, as shown
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Translation from Recurrence Relations to InterDyne} 
+\section{Design of a Translation from Recurrence Relations to InterDyne} 
+This section details the design of a step-by-step translation between the previously described bespoke recurrence relation language and the InterDyne simulator. This is broken down into eight individual steps, each of these steps alters the output of the previous step to resemble more closely an InterDyne simulation. Each of these steps should be a small enough change from the previous iteration that the transformation, which they preform is digestible. 
 
-%we define the overal transflation as a sequnce of num steps, each stephas a specific purpose as set out below 
+The eight steps required for this translation are to introduce:
+\begin{enumerate}
+  \item Infinite list output.
+  \item Grouping into agents.
+  \item A global output list.
+  \item Agent input lists.
+  \item Targeted information passing.
+  \item A simulator harness.
+  \item Runtime arguments.
+  \item Message communication.
+\end{enumerate} 
+These eight steps translate the bespoke recurrence relation model into that of an InterDyne model, with some limited functionality. This translation also does not use the functionality of broadcast messages within InterDyne, all information passing within the recurrence relations is considered to be private and is hence sent as a one-to-one message. This translation does support expanded recurrence relation that take more then one argument, as well as recurrence relations that are first degree or higher.\footnote{A first-degree recurrence relation references the previous time step ($t-1$), a second-degree relation references the one prior to this ($t-2$) and so on.}  
 
-\begin{itemize}
-  \item Re say what the convertor is and what is meant to do
-  \item Re say project scope and that here the converter is only being designed 
-  \item say that is takes a step by step approach and why 
-  \item why? so that the steps can be shown to be correctness preserving later more easily 
-  \item say what the steps are going to be 
-\end{itemize}
-
-%defines the design of each step in the conversion between recurrance relations and interdyne 
-
-%how I will create the two views
-%what the converter is meant to do
-
-
-%how would this work? correctness preserving transformation 
-
-% Eventually, we would like to be able to express the System of Systems as a set of recurrence relations and then generate the agent-based model automatically; if this could be done in a way that preserves the semantics of the specification, then we would be confident that the static and dynamic analyses are being performed on models of the same System of Systems. 
-
-This section details the design of the transformation from a set of recurrence relations written in the previously discussed custom language into an InterDyne simulation. This transformation processes  as been split into a number of smaller steps, with each step taking the expression of the system given by the previous step and modifying it to be closer to the InterDyne formalisation.\\
-The transformation has been split into small steps to avoid any large jumps in logic between different representations. Jumps in logic can make it difficult to follow the transformation and more challenging to prove the correctness of the transformation.\\
-The aim of this section is to show the design of each of these transformative steps, and not to implement them into code or prove their correctness, however in some case the code may also be shown.\\
-To assist in the explanation of the transformation a simple example will be used through out this section Recurrence Relation Example 1 (RRE1), this example is shown in Fig.~\ref{fig:rre1}. 
+These steps will be shown in this section by translating an example written in the bespoke recurrence relation language, shown in Fig.~\ref{fig:rre1}. This example consists of four recurrence relations ($i\_f1$, $j\_f2$, $j\_f2$ and $k\_f1$) split into three groups ($i$, $j$ and $k$). Each of these relations uses the allowed pattern matching to define their initial conditions in terms of $q$ and $k$, which are defined in the section $init$. The experiment, defined under $main$, is to return the value of the relation $i\_f1$ at the time step 3.  
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{RRE1.m}
-	\caption{\it Simple example of recurrence relations written in custom defined language.}
+	\lstinputlisting[language=Miranda]{rrexam.m}
+	\caption{\it Example of an experiment written in the bespoke recurrence relation language, using a set of four recurrence relations.}
 	\label{fig:rre1}
 \end{figure} 
 
 
+
+
+
+\subsection{Infinite List Output}
+In InterDyne each agent outputs an infinite list containing the outputs of that at each time step. Here each recurrence relation is changed to output its values as an infinite list in time.
+
+For this to be achieved each recurrence relation is wrapped into a parent function, denoted by adding $\_list$ to the end of the relations name. This parent function returns a sub function labeled $\_createlist$, function takes in a function and a time marker and returns an infinite list containing the output of that function at each time. $\_createlist$ does this by recursively calling itself adding one time step to its input each time, the value of the function applied to the current time step is added to the front of this list using $:$.
+ 
+Since the recurrence relations are now contained within parent functions which are outputting infinite lists, to obtain a value at a certain time step these list have to be indexed into. This indexing using time now replaces the previous method of calling a relation with time as an argument. Indexing is done with the bang operator ($!$), this applied to a list and followed by a value will return the numbered item in the list. When numbering the list zero is considered to be the first item so $[1,2,3]!1$ would return a value of $2$. Therefore all calls within other functions are changed to this new notation as well as the call in main for the experiment. Once these changes have been applied Fig.~\ref{fig:rre1} will be translated into Fig.~\ref{fig:ts1}.
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{ts1.m}
+	\caption{\it Figure~\ref{fig:rre1} translated to contain relations that produce infinite lists throughout time and functionality added for relations to index into these lists.}
+	\label{fig:ts1}
+\end{figure} 
+
+The experiment in Fig.~\ref{fig:ts1} can be considered to be the same as that shown in Fig.~\ref{fig:rre1} with commands such as $i\_f1$ $(t-1)$, being equivalent to the command $i\_f1\_list ! (t-1)$.
+
+
+
+
+\subsection{Grouping into Agents}
+InterDyne contains agents which are the entities that interact, here agents are created by grouping together recurrence relations in the same assigned group.  
+
+This is done by creating a wrapper function which contains the previously created $\_list$ functions. Each wrapper, which is labeled as $group\_wrapper$, contains the $\_list$ functions assigned to the same group. These wrappers output an infinite list, each item within this list is another list containing the outputs of the internal $\_list$ functions at that time step. Therefore a wrapper containing two functions, $a\_list$ and $b\_list$, would produce an infinite list of the form,\\
+$[[a\_list!0,$ $b\_list!0]$, $[a\_list!1,$ $b\_list!1]$, .., $[a\_list!\infty,$ $b\_list!\infty]]$. This is done using the internal function $transpose$, this function takes a list of lists and returns a list containing lists, where the first list is a list of the heads of the initial lists and the end list is a list of the heads of the remainder of the initial list and so on. An example of the use of transpose is $transpose$ $[[1,2,3],$ $[4,5,6]]$, which returns $[[1,4],$ $[2,5],$ $[3,6]]$.
+
+Since the $\_list$ functions are now contained within a wrapper function calls to these functions must now be calls to the wrapper function which they are part of. The exception to this rule is for functions that are part of the same wrapper, these can still make direct calls to $\_list$ functions that share the same group. Since the wrapper outputs an infinite list in time, first this list must be indexed to the right time step and then this list must be indexed for the right internal function. This will change the notation of all relation calls by other recurrence relations and the recurrence relation call listed in $main$. These changes will translate the example in Fig.~\ref{fig:ts1} to that shown in Fig.~\ref{fig:ts2}.
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{ts2.m}
+	\caption{\it .}
+	\label{fig:ts2}
+\end{figure} 
+
+The experiment shown in Fig.~\ref{fig:ts2} only differs in layout compared to that shown in Fig.~\ref{fig:ts1}, with a command such as $i\_f1\_list ! (t-1)$ returning the same value as command $(i\_wrapper$ $! (t-1))$ $!0$.
+
+
+
+\subsection{A Global Output List}
+In InterDyne a simulator harness is used to mediate the messages sent between different agents, here the first step for the creation of this harness will be added in the form of a global output list. 
+
+This is done by creating a function, $s\_outputs$, that collects the outputs from all the agents and returns an infinite list containing these outputs. Because InterDyne has a circler structure for its message passing through time, requiring the agents to take a message at the beginning of every time step, a initial set of messages is added to the front of this list. These initial values are set as zero to represent a null value, but to still give an agent a message to consume on the first time step. 
+
+This new list of all agents outputs can now be used to refer to values produced by other agents. The list produced by $s\_outputs$ is an infinite list in time,  containing lists for each time step which contain a list for each agent containing all the values for that time step produced by that agent. 
+
+Translating Fig.~\ref{fig:ts2} to contain this global output list and to index into it for retrieving values from other agents produces Fig.~\ref{fig:ts3}.
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{ts3.m}
+	\caption{\it  Figure \ref{fig:ts2} translated to contain the global output list, $s\_outputs$, and to use this list to retrieve values from other agents.}
+	\label{fig:ts3}
+\end{figure} 
+
+Figure~\ref{fig:ts3} maintains the same functionality as Fig.~\ref{fig:ts2}, with calls of the form  $(i\_wrapper$ $! (t-1))$ $!0$ now being implemented in the form $(((outputs$ $!(t-1))!$ $1)!$ $0)$.
+
+\subsection{Agent Input Lists}
+In InterDyne an agent is only able to access information sent to it in the form of messages. These messages take one time step to arrive at the agent and hence have the effect of only allowing the agent to use information sent to it one time step ago (if a message is sent at $t-1$ the agent will receive it for use at $t$). Here the beginnings of message passing will be added, by allowing each wrapper to take inputs that contain the outputs list and then internally forcing the wrappers to only use the information in this list from the previous time step. 
+
+For this functionality to be added a number of aspects from the previous translation need to be altered, these are: the output list, the wrappers, and the creation of a new type of wrapper.  
+
+The output list, $s\_outputs$, will still produce an infinite list in time containing the outputs of all the wrappers, however to do this it now has to give inputs to the wrapper functions. Each wrapper function will receive two inputs, the outputs list and an initial time value. The initial time value is zero, this initialises recursion within the wrappers that will be discussed later.  This will lead to $s\_outputs$ similar to that shown in Fig.~\ref{fig:souts4}.
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{souts4.m}
+	\caption{\it Example of part of the $s\_outputs$ form after addition of inputs for the wrapper functions.}
+	\label{fig:souts4}
+\end{figure} 
+
+
+The wrapper functions now takes two inputs, a list of all the outputs from all the wrappers ($inputs$) and a time stamp ($t$). When first called by $s\_outputs$ this list is complete and the time stamp is equal to zero. The head of the $inputs$ list contains just the information produced during the last time step, in this case this is the $niloutputs$, therefore to restrict the wrapper to just use the information from the last time step only the head can be used. However has the time steps increase this will no longer be true, so to create the output list required from the wrapper, the wrapper recursively calls its self using the tail of the inputs and increasing the time stamp by one. This means on the next call the head of the list will represent the allowed information for that time step, as this will be the head of the tail of the list, and so on as the time increases. The output list created by the agent now achieved by producing a list containing the values of the logic for that time step and adding this to the front of the recursive list. An wrapper written in this way would have a similar for to that shown in Fig.~\ref{fig:wrap4}
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{wrap4.m}
+	\caption{\it Example of part of a wrapper function form after addition of inputs for the wrapper functions.}
+	\label{fig:wrap4}
+\end{figure} 
+
+As mentioned a wrapper now only has access to information sent at the previous time step, $t-1$, however some logic requires the use of information from time steps prior to this, such as $t-2$. Given a wrapper access to this information can be done in two ways, either the wrapper can receive the information and then store it internally until use or the information can be sent to another wrapper which then sends it to the correct wrapper for the time step of use. The second method, though it introduces a new wrapper function, has a the benefiting of allowing dynamic analyses of message passing to show all the information available of any set time step to any wrapper, hence this method is the one used. This new wrapper will be named in the format $functionname_delay$, where $functionname$ is the name for the recurrence relation value that it is delaying, such $jf1$. This wrapper will follow the same rules as any other wrapper but will containing very minimal internal logic. This wrapper will use one input from another wrapper, this will be the for the value which it is delaying. This wrapper will then output a value for each time step it is delaying for, so for a call for a value at $t-2$ the wrapper will output two values at each time step. The first value in the output list will be the value of just output by the other wrapper and the last value will be the value for the previous time step. This wrapper can be seen to work by constantly replacing the first value with the current value of the outputting wrapper and then moving the previous value to the next position in the list, when the value gets to the last position in the list it is read by the originally intended wrapper. A delay wrapper will have a form similar to that shown in Fig.~\ref{fig:delay4}. Since this wrapper is treated the same as any other, it will also be added to the outputs lists and be part of the inputs. 
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{delay4.m}
+	\caption{\it Example of a delay wrapper that repeatedly sends its self a value till it passes this on to the intended recipient.}
+	\label{fig:delay4}
+\end{figure} 
+  
+In this translation all information is passed as an input to the wrapper so even internal functions are referred to through the input list, this list infinite lists head is used at each time step. The head of this is another list with each item referring to a different wrapper, with the first wrapper being item zero, this list is therefore indexed to return the values associated with that wrapper. Once indexed to specify a wrapper another list is returned that contains the values from each logic function within the wrapper, again with the first logic function being item zero. This double indexing of the head allows for the value of any logic function from the previous time step to be accessed. Translating Fig.~\ref{fig:ts3} in this way will produce Fig.~\ref{fig:ts4}.
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{ts4.m}
+	\caption{\it Translation of Fig.~\ref{fig:ts3} to allow wrappers to access information through input values, and to limit the information given to only that from the previous time step.}
+	\label{fig:ts4}
+\end{figure} 
+
+\subsection{Targeted Information Passing}
+The next step in creating message passing is to have the wrappers send messages addressed to each other instead of just producing a blanket output for any other wrapper. In InterDyne a message has three main components, these are a sender, a receiver and a value. In this setup a wrapper can only access a value if it is sent directly to it, therefore if more then one wrapper uses a value than that many messages need to be sent. Here these three item messages will be added along with the functionality for a wrapper to distinguish which messages are for it. 
+
+To add this functionality features of the previous translation need to be changed, these are: The main function call, the wrapper functions and output list. 
+
+The changes required to the output list function ($s\_outputs$) is purely related to the $nullvalue$ aspect of it. The $nullvalue$, which was previously zero now has to be a list of three value messages. These three items will be stored in a tuple, in the format $(from,$ $to,$ $value)$, for the $nullvalue$ this the message list will be a single message containing zeros, $[(0,$ $0,$ $0)]$.  
+
+The wrapper functions now output messages in the same form, so a message from the first wrapper function will contain its id which is one the targeted id and the value it wishes to send. Allow wrappers id\textsc{\char13}s can be found by looking at where that wrapper appears in the order of wrappers, with the first wrapper having id one and so on. The the id of the receiving wrapper is found by analysing the call functions made by each wrapper to discern, which wrappers they are drawing information from. Once this is found messages can be created in these wrappers to send the information to the wrappers that require it. This reverse engineering as it were can be used to deduce what message need to be sent to what wrappers. An example of the form for sending a messages from a wrapper can be seen in Fig.~\ref{fig:outmes5}.  
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{outmes5.m}
+	\caption{\it Example of part of a wrapper that is sending two messages containing the same value. These messages come from this wrapper, which is the first wrapper (1), and are sent: to itself (1), and to the second wrapper (2).}
+	\label{fig:outmes5}
+\end{figure} 
+
+Though a wrapper receives all messages sent it should only use those that are sent directly to it. To do this the wrapper sorts the inbound messages to return only those with its id as the target. The sorting function can be seen in Fig.~\ref{fig:sort5}, this takes the head of the list, so the current time step and then uses the function $map$ with the input $f$ on it. This function applies the the function $f$ to each item in the list it is passed and then returns the new list, for example $map$ $hd$ $[[1,2],[3,4]]$ $=$ $[1,3]$. The function $f$ in this case then maps the function $g$ across all the items in the lists that it is mapped across. The function $g$ then uses a function called $filter$ takes a condition and a list and returns a list of all elements that matched the condition. In this case the condition is that the message tuple is sent this this wrapper ($id=1$) or ($\/$) that it is a null message from the $s\_outputs$ function. 
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{sort5.m}
+	\caption{\it Example of part of a wrapper that is used to sort the input off all messages and only return the ones directed at this wrapper.}
+	\label{fig:sort5}
+\end{figure} 
+
+
+Since the format that the information is passed in has changed the experiment function in main must change as well as any calls to $inbound\_messages\_this\_timestep$ within wrappers. These calls now must access the first index to the correct message (this is again found through reverse engineering), then take the head of this list as it will be a list just containing one message and then take the third item from the tuple which is the value. To take the head and the third item the command $thd3.hd$ is used, this is equivalent to $thd3(hd$ $input)$, where the command $thd3$ returns the third item in a three item tuple. Translating Fig.~\ref{fig:ts4} with these steps will lead to Fig.~\ref{fig:ts5}.
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{ts5.m}
+	\caption{\it Translation of Fig.~\ref{fig:ts4} to allow messages to be sent as a tuple in the form (from, to, value) and for wrappers to sort these messages as to only used ones addressed to them.}
+	\label{fig:ts5}
+\end{figure} 
+
+\subsection{A Simulator Harness}
+As mentioned earlier InterDyne has a harness that mediates the message passing between the agents, this harness covers aspects such as driving the simulation be requiring an output from the agents, receiving and redistributing the messages and redacting the inputs to each agent so that the only receive the messages sent to them. Here a harness is added that takes control of this functionality. 
+
+To add this harness features of the previous translation need to be changed, these are: The main function call, the wrapper functions, deleting of the output list and creating a harness function. 
+
+The harness function, called $h\_sim$, takes one input, which is time. The return of this function is the value of $i\_f1$ at the time step given to the harness function, this value is found by indexing into the output list. The output list itself is now created within the harness function, along with its first set of messages $niloutputs$. The rest of the list is now $redactedoutputs$, this contains the same values as the prior rest of the list, however in this formulation each wrapper is only passed the messages directed to it. This is because the harness has token over the role of sorting the messages, from the wrapper functions. Hence the input values labeled as $group\_inputs$ contain just the messages sent to the specific wrapper. An example of how a harness is formatted is shown in Fig.~\ref{fig:harn6}.
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{harn6.m}
+	\caption{\it Example of how the harness function $h\_sim$ is formatted for two wrappers. This function produces the output for the system and in the process mediates the passing of messages between wrappers, only allowing a wrapper to receive messages sent to it.}
+	\label{fig:harn6}
+\end{figure} 
+
+Now that the $h\_sim$ can return the experiment value main can be changed to call this function at the correct time step, since the output list starts with a null value the time step required is $3+1$. 
+
+Since the $h\_sim$ sorts the inputs to the wrapper functions so that they are only receiving messages sent to them, the wrappers no longer need to deal with this internally. The $inbound\_messages\_this\_timestep$ in the wrapper now simply takes the head of the list to access the messages at the current time step. 
+
+Translating Fig.~\ref{fig:ts5} to contain a harness function with this functionality will result in the experiment shown in Fig.~\ref{fig:ts6}.
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{ts6.m}
+	\caption{\it Translation of Fig.~\ref{fig:ts5} to contain a harness function that deals with message sorting and passing, as well as outputting the experiment value.}
+	\label{fig:ts6}
+\end{figure} 
+
+\subsection{Runtime Arguments}
+At the current stage of this translation a form of agent-based model has been created, this agent-based model however is still missing a number of features that InterDyne has. These features include: passing the agent id to each wrapper, having input messages and time as a tuple, incrementing time within the harness, passing local state augments to the wrappers, passing run time arguments to the harness, and passing agent information to the harness. Here these features are added to the translation. 
+
+To achieve adding these features the harness, wrappers, initial conditions and main have to be changed. 
+
+ The harness $h\_sim$ now takes three arguments, the first is still time followed by the run time arguments and then the agent information. The run time arguments, labeled as $runtime\_args$, now take the place of the initial conditions defined under $init$, the list of runtime arguments define both $q$ and $k$ with their respective arguments. To signify an argument a data type is used, signified with the constructor $Arg$, the initial condition $q$ would hence be given as $Arg$ $(``q",$ $4)$. The agent information argument, labeled as $agentinfo$, is a list containing tuples, there is one tuple for each wrapper and the tuple contains the wrappers name and an empty list, e.g. $(i\_wrapper,$ $[])$. The empty list in this tuple is for broadcast channels and would be used to list the channels that this agent is subscribed to, but since no broadcast messages are being implemented this list is here to make this translation closer to a InterDyne formulation.
+
+The harness now also bunches messages sent to each agent with a time stamp, this is done using the $zip2$ function. This function takes to list add combine each consecutive items in the list into tuples, for example $zip2$ $[1,2,3]$ $[4,5,6]$ $=$ $[(1,4),$ $(2,5),$ $(3,6)]$. This function is also used to pass the agent id to each agent, with the first agent being id equal one. The harness also passes the agents the arguments and a local state (which is unused), as well as adding the functionality for broadcast subscriptions, which are also unused. These changes create a $h\_sim$ function that is very similar to the simulator harness within InterDyne, a harness of this form is shown in Fig.~\ref{fig:harn7}.  
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{harn7.m}
+	\caption{\it Example of how the harness function $h\_sim$ is formatted when using runtime arguments.}
+	\label{fig:harn7}
+\end{figure} 
+
+The wrapper functions four inputs: the local state ($localstate$), the arguments ($args$), the input messages and time step ($inputs$), and the agent id ($id$). The arguments are then read in the wrapper using $getargstr$ which returns the argument name when applied and $getargval$ which returns the argument value when applied. The input list is unpacked using $fst$ and $snd$, these return the first (time) and second (messages) items in a tuple respectively. The id passed to the wrapper is now used to make the sender in outbound messages. A wrapper function with these changes takes the form shown in Fig.~\ref{fig:wrap7}. 
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{wrap7.m}
+	\caption{\it Example of how a wrapper function is formatted when passing the arguments: localstate, args, inputs and id.}
+	\label{fig:wrap7}
+\end{figure} 
+
+Since the inputs to the harness function have changed the call in $main$ must also change to include these arguments, the addition of runtime arguments has also replaced the $init$ section of the experiment. Translating Fig.~\ref{fig:ts6} using these steps results in the experiment shown in Fig.~\ref{fig:ts7}.
+
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{ts7.m}
+	\caption{\it Translation of Fig.~\ref{fig:ts6} to contain $args$ and $agents$ as an input to the harness, and to contain localstate, args, inputs and id as inputs for the wrapper functions.}
+	\label{fig:ts7}
+\end{figure} 
+
+
+\subsection{Message Communication}
+
+\begin{itemize}
+    \item what does interdyne have that this currently doesnt have?
+    \item what functionality is added to reach or help reach this point? 
+    \item what needs to be changed to reach this functionality (list the stuff not much detail)
+    \item now explain each part in detail 
+    \item How is this step the same as the previous figure in terms of function 
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{ts8.m}
+	\caption{\it .}
+	\label{fig:ts8}
+\end{figure} 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Testing and Validation}
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Recurrence Relation Parser (done)}  
+%\subsection{Recurrence Relation Parser (done)}  
 %explain how you get from the previous step to the current step 
 %both before and after still adhere to the original bnf (apart from a list of stuff)
 
@@ -1015,176 +1202,18 @@ To assist in the explanation of the transformation a simple example will be used
 
 
 
-The recurrence relations shown in Fig.~\ref{fig:rre1} are text, and hence the first step in transforming them is to give them a representation within code. This is done by a parser in two parts, lexical analysis and syntax analysis.\\
-Lexical analysis takes in the text file as a list of characters and converts this to a list of tokens representing items, such as function names.\\
-Syntax analysis takes this list of tokens and stores it in a parse tree that enforces structure. This parse tree can be seen in Fig.~\ref{fig:parsetree}.  
+%The recurrence relations shown in Fig.~\ref{fig:rre1} are text, and hence the first step in transforming them is to give them a representation within code. This is done by a parser in two parts, lexical analysis and syntax analysis.\\
+%Lexical analysis takes in the text file as a list of characters and converts this to a list of tokens representing items, such as function names.\\
+%Syntax analysis takes this list of tokens and stores it in a parse tree that enforces structure. This parse tree can be seen in Fig.~\ref{fig:parsetree}.  
  
-\begin{figure}[H]
-	\centering
-	\lstinputlisting[language=Miranda]{eparsetree.m}
-	\caption{\it Simple example of recurrence relations written in custom defined language.}
-	\label{fig:parsetree}
-\end{figure} 
+%\begin{figure}[H]
+%	\centering
+%	\lstinputlisting[language=Miranda]{eparsetree.m}
+%	\caption{\it Simple example of recurrence relations written in custom defined language.}
+%	\label{fig:parsetree}
+%\end{figure} 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Infinite List Outputs (done)}
-%no time as a input
-%use ! to refrence the list items
-
-%all functions turned into lists
-%all fucntions now contain time (even if its the same output at all time steps)
-%enforce that if time is used it has to be the first argument 
-%enforce all functions take t as their first agrument whether or not they use it
-%when calling a fucntion that doesnt take time can just use t, or 0 
-
-%This is done by knowing that t is a special character that goes at the begging of time dependent recurrence relations. Therefore %function: RR t a b c = f t a b c goes to RR a b c = [ expr t a b c | t <- [0..]] where expr t a b c = f t a b c 
-
-
-%done need to write up
-
-%creates a sub wrapper that gives infitie list outputs
-%all calls now need to index into this 
-
-
-A large difference between recurrence relations and InterDyne, is that in InterDyne communication is done using list, and not function calls. These lists are infinite, with a each element representing a value at a different time step. Though these lists are infinite in practice they are only as long as the highest time reached, as values for any time after this are not needed and hence will not be calculated. To make the recurrence relations have a similar approach to this a wrapper function for each relation needs to be made, this function will produce a infinite list containing the value of the relation at each time step, this wrapper can be seen in Fig.\ref{fig:iloc}. 
-\begin{figure}[H]
-	\centering
-	\lstinputlisting[language=Miranda]{ILOC.m}
-	\caption{\it Simple example of recurrence relations written in custom defined language.}
-	\label{fig:iloc}
-\end{figure} 
-To access a value for a particular time of a relation, the bang operator, !, now has to be used. This operator applied to a list will return a specified element of the list, for example in $List!n$ the $n^{th}$ element will be returned. 
-%\colorbox{blue}{\lstinline[basicstyle=\ttfamily\color{white}]|List!n|}?  
-Therefore the experiment will now be written in the form shown in Fig.\ref{fig:RRiloc}. 
-\begin{figure}[H]
-	\centering
-	\lstinputlisting[language=Miranda]{RRiloc2.m}
-	\caption{\it Recurrence relations with with infinite list outputs.}
-	\label{fig:RRiloc}
-\end{figure} 
-       
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Wrapper Function (done)}
-%group into agents
-%create a wrapper agent that out puts a infinite list (in time) containing a list of the value of each RR in the wrapper for that time step
-%[[rr1_t1,rr2_t2...], [rr1_t2, rr2_t2....], ..]
-%other RR now have to call the outputs using !! and by referencing the wrapper
-%agent na is reserved 
-%external function calls refering to fucntions of the same agent have been turned into internal function calls 
-
-%done need to write up 
-
-%moves the functions into agents
-%outputs a infite list in time with each item being a list of all outputs from the wrapper
-%all calls now index into this 
-
-
-\begin{figure}[H]
-	\centering
-	\lstinputlisting[language=Miranda]{RRwfc3.m}
-	\caption{\it Recurrence relations with with wrapper functions.}
-	\label{fig:RRwfc}
-\end{figure} 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Outputs (done)}
-
-\begin{figure}[H]
-	\centering
-	\lstinputlisting[language=Miranda]{RRopts4.m}
-	\caption{\it Recurrence relations with with wrapper functions.}
-	\label{fig:RRopts}
-\end{figure} 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Messages}
-
-\begin{figure}[H]
-	\centering
-	\lstinputlisting[language=Miranda]{RRmes5.m}
-	\caption{\it Recurrence relations with with wrapper functions.}
-	\label{fig:RRmes5}
-\end{figure} 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Queues}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Harness}
-%create the harness, that takes all the lists from the different wrappers and compiles them into one list which is passed to each wrapper as an input
-%this is a finite list, with each element being a difffernt wrapper
-%each wrapper is an infinite list with each element being the outputs at the time step
-%the outputs at the time step are a list of the values for each RR at that time
-
-%done need to write up 
-
-
-%takes wrapper out puts, list of all wrappers?
-%spreads the outputs across time to create a output list that is finite 
-%wrapper functions now access the harness
-%take hd of data from the harness 
-%wrapper function now loops 
-%delay queue to access further back in time values 
-%empty list input for first element of the harnesses output 
-%output message
-
-\begin{figure}[H]
-	\centering
-	\lstinputlisting[language=Miranda]{RRhc7.m}
-	\caption{\it Recurrence relations with with wrapper functions.}
-	\label{fig:RRhc}
-\end{figure} 
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Input Messages}
-%where an agent gets a list of messages to read 
-
-\begin{figure}[H]
-	\centering
-	\lstinputlisting[language=Miranda]{RRim8.m}
-	\caption{\it Recurrence relations with with wrapper functions.}
-	\label{fig:RRim}
-\end{figure} 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Direct Messages}
-%to from messsages
-%use of keys and values 
-
-\begin{figure}[H]
-	\centering
-	\lstinputlisting[language=Miranda]{RRdm9.m}
-	\caption{\it Recurrence relations with with wrapper functions.}
-	\label{fig:RRdm}
-\end{figure} 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Output Message}
-
-%add a message telling the harness to output the write value 
-
-\begin{figure}[H]
-	\centering
-	\lstinputlisting[language=Miranda]{RRom10.m}
-	\caption{\it Recurrence relations with with wrapper functions.}
-	\label{fig:RRom}
-\end{figure} 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Broadcast Messages}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Testing and Validation}
 %test the translation code to see for bugs (my code)
 %edge cases (empty file, rr that has a black hole (should give an output that has a black hole), ..)
 

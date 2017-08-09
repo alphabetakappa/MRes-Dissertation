@@ -19,22 +19,19 @@
 \contentsline {subsection}{\numberline {4.1}Syntax}{20}
 \contentsline {subsection}{\numberline {4.2}Naming Conventions}{21}
 \contentsline {subsection}{\numberline {4.3}Well Formed Programs}{22}
-\contentsline {section}{\numberline {5}Translation from Recurrence Relations to InterDyne}{24}
-\contentsline {subsection}{\numberline {5.1}Recurrence Relation Parser (done)}{25}
-\contentsline {subsection}{\numberline {5.2}Infinite List Outputs (done)}{25}
-\contentsline {subsection}{\numberline {5.3}Wrapper Function (done)}{27}
-\contentsline {subsection}{\numberline {5.4}Outputs (done)}{28}
-\contentsline {subsection}{\numberline {5.5}Messages}{29}
-\contentsline {subsection}{\numberline {5.6}Queues}{30}
-\contentsline {subsection}{\numberline {5.7}Harness}{30}
-\contentsline {subsection}{\numberline {5.8}Input Messages}{31}
-\contentsline {subsection}{\numberline {5.9}Direct Messages}{32}
-\contentsline {subsection}{\numberline {5.10}Output Message}{33}
-\contentsline {subsection}{\numberline {5.11}Broadcast Messages}{34}
-\contentsline {section}{\numberline {6}Testing and Validation}{34}
-\contentsline {subsection}{\numberline {6.1}Type Comparison to InterDyne}{34}
-\contentsline {subsection}{\numberline {6.2}Conversion to Haskell}{34}
-\contentsline {subsection}{\numberline {6.3}Testing}{34}
-\contentsline {section}{\numberline {7}Conclusion}{34}
-\contentsline {subsection}{\numberline {7.1}Further Work}{34}
-\contentsline {section}{References}{34}
+\contentsline {section}{\numberline {5}Design of a Translation from Recurrence Relations to InterDyne}{24}
+\contentsline {subsection}{\numberline {5.1}Infinite List Output}{25}
+\contentsline {subsection}{\numberline {5.2}Grouping into Agents}{26}
+\contentsline {subsection}{\numberline {5.3}A Global Output List}{27}
+\contentsline {subsection}{\numberline {5.4}Agent Input Lists}{29}
+\contentsline {subsection}{\numberline {5.5}Targeted Information Passing}{32}
+\contentsline {subsection}{\numberline {5.6}A Simulator Harness}{35}
+\contentsline {subsection}{\numberline {5.7}Runtime Arguments}{37}
+\contentsline {subsection}{\numberline {5.8}Message Communication}{40}
+\contentsline {section}{\numberline {6}Testing and Validation}{42}
+\contentsline {subsection}{\numberline {6.1}Type Comparison to InterDyne}{42}
+\contentsline {subsection}{\numberline {6.2}Conversion to Haskell}{42}
+\contentsline {subsection}{\numberline {6.3}Testing}{42}
+\contentsline {section}{\numberline {7}Conclusion}{42}
+\contentsline {subsection}{\numberline {7.1}Further Work}{42}
+\contentsline {section}{References}{42}
