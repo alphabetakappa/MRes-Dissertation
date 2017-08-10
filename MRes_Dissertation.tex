@@ -1162,19 +1162,33 @@ Since the inputs to the harness function have changed the call in $main$ must al
 
 
 \subsection{Message Communication}
+The last part of the translation that is needed to make this experiment comparable with InterDyne is the addition of the message type. This type is used to signal that a set of data is a message and to encompass  the information of the sender, receiver and data being sent. Here the use of this message type is added creating a experiment equivalent to a reduced version of InterDyne.   
 
-\begin{itemize}
-    \item what does interdyne have that this currently doesnt have?
-    \item what functionality is added to reach or help reach this point? 
-    \item what needs to be changed to reach this functionality (list the stuff not much detail)
-    \item now explain each part in detail 
-    \item How is this step the same as the previous figure in terms of function 
-\end{itemize}
+To achieve this part of the translation both the wrappers and the harness will have to be changed. 
 
+The main aspect of the wrappers transformation is the addition of this type into their output messages, instead of sending a message of the form $(from,$ $to,$ $value)$ they will now send messages of the form  $Message$ $(from,$ $to)$ $[(Arg(``fun\_name",$ $value))]$. The key word $Message$ is the type constructor and takes two values, the first is a tuple containing the from and to information and the second is a list of argument values. Arguments are signified with the constructor $Arg$, which takes a tuple with the arguments name (in this case the arguments are the internal functions so  name for example could be $i\_f1$)  and the value associated with that argument (so the result of $i\_f1$ at that time step). A wrappers output at each time step will now be a list of messages written in this form. 
+
+With this new message form the assigning of message values to variables within the wrapper can be more generalised. Previously this was hard coded using reverse engineering to know where in the list the message would appear, since there were no identifiers in the messages to deduce what data it held. Now that the argument name is passed with the data this can be used to assign the data without needing to know where in the list of messages it appears. This is done by first filtering the messages to return only those from the sender of interest, then this is is turned into a list of the arguments from these messages, the new functions $getmsgfrom$, $getmsgargs$ and $concat$ are used these return the from ids from the messages, return the arguments from the messages and turn a list of lists into just a list, respectively. Once the list of arguments is returned this can then be filtered to return the required value using $getargstr$ and $getargval$ which return the name of the argument and the value of the argument respectively. An example of this process is shown in Fig.~\ref{fig:filter8}. 
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{filter8.m}
+	\caption{\it Example of the filtering process for returning message values, here the value from function $i\_f1$ sent by wrapper one is being searched for, when it is found it will be saved to the variable $i\_f1\_last\_timestep$.}
+	\label{fig:filter8}
+\end{figure} 
+
+The harness has also been altered to make it more general, allow for this new message type and make it more similar to that of the harness in InterDyne, this is shown in Fig.~\ref{fig:harn8}. This harness creates an output list ($outputs$) where each item is a tuple of a time stamp and all the messages sent at that time. This list is created by adding an tuple for time zero with no messages to the head of the $timed\_transposed\_msgs$ list, this list is a list of tuples with a time stamp and all the messages at that time, after time zero (for example this list will look like $[(1, t1\_outputs),$ $(2, t2\_outputs), ..]$). This is created by using the $zip2$ function to add a time stamp to the list containing lists of messages at each time ($transposed\_msgs$). This list is created from the $allmessages$ list, this is a finite list containing a tuple of an agent id and an infinite list all the messages sent, for each agent, this is created from the $agentinfo$ passed to the harness. The $apply\_to\_args$ function is used to turn the input information of the different agents into this list of outputs.
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{harn8.m}
+	\caption{\it Simulator harness for translation comparable to InterDynes simulator harness.}
+	\label{fig:harn8}
+\end{figure} 
+
+After these translations are applied to the experiment in Fig.~\ref{fig:ts8} they create the experiment shown in Fig.~\ref{fig:ts8}.
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[language=Miranda]{ts8.m}
-	\caption{\it .}
+	\caption{\it Translation of Fig.~\ref{fig:ts7} to contain the Message constructor and have a harness function comparable to that of InterDynes.}
 	\label{fig:ts8}
 \end{figure} 
 

@@ -14,9 +14,7 @@ h_sim x runtime_args agentinfo = (getargval.hd.getmsgargs) (((snd (outputs!x))!0
                                                apply_to_args (agentid, (agentfn,broadcastsubscriptions)) = agentfn Emptyagentstate runtime_args (redacted_msgs agentid outputs) agentid
                                                redacted_msgs id outputs = map (f id) outputs
 		                                       f x (time, xs)               = (time, concat (map (filter (h x)) xs))
-		                                       h x Hiaton                   = False
 		                                       h x (Message (f,t) args)     = (t=x)
-                                               h x (Datamessage (f,t) text) = error "Datamessage not yet implemented"
 i_wrapper localstate args inputs id = outbound_messages_this_timestep : (i_wrapper localstate args future_messages id)
                                       where
                                       q = (getargval.hd) (filter ((="q").getargstr) args)

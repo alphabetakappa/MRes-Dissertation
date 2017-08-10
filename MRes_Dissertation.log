@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  9 AUG 2017 21:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  10 AUG 2017 12:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -826,11 +826,11 @@ Overfull \vbox (206.26486pt too high) has occurred while \output is active []
 Overfull \vbox (424.76486pt too high) has occurred while \output is active []
 
 
-[39] (./ts8.m) [40]
-Overfull \vbox (802.26486pt too high) has occurred while \output is active []
+[39] (./filter8.m) (./harn8.m) [40] (./ts8.m) [41]
+Overfull \vbox (785.76486pt too high) has occurred while \output is active []
 
 
-[41] (./MRes_Dissertation.bbl
+[42] (./MRes_Dissertation.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 51--56
 []\OT1/cmr/m/n/10 U.S. Com-mod-ity Fu-tures Trad-ing Com-mis-sion, U.S. Se-cu-r
 i-ties, and Ex-
@@ -842,7 +842,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 51--56
 of may 6, 2010.
  []
 
-[42] [43]
+[43] [44]
 Overfull \hbox (24.52104pt too wide) in paragraph at lines 213--216
 []\OT1/cmr/m/n/10 Duane Q. Nykamp.  Re-cur-rence re-la-tion def-i-ni-tion.  htt
 p://mathinsight.org/definition/recurrence[]relation,
@@ -859,17 +859,17 @@ Overfull \hbox (97.1155pt too wide) in paragraph at lines 268--273
 resnovae.org.uk/fccsuclacuk/images/docs/research/InterDyne-
  []
 
-[44])
+[45])
 
 Package caption Warning: Unused \captionsetup[sub] on input line 11.
 See the caption package documentation for explanation.
 
-[45] (./MRes_Dissertation.aux) ) 
+[46] (./MRes_Dissertation.aux) ) 
 Here is how much of TeX's memory you used:
- 7460 strings out of 493014
- 106080 string characters out of 6133350
- 1501373 words of memory out of 5000000
- 10798 multiletter control sequences out of 15000+600000
+ 7465 strings out of 493014
+ 106116 string characters out of 6133350
+ 1608393 words of memory out of 5000000
+ 10797 multiletter control sequences out of 15000+600000
  11320 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,10n,43p,1945b,1730s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -892,10 +892,10 @@ pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pf
 b></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><
 /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on MRes_Dissertation.pdf (45 pages, 552605 bytes).
+Output written on MRes_Dissertation.pdf (46 pages, 558415 bytes).
 PDF statistics:
- 236 PDF objects out of 1000 (max. 8388607)
- 160 compressed objects within 2 object streams
+ 239 PDF objects out of 1000 (max. 8388607)
+ 162 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
