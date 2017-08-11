@@ -12,7 +12,7 @@
 \contentsline {paragraph}{\numberline {2.3.1.4}Message Ordering}{13}
 \contentsline {subsubsection}{\numberline {2.3.2}InterDyne Detailed Operation}{13}
 \contentsline {section}{\numberline {3}Description and Analysis of the Problem}{15}
-\contentsline {subsection}{\numberline {3.1}Method for Achieving a Two-Views Approach}{15}
+\contentsline {subsection}{\numberline {3.1}Method for Achieving a Two-Views Approach}{16}
 \contentsline {subsection}{\numberline {3.2}Review of Similar Work}{16}
 \contentsline {subsection}{\numberline {3.3}Challenges with the Two-Views Approach}{18}
 \contentsline {section}{\numberline {4}Bespoke Recurrence Relation Language}{19}
@@ -23,15 +23,16 @@
 \contentsline {subsection}{\numberline {5.1}Infinite List Output}{25}
 \contentsline {subsection}{\numberline {5.2}Grouping into Agents}{26}
 \contentsline {subsection}{\numberline {5.3}A Global Output List}{27}
-\contentsline {subsection}{\numberline {5.4}Agent Input Lists}{29}
+\contentsline {subsection}{\numberline {5.4}Agent Input Lists}{28}
 \contentsline {subsection}{\numberline {5.5}Targeted Information Passing}{32}
 \contentsline {subsection}{\numberline {5.6}A Simulator Harness}{35}
 \contentsline {subsection}{\numberline {5.7}Runtime Arguments}{37}
 \contentsline {subsection}{\numberline {5.8}Message Communication}{40}
-\contentsline {section}{\numberline {6}Testing and Validation}{43}
-\contentsline {subsection}{\numberline {6.1}Type Comparison to InterDyne}{43}
-\contentsline {subsection}{\numberline {6.2}Conversion to Haskell}{43}
-\contentsline {subsection}{\numberline {6.3}Testing}{43}
-\contentsline {section}{\numberline {7}Conclusion}{43}
-\contentsline {subsection}{\numberline {7.1}Further Work}{43}
-\contentsline {section}{References}{43}
+\contentsline {section}{\numberline {6}Translation Considerations}{43}
+\contentsline {subsection}{\numberline {6.1}Translation Validation}{43}
+\contentsline {subsection}{\numberline {6.2}Translation Semantic Considerations}{44}
+\contentsline {subsection}{\numberline {6.3}Automated Translation Testing}{44}
+\contentsline {section}{\numberline {7}Conclusion}{45}
+\contentsline {subsection}{\numberline {7.1}Further Work}{46}
+\contentsline {section}{\numberline {8}Appendix A.}{46}
+\contentsline {section}{References}{46}

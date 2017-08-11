@@ -109,10 +109,26 @@
 
 
 
-
-
+%to do
 %increase margin size! 
-%abm dynamic, and RR analytic (not top down and bottom up) well abm are bottom up but rr may not be top down 
+
+%dont say paper, say project or dissertation
+
+%rewrite intro (major)
+
+%add harness explanation to background (major)
+
+%rewrite bespoke language  (major)
+
+%rewrite first three? subsections of translation 
+
+%get refrences (major)
+
+%write conversion code. Lexer, parser, first step
+
+
+
+ 
 \begin{document} 
 \title{Translating from First Order Recurrence Relations to an Agent-Based Representation} 
 \author{Leo Carlos-Sandberg\\
@@ -623,6 +639,16 @@ The simulator harness is an intrinsic part of the simulator, it drives the simul
 %dont say paper 
 %The simulator harness is embodied in the function called sim, the actual function sim in interdyne contains not only code to run the simulation but also code associated with writing to trace files and other admistrative funtions. for the purpioses of this project, we use the following reduced sprecification of the fucntion sim which captures the all of the core fuctionality for managing message passing for agents and driving evaluation of the simualtion
 
+%this is the simulator
+\begin{figure}[H]
+	\centering
+        %\lstinputlisting[language=Haskell]{intersimfun.hs}
+	\caption{\it }
+	\label{fig:intersimfun}
+\end{figure} 
+
+
+
 %-how do you run an interdyne experiment 
 
 Running an InterDyne experiment is done by calling the simulator with relevant inputs, an example example of this is shown in Fig.~\ref{fig:runninginterdyne}.
@@ -744,6 +770,10 @@ This approach is to create a series of small steps between a recurrence relation
 
 
 \section{Bespoke Recurrence Relation Language} \label{beskoperecurrancerealtion}
+
+%change if cond !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
 %change order of sections
 
 
@@ -985,15 +1015,13 @@ In InterDyne each agent outputs an infinite list containing the outputs of that 
 
 For this to be achieved each recurrence relation is wrapped into a parent function, denoted by adding $\_list$ to the end of the relations name. This parent function returns a sub function labeled $\_createlist$, function takes in a function and a time marker and returns an infinite list containing the output of that function at each time. $\_createlist$ does this by recursively calling itself adding one time step to its input each time, the value of the function applied to the current time step is added to the front of this list using $:$.
  
-Since the recurrence relations are now contained within parent functions which are outputting infinite lists, to obtain a value at a certain time step these list have to be indexed into. This indexing using time now replaces the previous method of calling a relation with time as an argument. Indexing is done with the bang operator ($!$), this applied to a list and followed by a value will return the numbered item in the list. When numbering the list zero is considered to be the first item so $[1,2,3]!1$ would return a value of $2$. Therefore all calls within other functions are changed to this new notation as well as the call in main for the experiment. Once these changes have been applied Fig.~\ref{fig:rre1} will be translated into Fig.~\ref{fig:ts1}.
+Since the recurrence relations are now contained within parent functions (that do not take time as an input) which are outputting infinite lists, to obtain a value at a certain time step these list have to be indexed into. This indexing using time now replaces the previous method of calling a relation with time as an argument. Indexing is done with the bang operator ($!$), this applied to a list and followed by a value will return the numbered item in the list. When numbering the list zero is considered to be the first item so $[1,2,3]!1$ would return a value of $2$. Therefore all calls within other functions are changed to this new notation as well as the call in main for the experiment. Once these changes have been applied Fig.~\ref{fig:rre1} will be translated into Fig.~\ref{fig:ts1}.
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[language=Miranda]{ts1.m}
 	\caption{\it Figure~\ref{fig:rre1} translated to contain relations that produce infinite lists throughout time and functionality added for relations to index into these lists.}
 	\label{fig:ts1}
 \end{figure} 
-
-The experiment in Fig.~\ref{fig:ts1} can be considered to be the same as that shown in Fig.~\ref{fig:rre1} with commands such as $i\_f1$ $(t-1)$, being equivalent to the command $i\_f1\_list ! (t-1)$.
 
 
 
@@ -1002,7 +1030,7 @@ The experiment in Fig.~\ref{fig:ts1} can be considered to be the same as that sh
 InterDyne contains agents which are the entities that interact, here agents are created by grouping together recurrence relations in the same assigned group.  
 
 This is done by creating a wrapper function which contains the previously created $\_list$ functions. Each wrapper, which is labeled as $group\_wrapper$, contains the $\_list$ functions assigned to the same group. These wrappers output an infinite list, each item within this list is another list containing the outputs of the internal $\_list$ functions at that time step. Therefore a wrapper containing two functions, $a\_list$ and $b\_list$, would produce an infinite list of the form,\\
-$[[a\_list!0,$ $b\_list!0]$, $[a\_list!1,$ $b\_list!1]$, .., $[a\_list!\infty,$ $b\_list!\infty]]$. This is done using the internal function $transpose$, this function takes a list of lists and returns a list containing lists, where the first list is a list of the heads of the initial lists and the end list is a list of the heads of the remainder of the initial list and so on. An example of the use of transpose is $transpose$ $[[1,2,3],$ $[4,5,6]]$, which returns $[[1,4],$ $[2,5],$ $[3,6]]$.
+$[[a\_list!0,$ $b\_list!0]$, $[a\_list!1,$ $b\_list!1]$, .., $[a\_list!\infty,$ $b\_list!\infty]]$. This is done using the internal function $transpose$, this function takes a list of lists and returns a list containing lists, where the first list is a list of the heads of the initial lists and the next list is a list of the heads of the remainder of the initial list and so on. An example of the use of transpose is $transpose$ $[[1,2,3],$ $[4,5,6]]$, which returns $[[1,4],$ $[2,5],$ $[3,6]]$.
 
 Since the $\_list$ functions are now contained within a wrapper function calls to these functions must now be calls to the wrapper function which they are part of. The exception to this rule is for functions that are part of the same wrapper, these can still make direct calls to $\_list$ functions that share the same group. Since the wrapper outputs an infinite list in time, first this list must be indexed to the right time step and then this list must be indexed for the right internal function. This will change the notation of all relation calls by other recurrence relations and the recurrence relation call listed in $main$. These changes will translate the example in Fig.~\ref{fig:ts1} to that shown in Fig.~\ref{fig:ts2}.
 \begin{figure}[H]
@@ -1011,8 +1039,6 @@ Since the $\_list$ functions are now contained within a wrapper function calls t
 	\caption{\it .}
 	\label{fig:ts2}
 \end{figure} 
-
-The experiment shown in Fig.~\ref{fig:ts2} only differs in layout compared to that shown in Fig.~\ref{fig:ts1}, with a command such as $i\_f1\_list ! (t-1)$ returning the same value as command $(i\_wrapper$ $! (t-1))$ $!0$.
 
 
 
@@ -1031,7 +1057,6 @@ Translating Fig.~\ref{fig:ts2} to contain this global output list and to index i
 	\label{fig:ts3}
 \end{figure} 
 
-Figure~\ref{fig:ts3} maintains the same functionality as Fig.~\ref{fig:ts2}, with calls of the form  $(i\_wrapper$ $! (t-1))$ $!0$ now being implemented in the form $(((outputs$ $!(t-1))!$ $1)!$ $0)$.
 
 \subsection{Agent Input Lists}
 In InterDyne an agent is only able to access information sent to it in the form of messages. These messages take one time step to arrive at the agent and hence have the effect of only allowing the agent to use information sent to it one time step ago (if a message is sent at $t-1$ the agent will receive it for use at $t$). Here the beginnings of message passing will be added, by allowing each wrapper to take inputs that contain the outputs list and then internally forcing the wrappers to only use the information in this list from the previous time step. 
@@ -1195,95 +1220,117 @@ After these translations are applied to the experiment in Fig.~\ref{fig:ts8} the
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Testing and Validation}
+\section{Translation Considerations}
+Now that the design of the translation process has been described there are a few aspects relating to it that should be considered. These considerations can be formed as three questions: Is the final form of the translation a good representation of InterDyne? Does this design give a correct translation? Can this translation process be automated?   
+
+This section covers these three questions, first by comparing the final form of the translation to InterDyne, then by looking at the design and the operation of each step in the translation, and finally by showing the first steps in an automated version of this translation.  
+
+
+\subsection{Translation Validation}
+Here the validity of this translation is assessed, this is done by comparing the main aspects of InterDyne to the final form of this translation. These aspects are: The design of the harness, the type of the harness, the type of the agents, and the type of messages. 
+
+The design of the simulator harness in the translation can be seen to be very similar to that of the InterDyne simulator harness by comparing Fig.~\ref{fig:harn8} with Fig.~\ref{fig:intersimfun}. The translation limits the functionality of InterDyne some what, such as reducing its output to a single number and only allowing for one message type. These reductions in the functionality of InterDyne explain the difference between the two harness.
+
+Comparing the harness types, InterDyne has the harness type shown in Fig.~\ref{fig:harntypint}, where as the translations harness as the type sown in Fig.~\ref{fig:harntyptrans}. As can be seen these types are very similar, with the translations harness type containing an empty list instead of a list of integers and the output of the translation being an integer instead of an IO output, which is explained due to the reduced nature of this model. 
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{harntypint.m}
+	\caption{\it Type of InterDynes harness.}
+	\label{fig:harntypint}
+\end{figure} 
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{harntyptrans.m}
+	\caption{\it Type of the translations harness.}
+	\label{fig:harntyptrans}
+\end{figure} 
+
+Since an agent can be formulated in almost any manner within InterDyne, it is only worth while to compare the types of the agents between InterDyne and the translation. The type of an InterDyne agent, shown in Fig.~\ref{fig:agentpint}, is very similar to that of an agent within the translation, shown in Fig.~\ref{fig:agenttrans}, the only difference exists on the input to an InterDyne agent containing one extra list of messages. This extra list of messages is relating to broadcast messages, which are not implemented in the translation and hence do not appear in the type of the agents. This mismatch in type is again down to the translation creating a reduced form of InterDyne. 
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{agentpint.m}
+	\caption{\it Type of InterDynes agents.}
+	\label{fig:agentpint}
+\end{figure} 
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{agenttrans.m}
+	\caption{\it Type of the translations agents.}
+	\label{fig:agenttrans}
+\end{figure} 
+
+The translation has explicitly implemented the message type used in InterDyne by creating messages using the constructor $Message$. This constructor is used for simple one-to-one messages and in InterDyne there are a large range of messages for different data. The translation has only implements this single type, again show casing the reduced functionality compared to InterDyne.   
+
+This assessment of the resemblance between the final product of this translation and an InterDyne simulation, show that this process does indeed create a InterDyne simulation, which is of reduced functionality. This reduced form of InterDyne is required to allow a matching to the initial recurrence relations and to limit excess complications during the translation.
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\subsection{Recurrence Relation Parser (done)}  
-%explain how you get from the previous step to the current step 
-%both before and after still adhere to the original bnf (apart from a list of stuff)
+\subsection{Translation Semantic Considerations} %maybe call it Translation Testing
+Though the translation can be seen to produce an InterDyne simulation, the question still remains about the correctness of the steps in this process. Here two arguments for the correctness of meaning of this approach will be presented.  
 
-%validate design step (call it symatic consideration) 
-%argume informally that each step does not change the meanning of the code, talk whats the step has doen and why it hasnt changed the meaning
+The first argument is that each step can be seen as nothing more then a reformatting of the information and experiment already presented. With new structures such as types being nothing more then wrappers for data that is then extracted and treated as before. This reformatting creates no new information in the experiment, with reverse engineering used to create aspects that may have added new information, such as introducing messages sent from a sender to a receiver in place of a receiver calling on a sender to get the information.   
 
+The second argument relates to the functionality of each step, if each step can produce the same outputs given the same inputs then they are likely equivalent. To test the functionality each step was converted into a Miranda program, where the experiment time of $3$ was replaced by an input value, which could be executed. These programs were then run using a large selection of time stamps, including zero, and the values were compared as an equality. This returned a value of $True$, showing that the outputs for each step given the same inputs were identical. 
 
+These arguments suggest that this translation has steps that are equivalent and hence that the produced version of InterDyne is an equivalent representation of the initial recurrence relation experiment. 
 
+\subsection{Automated Translation Testing}
+Though the design of the translation has been shown, with an example being translated by hand, this is a long process to achieve for multiple experiments. The question hence arises, can this process be automated? Here it is shown that automation of this processes can be achieved, this automation is however outside the current project scope and hence only the first three steps will be done to show that it is possible. The first three steps of this automation are shown in the appendix but will be described here. 
 
-%explain what the parser is and how it works, in preparing these files for transfermation
+The recurrence relation experiment is first passed to the translation program as a list of characters, therefore the first step in the program is to give these characters some meaning. This is done using a lexer, this part of the program reads in the list of characters and looks for keywords or symbols to tokenise. These tokens are contained in a list of lexemes which represent all items that can be passed to this program. The lexer produces a new list tokens, with each token a defined meaning to the program, such as representing an equals sign or a variable.     
 
-%programs wirtten in this language will be parsed into lexemes and then converted into a numeric type (?) which will be used to transfer this into lambda calcus and an ABM model
+When passing characters to the lexer it is assumed that they are in keeping with the rules of the bespoke recurrence relation language. The lexer has no knowledge of this language passed its keywords and symbols and will tokenise everything according to this. If an character or string of charters is passed that does not match any of the known keywords  or symbols, it will be interpreted as a variable name and saved as such. This lexer does not use spaces so all tokenising will be done strictly on the characters order and not their layout, this also allows a experiment to be passed as a single continuous line if one wished. 
 
+The next step after tokenising the input is to add a structure to this list of tokens, this is done using a parser. The parser reads in the list of tokens and knows the BNF and structure a recurrence relation experiment should take. The parser uses this knowledge of the layout and the meaning of the tokens to translate the token list into a parse tree created in custom numeric type to represents this experiment.  
 
+The parser expects for the tokens given to it to conform to the rules and layout of the bespoke recurrence relation language, this includes containing a $main$ with an experiment, a $init$ though this can be empty, and a $where$ with a list of recurrence relations (this can be a single recurrence relation). Any formatting that does not match the formatting rules of this language will cause the parser to crash. However the actual function of the recurrence relations can be incorrect, causing black holes or other issues, but will still be parsed correctly.
 
-%The recurrence relations shown in Fig.~\ref{fig:rre1} are text, and hence the first step in transforming them is to give them a representation within code. This is done by a parser in two parts, lexical analysis and syntax analysis.\\
-%Lexical analysis takes in the text file as a list of characters and converts this to a list of tokens representing items, such as function names.\\
-%Syntax analysis takes this list of tokens and stores it in a parse tree that enforces structure. This parse tree can be seen in Fig.~\ref{fig:parsetree}.  
- 
-%\begin{figure}[H]
-%	\centering
-%	\lstinputlisting[language=Miranda]{eparsetree.m}
-%	\caption{\it Simple example of recurrence relations written in custom defined language.}
-%	\label{fig:parsetree}
-%\end{figure} 
+Once in this structure a function can be used to translate the recurrence relation experiment into the first step in the translation (to allow for infinite list outputs). This is done by reading in this numeric type and then creating a new version of this numeric type that is translated identically apart from the aspects that need to be changed to allow for the translation step. 
+
+This translation step should never crash as the format passed to it should always be correct, with an incorrect format causing the parser to crash. This translation step also only focusses on the format of the experiment and any actual functionality could be incorrect but will still be correctly translated. 
+
+For later steps that introduce aspects not covered in the original numeric type, a new numeric type needs to be created to allow for these new aspects of functionality, such as message types. Though these first three steps are only a small aspect of an automated translation, they show that this is achievable.    
 
 
-%test the translation code to see for bugs (my code)
-%edge cases (empty file, rr that has a black hole (should give an output that has a black hole), ..)
-
-
-%validate the my code 
-%check it give the right outputs 
-
-
-
-\begin{itemize}
-  \item What is the validation for? checking that the conversion actual matches with an ABM (in this case InterDyne)
-  \item do this by comparing types 
-  \item also by checking coding syntax 
-\end{itemize}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Type Comparison to InterDyne}
-%make sure agents are of type Agent_t
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Conversion to Haskell}
-%output the wrappers and logic as haskell code that can then be run in Interdyne 
-
-\subsection{Testing}
-
-\begin{itemize}
-  \item checking that this conversion still produces the same results as the RR 
-\end{itemize}
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
-%in project scope: show some limited implementation. Say initial aim was to design, but not implement the translation steps. However, the project has succeeded in all of the design aims and additionally succeeded in implementing several of the translation steps."
 
+This project has looked at the use of recurrence relation models and agent-based models with economics. Both these models are widely used to model complex systems in many fields, including for investigating emergent behaviour within these systems. Agent-based models in particular offer an attractive method for analysing emergent behaviour within interacting systems, due to their use of message passing. However in economics agent-based, unlike recurrence relation models, models very rarely appear in top journals and are in general not widely accepted in this field.     
 
+This dissertation presents a method designed to increase the general acceptance of agent-based models within economics. Increasing the traction of this method within economics will benefit the investigation of numerous complex systems within this field, as well as helping work already done using this technique  to be better received. 
 
+The method presented in this dissertation adds a formalisation to an agent-based model as well making agent-based models more transparent to those unfamiliar with them. A formalism is specified for the agent-based model in the form of a equivalent recurrence relation model, with the transparency given by a step-by-step translation from this recurrence relation model to the agent-based model. 
 
-%talk about what are the other benfits of creating this translation technique
+To achieve this, this project has created a bespoke recurrence relation language, the design of a step-by-step translation between this language and an agent-based model, and a program for implementing the initial steps of this translation.  
 
-%say i did more work then i intened to 
+The created bespoke recurrence relation language allows for experiments involving interacting relations to be specified to be fully specified. The language its self is specified with a given BNF form, as well as details on creating well formed programs within it. 
 
+A design for the eight step translation from the bespoke recurrence relation language to an agent-based model known as InterDyne was created and demonstrated. This was done by translating an example system, which was written in the bespoke recurrence relation language and then rewritten at each step of the translation, till a final form comparable to a reduced InterDyne experiment was given.  
 
+The initial aim was creating the design for this translation, but not to implement this design, however the project has succeed in all of the design aims and additionally succeeded in implementing the first elements need to automate this translation process.  
+
+The two models created for the example system, the recurrence relation model and the agent-based model, are both equivalent numerically. Not only are the initial and final model equivalent numerically but so are each of the steps in the translation process. 
+
+The method presented in this dissertation both formalises and familiarises agent-based models with recurrence relations. Allowing one familiar with recurrence relations to be introduced to agent-based models and to increase their understanding of this technique. 
 
 \subsection{Further Work}
+This project builds the foundations for a number of additional extensions to be done. Three particular extensions to note are: implementing a the full translation, proving the correctness of the translation, and creating a reverse translation.     
 
-\begin{itemize}
-  \item Build code
-  \item correctness proof 
-\end{itemize}
+The most obvious pieces of further work that can be undertaken is to implement the rest of this translation processes. This would involve implementing steps two to eight in a similar manner to that shown for step one. 
 
-%do the correctness preserving aspect of this
+The the correctness of each step has been argued informally in this dissertation, a formal prove of the correctness of each step can be undertaken. This is will be most readily achieved by translating each step into lambda calculus and then proving the correctness in this form. 
+
+A large extension to this project would be the creation of a translation that turns an InterDyne simulation into a model written in the bespoke recurrence relation language. This would allow for systems to be readily viewed as either a set of recurrence relations or an agent-based model, making these systems particularly amenable to both static and dynamic analysis.  
+
+
+
+
+
  
-%\section{Appendix}
+\section{Appendix A.}
 
 %\subsection{Appendix 1} %\label{Appendix_1}
 %\lstinputlisting[language=C++]{AllCode_functions.cpp}
