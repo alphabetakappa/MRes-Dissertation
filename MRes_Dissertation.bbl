@@ -1,5 +1,128 @@
 \begin{thebibliography}{10}
 
+\bibitem{oldcps}
+M.~de~Laplace and P.~Simon.
+\newblock A philosophical essay on probabilities.
+\newblock {\em New York, London: Wiley, Chapman and Hall}, 1902.
+
+\bibitem{complexecon}
+John Foster.
+\newblock From simplistic to complex systems in economics.
+\newblock {\em Cambridge Journal of Economics}, 29, 2005.
+
+\bibitem{bubblesandcrashes}
+Jochen Fromm.
+\newblock Types and forms of emergence.
+\newblock {\em arXiv:nlin/0506028}, 2005.
+
+\bibitem{emergdef}
+Gary~William Flake.
+\newblock The computational beauty of nature.
+\newblock {\em The MIT Press}, 2000.
+
+\bibitem{emegdefs2}
+Yaneer Bar-Yam.
+\newblock Dynamics of complex systems.
+\newblock {\em Addison-Wesley}, 1997.
+
+\bibitem{regemergnce}
+J.~Doyne Farmer, M.~Gallegati, C.~Hommes, A.~Kirman, P.~Ormerod, S.~Cincotti,
+  A.~Sanchez, and D.~Helbing.
+\newblock A complex systems approach to constructing better models for managing
+  financial markets and the economy.
+\newblock {\em The European Physical Journal Special Topics}, 214:295--324,
+  2012.
+
+\bibitem{flashauto}
+Ian Domowitz and Benn Steil.
+\newblock Automation, trading costs, and the structure of the securities
+  trading industry.
+\newblock In {\em Brookings-Wharton Papers on Financial Services}, 1999.
+
+\bibitem{SECreport_delays}
+U.S. Commodity Futures~Trading Commission, U.S. Securities, and Exchange
+  Commission.
+\newblock Findings regarding the market events of may 6, 2010.
+\newblock https://www.sec.gov/news/studies/2010/marketevents-report.pdf,
+  September 2010.
+
+\bibitem{DynamicCoupling_Chris}
+Christopher~D. Clack and Dmitrijs~Zaparanuks Elias~Court.
+\newblock Dynamic coupling and market instability.
+\newblock Working Paper, 2014.
+
+\bibitem{discretetiem}
+Robert~Goodell Brown.
+\newblock {\em Smoothing, Forecasting and Prediction of Discrete Time Series}.
+\newblock Dover Phoenix Editions, 2004.
+
+\bibitem{wsabm}
+Steven~C. Bankes.
+\newblock Agent-based modeling: A revolution?
+\newblock {\em Proceedings of the National Academy of Sciences of the United
+  States of America}, 99:7199--7200, 2002.
+
+\bibitem{whereabmp}
+Matteo Richiardi.
+\newblock The future of agent-based modelling.
+\newblock {\em Economics Papers}, 2015.
+
+\bibitem{farmerfoleynature}
+J.~Doyne Farmer and Duncan Foley.
+\newblock The economy needs agent-based modelling.
+\newblock {\em Nature}, 460:685--686, 2009.
+
+\bibitem{techsadsProbsabm}
+Ali Bazghandi.
+\newblock Techniques, advantages and problems of agent based modeling for
+  traffic simulation.
+\newblock {\em International Journal of Computer Science Issues}, 9(3), 2012.
+
+\bibitem{abmgood1}
+Nawfal Naciri and Mohamed Tkiouat.
+\newblock Economic agent based models: Review.
+\newblock {\em International Journal of Applied Engineering Research},
+  11(8):5492--5502, 2016.
+
+\bibitem{abmgreat2}
+N.~Gilbert and K.G. Troitzsch.
+\newblock Simulation for the social scientist.
+\newblock {\em Open University Press}, 2005.
+
+\bibitem{gabm3}
+J.M. Epstein.
+\newblock Generative social science: Studies in agent-based computational
+  modeling.
+\newblock {\em Princeton University Press, Princeton}, 2007.
+
+\bibitem{gabm5}
+H.~Van~Dyke Parunak, Robert SavitRick, and L.~Riolo.
+\newblock Agent-based modeling vs. equation-based modeling: A case study and
+  users' guide.
+\newblock {\em International Workshop on Multi-Agent Systems and Agent-Based
+  Simulation}, 1534, 1998.
+
+\bibitem{acrr}
+Alex Mogilner and Angelika Manhart.
+\newblock Agent-based modeling: case study in cleavage furrow models.
+\newblock {\em Molecular Biology of the Cell}, 2016.
+
+\bibitem{rra10}
+Marian Kwapisz.
+\newblock On difference equations arising in mathematics of finance.
+\newblock {\em Nonlinear Analysis: Theory, Methods \& Applications}, 30, 1997.
+
+\bibitem{rra1}
+Nancy~L. Stokey.
+\newblock {\em Recursive Methods in Economic Dynamics}.
+\newblock Harvard University Press, 1989.
+
+\bibitem{agbtorrgood}
+Joshua~M. Epstein.
+\newblock {\em Ethical and Legal Considerations in Mitigating Pandemic Disease:
+  Workshop Summary}, chapter~5, pages 2015--2042.
+\newblock National Academies Press, 2007.
+
 \bibitem{EB_systemofsystemsGLangford}
 John~S. Osmundson, Thomas~V. Huynh, and Gary~O. Langford.
 \newblock Emergent behavior in systems of systems.
@@ -31,11 +154,6 @@ Dirk Helbing.
 \newblock {\em Social Self-Organization}.
 \newblock Springer, 2012.
 
-\bibitem{bubblesandcrashes}
-Jochen Fromm.
-\newblock Types and forms of emergence.
-\newblock {\em arXiv:nlin/0506028}, 2005.
-
 \bibitem{turningchemical}
 Alan Turing.
 \newblock The chemical basis of morphogenesis.
@@ -47,24 +165,12 @@ Dragos Bozdog, Ionut Florescu, Khaldoun Khashanah, and Jim Wang.
 \newblock Rare events analysis for high-frequency equity data.
 \newblock {\em Wilmott Journal}, pages 74--81, 2011.
 
-\bibitem{SECreport_delays}
-U.S. Commodity Futures~Trading Commission, U.S. Securities, and Exchange
-  Commission.
-\newblock Findings regarding the market events of may 6, 2010.
-\newblock https://www.sec.gov/news/studies/2010/marketevents-report.pdf,
-  September 2010.
-
 \bibitem{Impact_hft}
 Andrei Kirilenko, Albert~S. Kyle, Mehrdad Samadi, and Tugkan Tuzun.
 \newblock The flash crash: The impact of high frequency trading on an
   electronic market.
 \newblock Working Paper, SSRN. http://ssrn.com/abstract=1686004 (accessed May
   13, 2017)., 2014.
-
-\bibitem{DynamicCoupling_Chris}
-Christopher~D. Clack and Dmitrijs~Zaparanuks Elias~Court.
-\newblock Dynamic coupling and market instability.
-\newblock Working Paper, 2014.
 
 \bibitem{otherabmflash}
 Tommi~A. Vuorenmaa and Liang Wang.
@@ -95,16 +201,6 @@ Arjun Kharpal.
 \newblock
   http://www.cnbc.com/2017/06/22/ethereum-price-crash-10-cents-gdax-exchange-after-multimillion-dollar-trade.html,
   June 2017.
-
-\bibitem{rra10}
-Marian Kwapisz.
-\newblock On difference equations arising in mathematics of finance.
-\newblock {\em Nonlinear Analysis: Theory, Methods \& Applications}, 30, 1997.
-
-\bibitem{rra1}
-Nancy~L. Stokey.
-\newblock {\em Recursive Methods in Economic Dynamics}.
-\newblock Harvard University Press, 1989.
 
 \bibitem{rra2}
 Lars Ljungqvist and Thomas~J. Sargent.
@@ -177,16 +273,6 @@ Herbert Gintis.
 \newblock The dynamics of general equilibrium.
 \newblock {\em The Economic Journal}, 117:1280--1309, 2007.
 
-\bibitem{whereabmp}
-Matteo Richiardi.
-\newblock The future of agent-based modelling.
-\newblock {\em Economics Papers}, 2015.
-
-\bibitem{farmerfoleynature}
-J.~Doyne Farmer and Duncan Foley.
-\newblock The economy needs agent-based modelling.
-\newblock {\em Nature}, 460:685--686, 2009.
-
 \bibitem{agbntj}
 Dirk Helbing and S.~Balietti.
 \newblock {\em Social Self-Organization, Agent-Based Simulations and
@@ -252,12 +338,6 @@ Charles~M. Macal and Michael~J. North.
 Charles~M. Macal.
 \newblock To agent-based simulation from system dynamics.
 \newblock In {\em Proceedings of the 2010 Winter Simulation Conference}, 2010.
-
-\bibitem{techsadsProbsabm}
-Ali Bazghandi.
-\newblock Techniques, advantages and problems of agent based modeling for
-  traffic simulation.
-\newblock {\em International Journal of Computer Science Issues}, 9(3), 2012.
 
 \bibitem{Chris_webPage}
 Christopher~D. Clack.
