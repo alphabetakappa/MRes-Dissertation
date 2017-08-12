@@ -123,16 +123,27 @@ Joshua~M. Epstein.
   Workshop Summary}, chapter~5, pages 2015--2042.
 \newblock National Academies Press, 2007.
 
-\bibitem{EB_systemofsystemsGLangford}
-John~S. Osmundson, Thomas~V. Huynh, and Gary~O. Langford.
-\newblock Emergent behavior in systems of systems.
-\newblock In {\em Conference on Systems Engineering Research (CSER)}, 2008.
-
 \bibitem{fallacyofcompostionBook}
 Norman Ehrentreich.
 \newblock {\em Agent-Based Modeling: The Santa Fe Institute Artificial Stock
   Market Model}.
 \newblock Springer, 2008.
+
+\bibitem{newwork1}
+Mario~A. Bertella, Felipe~R. Pires, Ling Feng, and Harry~Eugene Stanley.
+\newblock Confidence and the stock market: An agent-based approach.
+\newblock {\em PLOS ONE}, 2014.
+
+\bibitem{newabmpaper}
+Matteo Serri, Guido Caldarelli, and Giulio Cimini.
+\newblock How the interbank market becomes systemically dangerous: an
+  agent-based network model of financial distress propagation.
+\newblock {\em Journal of Network Theory in Finance}, 2017.
+
+\bibitem{EB_systemofsystemsGLangford}
+John~S. Osmundson, Thomas~V. Huynh, and Gary~O. Langford.
+\newblock Emergent behavior in systems of systems.
+\newblock In {\em Conference on Systems Engineering Research (CSER)}, 2008.
 
 \bibitem{gameoflifepage}
 Eugene M.~Izhikevich et~al.
@@ -342,14 +353,13 @@ Charles~M. Macal.
 \bibitem{Chris_webPage}
 Christopher~D. Clack.
 \newblock The interdyne simulator (2011-).
-\newblock http://www.resnovae.org.uk/fccsuclacuk/research, 11 2016.
+\newblock http://www.resnovae.org.uk /fccsuclacuk/research, 11 2016.
 
 \bibitem{interdynemanual}
 Christopher~D. Clack.
 \newblock Interdyne user manual.
-\newblock
-  http://www.resnovae.org.uk/fccsuclacuk/images/docs/research/InterDyne-User-Manual.pdf,
-  08 2017.
+\newblock http://www.resnovae.org.uk/fccsuclacuk/images/docs/research/
+  InterDyne-User-Manual.pdf, 08 2017.
 
 \bibitem{clovertrans}
 Lee Braine and Chris Clack.

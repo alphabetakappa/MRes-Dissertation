@@ -106,34 +106,36 @@
 
 %how does . work as i cant get it to work thd3.hd
 
+%should i move lite review into background? though doesnt make as much sense there 
 
 
+%%%%%%%%%%%%%%%%to do
 
-%to do
+%%%%%%%%%%rewrite
+
 %rewrite abstract
-
-%increase margin size! 
-
-%dont say paper, say project or dissertation
-
-%rewrite intro (major)
-
-%add harness explanation to background (major)
 
 %rewrite bespoke language  (major)
 
-%rewrite first three? subsections of translation 
+%rewrite subsections of translation 
+
+%%%%%%%%%%finish
+
+%write conversion code. Lexer, parser, first step
 
 %get refrences (major)
 
-%write conversion code. Lexer, parser, first step
+
+%%%%%%%%%%%add
+
+%add harness explanation to background (major)
 
 %add about turing completenece to Method for Achieving a Two-Views Approach
 
 %add about interacting recurrence relations to RecurrencesRelations
 
-%in numeric testing add a table with the input values tested and the outputs for each step
 
+%in numeric testing add a table with the input values tested and the outputs for each step
 %Input | inintial | step1 | step2 | step3 | step4 | step5 | step6 | step7 | step8
 % 0      | ans ...
 % 1
@@ -141,7 +143,28 @@
 % 10
 
 
+%%%%%%%%%%%%side things
+
+%fix code so it is all shown (not running of the page like currently) (major) 
+
+%increase margin size! 
+
+%dont say paper, say project or dissertation
+
 %get rid of phrase two-views 
+
+%change code colouring to not coloured 
+
+%%%%%%%%%%%%%proof 
+%sec 1
+%sec 2
+%sec 3
+%sec 4
+%sec 5
+%sec 6
+%sec 7
+%sec 8
+
 
  
 \begin{document} 
@@ -152,13 +175,21 @@ Supervisor: Dr Christopher D. Clack}
 
 \begin{abstract}
 \noindent {\it 
-%move two-views to later one, (if you say we will use two views (no -), two-views approach)
-%start talking about, the ability to translate from one view point to another to demsotrate their equilvnece
-%and why are we translating  
-This paper investigates a method of describing interacting systems from two opposing view points, recurrence relations and agent-based models. These two methods take fundamentally different approaches with recurrence relations being top-down, and agent-based models being bottom-up.\\
-Connecting these two methods allows for a more complete investigation of emergent behaviour occurring within interacting systems. Agent-based models offer an attractive way of analysing emergent behaviour, with the ability to investigate individual interactions as message passing throughout a simulation. Agent-based models however tend to be less well understood and accepted by those outside computer science, this is in contrast to recurrence relation which are normally well understood. Creating a correctness preserving link between recurrence relations and agent-based models allows for simulations to be understood in their recurrence relation representation and hence have their agent-based model representation accepted. This is important in fields such as finance as it opens up new tools for economists and regulators to use in understanding emergence in complex markets.\\
-This research comprises the definition of a simple recurrence relation language, to define simulations, and the design of a step-by-step process by which a set of recurrence relations defined in this language can be converted into an agent-based model representation, the InterDyne simulator is chosen as a target representation for this transformation. 
+This dissertation investigates a process to increase the acceptance of agent-based models by sceptics, who are familiar with recurrence relation models. The work presented in this dissertation is designed to combat two main aspects that hinder the up take in agent-based models by these sceptics, a lack of a model wide formalism and a lack of familiarity to those unaccustomed to the technique. 
 
+The importance of this work relates in particular to the field of economics, where agent-based models are yet to become widely accepted. This lack of acceptance leads to an absences of work based on agent-based models in top economics journals. This creates a problem for modelling complex systems and emergent behaviour, as agent-based models are in many cases a natural modelling technique for these systems, due in part to their message passing.  
+
+The process presented in this dissertation is to create an agent-based model equivalent to recurrence relation model, recurrence relation models are both widely accepted and have a model wide formalisation. Creating an equivalence between these two models allows for the recurrence relation model to give the agent-based model both a formalisation and a familiar model, which sceptics can view it from.       
+
+This work comprises of the creation of a bespoke recurrence relation language, the design of step-by-step translation between the models, and numeric testing of the equivalence of these models. 
+
+The bespoke recurrence relation language presented allows for an experiment involving complex and interacting system to be laid out in a clear manner, using recurrence relations. 
+
+A design for an eight step translation that turns an experiment written in the bespoke recurrence relation language into an agent-based model is given. 
+
+The agent-based model created in this translation is shown to be numerically equivalent to the initial recurrence relation model, for a number of starting values. Each step in the translation process is also shown to be numerically equivalent, for these same values.
+
+The work presented in this dissertation contributes to the field by adding a method for both formalising and expressing an agent-based model using a recurrence relation model. This work gives a method, which can allow for agent-based models to become more widely accepted within the field of economics, giving more gravity to a powerful tool for investigating complex financial markets. 
 }
 \end{abstract}
 
