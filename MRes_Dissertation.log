@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  13 AUG 2017 16:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  13 AUG 2017 20:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -569,18 +569,18 @@ Package color Info: Driver file: pdftex.def on input line 144.
 (./MRes_Dissertation.aux)
 \openout1 = `MRes_Dissertation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 177.
+LaTeX Font Info:    ... okay on input line 177.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 177.
+LaTeX Font Info:    ... okay on input line 177.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 177.
+LaTeX Font Info:    ... okay on input line 177.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 177.
+LaTeX Font Info:    ... okay on input line 177.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 177.
+LaTeX Font Info:    ... okay on input line 177.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 177.
+LaTeX Font Info:    ... okay on input line 177.
 
 (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -644,15 +644,15 @@ Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Info: Redefining \celsius on input line 180.
-Package gensymb Info: Faking symbols for \degree and \celsius on input line 180
+LaTeX Info: Redefining \celsius on input line 177.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 177
 .
 
 
 Package gensymb Warning: Not defining \perthousand.
 
-LaTeX Info: Redefining \ohm on input line 180.
-Package gensymb Info: Using \Omega for \ohm on input line 180.
+LaTeX Info: Redefining \ohm on input line 177.
+Package gensymb Info: Using \Omega for \ohm on input line 177.
 
 Package gensymb Warning: Not defining \micro.
 
@@ -664,14 +664,14 @@ Package gensymb Warning: Not defining \micro.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(72.26999pt, 449.87982pt, 92.14519pt)
+* h-part:(L,W,R)=(93.95122pt, 426.39256pt, 93.95122pt)
 * v-part:(T,H,B)=(90.3375pt, 609.23512pt, 95.39737pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=449.87982pt
+* \textwidth=426.39256pt
 * \textheight=609.23512pt
-* \oddsidemargin=0.0pt
-* \evensidemargin=0.0pt
+* \oddsidemargin=21.68123pt
+* \evensidemargin=21.68123pt
 * \topmargin=-18.9325pt
 * \headheight=12.0pt
 * \headsep=25.0pt
@@ -736,40 +736,40 @@ Package gensymb Warning: Not defining \micro.
 ] [3
 
 ]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 249.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 246.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 249.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 246.
  [4] [5]
 <selffeedback.png, id=29, 197.73875pt x 173.64874pt>
 File: selffeedback.png Graphic file (type png)
  <use selffeedback.png>
-Package pdftex.def Info: selffeedback.png used on input line 307.
+Package pdftex.def Info: selffeedback.png used on input line 304.
 (pdftex.def)             Requested size: 98.86913pt x 86.82416pt.
 
 <twofeedback.png, id=31, 240.9pt x 259.97125pt>
 File: twofeedback.png Graphic file (type png)
  <use twofeedback.png>
-Package pdftex.def Info: twofeedback.png used on input line 314.
+Package pdftex.def Info: twofeedback.png used on input line 311.
 (pdftex.def)             Requested size: 120.44969pt x 129.9853pt.
- [6 <./selffeedback.png> <./twofeedback.png>] [7] [8]
-<abmii.png, id=48, 423.5825pt x 442.65375pt>
+ [6 <./selffeedback.png>] [7 <./twofeedback.png>] [8] [9]
+<abmii.png, id=51, 423.5825pt x 442.65375pt>
 File: abmii.png Graphic file (type png)
  <use abmii.png>
-Package pdftex.def Info: abmii.png used on input line 456.
+Package pdftex.def Info: abmii.png used on input line 454.
 (pdftex.def)             Requested size: 211.79073pt x 221.32632pt.
- [9] [10 <./abmii.png>] [11] <harness_setup.png, id=59, 380.42125pt x 419.5675p
-t>
+ [10 <./abmii.png>] [11] [12] <harness_setup.png, id=62, 380.42125pt x 419.5675
+pt>
 File: harness_setup.png Graphic file (type png)
 
 <use harness_setup.png>
-Package pdftex.def Info: harness_setup.png used on input line 527.
+Package pdftex.def Info: harness_setup.png used on input line 525.
 (pdftex.def)             Requested size: 190.21014pt x 209.78323pt.
- [12] [13 <./harness_setup.png>]
+ [13] [14 <./harness_setup.png>]
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
@@ -784,12 +784,12 @@ File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <8> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 1.
-) [14]
+)
 (./intersimfun.hs
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 45.
 ) [15]
-Overfull \vbox (279.76486pt too high) has occurred while \output is active []
+Overfull \vbox (298.76486pt too high) has occurred while \output is active []
 
 
 [16] (./interdynewithdelays.hs) [17] [18] [19] [20]
@@ -799,78 +799,65 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang2.sty
 File: lstlang2.sty 2015/06/04 1.6 listings language file
 )
-(./bnflex.m) [21] (./BNF.m) [22] [23]
-Overfull \hbox (16.21613pt too wide) in paragraph at lines 768--769
-[]\OT1/cmr/m/n/10 Conditional state-ments with in this lan-guage are writ-ten a
-s $\OML/cmm/m/it/10 cond$ $condition$ $expression$ $expression$\OT1/cmr/m/n/10 
-.
- []
-
-(./1layout.m) [24] (./2experment.m) (./3initcons.m) (./4rrsim.m) (./5rrint.m)
-(./6rrif.m) [25] (./7rrwhere.m) (./8full.m) [26] (./rrexam.m) (./ts1.m)
-[27] (./ts2.m) [28] (./ts3.m) [29] [30] (./souts4.m) (./wrap4.m) (./delay4.m)
-[31] (./ts4.m) [32]
-Overfull \vbox (35.26486pt too high) has occurred while \output is active []
+(./bnflex.m) [21] (./BNF.m) [22] [23] [24] (./1layout.m) (./2experment.m)
+(./3initcons.m) (./4rrsim.m) (./5rrint.m) [25] (./6rrif.m) (./7rrwhere.m)
+(./8full.m) [26] (./rrexam.m) [27] (./ts1.m) [28] (./ts2.m) [29] (./ts3.m)
+[30] [31] (./souts4.m) (./wrap4.m) (./delay4.m) [32] (./ts4.m) [33]
+Overfull \vbox (82.76486pt too high) has occurred while \output is active []
 
 
-[33] (./outmes5.m) (./sort5.m) [34] (./ts5.m) [35]
-Overfull \vbox (320.26486pt too high) has occurred while \output is active []
+[34] (./outmes5.m) (./sort5.m) [35] (./ts5.m) [36]
+Overfull \vbox (367.76486pt too high) has occurred while \output is active []
 
 
-[36] (./harn6.m)
-Overfull \hbox (38.28879pt too wide) in paragraph at lines 1018--1019
-\OT1/cmr/m/n/10 sages sent to them, the wrap-pers no longer need to deal with t
-his in-ter-nally. The $\OML/cmm/m/it/10 inbound[]messages[]this[]timestep$
- []
-
-(./ts6.m) [37]
-Overfull \vbox (206.26486pt too high) has occurred while \output is active []
+[37] (./harn6.m) (./ts6.m) [38]
+Overfull \vbox (253.76486pt too high) has occurred while \output is active []
 
 
-[38] (./harn7.m) (./wrap7.m) [39] (./ts7.m) [40]
-Overfull \vbox (424.76486pt too high) has occurred while \output is active []
+[39] (./harn7.m) (./wrap7.m) [40] (./ts7.m) [41]
+Overfull \vbox (538.76486pt too high) has occurred while \output is active []
 
 
-[41] (./filter8.m) (./harn8.m) [42] (./ts8.m) [43]
-Overfull \vbox (785.76486pt too high) has occurred while \output is active []
+[42] (./filter8.m) (./harn8.m) [43] (./ts8.m) [44]
+Overfull \vbox (928.26486pt too high) has occurred while \output is active []
 
 
-[44] (./harntypint.m) (./harntyptrans.m) (./agentpint.m) (./agenttrans.m)
-[45] [46] [47] (./MRes_Dissertation.bbl
+[45] (./harntypint.m) (./harntyptrans.m) (./agentpint.m) (./agenttrans.m)
+[46] [47] [48] (./MRes_Dissertation.bbl [49]
 Underfull \hbox (badness 10000) in paragraph at lines 43--48
 []\OT1/cmr/m/n/10 U.S. Com-mod-ity Fu-tures Trad-ing Com-mis-sion, U.S. Se-cu-r
 i-ties, and Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 43--48
+Underfull \hbox (badness 5756) in paragraph at lines 43--48
 \OT1/cmr/m/n/10 change Com-mis-sion.  Find-ings re-gard-ing the mar-ket events 
 of may 6, 2010.
  []
 
-[48] [49] [50]
-Overfull \hbox (24.52104pt too wide) in paragraph at lines 310--313
+[50] [51]
+Overfull \hbox (48.0083pt too wide) in paragraph at lines 333--336
 []\OT1/cmr/m/n/10 Duane Q. Nykamp.  Re-cur-rence re-la-tion def-i-ni-tion.  htt
 p://mathinsight.org/definition/recurrence[]relation,
  []
 
-
-Overfull \hbox (49.72653pt too wide) in paragraph at lines 359--363
+[52]
+Overfull \hbox (73.21379pt too wide) in paragraph at lines 389--393
 []\OT1/cmr/m/n/10 Christopher D. Clack.  In-ter-dyne user man-ual.  http://www.
 resnovae.org.uk/fccsuclacuk/images/docs/research/
  []
 
-[51])
+)
 
 Package caption Warning: Unused \captionsetup[sub] on input line 11.
 See the caption package documentation for explanation.
 
-[52] (./MRes_Dissertation.aux) ) 
+[53] (./MRes_Dissertation.aux) ) 
 Here is how much of TeX's memory you used:
- 7539 strings out of 493014
- 106955 string characters out of 6133350
- 1626358 words of memory out of 5000000
- 10851 multiletter control sequences out of 15000+600000
+ 7544 strings out of 493014
+ 107001 string characters out of 6133350
+ 1630483 words of memory out of 5000000
+ 10856 multiletter control sequences out of 15000+600000
  11320 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,10n,43p,1945b,1730s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -893,10 +880,10 @@ pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pf
 b></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><
 /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on MRes_Dissertation.pdf (52 pages, 584602 bytes).
+Output written on MRes_Dissertation.pdf (53 pages, 587845 bytes).
 PDF statistics:
- 258 PDF objects out of 1000 (max. 8388607)
- 175 compressed objects within 2 object streams
+ 261 PDF objects out of 1000 (max. 8388607)
+ 177 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -71,7 +71,8 @@
 \geometry
 {
   %body={6.5in, 8.5in},
-  left=1.0in,
+  left=1.3in,%1.0in,
+  right =1.3in,
   top=1.25in
 }
 
@@ -125,8 +126,6 @@
 %%%%%%%%%%rewrite
 %rewrite section about automated translation in more detail 
 
-%rewrite bespoke language  (major)
-
 %rewrite subsections of translation 
 
 %%%%%%%%%%finish
@@ -140,7 +139,7 @@
 
 %add harness explanation to background (major) (chris help) 
 
-%add about turing completenece to Method for Achieving a Two-Views Approach
+%add about turing completeness to Method for Achieving a Two-Views Approach
 
 %add about interacting recurrence relations to RecurrencesRelations
 
@@ -156,8 +155,6 @@
 %%%%%%%%%%%%side things
 
 %fix code so it is all shown (not running of the page like currently) (major) 
-
-%increase margin size! 
 
 %dont say paper, say project or dissertation
 
@@ -341,13 +338,13 @@ Flash crashes have occurred on a number of occasions and in a large selection of
 
 
 \subsection{Methods for Modelling Emergent Behaviour in Finance}  \label{litreviewofabmrr} 
-There are many different methods available for modelling system that may exhibit emergent behaviour, such as: 1-period, 2-period and multi-period models, probabilist models, like hidden Markov models, ordinary differential equations and partial differential equations [REFS??????]. This paper focusses on two models that can be used for discrete non-equilibrium system, recurrence relations and agent-based models. 
+There are many different methods available for modelling system that may exhibit emergent behaviour, such as: 1-period, 2-period and multi-period models, probabilist models, like hidden Markov models, ordinary differential equations and partial differential equations~\cite{modles1, modles2, moldes3, moldes4}. This paper focusses on two models that can be used for discrete non-equilibrium system, recurrence relations and agent-based models. 
 
-Both recurrence relations and agent-based models have been used in modelling the financial markets and have had a number of papers published on them [REFS??????].
+Both recurrence relations and agent-based models have been used in modelling the financial markets and have had a number of papers published on the~\cite{rra10, rra1, abma2}.
 
-Recurrence relations have seen wide spread use in economics appearing in a large selection of journals, including numerous times in top journals~\cite{rra10, rra1, rra2, rra3, rra4, rra5, rra6, rra7, rra8, rra9}. This wide spread use of the technique implies the acceptance of recurrence relations within financial modelling.      
+Recurrence relations have seen wide spread use in economics appearing in a large selection of journals, including numerous times in top journals~\cite{rra2, rra3, rra4, rra5, rra6, rra7, rra8, rra9}. This wide spread use of the technique implies the acceptance of recurrence relations within financial modelling.      
 
-Agent-based models also have a large selection of papers published on them relating to economics and finance~\cite{ abma2, abma3, abma4}. However these papers are noticeably absent from top economics journals (with some exceptions, such as Ref.\cite{abmexp1} and~\cite{abmexp2}) and tend to be published in the Journal of Economic Behavior \& Organization and the Journal of Economic Development \& Control~\cite{whereabmp, farmerfoleynature}. The lack of agent-based models present in top economic journals combined with the number of papers published in other journals shows the lack of wide spread acceptance for this technique~\cite{agbntj, econmistsnoabm, lob_noecomimists}.
+Agent-based models also have a large selection of papers published on them relating to economics and finance~\cite{abma3, abma4}. However these papers are noticeably absent from top economics journals (with some exceptions, such as Ref.\cite{abmexp1} and~\cite{abmexp2}) and tend to be published in the Journal of Economic Behavior \& Organization and the Journal of Economic Development \& Control~\cite{whereabmp, farmerfoleynature}. The lack of agent-based models present in top economic journals combined with the number of papers published in other journals shows the lack of wide spread acceptance for this technique~\cite{agbntj, econmistsnoabm, lob_noecomimists}.
 
 Here these two modelling techniques will be described.  
 
@@ -402,8 +399,9 @@ Links within sets of recurrence relations are hard coded into the equations, mak
 
 This model lays out both the functionality of each equation and the relation between them in such a way to give a static representation of the system as a whole. 
 
-This model however has difficulties in design as it can be challenging in creating a large continuous description of a system containing many components, also the function calls as a method of information passing can make dynamically tracking the flow of information during a simulation hard [REFS????].   
-
+This model however has difficulties in design as it can be challenges in creating a large continuous description of a system containing many components, also the function calls as a method of information passing can make dynamically tracking the flow of information during a simulation difficult~\cite{rrbtrack}.   
+%write this instead
+% however, the problem of tracking individual behaviour and determining particular characteristics to each element still exists. 
 
 
 
@@ -481,7 +479,7 @@ The use of messages and bottom up approach this model takes allows for a more dy
 
 The use of independent agents makes this technique very amenable to expansion, new agents can be added normally with little to no change to previously existing agents. This allows these simulations to be confidently expanded to look at more complex systems, or to add new elements to an existing system.  
 
-These aspects of this approach make the modelling technique well qualified for modelling and analyse of emergent behaviour within systems of interacting components. However this approach does contain some draw backs including a one-to-many problem (where though some high level behaviour may be noted in the system this does not mean the only way of achieving this behaviour is the current system design) and the lack of a formal definition for the system as a whole [REFS???].  
+These aspects of this approach make the modelling technique well qualified for modelling and analyse of emergent behaviour within systems of interacting components. However this approach does contain some draw backs including a one-to-many problem (where though some high level behaviour may be noted in the system this does not mean the only way of achieving this behaviour is the current system design) and the lack of a formal definition for the system as a whole~\cite{agbntj}.  
 
 
 

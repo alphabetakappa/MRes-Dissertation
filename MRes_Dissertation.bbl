@@ -213,6 +213,35 @@ Arjun Kharpal.
   http://www.cnbc.com/2017/06/22/ethereum-price-crash-10-cents-gdax-exchange-after-multimillion-dollar-trade.html,
   June 2017.
 
+\bibitem{modles1}
+Julien Mostard and Ruud Teunter.
+\newblock The newsboy problem with resalable returns: A single period model and
+  case study.
+\newblock {\em European Journal of Operational Research}, 169:81--96, 2006.
+
+\bibitem{modles2}
+M.~R. Hassan and B.~Nath.
+\newblock Stock market forecasting using hidden markov model: a new approach.
+\newblock In {\em Intelligent Systems Design and Applications}, 2002.
+
+\bibitem{moldes3}
+Syoiti Ninomiya and Nicolas Victoir.
+\newblock Weak approximation of stochastic differential equations and
+  application to derivative pricing.
+\newblock {\em Applied Mathematical Finance}, 15, 2008.
+
+\bibitem{moldes4}
+Mark~M. Meerschaert and Charles Tadjeran.
+\newblock Finite difference approximations for two-sided space-fractional
+  partial differential equations.
+\newblock {\em Applied Numerical Mathematics}, 56:80--90, 2006.
+
+\bibitem{abma2}
+Leigh Tesfatsion.
+\newblock Agent-based computational economics: modeling economies as complex
+  adaptive systems.
+\newblock {\em Information Sciences}, 149, 2003.
+
 \bibitem{rra2}
 Lars Ljungqvist and Thomas~J. Sargent.
 \newblock {\em Recursive Macroeconomic Theory}.
@@ -255,12 +284,6 @@ Gauti~B. Eggertsson and Paul Krugman.
 Cars~H. Hommes.
 \newblock Heterogeneous agent models in economics and finance.
 \newblock {\em Handbook of Computational Economics}, 2, 2006.
-
-\bibitem{abma2}
-Leigh Tesfatsion.
-\newblock Agent-based computational economics: modeling economies as complex
-  adaptive systems.
-\newblock {\em Information Sciences}, 149, 2003.
 
 \bibitem{abma3}
 Leigh Tesfatsion.
@@ -317,6 +340,13 @@ John~M. Hollerbach.
   comparative study of dynamics formulation complexity.
 \newblock {\em IEEE Transactions on Systems, Man, and Cybernetics}, 10,
   November 1980.
+
+\bibitem{rrbtrack}
+Grazziela~P. Figueredo, Peer-Olaf Siebers, Markus~R. Owen, Jenna Reps, and Uwe
+  Aickelin.
+\newblock Comparing stochastic differential equations and agent-based modelling
+  and simulation for early-stage cancer.
+\newblock {\em PLOS ONE}, 2014.
 
 \bibitem{abmhumsystems}
 Eric Bonabeau.

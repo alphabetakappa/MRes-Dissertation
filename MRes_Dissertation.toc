@@ -3,36 +3,36 @@
 \contentsline {subsection}{\numberline {2.1}Emergent Behaviour}{5}
 \contentsline {subsection}{\numberline {2.2}Methods for Modelling Emergent Behaviour in Finance}{8}
 \contentsline {subsubsection}{\numberline {2.2.1}Recurrences Relations}{8}
-\contentsline {subsubsection}{\numberline {2.2.2}Agent-Based Models}{9}
+\contentsline {subsubsection}{\numberline {2.2.2}Agent-Based Models}{10}
 \contentsline {subsection}{\numberline {2.3}InterDyne}{11}
 \contentsline {subsubsection}{\numberline {2.3.1}Applicability to Finance}{12}
 \contentsline {paragraph}{\numberline {2.3.1.1}Deterministic}{12}
-\contentsline {paragraph}{\numberline {2.3.1.2}Message Delays}{12}
-\contentsline {paragraph}{\numberline {2.3.1.3}Storing Messages}{12}
-\contentsline {paragraph}{\numberline {2.3.1.4}Message Ordering}{12}
+\contentsline {paragraph}{\numberline {2.3.1.2}Message Delays}{13}
+\contentsline {paragraph}{\numberline {2.3.1.3}Storing Messages}{13}
+\contentsline {paragraph}{\numberline {2.3.1.4}Message Ordering}{13}
 \contentsline {subsubsection}{\numberline {2.3.2}InterDyne Detailed Operation}{13}
 \contentsline {section}{\numberline {3}Description and Analysis of the Problem}{17}
 \contentsline {subsection}{\numberline {3.1}Method for Achieving a Translation}{17}
 \contentsline {subsection}{\numberline {3.2}Review of Similar Work}{18}
 \contentsline {subsection}{\numberline {3.3}Challenges with the Translation Approach}{20}
 \contentsline {section}{\numberline {4}Bespoke Recurrence Relation Language}{21}
-\contentsline {subsection}{\numberline {4.1}Syntax}{21}
+\contentsline {subsection}{\numberline {4.1}Syntax}{22}
 \contentsline {subsection}{\numberline {4.2}Naming Conventions}{23}
-\contentsline {subsection}{\numberline {4.3}Well Formed Programs}{24}
+\contentsline {subsection}{\numberline {4.3}Well Formed Programs}{25}
 \contentsline {section}{\numberline {5}Design of a Translation from Recurrence Relations to InterDyne}{26}
-\contentsline {subsection}{\numberline {5.1}Infinite List Output}{27}
-\contentsline {subsection}{\numberline {5.2}Grouping into Agents}{28}
-\contentsline {subsection}{\numberline {5.3}A Global Output List}{29}
-\contentsline {subsection}{\numberline {5.4}Agent Input Lists}{30}
-\contentsline {subsection}{\numberline {5.5}Targeted Information Passing}{34}
-\contentsline {subsection}{\numberline {5.6}A Simulator Harness}{37}
-\contentsline {subsection}{\numberline {5.7}Runtime Arguments}{39}
-\contentsline {subsection}{\numberline {5.8}Message Communication}{42}
-\contentsline {section}{\numberline {6}Translation Considerations}{45}
-\contentsline {subsection}{\numberline {6.1}Translation Validation}{45}
-\contentsline {subsection}{\numberline {6.2}Translation Semantic Considerations}{46}
-\contentsline {subsection}{\numberline {6.3}Automated Translation Testing}{46}
-\contentsline {section}{\numberline {7}Conclusion}{47}
-\contentsline {subsection}{\numberline {7.1}Further Work}{48}
-\contentsline {section}{\numberline {8}Appendix A.}{48}
-\contentsline {section}{References}{48}
+\contentsline {subsection}{\numberline {5.1}Infinite List Output}{28}
+\contentsline {subsection}{\numberline {5.2}Grouping into Agents}{29}
+\contentsline {subsection}{\numberline {5.3}A Global Output List}{30}
+\contentsline {subsection}{\numberline {5.4}Agent Input Lists}{31}
+\contentsline {subsection}{\numberline {5.5}Targeted Information Passing}{35}
+\contentsline {subsection}{\numberline {5.6}A Simulator Harness}{38}
+\contentsline {subsection}{\numberline {5.7}Runtime Arguments}{40}
+\contentsline {subsection}{\numberline {5.8}Message Communication}{43}
+\contentsline {section}{\numberline {6}Translation Considerations}{46}
+\contentsline {subsection}{\numberline {6.1}Translation Validation}{46}
+\contentsline {subsection}{\numberline {6.2}Translation Semantic Considerations}{47}
+\contentsline {subsection}{\numberline {6.3}Automated Translation Testing}{47}
+\contentsline {section}{\numberline {7}Conclusion}{48}
+\contentsline {subsection}{\numberline {7.1}Further Work}{49}
+\contentsline {section}{\numberline {8}Appendix A.}{49}
+\contentsline {section}{References}{49}
