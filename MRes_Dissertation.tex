@@ -99,6 +99,8 @@
 
 %chris help
 
+%help me write the sim function for InterDyne so I can show it
+
 %how should I split my code as its to long
 
 % in section 5.5 your code has thd3.hd, why is this hd there? you have already headed the inputs list hence returning a list of the wrappers for that time step. So why head again? is this because each set of messages are in their own list?
@@ -109,11 +111,19 @@
 %should i move lite review into background? though doesnt make as much sense there 
 
 
+
+
+
+
+
+
+
+
+
 %%%%%%%%%%%%%%%%to do
 
 %%%%%%%%%%rewrite
-
-%rewrite abstract
+%rewrite section about automated translation in more detail 
 
 %rewrite bespoke language  (major)
 
@@ -128,7 +138,7 @@
 
 %%%%%%%%%%%add
 
-%add harness explanation to background (major)
+%add harness explanation to background (major) (chris help) 
 
 %add about turing completenece to Method for Achieving a Two-Views Approach
 
@@ -550,15 +560,22 @@ Agents in InterDyne are topically, though not required to be, written in two par
 \end{figure} 
 %-what is the harness in interdyne and what is its type
 
-The simulator harness is an intrinsic part of the simulator, it drives the simulation, handles message passing and produces the output trace file. %need to put more here, whats its type, what does it look like?
+The simulator harness is an intrinsic part of the simulator, it drives the simulation, handles message passing and produces the output trace file.
 
-%dont say paper 
-%The simulator harness is embodied in the function called sim, the actual function sim in interdyne contains not only code to run the simulation but also code associated with writing to trace files and other admistrative funtions. for the purpioses of this project, we use the following reduced sprecification of the fucntion sim which captures the all of the core fuctionality for managing message passing for agents and driving evaluation of the simualtion
+The simulator harness is embodied in the function called sim, the actual function sim in InterDyne contains not only code to run the simulation but also code associated with writing to trace files and other administrative functions. For the purpose of this project, a reduced specification of the function sim will be used. This specification captures all of the core functionality for managing message passing for agents and driving evaluation of the simulation.
 
-%this is the simulator
+The type for this harness is shown in Fig.~\ref{fig:harntypintfirst} and the reduced specification of the sim function is shown in Fig.~\ref{fig:intersimfun}.
+
 \begin{figure}[H]
 	\centering
-        %\lstinputlisting[language=Haskell]{intersimfun.hs}
+        \lstinputlisting[language=Haskell]{harntypint.m}
+	\caption{\it Type definition of the function sim.}
+	\label{fig:harntypintfirst}
+\end{figure} 
+
+\begin{figure}[H]
+	\centering
+        \lstinputlisting[language=Haskell]{intersimfun.hs}
 	\caption{\it }
 	\label{fig:intersimfun}
 \end{figure} 
@@ -684,132 +701,71 @@ This approach is to create a series of small steps between a recurrence relation
 
 
 \section{Bespoke Recurrence Relation Language} \label{beskoperecurrancerealtion}
+This section introduces a bespoke recurrence relation model, created to be able to model complex systems with interacting elements. This recurrence relation model will eventually be translated into an agent-based model and hence needs to be able to express the system being modelled both statically and dynamically. 
 
-%change if cond !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+A bespoke recurrence relation language is used over an already existing language for a few reasons: firstly there needs to exist a strict set of known rules to facilitate parsing of the language if the process is automated. Secondly, the functionality of the language needs to be restricted to keep it as simple as possible, only introducing complexity where necessary. Thirdly, the language still needs to maintain sufficient functionality to model complex systems. Creating a bespoke language offers a straightforward method satisfying these three criteria.     
+ 
+A set of recurrence relation can be used to statically model a interacting system, however this model does not give a time dependent  experiment required for dynamic modelling. To add time dynamics to this model the set of recurrence relation described need to be traced through time.
 
+To allow for tracing, specifications need to be give of a set of recurrence relations, initial values for these relations, and a driving expression. 
 
-%change order of sections
-
-
-%There is a logical step here considere the set of recurrance relations to be the model of the system. this model is amenable to analysis (can analysis the model  (which is the set of rr ), with out running experiment) but sometimes we want to analysis/understand the dynamic behviour of that model given certain starting conditions. and one way of doing this is to define an expression that calcualtes some value, in the contex of this model (the rr) this expression will give the intial values 
-
-%set of rr are not an experment they are a model
-
-%tracing the equations (an experment)  
+This section first gives the initial syntax and the abstract syntax, then keywords and naming conventions are given, finally a well formed program in this language is described and an example is given.  
+ 
 
 
-%need to set out inital conditons/values because we want to explore as different expemenrets what happens as we trace the equations given differeent starting conditions. 
-%Drive the expemernet by evaluting a certain expression 
-%need
-%-set of rr
-%-some way of setting out intial conditions
-%-a driving expression 
-%this is what we need for our input syntax. 
-
-
-
-
-The first step in this translation is selecting a recurrence relation, which to translate from. Recurrence relations are used across a wide range of disciplines and as such have many different forms of notation {\color{red} [REFS????]}. It was however decided to create a bespoke recurrence relation language for use in this translation, this was done for a number of reasons:
-\begin{enumerate}
-  \item Need to have a strict set of rules for the language to allow for automated parsing. 
-  \item Need to restrict the functionality of the language to keep it as simple as possible, to facilitate the automated translation. Only introducing complexity where necessary.  
-  \item Need to maintain sufficient functionality for modelling complex systems in the language.  
-\end{enumerate} 
-
-As noted in the third point, this language as to have a certain level of functionality. 
-%The initial syntax will support the syntax shown in fig 7
-
-It was decided that the language should have the following function:
-%dont have this list 
-\begin{itemize}
-  \item The use of basic mathematical operations.% ($+, *, /, -$).
-  \item The use of lists.%($[]$).
-  \item The ability to call the head of a list.% ($hd$). %hd
-  \item The ability to call the tail of a list.% ($tl$). %tl
-  \item The ability to add to the head of a list.% ($:$). %:
-  \item The ability to index into a list.% ($!$).
-  \item The ability to use brackets.% ($()$). 
-  \item The ability to declare variables.  
-  \item The ability to define a unique name for each recurrence relation.
-  \item The ability to define unique names for groups of recurrence relations. 
-  \item The ability to define a recurrence relation that uses inputs.
-  \item The use of sub functions within recurrence relations. 
-  \item The ability for recurrence relations to pattern match initial conditions.  
-  \item The use of where blocks.% ($where$).
-  \item The use of if else statements.% ($if$ $then$ $else$). 
-  \item The ability to specify an entire experiment.  
-\end{itemize}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Syntax}
-%lexemes as well!!!!! (look at any program and know that it is of the right syntax) with BNF (on wiki simple) (add as figure) (concrete syntax)
-%Bnf of parse tree is abstract syntax
-
-%talk about bnf, saying what the langauge can do (from the list above)
-
-%now how we implement using miranda
-%lexer
-%parser
-%parse tree 
-
-%can say using miranda (refer to the miranda textbook)
-%(in chapter 6)
-%type name ::= algerbaic type dfintion 
-% ::= paremneted value | paremented value
-%::= Name <-construtor 
-%::= Name num <-associated data
- %to help specifiy this precises here is the miranda algibrict type 
-The formal syntax for this language is shown in Fig.~\ref{fig:parsetreecode}, this syntax is written in a style consistent with type definitions within the Miranda language. This style is that of a type followed by its values, the left hand side of $::=$ is the type and can take the form of any one of its values, on the right hand side. 
-
-A simulation is defined as type $simulation$, which has two parts. A list of recurrence relations (list of type $definition$) and information about the simulation (of type $experiment$). 
-
-A definition of a recurrence relation is defined as type $definition$, has one values $Function$. The value $Function$ contains to list of characters which hold the group name and the name of the recurrence relation, a list of the arguments (type $argument$) and a expression for the functionality of the recurrence relation (type $expression$). 
-
-A argument, whether it be used for the definition of a recurrence relation or used for calling one, has one value $Argument$. This value is associated with an expression of the actual argument (type $expression$). 
-
-The $experiment$ must take the value of $Experiment$ which has two parts, a list of initial conditions (type $initcon$) and a function call for the result of the simulation (type $experimentrun$). 
-
-An initial condition for the recurrence relations is listed as a value $Initcon$ which has a name and an expression associated with it (type $[char]$ and $expression$ respectively), this name is used to connect the initial condition to the relevant recurrence relations. 
-
-The $experimentrun$ can have two values, either being empty (value $Emptyrun$) or to have a function call (value $Experimentrun$). If there is a function call this has an associated $expression$ with it. 
-
-An $expression$ can produce any expression for a recurrence relation that the language will allow, $expression$ can recursively call itself to create more complex expressions or  can call other types such as $argument$, $subdefinition$, $op$ and $specfunc$.    
-
-The use of operations is through the type $op$, this type has a value relating to all operations that use two values.
-
-Two operations are allowed that only use one value, returning the head of a list (value $Listhead$) and returning the tail of a list (value $Listtail$). 
-
-The type $subdefinition$ has two values for either internal variables in a where statement ($IntVariable$) or internal functions within a where statement ($IntFunction$).  
-
+The concrete BNF syntax for this bespoke language is defined in Fig.~\ref{fig:bnflex}, this syntax specifies what constitutes a this language. Symbols and structures not given in this syntax are not part of this language and therefore models created in this language are only incorporate what is given by the concrete syntax. 
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{Syntax_Def.lit.m}
-	\caption{\it Formal definition of syntax within bespoke recurrence relation, written in style of Miranda type definitions.}
-	\label{fig:parsetreecode}
+	\lstinputlisting[language=Miranda]{bnflex.m}
+	\caption{\it Concrete BNF syntax for bespoke recurrence relation language.}
+	\label{fig:bnflex}
+\end{figure} 
+
+This concrete syntax gives the language the ability to have certain functionality, such as the use of lists, being able to specify equations, being able to specify internal functions, and the use of certain inbuilt functions (such as retrieving the tail from a list). The functionality of this language will be described more fully in the Section~\ref{nameconv}.
+
+The layout and structure of the language is formally defined in the abstract BNF shown in Fig.~\ref{fig:BNF}. This syntax describes the shape of the program, all programs written in the bespoke recurrence relation language have to adhere to this shape. Any program that does not fit the shape described by the abstract BNF can not be considered to be a model written in the language defined in this section.  
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{BNF.m}
+	\caption{\it Abstract BNF syntax for bespoke recurrence relation language.}
+	\label{fig:BNF}
 \end{figure} 
 
 
 
-
-
-
-
-\subsection{Naming Conventions}
+\subsection{Naming Conventions} \label{nameconv}
 This language has a strict naming convention, as well as some restricted names. Naming conventions are in place for recurrence relation definitions, where blocks, sub-functions, variables, initial conditions and  if statements. 
 
 A recurrence relation be defined in four parts, $name$ $arguments$ $=$ $expression$. The name must be formatted in the manner $group\_name$, where $group$ is the name of the group the recurrence relation belongs to and $name$ is the name of the particular recurrence relation. Multiple recurrence relations can belong to the same group, and hence have the same group name, however only one relation in each group can have a set name. This language requires that all recurrence relations take at least one argument, and that time $t$ has to be the first argument. Time $t$ does not need to be utilised within the relation but it must be in the definition.     
 
 A recurrence relation can have sub definitions relating to it, this is done through the use of a where block. A where block is written after the expression for a recurrence relation and starts with the keyword $where$. After this local definitions for internal functions and variables can be defined. 
 
-Internal functions must be formatted in the manner $\_name$, where $name$ is the name for the function. These functions can only be accessed by the recurrence relation they are within. 
+Internal functions must be formatted in the manner $\_name$, where $name$ is the name for the function. These functions can only be accessed by the recurrence relation they are within. Local variables can be defined using the formate $name$, this name can be anything as long as it does not clash with restricted names or other variable names with in the where block. 
 
-Local variables can be defined using the formate $name$, this name can be anything as long as it does not clash with restricted names. 
+The driving expression is given in a defined section of the model, showing in Section~\ref{wellformedprogs}, and is written as  $group\_name$ $arguments$. The  $group\_name$ must correspond to a recurrence relation listed in the model and the $arguments$ must be given as values, allowing the recurrence relation to be evaluated. 
 
-Initial conditions are listed in a special location in the layout, which will be show in Sec.~\ref{wellformedprogs}, and are defined in three parts $name$ $=$ $expression$. This name can be seen as a variable and can be anything not in the restricted name list. 
+Initial conditions are listed in a special location in the layout, which will be show in Section~\ref{wellformedprogs}, and are defined in three parts $name$ $=$ $expression$. This name can be seen as a variable and can be anything not in the restricted name list. 
 
-If statements with in this language are written as $if$ $condition$ $then$ $expression$ $else$ $expression$. Where if the condition is true, then the first expression is run and if not the second expression is.  
+This language allows for both $arguments$ and $expressions$ to be written using: lists, numbers, variable names, recurrence relation names, internal function names, mathematical operators, brackets, some inbuilt functions, and conditional statements. 
+
+List in this language are contained within $[]$, items within these lists are then separated using $,$.  
+
+This language allows the use of both integers and decimal numbers, with $.$ used in decimalisation. 
+
+Variables that have been defined and are in scope can be called by simply calling their name. 
+
+Recurrence relations that are in scope can be called by calling their name with a relevant set of arguments.  
+
+Internal functions that are in scope can be called by calling their name and a relevant set of arguments, if applicable. 
+
+This language allows for the mathematical operates shown in Fig.~\ref{fig:bnflex}.
+
+Expression can be incased in brackets by using $()$.
+
+This language allows for the use of three inbuilt functions: $hd$ (returns the head of a list), $tl$ (returns the tail of the list), and $:$ (adds an item as the new head of a list).  
+
+Conditional statements with in this language are written as $cond$ $condition$ $expression$ $expression$. Where if the condition is true, then the first expression is run and if not the second expression is.  
 
 There are a number of names and naming conventions which can not be used and can be seen as restricted, these are:
 \begin{itemize}
@@ -819,6 +775,10 @@ There are a number of names and naming conventions which can not be used and can
   \item The use of the name $where$, unless used to make a where statement.
   \item The use of symbols, unless for their mathematical purpose.  
 \end{itemize}
+
+
+
+
 
 
 \subsection{Well Formed Programs} \label{wellformedprogs} 
@@ -1186,6 +1146,34 @@ The second argument relates to the functionality of each step, if each step can 
 These arguments suggest that this translation has steps that are equivalent and hence that the produced version of InterDyne is an equivalent representation of the initial recurrence relation experiment. 
 
 \subsection{Automated Translation Testing}
+
+%now how we implement using miranda
+%lexer
+%parser
+%parse tree 
+
+
+%can say using miranda (refer to the miranda textbook)
+%(in chapter 6)
+%type name ::= algerbaic type dfintion 
+% ::= paremneted value | paremented value
+%::= Name <-construtor 
+%::= Name num <-associated data
+ %to help specifiy this precises here is the miranda algibrict type 
+
+
+%\begin{figure}[H]
+%	\centering
+%	\lstinputlisting[language=Miranda]{Syntax_Def.lit.m}
+%	\caption{\it Formal definition of syntax within bespoke recurrence relation, written in style of Miranda type definitions.}
+%	\label{fig:parsetreecode}
+%\end{figure} 
+
+
+
+
+%talk about this process in more detail 
+
 Though the design of the translation has been shown, with an example being translated by hand, this is a long process to achieve for multiple experiments. The question hence arises, can this process be automated? Here it is shown that automation of this processes can be achieved, this automation is however outside the current project scope and hence only the first three steps will be done to show that it is possible. The first three steps of this automation are shown in the appendix but will be described here. 
 
 The recurrence relation experiment is first passed to the translation program as a list of characters, therefore the first step in the program is to give these characters some meaning. This is done using a lexer, this part of the program reads in the list of characters and looks for keywords or symbols to tokenise. These tokens are contained in a list of lexemes which represent all items that can be passed to this program. The lexer produces a new list tokens, with each token a defined meaning to the program, such as representing an equals sign or a variable.     

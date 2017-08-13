@@ -1,0 +1,26 @@
+<``init''> ::= ``init''
+<[<letter>]> ::= ``var'' [<letter>]
+<[<letter>] ``_'' [letter]> ::= ``equation'' [<letter>] [<letter>]
+<``cond''> ::= ``cond''
+<``main''> ::= ``main''
+<``where''> ::= ``where''
+<``tl''> ::= ``tl''
+<``hd''> ::= ``hd''
+<``:''> ::= ``:''
+<``_'' [<letter>]> ::= ``intfunc'' [<letter>]
+<number> ::= number
+<``+''> ::= ``plus''
+<``-''> ::= ``minus''
+<``/''> ::= ``divide''
+<``*''> ::= ``multiply''
+<``!''> ::= ``bang''
+<``(''> ::= ``leftbracket''
+<``)''> ::= ``rightbracket''
+<``[''> ::= ``leftsquare''
+<``]''> ::= ``rightsuare''
+<``=''> ::= ``equal''
+<``~=''> ::= ``notequal''
+<``<''> ::= ``lessthan''
+<``>''> ::= ``greaterthan''
+<``<=''> ::= ``lessthanequalto''
+<``>=''> ::= ``greaterthanequalto''
