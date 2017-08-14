@@ -3,44 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: MRes_Dissertation.aux
 The style file: unsrt.bst
 Database file #1: MRes_Dissertation.bib
-You've used 79 entries,
+You've used 80 entries,
             1791 wiz_defined-function locations,
-            840 strings with 14342 characters,
-and the built_in function-call counts, 13500 in all, are:
-= -- 1131
-> -- 572
-< -- 4
-+ -- 229
-- -- 150
-* -- 625
-:= -- 2273
-add.period$ -- 237
-call.type$ -- 79
+            848 strings with 14593 characters,
+and the built_in function-call counts, 13818 in all, are:
+= -- 1164
+> -- 580
+< -- 5
++ -- 232
+- -- 152
+* -- 640
+:= -- 2314
+add.period$ -- 240
+call.type$ -- 80
 change.case$ -- 68
 chr.to.int$ -- 0
-cite$ -- 79
-duplicate$ -- 698
-empty$ -- 1441
-format.name$ -- 150
-if$ -- 3050
+cite$ -- 80
+duplicate$ -- 716
+empty$ -- 1473
+format.name$ -- 152
+if$ -- 3130
 int.to.chr$ -- 0
-int.to.str$ -- 79
-missing$ -- 80
-newline$ -- 398
-num.names$ -- 79
-pop$ -- 262
+int.to.str$ -- 80
+missing$ -- 82
+newline$ -- 403
+num.names$ -- 80
+pop$ -- 268
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 293
+skip$ -- 306
 stack$ -- 0
-substring$ -- 402
-swap$ -- 111
-text.length$ -- 4
+substring$ -- 426
+swap$ -- 119
+text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 101
-width$ -- 81
-write$ -- 823
+while$ -- 105
+width$ -- 82
+write$ -- 835
