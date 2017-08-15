@@ -29,10 +29,10 @@
  
 \lstdefinestyle{mystyle}{
     backgroundcolor=\color{backcolour},   
-    commentstyle=\color{codegreen},
-    keywordstyle=\color{magenta},
+    %commentstyle=\color{codegreen},
+    %keywordstyle=\color{magenta},
     numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codepurple},
+    %stringstyle=\color{codepurple},
     basicstyle=\footnotesize,
     breakatwhitespace=false,         
     breaklines=true,                 
@@ -46,9 +46,7 @@
     tabsize=2
 }
 
-%\usepackage{minted}
-%\begin{minted}{haskell}
- 
+
 \lstset{style=mystyle}
 
 
@@ -98,28 +96,17 @@
 
 
 
+
 %chris help
 
-%help me write the sim function for InterDyne so I can show it
-
-%how should I split my code as its to long
 
 % in section 5.5 your code has thd3.hd, why is this hd there? you have already headed the inputs list hence returning a list of the wrappers for that time step. So why head again? is this because each set of messages are in their own list?
 
 
 %how does . work as i cant get it to work thd3.hd
 
-%should i move lite review into background? though doesnt make as much sense there 
-
-
-%do you know where i can bind my report?
 
 %is my bnf alright?
-
-%i have added 2nd order ...
-
-%added lit review 
-
 
 %line (is this right? (checker))
 
@@ -127,25 +114,24 @@
 
 
 
-%%%%%%%%%%%%%%%%to do
+%%%%%%%%%%%%%%%%to do%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%rewrite
+%%%%%%%%%%rewrite%%%%%%%%%%%%
 
 %1rewrite section about automated translation in more detail 
 
 %2rewrite subsections of translation 
 
-%%%%%%%%%%finish
+%3rewrite conclusion x2 the size
 
-%3write conversion code. Lexer, parser, first step
+%%%%%%%%%%finish%%%%%%%%%%%%%
 
-
-%%%%%%%%%%%add
-
-%4add harness explanation to background (major) (chris help) 
+%4write conversion code. Lexer, parser, first step
 
 
-%5in numeric testing add a table with the input values tested and the outputs for each step
+%%%%%%%%%%%add%%%%%%%%%%%%%%%%%
+
+%5in numeric testing add a table with the input values tested and the outputs for each step (change miranda code)
 %Input | inintial | step1 | step2 | step3 | step4 | step5 | step6 | step7 | step8
 % 0      | ans ...
 % 1
@@ -153,15 +139,10 @@
 % 10
 
 
-%%%%%%%%%%%%side things
+%%%%%%%%%%%%side things%%%%%%%%%%%%%%
 
-%6dont say paper, say project or dissertation
 
-%7get rid of phrase two-views 
-
-%8change code colouring to not coloured 
-
-%%%%%%%%%%%%%proof 
+%%%%%%%%%%%%%proof%%%%%%%%%%%%%%%%%% 
 
 %sec 1
 %sec 2
@@ -256,7 +237,7 @@ This translation has a number of fundamental challenges associated with it, whic
 
 The translation process in this dissertation takes a step-by-step approach, with each step gradually translating the model. This allows for these issues to be tackled in a more modular fashion. This also makes the equivalence of the two models more apparent, if each small step is equivalent then so too must be the models.  
 
-This dissertation presents both a bespoke recurrence relation language and the design of the steps needed to translate a system expressed in this language into an agent-based model. 
+This dissertation presents both a bespoke recurrence relation language and the design of the steps needed to translate a system expressed in this language into an agent-based model. Though not within the initial project scope, also presented is the first three steps of implementing this translation process into an automated program. These steps take the form of a lexer, parser, and first translation step. 
 
 The agent-based model translated to is a reduced form of the InterDyne simulator. InterDyne was chosen in particular due to it being designed from the bottom up to model and investigate emergent behaviour within the financial markets, this software was also a convenient choice due to access to the source code and local expertise.   
 
@@ -272,7 +253,7 @@ This dissertation layout is as follows. In Section 2 a background is given, cove
 
 
 
-
+\newpage
 \section{Background}
 This section covers a description of emergent behaviour, feedback loops as type of this behaviour and their appearance in the financial markets. Recurrence relations and agent-based models are introduced as a method for modelling emegernt behaviour, and they are described. InterDyne is introduced as an example of an agent-based model designed for the financial markets. Its applicability to modelling aspects of the financial market will be discussed and description of its design will also be given.   
 
@@ -338,7 +319,7 @@ Flash crashes have occurred on a number of occasions and in a large selection of
 
 
 \subsection{Methods for Modelling Emergent Behaviour in Finance}  \label{litreviewofabmrr} 
-There are many different methods available for modelling system that may exhibit emergent behaviour, such as: 1-period, 2-period and multi-period models, probabilist models, like hidden Markov models, ordinary differential equations and partial differential equations~\cite{modles1, modles2, moldes3, moldes4}. This paper focusses on two models that can be used for discrete non-equilibrium system, recurrence relations and agent-based models. 
+There are many different methods available for modelling system that may exhibit emergent behaviour, such as: 1-period, 2-period and multi-period models, probabilist models, like hidden Markov models, ordinary differential equations and partial differential equations~\cite{modles1, modles2, moldes3, moldes4}. This dissertation focusses on two models that can be used for discrete non-equilibrium system, recurrence relations and agent-based models. 
 
 Both recurrence relations and agent-based models have been used in modelling the financial markets and have had a number of papers published on the~\cite{rra10, rra1, abma2}.
 
@@ -524,10 +505,7 @@ Agents in InterDyne are topically, though not required to be, written in two par
 
 The simulator harness is an intrinsic part of the simulator, it drives the simulation, handles message passing and produces the output trace file.
 
-The simulator harness is embodied in a function called sim, the actual function sim in InterDyne contains not only code to run the simulation but also code associated with writing to trace files and other administrative functions. For the purpose of this project, a reduced specification of the function sim will be used. This specification captures all of the core functionality for managing message passing for agents and driving evaluation of the simulation.
-
-The type for this harness is shown in Fig.~\ref{fig:harntypintfirst} and the reduced specification of the sim function is shown in Fig.~\ref{fig:intersimfun}.
-
+This has the type shown in Fig.~\ref{fig:harntypintfirst}, this type illustrates the functions input of a number of steps and runtime arguments (with agents and the broadcast channels they are subscribed to). The output from this function can be seen to be of type $IO()$, this is writing the trace information to file.  
 \begin{figure}[H]
 	\centering
         \lstinputlisting[language=Haskell]{harntypint.m}
@@ -535,14 +513,22 @@ The type for this harness is shown in Fig.~\ref{fig:harntypintfirst} and the red
 	\label{fig:harntypintfirst}
 \end{figure} 
 
+
+The simulator harness is embodied in a function called sim, this function contains code associated with a number of administrative operations. For the purpose of this project a reduced specification of the function sim will be shown. This specification captures all of the core functionality for managing message passing for agents and driving evaluation of the simulation. This reduced InterDyne sim harness can be seen in Fig.~\ref{fig:intersimfun}, with its function type shown in Fig.~\ref{fig:reducedsimtypet}. This reduced function is shown outputting a single integer value that is the message first message sent be the first agent at time step $x$, this is just for illustration purposes since the normal output of sim as a trace file is not being shown here. In the reduced type definition it can be seen that the output is now and integer instead of an $IO()$ type, the list passed to the sim that contains the subscription channels is now of unknown type as no channels are passed.   
+ 
 \begin{figure}[H]
 	\centering
         \lstinputlisting[language=Haskell]{intersimfun.hs}
-	\caption{\it }
+	\caption{\it Reduced InterDyne simulator. This sim function outputs, the value of the first messages from the first agent at the final time step.}
 	\label{fig:intersimfun}
 \end{figure} 
 
-
+\begin{figure}[H]
+	\centering
+        \lstinputlisting[language=Haskell]{harntyptrans.m}
+	\caption{\it Type definition of the reduced function sim.}
+	\label{fig:reducedsimtypet}
+\end{figure} 
 
 %-how do you run an interdyne experiment 
 
@@ -561,7 +547,7 @@ Running an InterDyne experiment is done by calling the simulator with relevant i
 
 
 
-
+\newpage
 \section {Description and Analysis of the Problem} \label{despriptionandanalysproblem}
 
 Investigating emergent behaviour originating from interaction dynamics, within a complex system, relays on viewing the communication between different components of the system as messages being passed. These messages can then be analysed to assess the communication and its pattern that lead to the creation of the emergent behaviour, this approach is amenable to the discovery of phenomena, such as dynamic feedback loops. A model investigating emergent behaviour hence must be able to view communication as messages being passed between different components. For results from this model to be broadly accepted, in fields such as economics, the model as a whole must also be well defined.      
@@ -588,8 +574,8 @@ An important consideration in creating a translation between the two methods is,
 %%%%%%How will this translation be done? look at work other people have done on translations (step-by-step) 
 The next consideration is how this translation will be achieved. Inspiration can be drawn from other works investigating the design of translations, such as Refs.~\cite{clovertrans},  \cite{transproggotmod} and  \cite{stepcorentconv}. These three papers discuss translations between program representations in a way in which, the final representation will faithfully represent the initial. The approach taken by these papers is to increment the translation in step-by-step manner, where each step slightly transforms the previous to be closer to the final form. The benefit of this method is that if each step on the translation can be proven to be correct then the whole translation can be seen as correct. 
 
-%%%%%%what is the project? (make rr language, convert in a step-by-step manner to InterDyne)
-A two-views approach can hence be created by translating in a step-by-step fashion from a recurrence relation language to an agent-based model. The agent-based model used in this translation is InterDyne and the recurrence relation language used is discussed in Section~\ref{beskoperecurrancerealtion}. InterDyne was selected due to a number of factors, most importantly InterDyne was designed from the bottom up to model and investigate emergent behaviour with the financial markets, with research already being conducted using it to this end~\cite{DynamicCoupling_Chris}, this software was also a convenient choice due to access to the source code and local expertise.
+%%%%%%what is the project? (make rr language, convert in a step-by-step manner to InterDyne
+A connection between these two models can hence be created by translating in a step-by-step fashion from a recurrence relation language to an agent-based model. The agent-based model used in this translation is InterDyne and the recurrence relation language used is discussed in Section~\ref{beskoperecurrancerealtion}. InterDyne was selected due to a number of factors, most importantly InterDyne was designed from the bottom up to model and investigate emergent behaviour with the financial markets, with research already being conducted using it to this end~\cite{DynamicCoupling_Chris}, this software was also a convenient choice due to access to the source code and local expertise.
 
 \subsection{Review of Similar Work}\label{simwork}
 The idea of using recurrence relations to give a formal definition to an agent-based model is not a novel one and falls under the general heading of using formal systems to prove properties of agent-based models. Work in this area has covered formal using game theory, discrete systems, classifier agents and equation-based models~\cite{taabm}. The use of recurrence relations falls under the classification of an equation-based model, these have been used in a number of papers looking to give a formalisation to agent-based models. Here three papers, Refs~\cite{ebmabmi}, \cite{econmistsnoabm} and \cite{abmtsd}, looking at this area will be reviewed and discussed, along with DEVS formalism introduced in Ref.~\cite{introdevs}.
@@ -614,7 +600,7 @@ The next paper is Ref.~\cite{econmistsnoabm}, this paper is based on a similar p
 
 The agent-based model is formalised by specifying how each agent\textsc{\char13}s state within the model changes between each time step. This is done by defining agent attributes using vectors of state variables and then applying time-indexed difference equations to specify each agents state change. This allows for expression of the agent-based model in terms of difference equations, which they then use to look at parameter estimation. 
 
-Their work shows the ability to prefer estimations on agent-based models, counter to some criticism that has been levelled at agent-based models. Some difficulty in this approach can come from agent-based models with complicated algorithmic behaviour within the agents, specifying these models as difference equations can be challenging task. The work in this paper does not directly suffer from this problem as all systems are first described as recurrence relations before being translated into agent-based models, meaning that the equation view will only be as complex as the original writer intends.  
+Their work shows the ability to prefer estimations on agent-based models, counter to some criticism that has been levelled at agent-based models. Some difficulty in this approach can come from agent-based models with complicated algorithmic behaviour within the agents, specifying these models as difference equations can be challenging task. The work in this dissertation does not directly suffer from this problem as all systems are first described as recurrence relations before being translated into agent-based models, meaning that the equation view will only be as complex as the original writer intends.  
 
 Th last paper to be looked at is Ref.~\cite{abmtsd}, this paper investigates relating Forrester\textsc{\char13}s System Dynamics (SD) model to an agent-based model. System dynamics models consist of a set of difference equations, so this can be seen as a comparison between difference equations and agent-based models. This paper presents a formal specifications for both the Forrester\textsc{\char13}s and agent-based models, these specifications are then compared to show their equivalence. Was equivalence has been proven the specification of a Forrester\textsc{\char13}s model can be used to derive an agent-based model that is an correct representation of the same system.
 
@@ -661,7 +647,7 @@ This approach is to create a series of small steps between a recurrence relation
 
 
 
-
+\newpage
 \section{Bespoke Recurrence Relation Language} \label{beskoperecurrancerealtion}
 This section introduces a bespoke recurrence relation model, created to be able to model complex systems with interacting elements. This recurrence relation model will eventually be translated into an agent-based model and hence needs to be able to express the system being modelled both statically and dynamically. 
 
@@ -815,7 +801,7 @@ This style and layout is brought together to produce a full simulation, as shown
 
 
 
-
+\newpage
 \section{Design of a Translation from Recurrence Relations to InterDyne} 
 This section details the design of a step-by-step translation between the previously described bespoke recurrence relation language and the InterDyne simulator. This is broken down into eight individual steps, each of these steps alters the output of the previous step to resemble more closely an InterDyne simulation. Each of these steps should be a small enough change from the previous iteration that the transformation, which they preform is digestible. 
 
@@ -1183,8 +1169,8 @@ After these translations are applied to the experiment in Fig.~\ref{fig:ts8} the
 \end{figure} 
 
 
-
-\section{Translation Considerations}
+\newpage
+\section{Validation and Testing}
 Now that the design of the translation process has been described there are a few aspects relating to it that should be considered. These considerations can be formed as three questions: Is the final form of the translation a good representation of InterDyne? Does this design give a correct translation? Can this translation process be automated?   
 
 This section covers these three questions, first by comparing the final form of the translation to InterDyne, then by looking at the design and the operation of each step in the translation, and finally by showing the first steps in an automated version of this translation.  
@@ -1267,6 +1253,9 @@ These arguments suggest that this translation has steps that are equivalent and 
 
 %talk about this process in more detail 
 
+%autamted translated testing, 
+%we show below it is shown how this is achived 
+
 Though the design of the translation has been shown, with an example being translated by hand, this is a long process to achieve for multiple experiments. The question hence arises, can this process be automated? Here it is shown that automation of this processes can be achieved, this automation is however outside the current project scope and hence only the first three steps will be done to show that it is possible. The first three steps of this automation are shown in the appendix but will be described here. 
 
 The recurrence relation experiment is first passed to the translation program as a list of characters, therefore the first step in the program is to give these characters some meaning. This is done using a lexer, this part of the program reads in the list of characters and looks for keywords or symbols to tokenise. These tokens are contained in a list of lexemes which represent all items that can be passed to this program. The lexer produces a new list tokens, with each token a defined meaning to the program, such as representing an equals sign or a variable.     
@@ -1285,9 +1274,8 @@ For later steps that introduce aspects not covered in the original numeric type,
 
 
 
-
-\section{Conclusion}
-
+\newpage
+\section{Summary and Conclusion }
 This project has looked at the use of recurrence relation models and agent-based models with economics. Both these models are widely used to model complex systems in many fields, including for investigating emergent behaviour within these systems. Agent-based models in particular offer an attractive method for analysing emergent behaviour within interacting systems, due to their use of message passing. However in economics agent-based, unlike recurrence relation models, models very rarely appear in top journals and are in general not widely accepted in this field.     
 
 This dissertation presents a method designed to increase the general acceptance of agent-based models within economics. Increasing the traction of this method within economics will benefit the investigation of numerous complex systems within this field, as well as helping work already done using this technique  to be better received. 
@@ -1306,7 +1294,12 @@ The two models created for the example system, the recurrence relation model and
 
 The method presented in this dissertation both formalises and familiarises agent-based models with recurrence relations. Allowing one familiar with recurrence relations to be introduced to agent-based models and to increase their understanding of this technique. 
 
-\subsection{Further Work}
+\subsection{Discussion and Further work }
+%in fruther work
+%implimitation of delays as explained here, is correct presevers the meaning of the origin, but for large simulations might have a high over head, due to the number of agents being created and messages.
+%a final step would be to convert from this to the Interdyne system, where these agentas are incoperated in the simularot harness 
+
+
 This project builds the foundations for a number of additional extensions to be done. Three particular extensions to note are: implementing a the full translation, proving the correctness of the translation, and creating a reverse translation.     
 
 The most obvious pieces of further work that can be undertaken is to implement the rest of this translation processes. This would involve implementing steps two to eight in a similar manner to that shown for step one. 
@@ -1319,13 +1312,13 @@ A large extension to this project would be the creation of a translation that tu
 
 
 
- 
+\newpage 
 \section{Appendix A.}
 
 %\subsection{Appendix 1} %\label{Appendix_1}
 %\lstinputlisting[language=C++]{AllCode_functions.cpp}
 
-
+\newpage
 \addcontentsline{toc}{section}{References}
 \bibliographystyle{unsrt}
 \bibliography{MRes_Dissertation}
