@@ -110,6 +110,11 @@
 
 %line (is this right? (checker))
 
+%some questions in paper under help 
+
+%should I add the translation in appendex (its going to be long) (and how should i lay iit out)
+
+%should I add the mirand version in appendex? 
 
 
 
@@ -120,23 +125,14 @@
 
 %1rewrite section about automated translation in more detail 
 
-%2rewrite subsections of translation 
-
-%3rewrite conclusion x2 the size
+%2rewrite conclusion x2 the size
 
 %%%%%%%%%%finish%%%%%%%%%%%%%
 
-%4write conversion code. Lexer, parser, first step
+%3write conversion code. Lexer, parser, first step
 
 
 %%%%%%%%%%%add%%%%%%%%%%%%%%%%%
-
-%5in numeric testing add a table with the input values tested and the outputs for each step (change miranda code)
-%Input | inintial | step1 | step2 | step3 | step4 | step5 | step6 | step7 | step8
-% 0      | ans ...
-% 1
-% 3
-% 10
 
 
 %%%%%%%%%%%%side things%%%%%%%%%%%%%%
@@ -157,27 +153,61 @@
  
 \begin{document} 
 \title{Translating from Recurrence Relations to an Agent-Based Representation} 
-\author{Leo Carlos-Sandberg\\
-Supervisor: Dr Christopher D. Clack} 
+\author{
+\\
+\\
+Leo Carlos-Sandberg\\
+Supervisor: Dr Christopher D. Clack\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+A dissertation submitted in partial fulfilment\\
+ of the requirements for the degree of\\
+ \textbf{MRes in Financial Computing}\\
+ of the \\
+ \textbf{University College London}.
+ \\
+ \\
+ \\
+ \\
+ \\
+ Department of Computer Science\\
+ University College London
+ \\
+ \\} 
 \maketitle 
 
+\newpage
+I, Leo Carlos-Sandberg, confirm that the work presented in this dissertation is my own. Where information has been derived from other sources, I confirm that this has been indicated in the dissertation. The report may be freely copied and distributed provided the source is explicitly acknowledged.
+
+\newpage
 \begin{abstract}
 \noindent {\it 
-This dissertation investigates a process to increase the acceptance of agent-based models by sceptics, who are familiar with recurrence relation models. The work presented in this dissertation is designed to combat two main aspects that hinder the up take in agent-based models by these sceptics, a lack of a model wide formalism and a lack of familiarity to those unaccustomed to the technique. 
+This dissertation investigates a process to increase the acceptance of agent-based models by relation from recurrence %I couldnt read the writing so this is wrong (help)
+relation models. The work presented in this dissertation is designed to combat two main aspects that hinder the up take in agent-based models: a lack of a model-wide formalism, and a lack of familiarity to those unaccustomed to the technique. 
 
-The importance of this work relates in particular to the field of economics, where agent-based models are yet to become widely accepted. This lack of acceptance leads to an absences of work based on agent-based models in top economics journals. This creates a problem for modelling complex systems and emergent behaviour, as agent-based models are in many cases a natural modelling technique for these systems, due in part to their message passing.  
+The importance of this work relates in particular to the field of economics, where agent-based models are yet to become widely accepted. This lack of acceptance leads to an absence of work based on agent-based models in top economics journals. This creates a problem for modelling complex systems and emergent behaviour, as agent-based models are in many cases a natural modelling technique for these systems, due in part to their message passing behaviour.  
 
-The process presented in this dissertation is to create an agent-based model equivalent to recurrence relation model, recurrence relation models are both widely accepted and have a model wide formalisation. Creating an equivalence between these two models allows for the recurrence relation model to give the agent-based model both a formalisation and a familiar model, which sceptics can view it from.       
+The process presented in this dissertation is to create an agent-based model equivalent to recurrence relation model. Recurrence relation models are both widely accepted and have a model-wide formalisation. Creating an equivalence between these two models allows for the recurrence relation model to give the agent-based model both a formalisation and a familiar representation, for economists.       
 
-This work comprises of the creation of a bespoke recurrence relation language, the design of step-by-step translation between the models, and numeric testing of the equivalence of these models. 
+This work comprises the creation of a bespoke recurrence relation language, the design of step-by-step translation between the models, and a numeric testing of the equivalence of these models. 
 
-The bespoke recurrence relation language presented allows for an experiment involving complex and interacting system to be laid out in a clear manner, using recurrence relations. 
+The bespoke recurrence relation language presented in this work allows for an experiment involving complex and interacting systems to be laid out in a clear manner, using recurrence relations. 
 
-A design for an eight step translation that turns an experiment written in the bespoke recurrence relation language into an agent-based model is given. 
+A design for an eight-step translation that turns an experiment written in the bespoke recurrence relation language into an agent-based model is given. 
 
 The agent-based model created in this translation is shown to be numerically equivalent to the initial recurrence relation model, for a number of starting values. Each step in the translation process is also shown to be numerically equivalent, for these same values.
 
-The work presented in this dissertation contributes to the field by adding a method for both formalising and expressing an agent-based model using a recurrence relation model. This work gives a method, which can allow for agent-based models to become more widely accepted within the field of economics, giving more gravity to a powerful tool for investigating complex financial markets. 
+The work presented in this dissertation contributes to the field by adding a method for both formalising and expressing an agent-based model using a recurrence relation model. This work gives a method, which can allow for agent-based models to become more widely accepted within the field of economics, giving broader visibility to a powerful tool for investigating complex financial markets. 
 }
 \end{abstract}
 
@@ -200,52 +230,50 @@ The work presented in this dissertation contributes to the field by adding a met
 
 
 \section{Introduction}
-Complex systems have been an area of interest for a long time in many  fields such as physics, biology and chemistry~\cite{oldcps}. More recently this is true in the fields of economics and finance~\cite{complexecon}, especially as the financial markets have become increasingly automated and interconnected. Of particular interest is emergent behaviour and emergence in complex systems, these have been defined as ``a property of a system is emergent, if it is not a property of any fundamental element, and emergence is the appearance of emergent properties and structures on a higher level of organization or complexity'' by Fromm as well as others~\cite{bubblesandcrashes, emergdef, emegdefs2}.
+Complex systems have been an area of interest for a long time in many  fields such as physics, biology and chemistry~\cite{oldcps}. More recently this is true in the fields of economics and finance~\cite{complexecon}, especially as the financial markets have become increasingly automated and interconnected. Of particular interest is emergent behaviour and emergence in complex systems, these have been defined as ``a property of a system is emergent; if it is not a property of any fundamental element, and emergence is the appearance of emergent properties and structures on a higher level of organization or complexity'' by Fromm as well as others~\cite{bubblesandcrashes, emergdef, emegdefs2}.
 
-Due to its nature emergent behaviour can often be damaging to the system in which it occurs. As such a area of research within the study of complex systems in economics is regulation focussed~\cite{regemergnce}. With the aim of being able to introduce regulations to stop future occurrences of damaging emergence, such as possible flash crashes. A flash crash is a sudden drop and then recovery in the price of securities of commodities, this is typically the result automated trading~\cite{flashauto}. A prominent example of this is the flash crash of 2010, which is thought to have, at least in part, been caused by high-frequency traders~\cite{SECreport_delays, DynamicCoupling_Chris}. 
+Due to its nature emergent behaviour can often be damaging to the system in which it occurs. As such an area of research within the study of complex systems in economics is focussed on regulation~\cite{regemergnce}, with the aim of being able to introduce regulations to stop future occurrences of damaging emergence, such as possible flash crashes. A flash crash is a sudden drop and then recovery in the price of securities of commodities, this maybe the result automated trading~\cite{flashauto}. A prominent example of this is the flash crash of 2010, which is thought to have, at least in part, been caused by high-frequency traders~\cite{SECreport_delays, DynamicCoupling_Chris}. 
 
-Emergent behaviour in markets can occur in a large number of ways, but more often the behaviour of interest is created over a time period. In general there are two ways of viewing systems in time, these are either continuous (where the system progress smoothly through time) or discrete (where the system takes equal quantised steps through time, with each step advancing the system).
+Emergent behaviour in markets can occur in a large number of ways, but more often the behaviour of interest is created over a time period. In general there are two ways of viewing systems in time, these are either continuous (where the system progress smoothly through time) or discrete (where the system takes quantised steps through time, with each step advancing the system).
 
-For automated traders, and high-frequency traders in particular, the later approach is best used to describe them. This is due to the fact that computers trade in discrete time, and because of the speeds involved in most of these trades this quantisation of time becomes very important~\cite{discretetiem}. 
+For automated traders, and high-frequency traders in particular, the latter approach is best used to describe them. This is due to the fact that computers trade in discrete time, and because of the speeds involved in most of these trades this quantisation of time becomes very important~\cite{discretetiem}. 
 
-For discrete time systems two particular modelling techniques that can be used are, recurrence relations and agent-based models. These two techniques model systems in different ways, with recurrence relations being analytic and agent-based models being dynamic. Recurrence relations take a more mathematical approach modelling a system as a set of equations that interact through function calls between different equations. Agent-based models on the other hand model a system as a set of agents that interact through messages sent between them.    
+For discrete time systems two particular modelling techniques that can be used are recurrence relations and agent-based models. These two techniques model systems in different ways, with recurrence relations being analytic and agent-based models being dynamic. Recurrence relations take a more mathematical approach modelling a system as a set of equations that interact through function calls between different equations. Agent-based models on the other hand model a system as a set of agents that interact through messages sent between them.    
 
-Both of these techniques have been used extensively in a large range of fields for modelling complex systems~\cite{wsabm}, however within the field of finance use of agent-based models is predominantly missing from top economics journals~\cite{whereabmp, farmerfoleynature}.\footnote{This is discussed further in Section~\ref{litreviewofabmrr}.} This absences of agent-based models can be explained by two factors: the lack of a formal definition for the model as a whole and the technique its self being unfamiliar and not resonating with many researchers in economics~\cite{farmerfoleynature}. 
+Both of these techniques have been used extensively in a large range of fields for modelling complex systems~\cite{wsabm}, however within the field of finance use of agent-based models is predominantly missing from top economics journals~\cite{whereabmp, farmerfoleynature}.\footnote{This is discussed further in Section~\ref{litreviewofabmrr}.} This absence of agent-based models can be explained by two factors: the lack of a formal definition for the model as a whole and the technique itself being unfamiliar and not resonating with many researchers in economics~\cite{farmerfoleynature}. 
 
-The lack of widespread acceptance of agent-based models within economics can cause an issue for the development of work in this field on complex interacting systems and emergent behaviour. Agent-based models are well known for their ability to model these kinds of systems, often being considered the natural way for describing systems composed of independent entities. They allow these systems to be modelled in such a way that facilitates the exploration of aggregate properties, interaction dynamics, and emergent behaviour. The modularity of their design allows for complexity of agents to be easily tuned, as well as for the models to be easily expanded~\cite{techsadsProbsabm}. Agent-based models are in many fields are considered very powerful and well suited to computational modelling of complex systems, with a number of advantages over other modelling techniques~\cite{whereabmp, abmgood1, abmgreat2, gabm3, gabm5}. 
+The lack of widespread acceptance of agent-based models within economics can cause an issue for the development of work in this field on complex interacting systems and emergent behaviour. Agent-based models are well known for their ability to model these kinds of systems, often being considered the natural way for describing systems composed of independent entities~\cite{techsadsProbsabm}. They allow these systems to be modelled in such a way that facilitates the exploration of aggregate properties, interaction dynamics, and emergent behaviour. The modularity of their design allows for complexity of agents to be easily tuned, as well as for the models to be easily expanded~\cite{techsadsProbsabm}. Agent-based models are in many fields are considered very powerful and well suited to computational modelling of complex systems, with a number of advantages over other modelling techniques~\cite{whereabmp, abmgood1, abmgreat2, gabm3, gabm5}. 
 
-This dissertation seeks to increase the acceptance of agent-based models within the economics community by creating a solution to the two major factors holding these models back, formalisation and familiarity. 
+%This dissertation seeks to increase the acceptance of agent-based models within the economics community by creating a solution to the two major factors holding these models back, formalisation and familiarity. %you said repetitive I think it is needed as I haven't mentioned formalisation and familiarity as a down side yet  (help)
 
-The other popular modelling technique for complex systems, recurrence relation models, does not possess either of these issues, having a system wide formalisation, and being widely accepted and well used within economics~\cite{acrr, rra10, rra1}. Therefore having a recurrence relation model be used to represent an agent-based model will allow for these criticisms to be addressed. This can be done by expressing a system as a recurrence relation model and a equivalent agent-based model~\cite{agbtorrgood}. 
+The other popular modelling technique for complex systems, recurrence relation models, has a system-wide formalisation, and is widely accepted and well used within economics~\cite{acrr, rra10, rra1}. This motivates this dissertations investigation of a correctness preserving transformation from a recurrence relation model to an equivalent agent-based model.
 
-In this dissertation a process of translating a recurrence relation model into an equivalent agent-based model is presented. The recurrence relation model gives the agent-based model a system wide formalism and the translation seeks to make agent-based models more familiar to those experienced with recurrence relations. 
+The recurrence relation model gives the agent-based model a system wide formalism and the translation seeks to make agent-based models more familiar to those experienced with recurrence relations.  
 
-This translation is from a recurrence relation model to an agent-based model, as opposed to the reverse. This trajectory is taken as the aim is to familiarise those already accustomed to the former with the latter, hence it makes sense to start with the recognised model.  
+This translation is from a recurrence relation model to an agent-based model, as opposed to the reverse. This trajectory is taken as the aim is to familiarise those already accustomed to the former with the latter, hence it makes sense to start with the recognised model. Facilitating them in taking advantage of agent-based models ability to investigate message passing, something, which is difficult in recurrence relation models.\footnote{Translation in the opposite direction is discussed in Section~\ref{furtherwork}.}  
 
 This translation has a number of fundamental challenges associated with it, which will be discussed in Section~\ref{twoviewsapproach}, but include:
 \begin{itemize}
-   \item The two paradigms of the models are completely different and opposing. 
+   \item The two paradigms of the models are substantially different. 
    \item How are function calls related to message passing?
-   \item How can the idea of agents having a infinite list through out time of their values be derived from the recurrence relations? 
-   \item How can the idea of private and public information introduced, and what data should fall into each category? 
-   \item How can public broadcast data be introduce, and what data classifies to be treated as such? 
-   \item How can time limited information be introduced?
-   \item How can name control be introduced in a tangible way into a recurrence relations that have no notion of agents. 
+   \item How can the idea of agents having an infinite list of their values through out time be derived from the recurrence relations? 
+   \item How can the idea of private and public information be introduced, and what data should fall into each category? 
+   \item How can time limited messages be introduced?
    \item How can output messages containing message information be introduced? 
-   \item How can the recurrence relations be split in a way which does not splinter the model? 
+   \item How can the recurrence relations be split in a way that does not splinter the model? 
 \end{itemize}
 
-The translation process in this dissertation takes a step-by-step approach, with each step gradually translating the model. This allows for these issues to be tackled in a more modular fashion. This also makes the equivalence of the two models more apparent, if each small step is equivalent then so too must be the models.  
+The translation process in this dissertation takes a step-by-step approach, with each step gradually translating the model. This allows for these issues to be tackled in a more modular fashion. This also makes the equivalence of the two models more apparent, if each small step is equivalent then so too must be the models, assuming that the transitivity of equivalence. 
 
 This dissertation presents both a bespoke recurrence relation language and the design of the steps needed to translate a system expressed in this language into an agent-based model. Though not within the initial project scope, also presented is the first three steps of implementing this translation process into an automated program. These steps take the form of a lexer, parser, and first translation step. 
 
-The agent-based model translated to is a reduced form of the InterDyne simulator. InterDyne was chosen in particular due to it being designed from the bottom up to model and investigate emergent behaviour within the financial markets, this software was also a convenient choice due to access to the source code and local expertise.   
+The agent-based model translated to is a reduced form of the InterDyne simulator. InterDyne was chosen in particular due to it being designed to investigate emergent behaviour within the financial markets, this software was also a convenient choice due to access to the source code and local expertise.   
 
-The creation of this translation process contributes to the field by giving a method where by sceptics can become familiar with agent-based models, as well as giving a formalisation to the models. This has the potential to increase the uptake in use of agent-based models and to increase the acceptance of work already done using agent-based models. 
+The creation of this translation process contributes to the field by giving a method whereby economists can become familiar with agent-based models, as well as giving a formalisation to the agent-based models. This has the potential to increase the uptake in use of agent-based models and to increase the acceptance of work already done using agent-based models. 
 
-The benefits of this work are timely, matching with the increased interest in agent-based models within finance, and with the interest by regulatory in interaction and emergent phenomenon~\cite{fallacyofcompostionBook, newwork1, newabmpaper}.  
+The benefits of this work are timely, matching with the increased interest in agent-based models within finance, and with the interest by regulatory bodies in interaction and emergent phenomenon~\cite{fallacyofcompostionBook, newwork1, newabmpaper}.  
 
-This dissertation layout is as follows. In Section 2 a background is given, covering: emergent behaviour generally and in the financial markets, a review of the literature and description of both recurrence relations and agent-based models, and an in-depth description of InterDyne. In Section 3 a description and analysis of the problem is given, covering: a detailed description of the problem this dissertation addresses, a review of similar work in tackling this problem, and a description of the challenges with the translation approach taken. In Section 4 the bespoke recurrence relation is given, along with its syntax and presentation. In Section 5 the design of the translation is given, with an example system translated from the recurrence relations to an agent-based model. In Section 6 the translation is discussed, with: comparisons to the desired agent-based model given, numerical testing of the equivalence of the steps given, and additional work outside the scope of the project presenting the first stages in implementing this translation given. In Section 7 the dissertation is concluded and summarised with notes for further work given.     
+The dissertation layout is as follows. In Section 2 a background is given, covering: emergent behaviour generally and in the financial markets, a review of the literature and description of both recurrence relations and agent-based models, and an in-depth description of InterDyne. In Section 3 a description and analysis of the problem is given, covering: a detailed description of the problem this dissertation addresses, a review of similar work in tackling this problem, and a description of the challenges with the translation approach taken. In Section 4 the bespoke recurrence relation is given, along with its syntax and presentation. In Section 5 the design of the translation is given, with an example system translated from the recurrence relations to an agent-based model. In Section 6 the translation is discussed, with: comparisons to the desired agent-based model given, numerical testing of the equivalence of the steps given, and additional work outside the scope of the project presenting the first stages in implementing this translation given. In Section 7 the dissertation is concluded and summarised with notes for further work given.     
 
 
 
@@ -255,14 +283,14 @@ This dissertation layout is as follows. In Section 2 a background is given, cove
 
 \newpage
 \section{Background}
-This section covers a description of emergent behaviour, feedback loops as type of this behaviour and their appearance in the financial markets. Recurrence relations and agent-based models are introduced as a method for modelling emegernt behaviour, and they are described. InterDyne is introduced as an example of an agent-based model designed for the financial markets. Its applicability to modelling aspects of the financial market will be discussed and description of its design will also be given.   
+This section covers a description of emergent behaviour, feedback loops as a type of this behaviour, and their appearance in the financial markets. Recurrence relations and agent-based models are introduced as a method for modelling emergent behaviour, and they are described. InterDyne is introduced as an example of an agent-based model designed for the financial markets. Its applicability to modelling aspects of the financial market will be discussed and a description of its design will also be given.   
 
 \subsection{Emergent Behaviour}
-Emergent behaviour is a term used to describe macro-level behaviour of a system that is not obvious from analysis of the micro-level behaviour of the system, more formally this is behaviour that can not be predicted through analysis of any single component of a system \cite{EB_systemofsystemsGLangford}.
+Emergent behaviour is a term used to describe a macro-level behaviour of a system that is not obvious from analysis of the micro-level behaviour of the system; more formally this is a behaviour that can not be predicted through analysis of any single component of a system \cite{EB_systemofsystemsGLangford}.
 
 A misunderstanding of emergence can lead to the fallacy of division, this is that a property of the system as a whole most also be a property of an individual component of the system; water for example has a number of properties including being able to be cooled down to become ice and heated to become steam, saying the same must also be true of a molecule of water however is incorrect. This concept continues into economics, being called the fallacy of composition, where what is true for the whole economy my not hold for an individual and vice versa~\cite{fallacyofcompostionBook}.
        
-A simple way to demonstrate emergence is in the Game of Life~\cite{gameoflifepage}, which is an example of cellular automaton; this game takes place on an infinite two-dimensional grid in which cells can either be `alive', coloured for example green, or `dead', a different colour usually black. Wether a cell is `alive' or `dead' is based on a set of simple rules:   
+A simple way to demonstrate emergence is in the Game of Life~\cite{gameoflifepage}, which is an example of a cellular automaton; this game takes place on an infinite two-dimensional grid in which cells can either be `alive', coloured for example green, or `dead', a different colour usually black. Whether a cell is `alive' or `dead' is based on a set of simple rules:   
 \begin{enumerate}
   \item `Alive' cells will transition to be `dead' cells in the next time step if they have few than two `alive' neighbours.
   \item `Alive' cells with two or three `alive' neighbours remain `alive' at the next time step.
@@ -803,7 +831,7 @@ This style and layout is brought together to produce a full simulation, as shown
 
 \newpage
 \section{Design of a Translation from Recurrence Relations to InterDyne} 
-This section details the design of a step-by-step translation between the previously described bespoke recurrence relation language and the InterDyne simulator. This is broken down into eight individual steps, each of these steps alters the output of the previous step to resemble more closely an InterDyne simulation. Each of these steps should be a small enough change from the previous iteration that the transformation, which they preform is digestible. 
+This section details the design of a step-by-step translation between the previously described bespoke recurrence relation language and a reduced form of the InterDyne simulator. This is broken down into eight individual steps, with each of these steps altering the output of the previous step to resemble more closely an InterDyne simulation. Each of these steps should be a small enough change from the previous iteration so that the translation, which they preform is digestible. 
 
 The eight steps required for this translation are to introduce:
 \begin{enumerate}
@@ -831,11 +859,17 @@ These steps will be shown in this section by translating an example written in t
 
 
 \subsection{Infinite List Output}
-In InterDyne each agent outputs an infinite list containing the outputs of that at each time step. Here each recurrence relation is changed to output its values as an infinite list in time.
+In InterDyne each agent outputs an infinite list containing the outputs of that agent at each time step. Here each recurrence relation is changed to output its values as an infinite list in time.
 
-For this to be achieved each recurrence relation is wrapped into a parent function, denoted by adding $\_list$ to the end of the relations name. This parent function returns a sub function labeled $\_createlist$, function takes in a function and a time marker and returns an infinite list containing the output of that function at each time. $\_createlist$ does this by recursively calling itself adding one time step to its input each time, the value of the function applied to the current time step is added to the front of this list using $:$.
+For this to be achieved each recurrence relation is wrapped into a parent function, denoted by adding $\_list$ to the end of the relations name. This parent function returns an infinite list of the outputs of its sub recurrence relation outputs, with each item in the list being the value for this relation at each time step. This is done using the sub function $\_createlist$, this function takes in a function and a time marker. These arguments are then used to add the value of the function at that time maker to the head of a least, where the next value is created by recursively calling $\_createlist$ but with the next time step, as shown in Fig.~\ref{fig:cl1}.
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{cl1.m}
+	\caption{\it $\_createlist$ function, used to create an infinite list in time of a recurrence relation.}
+	\label{fig:cl1}
+\end{figure} 
  
-Since the recurrence relations are now contained within parent functions (that do not take time as an input) which are outputting infinite lists, to obtain a value at a certain time step these list have to be indexed into. This indexing using time now replaces the previous method of calling a relation with time as an argument. Indexing is done with the bang operator ($!$), this applied to a list and followed by a value will return the numbered item in the list. When numbering the list zero is considered to be the first item so $[1,2,3]!1$ would return a value of $2$. Therefore all calls within other functions are changed to this new notation as well as the call in main for the experiment. Once these changes have been applied Fig.~\ref{fig:rre1} will be translated into Fig.~\ref{fig:ts1}.
+Since the recurrence relations are now contained within parent functions (that do not take time as an input) that are outputting infinite lists, to obtain a value at a certain time step these list have to be indexed into. This indexing using time now replaces the previous method of calling a relation with time as an argument. Indexing is done with the bang operator ($!$), this applied to a list and followed by a value will return the numbered item in the list. When numbering the list, zero is considered to be the first item, so $[1,2,3]!1$ would return a value of $2$. Therefore all calls within other functions are changed to this new notation as well as the call in main for the experiment. Once these changes have been applied Fig.~\ref{fig:rre1} will be translated into Fig.~\ref{fig:ts1}.
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[language=Miranda]{ts1.m}
@@ -852,7 +886,9 @@ InterDyne contains agents which are the entities that interact, here agents are 
 This is done by creating a wrapper function which contains the previously created $\_list$ functions. Each wrapper, which is labeled as $group\_wrapper$, contains the $\_list$ functions assigned to the same group. These wrappers output an infinite list, each item within this list is another list containing the outputs of the internal $\_list$ functions at that time step. Therefore a wrapper containing two functions, $a\_list$ and $b\_list$, would produce an infinite list of the form,\\
 $[[a\_list!0,$ $b\_list!0]$, $[a\_list!1,$ $b\_list!1]$, .., $[a\_list!\infty,$ $b\_list!\infty]]$. This is done using the internal function $transpose$, this function takes a list of lists and returns a list containing lists, where the first list is a list of the heads of the initial lists and the next list is a list of the heads of the remainder of the initial list and so on. An example of the use of transpose is $transpose$ $[[1,2,3],$ $[4,5,6]]$, which returns $[[1,4],$ $[2,5],$ $[3,6]]$.
 
-Since the $\_list$ functions are now contained within a wrapper function calls to these functions must now be calls to the wrapper function which they are part of. The exception to this rule is for functions that are part of the same wrapper, these can still make direct calls to $\_list$ functions that share the same group. Since the wrapper outputs an infinite list in time, first this list must be indexed to the right time step and then this list must be indexed for the right internal function. This will change the notation of all relation calls by other recurrence relations and the recurrence relation call listed in $main$. These changes will translate the example in Fig.~\ref{fig:ts1} to that shown in Fig.~\ref{fig:ts2}.
+Since the $\_list$ functions are now contained within a wrapper function calls to these functions must now be calls to the wrapper function which they are part of. The exception to this rule is for functions that are part of the same wrapper, these can still make direct calls to $\_list$ functions that share the same group. Since the wrapper outputs an infinite list in time, first this list must be indexed to the right time step and then this list must be indexed for the right internal function. For example, to return the value of the first recurrence relation in a group called $g$ at time $t$, the call $((g\_wrapper!t)!0)$ would be used.This will change the notation of all relation calls by other recurrence relations and the recurrence relation call listed in $main$. 
+
+These changes will translate the example in Fig.~\ref{fig:ts1} to that shown in Fig.~\ref{fig:ts2}.
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[language=Miranda]{ts2.m}
@@ -865,9 +901,22 @@ Since the $\_list$ functions are now contained within a wrapper function calls t
 \subsection{A Global Output List}
 In InterDyne a simulator harness is used to mediate the messages sent between different agents, here the first step for the creation of this harness will be added in the form of a global output list. 
 
-This is done by creating a function, $s\_outputs$, that collects the outputs from all the agents and returns an infinite list containing these outputs. Because InterDyne has a circler structure for its message passing through time, requiring the agents to take a message at the beginning of every time step, a initial set of messages is added to the front of this list. These initial values are set as zero to represent a null value, but to still give an agent a message to consume on the first time step. 
+This is done by creating a list of the simulation outputs, $s\_outputs$, that collects the outputs from all the agents and returns an infinite list containing these outputs, the structure of this function is shown in Fig.\ref{fig:gl3}. Because InterDyne has a circler structure for its message passing through time, requiring the agents to take a message at the beginning of every time step, a initial set of messages is added to the front of this list. These initial values are set as zero to represent a null value, but to still give an agent a message to consume on the first time step. The simulation outputs list, with the addition of null values is shown in Fig.~\ref{fig:glnv3}. 
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{gl3.m}
+	\caption{\it  An infinite list in time containing the values of every recurrence relation at each time step.}
+	\label{fig:gl3}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{glnv3.m}
+	\caption{\it  An infinite list in time containing the values of every recurrence relation at each time step, with null values at the start of the list.}
+	\label{fig:glnv3}
+\end{figure}  
 
-This new list of all agents outputs can now be used to refer to values produced by other agents. The list produced by $s\_outputs$ is an infinite list in time,  containing lists for each time step which contain a list for each agent containing all the values for that time step produced by that agent. 
+
+This new list of all agents outputs can now be used to refer to values produced by other agents. The list produced by $s\_outputs$ is an infinite list in time. Containing lists for each time step, which contain a list for each agent, containing all the values for that time step produced by that agent. Since this list contains null values at the head, to get a value for a time step of $t-1$, the list needs to be indexed by $t$.
 
 Translating Fig.~\ref{fig:ts2} to contain this global output list and to index into it for retrieving values from other agents produces Fig.~\ref{fig:ts3}.
 \begin{figure}[H]
@@ -878,7 +927,7 @@ Translating Fig.~\ref{fig:ts2} to contain this global output list and to index i
 \end{figure} 
 
 
-\subsection{Agent Input Lists}
+\subsection{Agent Input Lists}%here
 In InterDyne an agent is only able to access information sent to it in the form of messages. These messages take one time step to arrive at the agent and hence have the effect of only allowing the agent to use information sent to it one time step ago (if a message is sent at $t-1$ the agent will receive it for use at $t$). Here the beginnings of message passing will be added, by allowing each wrapper to take inputs that contain the outputs list and then internally forcing the wrappers to only use the information in this list from the previous time step. 
 
 For this functionality to be added a number of aspects from the previous translation need to be altered, these are: the output list, the wrappers, and the creation of a new type of wrapper.  
@@ -1216,61 +1265,61 @@ This assessment of the resemblance between the final product of this translation
 
 
 \subsection{Translation Semantic Considerations} %maybe call it Translation Testing
+
+
 Though the translation can be seen to produce an InterDyne simulation, the question still remains about the correctness of the steps in this process. Here two arguments for the correctness of meaning of this approach will be presented.  
 
 The first argument is that each step can be seen as nothing more then a reformatting of the information and experiment already presented. With new structures such as types being nothing more then wrappers for data that is then extracted and treated as before. This reformatting creates no new information in the experiment, with reverse engineering used to create aspects that may have added new information, such as introducing messages sent from a sender to a receiver in place of a receiver calling on a sender to get the information.   
 
-The second argument relates to the functionality of each step, if each step can produce the same outputs given the same inputs then they are likely equivalent. To test the functionality each step was converted into a Miranda program, where the experiment time of $3$ was replaced by an input value, which could be executed. These programs were then run using a large selection of time stamps, including zero, and the values were compared as an equality. This returned a value of $True$, showing that the outputs for each step given the same inputs were identical. 
+The second argument relates to the functionality of each step, if each step can produce the same outputs given the same inputs then they can be seen as numerically equivalent. To test the functionality, each step was converted into a Miranda program, where the experiment time of $3$ was replaced by an input value, which could be executed. The initial recurrence relation model and each step were then run for a selection of five different time steps (0, 1, 2, 3 and 4). Table~\ref{tbl:meanfield_compare_to_Ising} shows the results from these runs, as can been seen all steps produced the same output. This shows, at least for the values tested, the numerical equivalence between each step of the translation and hence between the initial recurrence relation model and the final agent-based model. 
+\begin{table}[H]
+  \caption{\it The output value of the initial recurrence relation model and each translation step at the five different time steps (0, 1, 2, 3, 4, 5).}
+\begin{center}
+\begin{tabular}{ c|c|c|c|c|c|c|c|c|c } 
+    \hline \hline
+ Input & Initial & Step 1 & Step 2 & Step 3 & Step 4 & Step 5 & Step 6 & Step 7 & Step 8 \\ 
+ \hline\hline
+ 0 & 4 & 4 & 4 & 4 & 4 & 4 & 4 & 4 &4 \\ 
+ 1 & 20 & 20 & 20 & 20 & 20 & 20 & 20 & 20 &20 \\ 
+ 2 & 36 & 36  & 36  & 36  & 36  & 36  & 36  & 36  &36 \\ 
+ 3 & 145 & 145  & 145  & 145  & 145  & 145  & 145  &145  &145 \\ 
+ 4 & 2377 & 2377 & 2377 & 2377 & 2377 & 2377 & 2377 & 2377 &2377\\
+\end{tabular}
+\end{center}
+  \label{tbl:meanfield_compare_to_Ising}
+\end{table}
 
 These arguments suggest that this translation has steps that are equivalent and hence that the produced version of InterDyne is an equivalent representation of the initial recurrence relation experiment. 
 
-\subsection{Automated Translation Testing}
+\subsection{Automated Translation Implementation}
+Though the design of the translation has been shown, with an example being translated by hand, this is a long process to achieve for multiple experiments. The question hence arises, can this process be automated? Implementing this automation is outside the scope of this project, however the first three steps have been achieved and are shown below. 
 
-%now how we implement using miranda
-%lexer
-%parser
-%parse tree 
+The three aspects of implementation shown are, the lexer, the parser, and the first translation step. These steps are written in the Miranda functional language and allows for a text file contain an experiment written in the bespoke language to be translated into the first translation step. 
 
+The selected text file is read in by the lexer, this tokenises the list of characters using the lexemes show Fig.\ref{fig:tokens}. These lexemes represent each item that is allowed as part of the bespoke recurrence relation language, these can be keywords or symbols. Tokenising these items adds meaning to them, for example a list of characters could be identified as a variable or as a recurrence relation, the lexemes hold this information. 
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{tokens.m}
+	\caption{\it Definition of allowed lexemes for tokenising a list of characters.}
+	\label{fig:tokens}
+\end{figure} 
 
-%can say using miranda (refer to the miranda textbook)
-%(in chapter 6)
-%type name ::= algerbaic type dfintion 
-% ::= paremneted value | paremented value
-%::= Name <-construtor 
-%::= Name num <-associated data
- %to help specifiy this precises here is the miranda algibrict type 
+When passing characters to the lexer it is assumed that they are in keeping with the rules of the bespoke recurrence relation language. The lexer has no knowledge of this language, passed its keywords and symbols, and will tokenise everything according to this. If a character or string of charters is passed that does not match any of the known keywords  or symbols, it will be interpreted as a variable name and saved as such. This lexer does not use spaces so all tokenising will be done strictly on the characters order and not their spacing, this also allows a experiment to be passed as a single continuous line if one wished. 
 
-
-%\begin{figure}[H]
-%	\centering
-%	\lstinputlisting[language=Miranda]{Syntax_Def.lit.m}
-%	\caption{\it Formal definition of syntax within bespoke recurrence relation, written in style of Miranda type definitions.}
-%	\label{fig:parsetreecode}
-%\end{figure} 
-
-
-
-
-%talk about this process in more detail 
-
-%autamted translated testing, 
-%we show below it is shown how this is achived 
-
-Though the design of the translation has been shown, with an example being translated by hand, this is a long process to achieve for multiple experiments. The question hence arises, can this process be automated? Here it is shown that automation of this processes can be achieved, this automation is however outside the current project scope and hence only the first three steps will be done to show that it is possible. The first three steps of this automation are shown in the appendix but will be described here. 
-
-The recurrence relation experiment is first passed to the translation program as a list of characters, therefore the first step in the program is to give these characters some meaning. This is done using a lexer, this part of the program reads in the list of characters and looks for keywords or symbols to tokenise. These tokens are contained in a list of lexemes which represent all items that can be passed to this program. The lexer produces a new list tokens, with each token a defined meaning to the program, such as representing an equals sign or a variable.     
-
-When passing characters to the lexer it is assumed that they are in keeping with the rules of the bespoke recurrence relation language. The lexer has no knowledge of this language passed its keywords and symbols and will tokenise everything according to this. If an character or string of charters is passed that does not match any of the known keywords  or symbols, it will be interpreted as a variable name and saved as such. This lexer does not use spaces so all tokenising will be done strictly on the characters order and not their layout, this also allows a experiment to be passed as a single continuous line if one wished. 
-
-The next step after tokenising the input is to add a structure to this list of tokens, this is done using a parser. The parser reads in the list of tokens and knows the BNF and structure a recurrence relation experiment should take. The parser uses this knowledge of the layout and the meaning of the tokens to translate the token list into a parse tree created in custom numeric type to represents this experiment.  
+The next step after tokenising the input is to add a structure to this list of tokens, this is done using a parser. The parser reads in the list of tokens and knows the BNF and structure a recurrence relation experiment should take. The parser uses this knowledge of the layout and the meaning of the tokens to translate the token list into a parse tree created to represents this experiment, shown in Fig.~\ref{fig:parsetreecodemira}.  
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{Syntax_Def.lit.m}
+	\caption{\it Parse tree, written in Miranda, to store the structure and data of the passed experiment.}
+	\label{fig:parsetreecodemira}
+\end{figure} 
 
 The parser expects for the tokens given to it to conform to the rules and layout of the bespoke recurrence relation language, this includes containing a $main$ with an experiment, a $init$ though this can be empty, and a $where$ with a list of recurrence relations (this can be a single recurrence relation). Any formatting that does not match the formatting rules of this language will cause the parser to crash. However the actual function of the recurrence relations can be incorrect, causing black holes or other issues, but will still be parsed correctly.
 
-Once in this structure a function can be used to translate the recurrence relation experiment into the first step in the translation (to allow for infinite list outputs). This is done by reading in this numeric type and then creating a new version of this numeric type that is translated identically apart from the aspects that need to be changed to allow for the translation step. 
+Once in this structure a translation function can be used to translate the recurrence relation experiment into the first step in the translation (to allow for infinite list outputs). This is done by reading in this numeric type and then creating a new version of this numeric type that is translated identically apart from the aspects that need to be changed to allow for the translation step. 
 
 This translation step should never crash as the format passed to it should always be correct, with an incorrect format causing the parser to crash. This translation step also only focusses on the format of the experiment and any actual functionality could be incorrect but will still be correctly translated. 
 
-For later steps that introduce aspects not covered in the original numeric type, a new numeric type needs to be created to allow for these new aspects of functionality, such as message types. Though these first three steps are only a small aspect of an automated translation, they show that this is achievable.    
 
 
 
@@ -1294,10 +1343,13 @@ The two models created for the example system, the recurrence relation model and
 
 The method presented in this dissertation both formalises and familiarises agent-based models with recurrence relations. Allowing one familiar with recurrence relations to be introduced to agent-based models and to increase their understanding of this technique. 
 
-\subsection{Discussion and Further work }
+\subsection{Discussion and Further work } \label{furtherwork}
 %in fruther work
 %implimitation of delays as explained here, is correct presevers the meaning of the origin, but for large simulations might have a high over head, due to the number of agents being created and messages.
 %a final step would be to convert from this to the Interdyne system, where these agentas are incoperated in the simularot harness 
+
+%about automation 
+%For later steps that introduce aspects not covered in the original numeric type, a new numeric type needs to be created to allow for these new aspects of functionality, such as message types. Though these first three steps are only a small aspect of an automated translation, they show that this is achievable.    
 
 
 This project builds the foundations for a number of additional extensions to be done. Three particular extensions to note are: implementing a the full translation, proving the correctness of the translation, and creating a reverse translation.     

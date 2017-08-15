@@ -1,6 +1,8 @@
 simulation ::= Simulation [definition] experiment
 
-definition ::= Function [char] [char] [argument] expression
+definition ::= [expression] recrel
+
+recrel ::= Function [char] [char] [argument] expression
 
 argument::= Argument expression
 

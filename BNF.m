@@ -1,6 +1,8 @@
 <simulation> ::= ``Simulation'' [<definition>] <experiment>
 
-<definition> ::= ``Function'' [<letter>] [<letter>] [<argument>] <expression>
+<definition> ::= [<expression>] <recrel>
+
+<recrel> ::= ``Function'' [<letter>] [<letter>] [<argument>] <expression>
 
 <argument> ::= ``Argument'' <expression>
 
