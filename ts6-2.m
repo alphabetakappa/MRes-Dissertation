@@ -6,7 +6,7 @@ i_wrapper inputs t = outbound_messages_this_timestep : (i_wrapper future_message
                                                        where
                                                        res = i_f1 t
                      i_f1 0 = q
-                     i_f1 t = cond (t<0) 0 (i_f1_last_timestep + j_f1_last_timestep)
+                     i_f1 t = cond (t<0) 0 (i_f1_last_timestep + j_f1_2last_timestep)
                               where
                               i_f1_last_timestep  = (thd3.hd) ((inbound_messages_this_timestep!0)!0)
                               j_f1_2last_timestep = (thd3.hd) ((inbound_messages_this_timestep!3)!0)

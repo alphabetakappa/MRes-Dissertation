@@ -19,6 +19,6 @@ jf1_delay inputs t = outbound_messages_this_timestep : (jf1_delay future_message
                                                        g xs = filter h xs
                                                        h (a,b,c) = ((b=4) \/ (a,b,c) = (0,0,0))
                      future_messages                 = tl inputs
-                     outbound_messages_this_timestep = [[(4, 4, jf1_current)], [(4, 1, jf1_delayed)]]
-                     jf2_current = (thd3.hd) ((inbound_messages_this_timestep!1)!0)
-                     jf2_delayed = (thd3.hd) ((inbound_messages_this_timestep!3)!0)
+                     outbound_messages_this_timestep = [[(4, 1, jf1_delayed t)]]
+                     jf1_delayed 0 = k
+                     jf1_delayed t = (thd3.hd) ((inbound_messages_this_timestep!1)!0)

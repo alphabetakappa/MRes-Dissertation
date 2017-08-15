@@ -5,7 +5,7 @@ i_wrapper inputs t = outbound_messages_this_timestep : (i_wrapper future_message
                      outbound_messages_this_timestep = [(i_f1 t)]
                      i_f1 0 = q
                      i_f1 t = cond (t<0) 0
-                              ( ((inbound_messages_this_timestep!0)!0) +((inbound_messages_this_timestep!3)!1))
+                              ( ((inbound_messages_this_timestep!0)!0) +((inbound_messages_this_timestep!3)!0))
 j_wrapper inputs t = outbound_messages_this_timestep : (j_wrapper future_messages (t+1))
                      where
                      inbound_messages_this_timestep  = hd inputs
@@ -36,6 +36,6 @@ jf1_delay inputs t = outbound_messages_this_timestep : (jf1_delay future_message
                      where
                      inbound_messages_this_timestep  = hd inputs
                      future_messages                 = tl inputs
-                     outbound_messages_this_timestep = [(jf1_current), (jf1_delayed)]
-                     jf1_current = ((inbound_messages_this_timestep!1)!0)
-                     jf1_delayed = ((inbound_messages_this_timestep!3)!0)
+                     outbound_messages_this_timestep = [(jf1_delayed t)]
+                     jf1_delayed 0 = k
+                     jf1_delayed t = ((inbound_messages_this_timestep!1)!0)

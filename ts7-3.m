@@ -15,6 +15,7 @@ jf1_delay localstate args inputs id = outbound_messages_this_timestep : (jf1_del
                                       inbound_messages_this_timestep  = snd (hd inputs)
                                       future_messages                 = tl inputs
                                       t                               = fst (hd inputs)
-                                      outbound_messages_this_timestep = [[(id, 4, jf1_current t)], [(id, 1, jf1_delayed t)]]
-                                      jf2_current = (thd3.hd) ((inbound_messages_this_timestep!1)!0)
-                                      jf2_delayed = (thd3.hd) ((inbound_messages_this_timestep!3)!0)
+                                      outbound_messages_this_timestep = [[(id,1,jf1_delayed t)]]
+                                      k = (getargval.hd) (filter ((="k").getargstr) args)
+                                      jf1_delayed 0 = k
+                                      jf1_delayed t = (thd3.hd) ((inbound_messages_this_timestep!1)!0)

@@ -10,6 +10,7 @@ i_f1_list = _createlist i_f1 0
             where
             _createlist f t = (f t):(_createlist f (t+1))
             i_f1 0 = q
+            i_f1 1 = (i_f1_list ! 0 ) + k
             i_f1 t = (i_f1_list ! (t-1) ) + (j_f1_list ! (t-2))
 j_f1_list = _createlist j_f1 0
             where

@@ -7,7 +7,7 @@ agentinfo = [(i_wrapper,[]), (j_wrapper, []), (k_wrapper, []), (jf1_delay, [])]
 h_sim x args agents = (thd3.hd) (((snd (outputs!x))!0)!0)
                       where
                       newnullvalue = [(0,0,0)]
-                      niloutputs = [[newnullvalue], [newnullvalue, newnullvalue], [newnullvalue], [newnullvalue, newnullvalue]]
+                      niloutputs = [[newnullvalue], [newnullvalue, newnullvalue], [newnullvalue], [newnullvalue]]
                       outputs = zip2 [0..] (niloutputs : (redactedoutputs))
                       redactedoutputs = transpose (map apply_to_args (zip2 [1..] agents))
                                         where

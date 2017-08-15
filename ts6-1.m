@@ -9,7 +9,7 @@ where
 h_sim x = (thd3.hd) (((outputs!x)!0)!0)
           where
           newnullvalue = [(0,0,0)]
-          niloutputs   = [[newnullvalue], [newnullvalue, newnullvalue], [newnullvalue], [newnullvalue, newnullvalue]]
+          niloutputs   = [[newnullvalue], [newnullvalue, newnullvalue], [newnullvalue], [newnullvalue]]
           outputs      = niloutputs : redactedoutputs
           redactedoutputs = transpose [ i_wrapper i_inputs 0 ,j_wrapper j_inputs 0 ,k_wrapper k_inputs 0, jf1_delay jf1_inputs 0 ]
                             where
