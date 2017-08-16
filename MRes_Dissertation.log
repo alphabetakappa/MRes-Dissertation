@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  15 AUG 2017 20:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  16 AUG 2017 17:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -799,15 +799,21 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 (./bnflex.m) [25] (./BNF.m) [26] [27] [28] (./1layout.m) (./2experment.m)
 (./3initcons.m) (./4rrsim.m) (./5rrint.m) [29] (./6rrif.m) (./7rrwhere.m)
 (./8full.m) [30] (./rrexam.m) [31] (./cl1.m) (./ts1.m) [32] [33] (./ts2.m)
-(./gl3.m) (./glnv3.m) [34] (./ts3.m) [35] [36] (./souts4.m) (./wrap4.m)
-(./delay4.m) [37] (./ts4-1.m) (./ts4-2.m) [38] [39] (./outmes5.m) (./sort5.m)
+(./gl3.m) (./glnv3.m) [34] (./ts3.m) [35] (./souts4.m) [36] (./wrap4.m)
+Overfull \hbox (25.52376pt too wide) in paragraph at lines 952--953
+[]\OT1/cmr/m/n/10 A de-lay agent is a new wrap-per named in the for-mat $\OML/c
+mm/m/it/10 functionname[]elay$\OT1/cmr/m/n/10 , where $\OML/cmm/m/it/10 functio
+nname$
+ []
+
+[37] (./delay4.m) (./ts4-1.m) (./ts4-2.m) [38] [39] (./outmes5.m) (./sort5.m)
 [40] (./ts5-1.m) (./ts5-2.m) [41] (./ts5-3.m) [42] (./harn6.m) [43] (./ts6-1.m)
 (./ts6-2.m) [44] (./ts6-3.m) [45] (./harn7.m) [46] (./wrap7.m) (./ts7-1.m)
 [47] (./ts7-2.m) [48]
 Overfull \vbox (40.26486pt too high) has occurred while \output is active []
 
 
-[49] (./ts7-3.m) [50] (./filter8.m) (./harn8.m) [51] (./ts8-1.m) (./ts8-2.m)
+[49] (./ts7-3.m) [50] (./filter8.m) (./harn8.m) (./ts8-1.m) [51] (./ts8-2.m)
 [52] (./ts8-3.m) [53] (./ts8-4.m) [54] [55] (./harntypint.m) (./harntyptrans.m)
 (./agentpint.m) (./agenttrans.m) [56] [57] (./tokens.m) (./Syntax_Def.lit.m)
 [58] [59] [60] [61] [62] [63] (./MRes_Dissertation.bbl
@@ -830,13 +836,13 @@ resnovae.org.uk/fccsuclacuk/images
 
 [67]) [68] (./MRes_Dissertation.aux) ) 
 Here is how much of TeX's memory you used:
- 7673 strings out of 493014
- 108422 string characters out of 6133350
+ 7672 strings out of 493014
+ 108406 string characters out of 6133350
  1007202 words of memory out of 5000000
- 10935 multiletter control sequences out of 15000+600000
+ 10934 multiletter control sequences out of 15000+600000
  12467 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,11n,43p,1945b,1730s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,11n,43p,1504b,1730s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/t
@@ -859,7 +865,7 @@ fb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><
 /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></
 usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on MRes_Dissertation.pdf (68 pages, 635594 bytes).
+Output written on MRes_Dissertation.pdf (68 pages, 636716 bytes).
 PDF statistics:
  322 PDF objects out of 1000 (max. 8388607)
  219 compressed objects within 3 object streams

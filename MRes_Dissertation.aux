@@ -192,7 +192,7 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {28}{\ignorespaces \it  Example of part of a wrapper function form after addition of inputs for the wrapper functions.\relax }}{37}}
 \newlabel{fig:wrap4}{{28}{37}}
 \@writefile{lol}{\contentsline {lstlisting}{delay4.m}{38}}
-\@writefile{lof}{\contentsline {figure}{\numberline {29}{\ignorespaces \it  Example of a delay wrapper that repeatedly sends its self a value till it passes this on to the intended recipient.\relax }}{38}}
+\@writefile{lof}{\contentsline {figure}{\numberline {29}{\ignorespaces \it  Example of a delay wrapper that delays the first value from the second wrapper, so that a value from $t-2$ is received at t.\relax }}{38}}
 \newlabel{fig:delay4}{{29}{38}}
 \@writefile{lol}{\contentsline {lstlisting}{ts4\textendash 1.m}{38}}
 \newlabel{fig:gull}{{30a}{38}}
@@ -204,7 +204,7 @@
 \newlabel{fig:ts4}{{30}{39}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Targeted Information Passing}{40}}
 \@writefile{lol}{\contentsline {lstlisting}{outmes5.m}{40}}
-\@writefile{lof}{\contentsline {figure}{\numberline {31}{\ignorespaces \it  Example of part of a wrapper that is sending two messages containing the same value. These messages come from this wrapper, which is the first wrapper (1), and are sent: to itself (1), and to the second wrapper (2).\relax }}{40}}
+\@writefile{lof}{\contentsline {figure}{\numberline {31}{\ignorespaces \it  Example of part of a wrapper that is sending two messages containing the same value. These messages come from this wrapper, which is the first wrapper (1), and are sent: to itself (1), and to the second wrapper (2). Here $logic1$ is just used to show where the logic would be and that this produces the output values, as well as what inputs this takes in.\relax }}{40}}
 \newlabel{fig:outmes5}{{31}{40}}
 \@writefile{lol}{\contentsline {lstlisting}{sort5.m}{41}}
 \@writefile{lof}{\contentsline {figure}{\numberline {32}{\ignorespaces \it  Example of part of a wrapper that is used to sort the input off all messages and only return the ones directed at this wrapper.\relax }}{41}}
@@ -222,7 +222,7 @@
 \newlabel{fig:ts5}{{33}{43}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.6}A Simulator Harness}{43}}
 \@writefile{lol}{\contentsline {lstlisting}{harn6.m}{44}}
-\@writefile{lof}{\contentsline {figure}{\numberline {34}{\ignorespaces \it  Example of how the harness function $h\_sim$ is formatted for two wrappers. This function produces the output for the system and in the process mediates the passing of messages between wrappers, only allowing a wrapper to receive messages sent to it.\relax }}{44}}
+\@writefile{lof}{\contentsline {figure}{\numberline {34}{\ignorespaces \it  Example of how the harness function $h\_sim$ is formatted for two wrappers. This function produces the output for the system and in the process mediates the passing of messages between wrappers, only allowing a wrapper to receive messages sent to it. The function $listfuction$ represents the null value list, which uses the value $newnullvalue$.\relax }}{44}}
 \newlabel{fig:harn6}{{34}{44}}
 \@writefile{lol}{\contentsline {lstlisting}{ts6\textendash 1.m}{44}}
 \newlabel{fig:ts61}{{35a}{44}}
@@ -237,10 +237,10 @@
 \newlabel{fig:ts6}{{35}{46}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.7}Runtime Arguments}{46}}
 \@writefile{lol}{\contentsline {lstlisting}{harn7.m}{47}}
-\@writefile{lof}{\contentsline {figure}{\numberline {36}{\ignorespaces \it  Example of how the harness function $h\_sim$ is formatted when using runtime arguments.\relax }}{47}}
+\@writefile{lof}{\contentsline {figure}{\numberline {36}{\ignorespaces \it  Example of how the harness function $h\_sim$ is formatted when using runtime arguments. The function $listfuction$ represents the null value list, which uses the value $newnullvalue$.\relax }}{47}}
 \newlabel{fig:harn7}{{36}{47}}
 \@writefile{lol}{\contentsline {lstlisting}{wrap7.m}{47}}
-\@writefile{lof}{\contentsline {figure}{\numberline {37}{\ignorespaces \it  Example of how a wrapper function is formatted when passing the arguments: localstate, args, inputs and id.\relax }}{47}}
+\@writefile{lof}{\contentsline {figure}{\numberline {37}{\ignorespaces \it  Example of how a wrapper function is formatted when passing the arguments: localstate, args, inputs and id. Here $logic1$ is just used to show where the logic would be and that this produces the output values, as well as what inputs this takes in.\relax }}{47}}
 \newlabel{fig:wrap7}{{37}{47}}
 \@writefile{lol}{\contentsline {lstlisting}{ts7\textendash 1.m}{48}}
 \newlabel{fig:ts71}{{38a}{48}}
@@ -257,9 +257,9 @@
 \@writefile{lol}{\contentsline {lstlisting}{filter8.m}{51}}
 \@writefile{lof}{\contentsline {figure}{\numberline {39}{\ignorespaces \it  Example of the filtering process for returning message values, here the value from function $i\_f1$ sent by wrapper one is being searched for, when it is found it will be saved to the variable $i\_f1\_last\_timestep$.\relax }}{51}}
 \newlabel{fig:filter8}{{39}{51}}
-\@writefile{lol}{\contentsline {lstlisting}{harn8.m}{52}}
-\@writefile{lof}{\contentsline {figure}{\numberline {40}{\ignorespaces \it  Simulator harness for translation comparable to InterDynes simulator harness.\relax }}{52}}
-\newlabel{fig:harn8}{{40}{52}}
+\@writefile{lol}{\contentsline {lstlisting}{harn8.m}{51}}
+\@writefile{lof}{\contentsline {figure}{\numberline {40}{\ignorespaces \it  Simulator harness for translation comparable to InterDynes simulator harness.\relax }}{51}}
+\newlabel{fig:harn8}{{40}{51}}
 \@writefile{lol}{\contentsline {lstlisting}{ts8\textendash 1.m}{52}}
 \newlabel{fig:ts81}{{41a}{52}}
 \newlabel{sub@fig:ts81}{{a}{52}}

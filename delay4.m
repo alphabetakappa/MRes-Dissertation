@@ -1,7 +1,6 @@
-jf1_delay inputs t = outbound_messages_this_timestep : (jf1_delay future_messages (t+1))
+jf1 delay inputs t = outbound messages this timestep : (jf1 delay future messages ( t+1))
                      where
-                     inbound_messages_this_timestep  = hd inputs
-                     future_messages                 = tl inputs
-                     outbound_messages_this_timestep = [(jf1_current), (jf1_delayed)]
-                     jf1_current = value from initial wrapper
-                     jf1_delayed = previous jf1_current value 
+                     inbound messages this timestep = hd inputs
+                     future messages = tl inputs outbound messages this timestep = [( jf1 delayed t) ]
+                     jf1 delayed 0 = k
+                     jf1 delayed t = (( inbound messages this timestep !1) !0)
