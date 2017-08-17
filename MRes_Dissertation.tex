@@ -96,44 +96,47 @@
 
 
 
-
 %chris help
 
 
-% in section 5.5 your code has thd3.hd, why is this hd there? you have already headed the inputs list hence returning a list of the wrappers for that time step. So why head again? is this because each set of messages are in their own list?
-
-
-%how does . work as i cant get it to work thd3.hd
-
-
-%is my bnf alright?
-
-%line (is this right? (checker))
-
 %some questions in paper under help 
 
-%should I add the translation in appendex (its going to be long) (and how should i lay iit out)
 
-%should I add the mirand version in appendix? 
 
-%should i not say how to run an interdyne simulation as its not relevant and kinda contradictory? 
+%folyers english 
 
-%is my front page alright?
 
+
+
+%tell chris to look at my new section "Method for Achieving a Translation" as I have changed it a bit to hopefully cover the issues he had 
+
+%look at line help
+
+%tell chris i have rewritten bespoke rr 
 
 %%%%%%%%%%%%%%%%to do%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%1rewrite bespoke rr
+
+%2make sure appendixes match the paper 
+
+
 
 %%%%%%%%%%rewrite%%%%%%%%%%%%
 
 %%%%%%%%%%finish%%%%%%%%%%%%%
 
-%3write conversion code.  parser, first step
+%3create transformation program 
+
+%4write conversion code.  parser, first step
 
 
 %%%%%%%%%%%add%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%side things%%%%%%%%%%%%%%
+%5replace $'$ with \textsc{\char13}
+
 
 
 %%%%%%%%%%%%%proof%%%%%%%%%%%%%%%%%% 
@@ -188,8 +191,7 @@ I, Leo Carlos-Sandberg, confirm that the work presented in this dissertation is 
 \newpage
 \begin{abstract}
 \noindent {\it 
-This dissertation investigates a process to increase the acceptance of agent-based models by formalisation from recurrence %I couldnt read the writing so this is wrong (help)
-relation models. The work presented in this dissertation is designed to combat two main aspects that hinder the up take in agent-based models: a lack of a model-wide formalism, and a lack of familiarity to those unaccustomed to the technique. 
+This dissertation investigates a process to increase the acceptance of agent-based models by translation from recurrence relation models. The work presented in this dissertation is designed to combat two main aspects that hinder the up take in agent-based models: a lack of a model-wide formalism, and a lack of familiarity to those unaccustomed to the technique. 
 
 The importance of this work relates in particular to the field of economics, where agent-based models are yet to become widely accepted. This lack of acceptance leads to an absence of work based on agent-based models in top economics journals. This creates a problem for modelling complex systems and emergent behaviour, as agent-based models are in many cases a natural modelling technique for these systems, due in part to their message passing behaviour.  
 
@@ -317,23 +319,23 @@ Feedback loops can encompass multiple entities, in Fig.~\ref{fig:exampletwofeedb
 \end{figure} 
 A loop such as the one in Fig.~\ref{fig:exampletwofeedback}, is only considered a feedback loop if information is passed through out the entire loop. If $E3$ produced a constant output, or an output that does not depend upon its input from $E2$, then this would not be a feedback loop as the new input to $E2$ does not depend on its output.
 
-These example are very simple, feedback loops can be much more complex, encompassing any number of entities, each of whom can have very complex algorithms for transforming their inputs. Feedback loops can operate across time, meaning that an event in the past can eventually feedback to a present decision. For a feedback loop containing a large number of entities the time scale on which the feedback occurs can be come significantly large.
+These examples are very simple, feedback loops can be much more complex, encompassing any number of entities, each of whom can have very complex algorithms for transforming their inputs. Feedback loops can operate across time, meaning that an event in the past can eventually feedback to a present decision. For a feedback loop containing a large number of entities the time scale on which the feedback occurs can be come significantly large.
 
-Though feedback loops are often assumed to be a negative property, some can be stabilising due to a benign effect.
+Though feedback loops are often assumed to be a negative property, some can be stabilising due to a benign effect~\cite{beginref}.
 
 Feedback loops can be present in a system in two ways, either they can be a constant fixture, called a static feedback loop, or they can form and change, called a dynamic feedback loop. A static feedback loop is present in the system from the start whether this is intentional and known, or unintentional and unknown to the members of the system. Dynamic feedback loops may not be present at the start and can form and change over time, with new entities joining or leaving them, allowing them to increase or decrease in size or effect, to split or merge, or to disappear.
 
-Due to the potential complexity of feedback loops both in construction and in time, they can be difficult to detect, therefore methods are usually used to expose them. For static loops, forms of static analysis can be used such as, analysing initial setup, this is possible since the loops do not change through out time. Dynamic loops can be much harder to observe and analyses, an important aspect to detecting these loops is the interactions, messages sent between different entities within the system. Since the loops can evolve over time being able to track and analyse these messages over a time series is vitally important for the analysis of these loops, this time dependent analyse is called dynamic analyse.
+Due to the potential complexity of feedback loops both in construction and in time, they can be difficult to detect, therefore methods are usually used to expose them. For static loops, forms of static analysis can be used such as analysing initial setup; this is possible since the loops do not change through out time. Dynamic loops can be much harder to observe and analyse, an important aspect to detecting these loops is the interactions, messages sent between different entities within the system. Since the loops can evolve over time being able to track and analyse these messages over a time series is vitally important for the analysis of these loops; this time dependent analyse is called dynamic analyse.
 
 Since feedback loops can be destabilising and damaging to the system in which they occur, there is interest in studying this emergence in the aim to prevent monetary loss and damage to the economy.
 
-A notable form of emergence behaviour, due to feedback loops, that takes place within the electronic markets are flash crashes. A flash crash is an event during which time the trading price of a security or commodity drops very rapidly, becoming disconnected from its fundamental, before then recovering~\cite{rareeventflashcrash}. A particularly famous flash crash is that of 2010, in which the E-min S\&P 500 equity futures market dropped in price by more then 5\%, before rebound to close to its original price~\cite{SECreport_delays, rareeventflashcrash}. This whole process occurred very rapidly, lasting approximately thirty-six minutes and has been described as``one of the most turbulent periods in their history'' for the US financial markets~\cite{Impact_hft}.
+Flash crashes are a notable form of emergence behaviour, due to feedback loops, that are considered damaging. These cause the price of a security or commodity to drop very rapidly, becoming disconnected from its fundamental, before then recovering~\cite{rareeventflashcrash}. A particularly famous flash crash is that of 2010, in which the E-mini S\&P 500 equity futures market dropped in price by more then 5\%, before rebounding to close to its original price~\cite{SECreport_delays, rareeventflashcrash}. This whole process occurred very rapidly, lasting approximately thirty-six minutes and has been described as``one of the most turbulent periods in their history'' for the US financial markets~\cite{Impact_hft}.
 
-Research done by Ref~\cite{DynamicCoupling_Chris, otherabmflash}, describes how the crash may have unfolded due to a feedback loop between High-Frequency Traders (HFTs), known as ``hot-potato'' trading.
+Research done by~\cite{DynamicCoupling_Chris, otherabmflash} describes how the crash may have unfolded due to a feedback loop between High-Frequency Traders (HFTs), known as ``hot-potato'' trading.
 
 HFTs are a subset of algorithmic traders who normally participate in the market as arbitrageurs or market makers, they invest in ultra-high speed technology allowing them to detect, analyses and react to market condition in nanoseconds \cite{hftinformation1}. This means HFTs can trade huge quantities of assets in very short time frames, with some estimates stating that 10-40\% of all trades where initiated by them during 2016 \cite{hftmarketparticipation}.
 
-The feedback loop of ``Hot Potato'' trading, is when inventory imbalance is repeatedly passed between HFTs market makers. A market maker is a trader who is required to have both a bid and a ask on the order book at all times, this means in theory that they are constantly buying and selling. A high frequency market maker as expected should be buying and selling very very often. Market makers make a profit from the spread and not long positions, hence they want to keep inventories low to avoid the market moving against them. To achieve this market makers have strict inventory limits that if they pass will cause them to go into what is know as a ``panic state'', during this state the trader will sell off an amount of its inventory to return back into its normal trading region. This inventory now sold by the market maker can be bought by another market maker causing them to in turn go into ``panic'' and sell, this process is ``Hot Potato'' trading and can in theory continue indefinitely~\cite{Elias_Paper}.
+The feedback loop of ``Hot Potato'' trading, is when inventory imbalance is repeatedly passed between HFT market makers. A market maker is a trader who is required to have both a bid and an ask on the order book at all times, this means in theory that they are constantly buying and selling. A high frequency market maker as expected should be buying and selling very very often. Market makers make a profit from the spread and not from long positions, hence they want to keep inventories low to avoid the market moving against them. To achieve this market makers have strict inventory limits that if they pass will cause them to sell off an amount of inventory to return back into their normal trading region. This inventory now sold by the market maker can be bought by another market maker perhaps causing them to exceed their limits and sell, this process is ``Hot Potato'' trading and can in theory be cyclic and continue indefinitely~\cite{Elias_Paper}.
 
 This constant selling and buying of inventory can artificially inflate the trading volume of the market, changing how many traders operate and potentially leading to a flash crash.
 
@@ -341,19 +343,19 @@ Flash crashes have occurred on a number of occasions and in a large selection of
 
 
 \subsection{Methods for Modelling Emergent Behaviour in Finance}  \label{litreviewofabmrr} 
-There are many different methods available for modelling system that may exhibit emergent behaviour, such as: 1-period, 2-period and multi-period models, probabilist models, like hidden Markov models, ordinary differential equations and partial differential equations~\cite{modles1, modles2, moldes3, moldes4}. This dissertation focusses on two models that can be used for discrete non-equilibrium system, recurrence relations and agent-based models. 
+There are many different methods available for modelling systems that may exhibit emergent behaviour, such as: 1-period, 2-period and multi-period models, probabilistic models (e.g. hidden Markov models), ordinary differential equations and partial differential equations~\cite{modles1, modles2, moldes3, moldes4}. This dissertation focusses on two models that can be used for discrete non-equilibrium system: recurrence relations and agent-based models. 
 
-Both recurrence relations and agent-based models have been used in modelling the financial markets and have had a number of papers published on the~\cite{rra10, rra1, abma2}.
+Both recurrence relations and agent-based models have been used in modelling the financial markets~\cite{rra10, rra1, abma2}.
 
 Recurrence relations have seen wide spread use in economics appearing in a large selection of journals, including numerous times in top journals~\cite{rra2, rra3, rra4, rra5, rra6, rra7, rra8, rra9}. This wide spread use of the technique implies the acceptance of recurrence relations within financial modelling.      
 
-Agent-based models also have a large selection of papers published on them relating to economics and finance~\cite{abma3, abma4}. However these papers are noticeably absent from top economics journals (with some exceptions, such as Ref.\cite{abmexp1} and~\cite{abmexp2}) and tend to be published in the Journal of Economic Behavior \& Organization and the Journal of Economic Development \& Control~\cite{whereabmp, farmerfoleynature}. The lack of agent-based models present in top economic journals combined with the number of papers published in other journals shows the lack of wide spread acceptance for this technique~\cite{agbntj, econmistsnoabm, lob_noecomimists}.
+Agent-based models are also used widely in economics and finance~\cite{abma3, abma4}. However these papers are noticeably absent from top economics journals (with some exceptions, such as~\cite{abmexp1} and~\cite{abmexp2}) and tend to be published in the Journal of Economic Behavior \& Organization and the Journal of Economic Development \& Control~\cite{whereabmp, farmerfoleynature}. The lack of agent-based models present in top economic journals combined with the number of papers published in other journals shows the lack of wide spread acceptance for this technique~\cite{agbntj, econmistsnoabm, lob_noecomimists}.
 
 Here these two modelling techniques will be described.  
 
 
-\subsubsection{Recurrences Relations} 
-Recurrence relations connect a discrete set of elements in a sequence, these elements are normally either numbers or functions, they can be used to define these sequences or produce the elements in them. They can be seen as equations that give the next term in a sequence based on the previous term or terms, hence defining said sequence. Recurrence relations are often used to define coefficients in series expansions, moments of weight functions, and members of families of special functions~\cite{recurrelationbook}.
+\subsubsection{Recurrence Relations} 
+Wimp~\cite{recurrelationbook} describes recurrence relations as follows, recurrence relations connect a discrete set of elements in a sequence, these elements are normally either numbers or functions, they can be used to define these sequences or produce the elements in them. They can be seen as equations that give the next term in a sequence based on the previous term or terms, hence defining said sequence. Recurrence relations are often used to define coefficients in series expansions, moments of weight functions, and members of families of special functions.
 
 The most simplistic form of a recurrence relation is one where the next term depends only on the immediately preceding term. If the $n^{th}$ element in the sequence is defined as  $x_{n}$, then this recurrence relation can be written as,    
 \begin{equation}
@@ -365,15 +367,15 @@ x_{n+1} = f(x_{n-1}, x_{n-2}),
 \end{equation}
 with $f()$ now taking two inputs to produce the new term in the sequence~\cite{recurrealtionwebpage}.
 
-Recurrence relations can also be used to define a sequence through time, in the simplest case the enumerate $n$, can be set to represent time $t$, this is applicable to discrete time as it requires set steps between the different times. Just as in the previous examples, the simplest recurrence relation is,  
+Recurrence relations can also be used to define a sequence through time. In the simplest case, the enumerate $n$ can be set to represent time $t$; this is applicable to discrete time as it requires set steps between the different times. Just as in the previous examples, the simplest recurrence relation is,  
 \begin{equation}
 x_{t+1} = f(x_{t}),
 \end{equation}
 where $x_{t}$ is the term at time $t$ and $f()$ gives the term at $t+1$ based on the term at $t$. Again this can be expanded to include terms from a number of previous time steps, allowing the memory of the sequence to be shown.
  
-A recurrences relation for defining a sequences may as well as depending upon previous terms, also depend upon some parameter, $\alpha$, this would give, in its simplest case, 
+A recurrence relation for defining a sequence may also depending upon some parameter,  $\alpha$, in its simplest case this can be written as, 
 \begin{equation}
-x_{n+1} = f(x_{n}; \alpha).
+x_{n+1} = f(x_{n}, \alpha).
 \end{equation}
 The next term in the sequence may not only depend on previous terms within its own sequence and parameters, it can also be conditional on another sequence. For example one sequence through out time, $x$, may depend on another sequence through out time, $y$, a simple recurrence relation for this could be,
 \begin{equation}
@@ -391,18 +393,12 @@ These cross sequence associations allow for complex interactions to be represent
 
 Recurrence relations have a number of benefits given by their construction, such as:
 \begin{itemize}
-    \item Giving a mathematical system-wide formalisation.
-    \item Showing an obvious link between equations within the system.
-    \item Giving a static representation of the system.
+    \item A mathematical formalisation of the whole system being modelled is given when using recurrence relations due to three factors: the way in which they model the whole system as an entity, the static view point they give to the system, and the mathematical stye which they take~\cite{rrformulism}.
+    \item Links within sets of recurrence relations are hard coded into the equations, making these relationships amenable to static analysis.  
+    \item This model lays out both the functionality of each equation and the relation between them in such a way to give a static representation of the system as a whole. 
 \end{itemize}
 
-A mathematic formalisation of the whole system being model is given when using recurrence relations due to three factors: the way in which they model the whole system as a entity, the static view point they give to the system and the mathematical stye which they take~\cite{rrformulism}.  %is this right?(checker)
-
-Links within sets of recurrence relations are hard coded into the equations, making these relationships amenable to static analysis.      
-
-This model lays out both the functionality of each equation and the relation between them in such a way to give a static representation of the system as a whole. 
-
-A downside to this modelling technique comes with complex equations. Equations such as ones making function calls within conditional statements, can be become increasingly less amenable to static analyse for dependencies. This is a problem similar to determining whether arguments will be evaluated, and makes tracking the flow of information, especially dynamically, very difficult~\cite{willevaluteargsa}. This also leads to challenges in in tracking individual behaviour of recurrence relations or groups of recurrence relations~\cite{rrbtrack}.         
+A downside to this modelling technique comes with complex equations. Equations such as those making function calls within conditional statements, can be become increasingly less amenable to static analysis for dependencies. This is a problem similar to determining whether arguments will be evaluated, and makes tracking the flow of information, especially dynamically, very difficult~\cite{willevaluteargsa}. This also leads to challenges in in tracking the individual behaviour of recurrence relations or groups of recurrence relations~\cite{rrbtrack}.         
 
 
 
@@ -411,11 +407,11 @@ A downside to this modelling technique comes with complex equations. Equations s
 
 
 \subsubsection{Agent-Based Models}
-A modelling technique that takes a more dynamic approach is agent-based modelling. Agent-based modelling can be considered more of a mind set then a rigid methodology, this involves describing the system in question in terms of its components and then allowing these to interact. Agent-based models allow a system to be described naturally and are hence the canonical approach to modelling emergent phenomena. This method is a bottom up approach, allowing for each component of the system, agent of the model, to be created to a relevant degree of abstraction~\cite{abmhumsystems}.
+A modelling technique that takes a more dynamic approach is agent-based modelling. Agent-based modelling can be considered more of a mind set than a rigid methodology; this involves describing the system in question in terms of its components and then allowing these to interact. Agent-based models allow a system to be described naturally and are hence the canonical approach to modelling emergent phenomena. This method is a bottom up approach, allowing for each component of the system, agent of the model, to be created to a relevant degree of abstraction~\cite{abmhumsystems}.
 
 Agent-based models have been used to model a wide range of emergent behaviour including in the financial markets, examples of this are, noise traders~\cite{abmnoisetraders}, herding among traders~\cite{abmherding}, and fundamentalists~\cite{abmfundemetilists}.
 
-Agent-based models are particularly suited to system which, contain a number of autonomous components. Each component can be modelled independently and then allowed to interact through messages sent between each other. This allows for a obvious visual design of the system, such as that shown in Fig.~\ref{fig:abmii}.
+Agent-based models are particularly suited to systems that, contain a number of autonomous components. Each component can be modelled independently and then allowed to interact through messages sent between each other. This allows for an obvious visual design of the system, such as that shown in Fig.~\ref{fig:abmii}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{abmii}
@@ -426,25 +422,25 @@ The main aspect of this model is the agents used. Though every system modelled c
 \begin{itemize}
    \item An agent is self contained, unique and identifiable, this requires an agent to have boundaries which can easily be used to determine what is and what is not part of the agent. 
    \item An agent is autonomous and it can act independently during its interactions with other agents. Its has behaviour and decisions that can be associated with information acquired  during communication with other agents. 
-   \item An agents state varies over time, representing variables associated with its current position. 
-   \item An agent behaviour is influenced by dynamic interactions with other agents. 
+   \item An agent$'$s state varies over time, representing variables associated with its current position. 
+   \item An agent$'$s behaviour is influenced by dynamic interactions with other agents. 
 \end{itemize}
 
 This modelling technique has a number of benefits originating from its construction, these include:
 \begin{itemize}
    \item Being able to independently create each agent to varying degrees of complexity. 
-   \item Giving a clear visual representation of the systems interconnectedness.
+   \item Giving a clear visual representation of the system$'$s interconnectedness.
    \item Giving a dynamic representation of the system.
    \item Easily expandable by adding more agents.  
 \end{itemize} 
 
 Since each agent in the system can be completely autonomous and independent from each other, save for message passing, this allows for them to be created individually. Hence each agent can describe its relevant component to a relevant degree of complexity, making the creation of a simulation more intuitive and sectioned. This makes agent-based models in many cases the most natural way for describing systems composed of ``behavioural'' entities~\cite{techsadsProbsabm}.
 
-Do due the set up of this model a network representing the communication between different agents is easy to construct, this allows for topologies to be visualised and can aid in the creation of a simulation.    
+Due to the set up of this model a network representing the communication between different agents is easy to construct; this allows for topologies to be visualised and can aid in the creation of a simulation.    
 
-The use of messages and bottom up approach this model takes, allows for a more dynamic view of a system to be achieved, messages can be more easily tracked through out the systems evolution allowing for events to be more easily pinpointed and analysed.  
+The use of messages and a bottom-up approach in this model, allows for a more dynamic view of a system to be achieved; messages can be more easily tracked through-out the system$'$s evolution allowing for events to be more easily pinpointed and analysed.  
 
-The use of independent agents makes this technique very amenable to expansion, new agents can be added normally with little to no change to previously existing agents. This allows these simulations to be confidently expanded to look at more complex systems, or to add new elements to an existing system.  
+The use of independent agents makes this technique very amenable to expansion, new agents can often be added with little or no change to previously existing agents. This allows these simulations to be confidently expanded to look at more complex systems, or to add new elements to an existing system.  
 
 These aspects of this approach make the modelling technique well qualified for modelling and analyse of emergent behaviour within systems of interacting components. However this approach does contain some draw backs including a one-to-many problem (where, though some high level behaviour may be noted in the system, this does not mean the only way of achieving this behaviour is the current system design) and the lack of a formal definition for the system as a whole~\cite{agbntj}.  
 
@@ -453,15 +449,15 @@ These aspects of this approach make the modelling technique well qualified for m
 \subsection{InterDyne} \label{InterDyne_section}
 An example of an agent-based model used in modelling the financial markets is InterDyne. InterDyne is bespoke simulator created by Clack and his research team at UCL~\cite{Chris_webPage}, it is a general-purpose simulator for exploring emergent behaviour and interaction dynamics within complex non-equilibrium systems.
 
-InterDyne design is that of an agent-based model interacting via a harness. This creates a structure of individual autonomous agents who interact through messages sent through a harness to one another.
+InterDyne$'$s design is that of an agent-based model interacting via a harness. This creates a structure of individual autonomous agents who interact through messages sent through a harness to one another.
  
-Similar to other agent-based models InterDyne operates in discrete-time rather then continuous time. These quantised time chunks, which move the simulation forward, can be left without proper definition (allowing operations to be defined in a number of time steps) or they can be equated to a real time (usually with the smallest time gap needed being a single time step and then all other timings being integer multiples of this). This discrete time is most important to message passing, with messages between agents only sent on a integer time step.
+Similar to other agent-based models, InterDyne operates in discrete time rather then continuous time. These quantised time chunks, which move the simulation forward, can be left without proper definition (allowing operations to be defined in a number of time steps) or they can be equated to a real time (usually with the smallest time gap needed being a single time step and then all other timings being integer multiples of this). This discrete time is most important to message passing, with messages between agents only sent on an integer time step.
 
-Massages in InterDyne are just small packets of data, such as a series of numbers. An agent can send private messages that are only received by a single other agent (one-to-one messages), or it can send public broadcast messages received by any number of other agents, subscribed to a channel (one-to-many messages). To facilitate this a communication topology can be made for InterDyne, this is done in the form of a directed graph determining which agents can communicate with each other. Due to the directional nature of these messages this topology could allow an agent to send messages to another but not be able to receive messages from that same agent. Messages have a defined order to them, an agent will, unless otherwise instructed, always process messages in the order in which they arrive. To change the order in which messages arrive delays can be added to communication paths between agents, this can be a static delay which always applies to messages sent from one agent to another, meaning this will arrive a set number of time steps later. Or a more complex dynamic delay, which is achieved by using another agent to mediate the passing of these messages, delaying by an amount decided on in some internal logic. All messages in InterDyne are passed through a harness, this does not alter the messages or delay them,\footnote{Unless instructed to, using a static delay.} but does store the messages and their order which can be used in post analyse.
+Messages in InterDyne are small packets of data, such as a series of numbers. An agent can send private messages that are only received by a single other agent (one-to-one messages), or it can send public broadcast messages received by any number of other agents, subscribed to a channel (one-to-many messages). To facilitate this a communication topology can be made for InterDyne, this is done in the form of a directed graph determining which agents can communicate with each other. Due to the directional nature of these messages this topology could allow an agent to send messages to another but not be able to receive messages from that same agent. Messages have a defined order to them, an agent will, unless otherwise instructed, always process messages in the order in which they arrive. To change the order in which messages arrive delays can be added to communication paths between agents, this can be a static delay which always applies to messages sent from one agent to another, meaning this will arrive a set number of time steps later. Or a more complex dynamic delay, which is achieved by using another agent to mediate the passing of these messages, delaying by an amount decided on in some internal logic. All messages in InterDyne are passed through a harness; this does not alter the messages or delay them,\footnote{Unless instructed to, using a static delay.} but does store the messages and their order which can be used in post analyse.
         
-Each of the agents within an InterDyne simulation can be completely unique and modelled to different levels of complexity, as is the case with most agent-based models. As a whole InterDyne simulations are deterministic, repeated experiments will return identical results. However non-determinism can be added via the agents, making some part of an agent stochastic will lead to repeated experiments on the whole returning different results. A pseudo-random element can also be added by instructing InterDyne to randomly sort the message order for any agent receiving multiple messages in one time step. This is only pseudo-random as, as long as the same seed is used each run of the simulation will order the rearranged messages in the same way.\footnote{If an agent receives multiple messages at the same time step and the pseudo-random element is not being used, these messages will order based on the identifiers of their sender agents.}
+Each of the agents within an InterDyne simulation can be completely unique and modelled to different levels of complexity, as is the case with most agent-based models. As a whole InterDyne simulations are deterministic, repeated experiments will return identical results. However non-determinism can be added via the agents, making some part of an agent stochastic, and will lead to repeated experiments on the whole returning different results. A pseudo-random element can also be added by instructing InterDyne to randomly sort the message order for any agent receiving multiple messages in one time step. This is only pseudo-random as, as long as the same seed is used each run of the simulation will order the rearranged messages in the same way.\footnote{If an agent receives multiple messages at the same time step and the pseudo-random element is not being used, these messages will order based on the identifiers of their sender agents.}
 
-InterDyne is created to be particularly amenable to dynamic analyses of its simulations, this is achieved in part by all messages being sent via the harness allowing them to be stored in order.     
+InterDyne is created to be particularly amenable to dynamic analyses of its simulations, this is achieved in part by all messages being sent via the harness allowing them to be recorded for post processing.     
 
 
 \subsubsection{Applicability to Finance} \label{applicabilut_to_finance}
@@ -478,7 +474,7 @@ Allowing for messages to be delayed is needed to facilitate hypotheses involving
 InterDyne allows for both symmetric and asymmetric, delays. These delays can be static or dynamic, with dynamic delays requiring a special intermediary agent. 
 
 \paragraph{Storing Messages}
-InterDyne facilitates analyses of simulations be allowing for the messages between agents to be stored and viewed as a trace file. This can include all messages as well as timings, messages can also be sent directly to the harness which will be added to the trace file. 
+InterDyne facilitates analyses of simulations by allowing for the messages between agents to be stored and viewed as a trace file. This can include all messages as well as timings, and messages can also be sent directly to the harness which will be added to the trace file. 
   
 \paragraph{Message Ordering}
 The order in which messages are processed can be very important. For example in an exchange, it can change whose limit order has priority at a given price and whose market order executes the lowest prices. Changing these factors can make or break feedback loops within the system, meaning if message ordering is not properly dealt with the correct emergent behaviour may not be observed. Hence InterDyne stores messages in the order they are received by an agent, taking into account delays to the messages. This however can not be done when multiple messages are received at the same time step, due to the nature of discrete time there is no way for the agents to know which message arrived first. Therefore two options are presented by InterDyne; messages are ordered according to their agent identifier or messages are randomised and executed in the emerging order.
@@ -494,29 +490,29 @@ InterDyne is written in the functional language Haskell. The structure of an Int
 	\label{fig:harness_setupfigure}
 \end{figure} 
 %-topology and delays 
-InterDyne has a intrinsic delay, which means any message sent will not be received until the next time step, message sent at $t$ will be received the earliest at $t+1$. This is in part due to the fact that the harness compiles all messages from a single time step before sending them to their targets and hence initiating the next time step. The harness can be seen as the driver in the simulation sending out the message and forcing the agents to send their next message.   
+InterDyne has an intrinsic delay, which means any message sent will not be received until the next time step; message sent at $t$ will be received the earliest at $t+1$. This is in part due to the fact that the harness compiles all messages from a single time step before sending them to their targets and hence initiating the next time step. The harness can be seen as the driver in the simulation sending out the message and forcing the agents to send their next message.   
 
-Longer delays can also be added using InterDynes topology, this allows for any two agents to be selected (a sender and a receiver) and for a delay between them to be given. This topology takes the form of a directed graph, with the agents acting as the nodes and the interaction routes as the links, this allows for the delays to be asymmetrical. Using this, a delay for a path could also be set as a abort message, making a particular communication route unusable.  
+Longer delays can also be added using InterDynes topology, this allows for any two agents to be selected (a sender and a receiver) and for a delay between them to be given. This topology takes the form of a directed graph, with the agents acting as the nodes and the interaction routes as the links, this allows for the delays to be asymmetrical. Using this, a delay for a path could also be set as an abort message, making a particular communication route unusable.  
 
 Adding delays is done through run time arguments, here two run time arguments must be added, one stating the maximum delay in the system and the other listing the delays. To show the maximum delay the argument $(Arg (Str$  $``maxDelay", 10)))$ is used, where $10$ is the maximum delay. To add the list of delays the argument $(DelayArg (Str$  $``DelayArg", delay))$ is used, where $delay$ is a function that takes two agents and returns the delay between the first and the second. 
 %-what a message looks like 
 
-Messages sent between agents can in theory be as complex as needed, these messages do however have to comprise of these components: 
+Messages sent between agents can in theory be as complex as needed, these messages do however have to comprise of the following components: 
 \begin{itemize}
    \item A tag indicating the type of message being sent, e.g. a broadcast message.
    \item A tuple of two integers, with the first being the sending agents ID and the second being either the receiving agents ID or the receiving broadcast channels ID.  
    \item The data that is being sent. 
 \end{itemize}
-An example of this is a one-to-one message, which would look like $Message$ $(1, 2)$ $data$, where $data$ is the information being sent from agent $1$ to agent $2$ 
+An example of this is a one-to-one message, for example $Message$ $(1, 2)$ $data$, where $data$ is the information being sent from agent $1$ to agent $2$ 
 
-A broadcast message, which looks like $Broadcastmessage$ $(3, 1)$ $broadcastdata$, can be received by agents subscribed to its channel, in this case $1$. All agent subscriptions have to be announced at the beginning of a simulation and can not be changed during it. This is done by adding the subscription channel to the list in a tuple passed as an argument, for example this could look like $(agent1, [1])$, for agent 1 subscribed to broadcast channel one.
+A broadcast message, for example $Broadcastmessage$ $(3, 1)$ $broadcastdata$, can be received by agents subscribed to its channel, in this case $1$. All agent subscriptions to broadcast channels have to be announced at the beginning of a simulation and can not be changed during it. This is done by adding the subscription channel to the list in a tuple passed as an argument, for example this could look like $(agent1, [1])$, for agent 1 subscribed to broadcast channel one.
 
 Empty messages can also be sent, if the message is required to be known to be intentionally empty and not a mistake, the a message can be sent containing ``Hiaton''. This is done at the beginning of the run to allow for the harness to send a first message. 
 %-what is an agent in interdyne and what is its type
 
-InterDyne is designed in such a way that agents both taken in and produce a seemingly infinite list of messages. This is achieved through lazy evaluation in Haskell, which in short means that any element in the list will not be calculated until it is absolutely needed. This allows for an infinite list as long as no agent tries to read further into the list then what as already been calculated. In achieving this an agent must at each time step, allows read in a message (even if it is then not used) and produce a list of messages (even if this is a empty list). An agent will hence iterate over the list of incoming messages, at each time step adding a new output message to its list of output messages.  
+InterDyne is designed in such a way that agents both take in and produce a seemingly infinite list of messages. This is achieved through lazy evaluation in Haskell, which in short means that any element in the list will not be calculated until it is absolutely needed. This allows for an infinite list as long as no agent tries to read further into the list than what has already been calculated. In achieving this an agent must at each time step, read in a message (even if it is then not used) and produce a list of messages (even if this is an empty list). An agent will hence iterate over the list of incoming messages, at each time step adding a new output message to its list of output messages.  
 
-Agents in InterDyne are typically, though not required to be, written in two parts, a wrapper function and a logic function. The wrapper will manage the reading of inbound messages to the agent and generate its outbound messages, it will also update the local state of the agent. While a logic function is called by the wrapper to calculate the messages to be sent and there content. An agent written following this design could have a form similar to that of the agent show in Fig.~\ref{fig:wrapperfrominterdyne}. This agents wrapper recursively calls its self on the inbound message list, consuming the head of the list\footnote{This design dictates that the head of the list is the messages for the current time step.} and producing a list of outbound messages using a logic function.  
+Agents in InterDyne are typically, though not required to be, written in two parts, a wrapper function and a logic function. The wrapper will manage the reading of inbound messages to the agent and generate its outbound messages, it will also update the local state of the agent. While a logic function is called by the wrapper to calculate the messages to be sent and their content. An agent written following this design could have a form similar to that of the agent show in Fig.~\ref{fig:wrapperfrominterdyne}. This agent$'$s wrapper recursively calls itself on the inbound message list, consuming the head of the list\footnote{This design dictates that the head of the list is the messages for the current time step.} and producing a list of outbound messages using a logic function.  
 \begin{figure}[H]
 	\centering
         \lstinputlisting[language=Haskell]{complexagentwrapper.hs}
@@ -572,67 +568,63 @@ The simulator harness is embodied in a function called sim, this function contai
 \newpage
 \section {Description and Analysis of the Problem} \label{despriptionandanalysproblem}
 
-Investigating emergent behaviour originating from interaction dynamics, within a complex system, relays on viewing the communication between different components of the system as messages being passed. These messages can then be analysed to assess the communication and its pattern that lead to the creation of the emergent behaviour, this approach is amenable to the discovery of phenomena, such as dynamic feedback loops. A model investigating emergent behaviour hence must be able to view communication as messages being passed between different components. For results from this model to be broadly accepted, in fields such as economics, the model as a whole must also be well defined.      
+Investigating emergent behaviour originating from interaction dynamics, within a complex system, relies on viewing the communication between different components of the system as messages being passed. These messages can then be analysed to assess the communication and its pattern that lead to the creation of the emergent behaviour, this approach is amenable to the discovery of phenomena, such as dynamic feedback loops. A model investigating emergent behaviour hence must be able to view communication as messages being passed between different components. For results from this model to be broadly accepted, in fields such as economics, the model as a whole must also be well defined.      
 
-Agent-based models naturally support a message passing view making them well suited to analysing and investigating emergent behaviour. However most agent-based models, though having each individual agent be fully specified, do not have a well defined formalisation for the system as a whole. This makes it challenging to perform system wide analytics on most agent-based model. Recurrence relations naturally support a system wide analysis, due to the full definition of their models. However their formulation does not support a message passing view of communication between components, making it difficult to analyse emergent behaviour with them directly. 
+Agent-based models naturally support a message passing view making them well suited to analysing and investigating emergent behaviour. However most agent-based models, though having each individual agent fully specified, do not have a well defined formalisation for the system as a whole. This makes it challenging to perform system wide analytics on most agent-based model. Recurrence relations naturally support a system wide analysis, due to the full definition of their models. However their formulation does not support a message passing view of communication between components, making it difficult to analyse emergent behaviour with them directly. 
 
-This creates a problem as neither model is perfect for the task at hand. A resolution to this problem suggested by Ref.~\cite{econmistsnoabm}, is to give a formal definition of the specification of an agent-based model as a set of recurrence relations. 
+This creates a problem as neither model is perfect for the task at hand. A resolution to this problem suggested by~\cite{econmistsnoabm}, is to give a formal definition of the specification of an agent-based model as a set of recurrence relations. 
 
-This section discuss how relating these two models can be achieved, reviews literate on work done formalising agent-based models, and discuss challenges related to the method presented in this dissertation.  
+This section discusses how relating these two models can be achieved, reviews literature on work done formalising agent-based models, and discusses challenges related to the method presented in this dissertation.  
 
 
 \subsection{Method for Achieving a Translation}
 %%%%%%How can this solution be achieved (translation form rr to abm)
 To allow for recurrence relations to be used in formalising an agent-based model, the two paradigms must be connected. This connection must be able to demonstrate some sort of equivalence between these two models. 
 
-It has been shown that agent-based models can be expressed as a set of recurrence relations, this is informally proved due to Turing completeness. Any standard computer program is effectively Turing complete, and many agent-based models can be seen as a computer program. Noting that there is an equivalent partial recursive function for every Turing machine, it is therefore apparent that there must also be a set of recursive functions for every agent-based model that relates to this~\cite{gabm3}. Therefore it can be assumed that a translation between these recurrence relations and agent-based models is possible.
+It has been shown informally by~\cite{gabm3} that most agent-based models can be expressed as a set of partial recursive functions. Therefore it can be inferred that a connection between a recurrence relation model and an agent-based model can be created in the form of a translation, from one to the other. 
 
 %%%%%%what is a translation between rr and abm
-A translation between between a set of recurrence relations representing a system to an agent-based model representing the same system, will give a connection between the two models. This connection is able to demonstrate the equivalence of a recurrence relations model and a agent-based model, hence allow for the former to act as the formalism for the latter.   
+A correctness preserving translation between a recurrence relation model of a system and a agent-based model of the same system; allows for the recurrence relation model to provide a formalism for the agent-based model. Correctness preserving in this context is used to mean that both models representing an identical model and will produce identical results; so that both views of the system should be completely interchangeable. 
 
 %%%%%%what direction should this translation take and why? rr -> abm
-An important consideration in creating a translation between the two methods is, which direction this translation should take. For the purpose of defining the formalisation of an agent-based model and hence increasing its acceptance for a reader, a recurrence relations to agent-based model trajectory is preferred. This ordering will allow a read to start with a formalised description and translate this formalisation to cover an agent-based model, as opposed to starting with an unformalised model and translating to a formalised one.     
+An important consideration in creating a translation between the two methods is, which direction this translation should take. For the purpose of defining the formalisation of an agent-based model and hence increasing its acceptance for a reader, a recurrence relations to agent-based model trajectory is preferred. This ordering will allow a read to start with a formalised description and translate this formalisation to cover an agent-based model, as opposed to starting with an unformalised model and translating to a formalised one. This process essentially creates and agent-based model view of the recurrence relation model.      
 
 %%%%%%How will this translation be done? look at work other people have done on translations (step-by-step) 
-The next consideration is how this translation will be achieved. Inspiration can be drawn from other works investigating the design of translations, such as Refs.~\cite{clovertrans},  \cite{transproggotmod} and  \cite{stepcorentconv}. These three papers discuss translations between program representations in a way in which, the final representation will faithfully represent the initial. The approach taken by these papers is to increment the translation in step-by-step manner, where each step slightly transforms the previous to be closer to the final form. The benefit of this method is that if each step on the translation can be proven to be correct then the whole translation can be seen as correct. 
+The next consideration is how this translation will be achieved. Inspiration can be drawn from other works investigating the design of translations, such as~\cite{clovertrans},  \cite{transproggotmod} and  \cite{stepcorentconv}. These three papers discuss translations between program representations in a way in which, the final representation will faithfully represent the initial. The approach taken by these papers is to increment the translation in step-by-step manner, where each step slightly transforms the previous to be closer to the final form. The benefit of this method is that if each step on the translation can be proven to be correct then the whole translation can be seen as correct. This approach relies on the correctness of the steps being transitive; that a correctness preserving translation from state 1 to state 2, and then another from state 2 to state 3, will produce a correctness preserving translation from state 1 to state 3.\footnote{A formal proof for a correctness preserving translation will be discussed in Section~\ref{furtherwork}.} 
 
 %%%%%%what is the project? (make rr language, convert in a step-by-step manner to InterDyne
 A connection between these two models can hence be created by translating in a step-by-step fashion from a recurrence relation language to an agent-based model. The agent-based model used in this translation is InterDyne and the recurrence relation language used is discussed in Section~\ref{beskoperecurrancerealtion}. InterDyne was selected due to a number of factors, most importantly InterDyne was designed from the bottom up to model and investigate emergent behaviour with the financial markets, with research already being conducted using it to this end~\cite{DynamicCoupling_Chris}, this software was also a convenient choice due to access to the source code and local expertise.
 
 \subsection{Review of Similar Work}\label{simwork}
-The idea of using recurrence relations to give a formal definition to an agent-based model is not a novel one and falls under the general heading of using formal systems to prove properties of agent-based models. Work in this area has covered formal using game theory, discrete systems, classifier agents and equation-based models~\cite{taabm}. The use of recurrence relations falls under the classification of an equation-based model, these have been used in a number of papers looking to give a formalisation to agent-based models. Here three papers, Refs~\cite{ebmabmi}, \cite{econmistsnoabm} and \cite{abmtsd}, looking at this area will be reviewed and discussed, along with DEVS formalism introduced in Ref.~\cite{introdevs}.
+The idea of using recurrence relations to give a formal definition to an agent-based model is not a novel one and falls under the general heading of using formal systems to prove properties of agent-based models. Work in this area has covered game theory, discrete systems, classifier agents and equation-based models~\cite{taabm}. The use of recurrence relations falls under the classification of an equation-based model, these have been used in a number of papers looking to give a formalisation to agent-based models. Here three papers~\cite{ebmabmi}, \cite{econmistsnoabm} and \cite{abmtsd}, looking at this area will be reviewed and discussed, along with DEVS formalism introduced in Ref.~\cite{introdevs}.
 
-Before reviewing these papers, it is worth considering the more obvious question of does a formalism need to be given by another modelling technique to allow for the analyses of an agent-based model? Reference~\cite{taabm} present a method formalism for the analysis of agent-based models, looking in particular at performance. 
+Before reviewing these papers, it is worth considering the more obvious question of does a formalism need to be given by another modelling technique to allow for the analyses of an agent-based model? North~\cite{taabm} present$'$s a formalism for the analysis of agent-based models, looking in particular at performance. This paper looks to prove findings from agent-based models, in particular the focus is on existing agent-based software such as Swarm, Repast 3 and others. This paper notes that these pieces of software use a modular imperative architecture with factored agents, spaces, a scheduler, logs, and an interface. Hence this paper presents a theoretical formalism for analysing a modular imperative agent-based model.    
 
-This paper looks to prove findings from agent-based models, in particular the focus is on existing agent-based software such as Swarm, Repast 3 and others. This paper notes that these pieces of software use a modular imperative architecture with factored agents, spaces, a scheduler, logs, and an interface. Hence this paper presents a theoretical formalism for analysing a modular imperative agent-based model.    
+This formalism is presented using an abstract machine specification of the modular imperative agent-based modelling architecture. A  Random Access Stored-Program (RASP) architecture was chosen for the abstract machine, this architecture had been created in an earlier paper~\cite{raspceated} and was chosen due to its similarities to real computer systems. This is opposed to other options including Turing machines and $\lambda$-calculus, as they are less well matched with modern computer systems.     
 
-This this formalism is presented using an abstract machine specification of the modular imperative agent-based modelling architecture. A  Random Access Stored-Program (RASP) architecture was chosen for the abstract machine, this architecture had been created in an earlier paper (Ref.~\cite{raspceated}) and was chosen due to its similarities to real computer systems. This is opposed to other options including Turing machines and $\lambda$-calculus, as they are less well matched with real computer systems.     
+One of North$'$s motivations for using this technique over an equation-based model formalisation, is that he claims that a formulation of the agent-based model in terms of an equation-based model would be unnatural and possibly unrecognisable to those accustomed to agent-based models. This consideration is not as important to the work presented in this dissertation, since here the aim is to familiarise those accustomed with equation-based models to agent-based models and not the reverse. The same argument applies to the use of RASP over alternatives such as $\lambda$-calculus, this dissertation is more interested in creating a formalism which is relatable to economists over computer scientists.   
 
-One of this papers motivations for using this technique over an equation-based model formalisation, is that the authors feel that this formulation of the agent-based model in terms of an equation-based model would be unnatural and possibly unrecognisable to those accustomed to agent-based models. This consideration is not as important to the work presented in this dissertation, since here the aim is to familiarise those accustomed with equation-based models to agent-based models and not the reverse. The same argument applies to the use of RASP over alternatives such as $\lambda$-calculus, this dissertation is more interested in creating a formalism which is relatable to economist over computer scientists.   
+In~\cite{ebmabmi} Costa et al consider the formalisation of agent-based models by creating their implementation guided by equation-based models. an (equation-based model)-oriented design. This paper looks at an example with interacting entities with given strategies, however these strategies could change upon interactions. In this example the equation-based model took a probabilist and macro-view approach where the agent-based model, due to its nature, took a micro-view approach. The analyses of these two models showed that though the systems appeared to be the same the micro-view approach could create slightly different outcomes depending on the number of agents chosen. This difference comes from the fact that the individual agents in the agent-based model were created to match a macro-level description given by the equation-based model, however due to the autonomous nature of the agents only their general behaviour can match and in certain circumstances even this did not correctly produce the behaviour. This issue spawns from trying  to recreate the behaviour of a probabilistic model using a deterministic model. 
 
-The first paper to be examined is Ref.~\cite{ebmabmi}, this paper considers the formalisation of agent-based models by creating their implementation guided by equation-based models, an (equation-based model)-oriented design.  
+This paper concludes summarising the benefits of this approach in validating an agent-based model, here an agent-based model is known to be a faithful representation of the system as long as the equation-based model is a faithful representation. However the question of whether the agent-based model is correctly implemented still rests with that model. 
 
-This paper looks at an example with interacting entities with given strategies, however these strategies could change upon interactions. In this example the equation-based model took a probabilist and macro-view approach where the agent-based model, due to its nature, to a micro-view approach. The analyses of these two models showed that though the systems appeared to be the same the micro-view approach could create slightly different outcomes depending on the number of agents chosen. This difference comes from the fact that the individual agents in the agent-based model were created to match a macro-level description given by the equation-based model, however due to the autonomous nature of the agents only their general behaviour can match and in certain circumstances even this did not correctly produce the behaviour.
+The main difficulties faced by this paper appear to be the transformation from a macro-level view (equation-based model) to a micro-level (agent-based model) view, this is particularly due to the statistical nature of the equation-based model. Though they succeeded in creating a formalisation of their model the differences in results between runs still raises questions over the equality between the two view points. To avoid this issue, a more micro-level focussed equation-based model should be taken.
 
-This paper concludes summarising the benefits of this approach in validating an agent-based model, here an agent-based model is known to be a faithful representation of the system as long as the equation-based model is a faithful representation. However the question of whether the age-based model is correctly implemented still rests with that model. 
-
-The main difficulties faced by this paper appear to be the transformation from a macro-level view (equation-based model) to a micro-level (agent-based model) view, this is particularly apart due to the statistical nature of the equation-based model. Though they succeeded in creating a formalisation of their model the differences in results between runs still raises questions over the equality between the two view points. To avoid this issue, taking a more micro-level focussed equation-based model should suffice.
-
-The next paper is Ref.~\cite{econmistsnoabm}, this paper is based on a similar principle to this project in that it seeks to bridge the conceptual gap around  agent-based models in economics. It tackles this problem by introducing an equation-based formalism to describe both agent-based models and analytical models, though of interest here is their work on former. 
+The next paper is~\cite{econmistsnoabm}, this paper is based on a similar principle to this project in that it seeks to bridge the conceptual gap around  agent-based models in economics. It tackles this problem by introducing an equation-based formalism to describe both agent-based models and analytical models, though of interest here is their work on former. 
 
 The agent-based model is formalised by specifying how each agent\textsc{\char13}s state within the model changes between each time step. This is done by defining agent attributes using vectors of state variables and then applying time-indexed difference equations to specify each agents state change. This allows for expression of the agent-based model in terms of difference equations, which they then use to look at parameter estimation. 
 
-Their work shows the ability to prefer estimations on agent-based models, counter to some criticism that has been levelled at agent-based models. Some difficulty in this approach can come from agent-based models with complicated algorithmic behaviour within the agents, specifying these models as difference equations can be challenging task. The work in this dissertation does not directly suffer from this problem as all systems are first described as recurrence relations before being translated into agent-based models, meaning that the equation view will only be as complex as the original writer intends.  
+Their work shows the ability to provide estimations on agent-based models, counter to some criticism that has been levelled at agent-based models. Some difficulty in this approach can come from agent-based models with complicated algorithmic behaviour within the agents, specifying these models as difference equations can be challenging task. The work in this dissertation does not directly suffer from this problem as all systems are first described as recurrence relations before being translated into agent-based models, meaning that the equation view will only be as complex as the original writer intends.  
 
-Th last paper to be looked at is Ref.~\cite{abmtsd}, this paper investigates relating Forrester\textsc{\char13}s System Dynamics (SD) model to an agent-based model. System dynamics models consist of a set of difference equations, so this can be seen as a comparison between difference equations and agent-based models. This paper presents a formal specifications for both the Forrester\textsc{\char13}s and agent-based models, these specifications are then compared to show their equivalence. Was equivalence has been proven the specification of a Forrester\textsc{\char13}s model can be used to derive an agent-based model that is an correct representation of the same system.
+Macal~\cite{abmtsd} investigates relating Forrester\textsc{\char13}s System Dynamics (SD) model to an agent-based model. System dynamics models consist of a set of difference equations, so this can be seen as a comparison between difference equations and agent-based models. This paper presents a formal specifications for both the Forrester\textsc{\char13}s and agent-based models, these specifications are then compared to show their equivalence. Once equivalence has been proven the specification of a Forrester\textsc{\char13}s model can be used to derive an agent-based model that is an correct representation of the same system.
 
-This technique its applied to an SIR epidemic model, creating an Forrester\textsc{\char13}s and agent-based model representation. These two descriptions of the system are then evaluated and have their results compared. The findings show that though both models show similar behaviour, there is not an exact match between them. This is due to the probabilistic nature of the system being modelled and the different approach that an agent-based model takes to these kind of systems. 
+This technique is applied to an SIR epidemic model, creating a Forrester\textsc{\char13}s and agent-based model representation. These two descriptions of the system are then evaluated and have their results compared. The findings show that though both models show similar behaviour, there is not an exact match between them. This is due to the probabilistic nature of the system being modelled and the different approach that an agent-based model takes to these kind of systems. 
 
 This paper, though showing equivalence, does so in a more abstract manner then a direct translation between the two models. The difference in experimental results from the two models is down to the use of describing the system in a probabilist fashion, this can be avoided by describing a system in a more micro-level view.    
 
-A discussion relating to the formalism of agent-based models would be amiss with out mentioning the Discrete Event System Specification (DEVS)~\cite{introdevs}. DEVS is a theoretical formalism designed for analysing complicated simulations, which it does by describing simulations as hierarchical Moore machines, with additional timing information added to the state transitions. DEVS has a few variants including classic DEVS (this is the core abstraction), coupled DEVS (allows for hierarchical nesting of the Moore machines~\cite{coupleddevs}) and Dynamic Structuring DEVS (attempts to allow for dynamic behaviour~\cite{dynamicdevs}).
+A discussion relating to the formalism of agent-based models would be amiss without mentioning the Discrete Event System Specification (DEVS)~\cite{introdevs}. DEVS is a theoretical formalism designed for analysing complicated simulations, which it does by describing simulations as hierarchical Moore machines, with additional timing information added to the state transitions. DEVS has a few variants including classic DEVS (this is the core abstraction), coupled DEVS (allows for hierarchical nesting of the Moore machines~\cite{coupleddevs}) and Dynamic Structuring DEVS (attempts to allow for dynamic behaviour~\cite{dynamicdevs}).
 
-DEVS is able to provide a theoretical foundation for analyses of a number of critical computational properties of agent-based models, including properties such as decidability. In theory DEVS has the ability to represent any computational model, including agent-based models, as following the Church-Turing thesis any computing system as complex as a Moore machine (which DEVS is) can be used to calculate any function. However though DEVS is capable of representing an agent-based model it is not necessarily the best approach. Despite the work done in Ref.~\cite{dynamicdevs}, DEVS is still not an ideal match for models that can dynamically behaviour, such as agent-based models where agent behaviour can be dynamically generated. Classic DEVS imposes boundaries between states and behaviours making dynamic behaviour difficult to represent, where as Dynamic Structuring DEVS introduces new constraints that have a similar effect in limiting utility. DEVS also does not include conventions of agent-based models that impact the limits of their computational properties, making it again difficult to use DEVS as a formal basis for agent-based modelling~\cite{taabm}.  
+DEVS is able to provide a theoretical foundation for analyses of a number of critical computational properties of agent-based models, including properties such as decidability. In theory DEVS has the ability to represent any computational model, including agent-based models. However though DEVS is capable of representing an agent-based model it is not necessarily the best approach. Despite the work done in~\cite{dynamicdevs}, DEVS is still not an ideal match for models that have dynamic behaviour, such as agent-based models where agent behaviour can be dynamically generated. Classic DEVS imposes boundaries between states and behaviours making dynamic behaviour difficult to represent, where as Dynamic Structuring DEVS introduces new constraints that have a similar effect in limiting utility. These constraints and difficulties make it challenging to use DEVS as a formal basis for agent-based modelling~\cite{taabm}.  
 
 
 
@@ -642,25 +634,25 @@ DEVS is able to provide a theoretical foundation for analyses of a number of cri
 \subsection{Challenges with the Translation Approach} \label{twoviewsapproach} 
 The approach taken in this project of creating a step-by-step translation between a recurrence relation description of a system to a agent-based model description on the same system has a number of challenges associated with it. In this section the difficulties with this project will be described. 
 
-As noted in Section~\ref{simwork}, when looking at work done by other researchers in this area, a main challenge was how to model systems that have no counter part in a agent-based model. This problem exists mostly due to modelling probabilist systems and macro-level systems, which are counter to the view an agent-based model takes. In this project however the focus will be on systems which are modelled at the micro-level and without probabilist aspects, though stochastic aspects will be allowed within the micro-level view.
+As noted in Section~\ref{simwork}, when looking at work done by other researchers in this area, a main challenge was how to model systems that have no counterpart in an agent-based model. This problem exists mostly due to modelling probabilist systems and macro-level systems, which are counter to the view an agent-based model takes. In this project however the focus will be on systems which are modelled at the micro-level and without probabilist aspects, though stochastic aspects will be allowed within the micro-level view.
 
-An problem overshadowing most aspects of this project is  that the two paradigms being translated between are completely different and in some ways opposing. Recurrence relation models take a analytic approach where as agent-based models take a dynamic one.   
+A problem overshadowing most aspects of this project is that the two paradigms being translated between are completely different and in some ways opposing. Recurrence relation models take an analytic (where the system evolution is defined statically.) approach where as agent-based models take a dynamic one (where the system evolution is given in simulation).  %is this right (help) 
 
 The formulation of how information is exchanged within these two models is also in contrast. Recurrence relations take a static view with information passed via function calls, opposed to the agent-based model approach of dynamically sending the information between agents using message passing. This represents a difference in the way information is seen in these models, in recurrence relations information is freely available and the equation wishing to use it simply has to make a function call. Where as in agent-based modelling information is given by its creator to only other agents selected by its creator, hence agents can not use information which has not been already sent to them.
 
-The agent-based model selected for use, InterDyne, operates by making every agent take in an infinite list of their inputs and output an infinite list of their outputs. Creating this view of the system from a recurrence relation model, which is created as a snapshot of a current time step is challenging. 
+The agent-based model selected for use, InterDyne, operates by making every agent take in an infinite list of their inputs and output an infinite list of their outputs. Creating this view of the system from a recurrence relation model, which is created as a snapshot of a current time step, is challenging. 
 
-In InterDyne both direct and broadcast messages exist, these two messaging types can be seen as the use of private and public date in that order. Recurrence relations do not have an inbuilt method of distinguishing between different types of data as all information is passed by direct function calls, reconciling these two view points creates another challenge. 
+In InterDyne both direct and broadcast messages exist, these two messaging types can be seen as the use of private and public date respectively. Recurrence relations do not have an inbuilt method of distinguishing between different types of data as all information is passed by direct function calls, reconciling these two view points creates another challenge. 
 
-In recurrence relations information from any previous time step can be easily accessed, where as in InterDyne information is only available for the time step at which it was received. This creates the idea of time limited information with InterDyne that is not present within a recurrence relations model.   
+In recurrence relations information from any previous time step can be easily accessed, whereas in InterDyne information is only available for the time step at which it was received. This creates the idea of time-limited information with InterDyne that is not present within a recurrence relations model.   
 
-Agent-based models have name control, indicating the different agents and functions within them. However introducing name control to  recurrence relations, that have no sense of agents, in a why in which it is tangible to the agent-based model is a challenge. 
+Agent-based models have name control, indicating the different agents and functions within them. However introducing name control to  recurrence relations, that have no sense of agents, in a way in which it is tangible to the agent-based model is a challenge. 
 
-The introduction of sending information in the form of a messages as a concept, to recurrence relations poses its own difficulties. Recurrence relations information is passed directly as values, where as messages contain information such as message type, and to and from fields. 
+Recurrence relations access information directly as a value where needed; agent-based models however receive special item called a message that contains this value along with other information (e.g. the senders id). Translating between these two different ways of viewing values poses difficulties.  
 
 There has been criticism that agent-based models splinter a model, finding a way to split the recurrence relations into agents with out splintering the model creates another challenge. 
 
-This approach is to create a series of small steps between a recurrence relation model and an agent-based model, the smaller the steps are the easier it is for a reader to follow the process. However a challenge is finding how to create these small steps as it may often be easier to create large but less comprehensible steps.   
+The approach taken in this dissertation is to create a series of small steps between a recurrence relation model and an agent-based model, the smaller the steps are the easier it is for a reader to follow the process. However a challenge is finding how to create these small steps as it may often be easier to create large but less comprehensible steps.   
 
 
 
@@ -673,7 +665,7 @@ This approach is to create a series of small steps between a recurrence relation
 \section{Bespoke Recurrence Relation Language} \label{beskoperecurrancerealtion}
 This section introduces a bespoke recurrence relation model, created to be able to model complex systems with interacting elements. This recurrence relation model will eventually be translated into an agent-based model and hence needs to be able to express the system being modelled both statically and dynamically. 
 
-A bespoke recurrence relation language is used over an already existing language for a few reasons: firstly there needs to exist a strict set of known rules to facilitate parsing of the language if the process is automated. Secondly, the functionality of the language needs to be restricted to keep it as simple as possible, only introducing complexity where necessary. Thirdly, the language still needs to maintain sufficient functionality to model complex systems. Creating a bespoke language offers a straightforward method satisfying these three criteria.     
+A bespoke recurrence relation language is created for a few reasons: firstly there needs to exist a strict set of known rules to facilitate parsing of the language if the process is automated. Secondly, the functionality of the language needs to be restricted to keep it as simple as possible, to allow for the language to be readily understandable and easy to parse, only introducing complexity where necessary. Thirdly, the language still needs to maintain sufficient functionality to model complex systems. Creating a bespoke language offers a straightforward method satisfying these three criteria.     
  
 A set of recurrence relation can be used to statically model a interacting system, however this model does not give a time dependent  experiment required for dynamic modelling. To add time dynamics to this model the set of recurrence relation described need to be traced through time.
 
@@ -684,6 +676,10 @@ This section first gives the initial syntax and the abstract syntax, then keywor
 
 
 \subsection{Syntax}
+%in bespoke model say that miranda as shown is the definition of the language 
+%the meaning of the recurraance relation is this miranda expression, when defining mirada expression 
+
+
 The concrete BNF syntax for this bespoke language is defined in Fig.~\ref{fig:bnflex}, this syntax specifies what constitutes a this language. Symbols and structures not given in this syntax are not part of this language and therefore models created in this language are only incorporate what is given by the concrete syntax. 
 \begin{figure}[H]
 	\centering
@@ -1374,6 +1370,21 @@ Implementing and combining both of these translation would give a method for rea
 
 \newpage 
 \section{Appendix A.}
+%unnumbered subsection in appedic
+%
+
+
+
+%definations of intermieated translat 
+
+
+
+%user manal
+% all code is written using miranda and will require the miranda program lanaguge to be installed 
+
+%oncee miranda is started load file .. and then each translation step has its own function name for exapla "main1" etc 
+
+%
 
 %\subsection{Appendix 1} %\label{Appendix_1}
 %\lstinputlisting[language=C++]{AllCode_functions.cpp}

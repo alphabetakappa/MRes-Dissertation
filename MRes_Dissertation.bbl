@@ -117,12 +117,6 @@ Nancy~L. Stokey.
 \newblock {\em Recursive Methods in Economic Dynamics}.
 \newblock Harvard University Press, 1989.
 
-\bibitem{agbtorrgood}
-Joshua~M. Epstein.
-\newblock {\em Ethical and Legal Considerations in Mitigating Pandemic Disease:
-  Workshop Summary}, chapter~5, pages 2015--2042.
-\newblock National Academies Press, 2007.
-
 \bibitem{fallacyofcompostionBook}
 Norman Ehrentreich.
 \newblock {\em Agent-Based Modeling: The Santa Fe Institute Artificial Stock
@@ -170,6 +164,11 @@ Alan Turing.
 \newblock The chemical basis of morphogenesis.
 \newblock {\em Philosophical Transactions of the Royal Society of London},
   237(641):37--72, 1952.
+
+\bibitem{beginref}
+John~Comstock Doyle, Bruce~A. Francis, and Allen Tannenbaum.
+\newblock {\em Feedback Control Theory}.
+\newblock Dover, 2009.
 
 \bibitem{rareeventflashcrash}
 Dragos Bozdog, Ionut Florescu, Khaldoun Khashanah, and Jim Wang.

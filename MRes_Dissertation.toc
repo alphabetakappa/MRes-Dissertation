@@ -2,7 +2,7 @@
 \contentsline {section}{\numberline {2}Background}{8}
 \contentsline {subsection}{\numberline {2.1}Emergent Behaviour}{8}
 \contentsline {subsection}{\numberline {2.2}Methods for Modelling Emergent Behaviour in Finance}{11}
-\contentsline {subsubsection}{\numberline {2.2.1}Recurrences Relations}{11}
+\contentsline {subsubsection}{\numberline {2.2.1}Recurrence Relations}{11}
 \contentsline {subsubsection}{\numberline {2.2.2}Agent-Based Models}{12}
 \contentsline {subsection}{\numberline {2.3}InterDyne}{14}
 \contentsline {subsubsection}{\numberline {2.3.1}Applicability to Finance}{15}
