@@ -11,28 +11,28 @@
 \contentsline {paragraph}{\numberline {2.3.1.3}Storing Messages}{15}
 \contentsline {paragraph}{\numberline {2.3.1.4}Message Ordering}{15}
 \contentsline {subsubsection}{\numberline {2.3.2}InterDyne Detailed Operation}{16}
-\contentsline {section}{\numberline {3}Description and Analysis of the Problem}{20}
-\contentsline {subsection}{\numberline {3.1}Method for Achieving a Translation}{20}
-\contentsline {subsection}{\numberline {3.2}Review of Similar Work}{21}
-\contentsline {subsection}{\numberline {3.3}Challenges with the Translation Approach}{23}
-\contentsline {section}{\numberline {4}Bespoke Recurrence Relation Language}{25}
-\contentsline {subsection}{\numberline {4.1}Syntax}{25}
-\contentsline {subsection}{\numberline {4.2}Naming Conventions}{27}
-\contentsline {subsection}{\numberline {4.3}Well Formed Programs}{29}
-\contentsline {section}{\numberline {5}Design of a Translation from Recurrence Relations to InterDyne}{31}
-\contentsline {subsection}{\numberline {5.1}Infinite List Output}{32}
-\contentsline {subsection}{\numberline {5.2}Grouping into Agents}{33}
-\contentsline {subsection}{\numberline {5.3}A Global Output List}{34}
-\contentsline {subsection}{\numberline {5.4}Agent Input Lists}{36}
-\contentsline {subsection}{\numberline {5.5}Targeted Information Passing}{40}
-\contentsline {subsection}{\numberline {5.6}A Simulator Harness}{43}
-\contentsline {subsection}{\numberline {5.7}Runtime Arguments}{46}
-\contentsline {subsection}{\numberline {5.8}Message Communication}{50}
-\contentsline {section}{\numberline {6}Validation and Testing}{56}
-\contentsline {subsection}{\numberline {6.1}Translation Validation}{56}
-\contentsline {subsection}{\numberline {6.2}Translation Semantic Considerations}{57}
-\contentsline {subsection}{\numberline {6.3}Automated Translation Implementation}{58}
-\contentsline {section}{\numberline {7}Summary and Conclusion }{61}
-\contentsline {subsection}{\numberline {7.1}Discussion and Further work }{62}
-\contentsline {section}{\numberline {8}Appendix A.}{63}
-\contentsline {section}{References}{64}
+\contentsline {section}{\numberline {3}Description and Analysis of the Problem}{19}
+\contentsline {subsection}{\numberline {3.1}Method for Achieving a Translation}{19}
+\contentsline {subsection}{\numberline {3.2}Review of Similar Work}{20}
+\contentsline {subsection}{\numberline {3.3}Challenges with the Translation Approach}{22}
+\contentsline {section}{\numberline {4}Bespoke Recurrence Relation Language}{24}
+\contentsline {subsection}{\numberline {4.1}Syntax}{24}
+\contentsline {subsection}{\numberline {4.2}Naming Conventions}{26}
+\contentsline {subsection}{\numberline {4.3}Well Formed Programs}{28}
+\contentsline {section}{\numberline {5}Design of a Translation from Recurrence Relations to InterDyne}{30}
+\contentsline {subsection}{\numberline {5.1}Infinite List Output}{31}
+\contentsline {subsection}{\numberline {5.2}Grouping into Agents}{32}
+\contentsline {subsection}{\numberline {5.3}A Global Output List}{33}
+\contentsline {subsection}{\numberline {5.4}Agent Input Lists}{35}
+\contentsline {subsection}{\numberline {5.5}Targeted Information Passing}{39}
+\contentsline {subsection}{\numberline {5.6}A Simulator Harness}{42}
+\contentsline {subsection}{\numberline {5.7}Runtime Arguments}{45}
+\contentsline {subsection}{\numberline {5.8}Message Communication}{49}
+\contentsline {section}{\numberline {6}Validation and Testing}{55}
+\contentsline {subsection}{\numberline {6.1}Translation Validation}{55}
+\contentsline {subsection}{\numberline {6.2}Translation Semantic Considerations}{56}
+\contentsline {subsection}{\numberline {6.3}Automated Translation Implementation}{57}
+\contentsline {section}{\numberline {7}Summary and Conclusion }{60}
+\contentsline {subsection}{\numberline {7.1}Discussion and Further work }{61}
+\contentsline {section}{\numberline {8}Appendix A.}{62}
+\contentsline {section}{References}{63}

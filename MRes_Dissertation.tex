@@ -118,7 +118,7 @@
 
 %should i not say how to run an interdyne simulation as its not relevant and kinda contradictory? 
 
-
+%is my front page alright?
 
 
 %%%%%%%%%%%%%%%%to do%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -138,8 +138,6 @@
 
 %%%%%%%%%%%%%proof%%%%%%%%%%%%%%%%%% 
 
-%sec 1
-%sec 2
 %sec 3
 %sec 4
 %sec 5
@@ -190,12 +188,12 @@ I, Leo Carlos-Sandberg, confirm that the work presented in this dissertation is 
 \newpage
 \begin{abstract}
 \noindent {\it 
-This dissertation investigates a process to increase the acceptance of agent-based models by relation from recurrence %I couldnt read the writing so this is wrong (help)
+This dissertation investigates a process to increase the acceptance of agent-based models by formalisation from recurrence %I couldnt read the writing so this is wrong (help)
 relation models. The work presented in this dissertation is designed to combat two main aspects that hinder the up take in agent-based models: a lack of a model-wide formalism, and a lack of familiarity to those unaccustomed to the technique. 
 
 The importance of this work relates in particular to the field of economics, where agent-based models are yet to become widely accepted. This lack of acceptance leads to an absence of work based on agent-based models in top economics journals. This creates a problem for modelling complex systems and emergent behaviour, as agent-based models are in many cases a natural modelling technique for these systems, due in part to their message passing behaviour.  
 
-The process presented in this dissertation is to create an agent-based model equivalent to recurrence relation model. Recurrence relation models are both widely accepted and have a model-wide formalisation. Creating an equivalence between these two models allows for the recurrence relation model to give the agent-based model both a formalisation and a familiar representation, for economists.       
+The process presented in this dissertation is to create an agent-based model equivalent to a recurrence relation model. Recurrence relation models are both widely accepted and have a model-wide formalisation. Creating an equivalence between these two models allows for the recurrence relation model to give the agent-based model both a formalisation and a familiar representation, for economists.       
 
 This work comprises the creation of a bespoke recurrence relation language, the design of step-by-step translation between the models, and a numeric testing of the equivalence of these models. 
 
@@ -230,7 +228,7 @@ The work presented in this dissertation contributes to the field by adding a met
 \section{Introduction}
 Complex systems have been an area of interest for a long time in many  fields such as physics, biology and chemistry~\cite{oldcps}. More recently this is true in the fields of economics and finance~\cite{complexecon}, especially as the financial markets have become increasingly automated and interconnected. Of particular interest is emergent behaviour and emergence in complex systems, these have been defined as ``a property of a system is emergent; if it is not a property of any fundamental element, and emergence is the appearance of emergent properties and structures on a higher level of organization or complexity'' by Fromm as well as others~\cite{bubblesandcrashes, emergdef, emegdefs2}.
 
-Due to its nature emergent behaviour can often be damaging to the system in which it occurs. As such an area of research within the study of complex systems in economics is focussed on regulation~\cite{regemergnce}, with the aim of being able to introduce regulations to stop future occurrences of damaging emergence, such as possible flash crashes. A flash crash is a sudden drop and then recovery in the price of securities of commodities, this maybe the result automated trading~\cite{flashauto}. A prominent example of this is the flash crash of 2010, which is thought to have, at least in part, been caused by high-frequency traders~\cite{SECreport_delays, DynamicCoupling_Chris}. 
+Due to its nature emergent behaviour can often be damaging to the system in which it occurs. As such an area of research within the study of complex systems in economics is focussed on regulation~\cite{regemergnce}, with the aim of being able to introduce regulations to stop future occurrences of damaging emergence, such as possible flash crashes. A flash crash is a sudden drop and then recovery in the price of securities or commodities, this maybe the result automated trading~\cite{flashauto}. A prominent example of this is the flash crash of 2010, which is thought to have, at least in part, been caused by high-frequency traders~\cite{SECreport_delays, DynamicCoupling_Chris}. 
 
 Emergent behaviour in markets can occur in a large number of ways, but more often the behaviour of interest is created over a time period. In general there are two ways of viewing systems in time, these are either continuous (where the system progress smoothly through time) or discrete (where the system takes quantised steps through time, with each step advancing the system).
 
@@ -238,15 +236,13 @@ For automated traders, and high-frequency traders in particular, the latter appr
 
 For discrete time systems two particular modelling techniques that can be used are recurrence relations and agent-based models. These two techniques model systems in different ways, with recurrence relations being analytic and agent-based models being dynamic. Recurrence relations take a more mathematical approach modelling a system as a set of equations that interact through function calls between different equations. Agent-based models on the other hand model a system as a set of agents that interact through messages sent between them.    
 
-Both of these techniques have been used extensively in a large range of fields for modelling complex systems~\cite{wsabm}, however within the field of finance use of agent-based models is predominantly missing from top economics journals~\cite{whereabmp, farmerfoleynature}.\footnote{This is discussed further in Section~\ref{litreviewofabmrr}.} This absence of agent-based models can be explained by two factors: the lack of a formal definition for the model as a whole and the technique itself being unfamiliar and not resonating with many researchers in economics~\cite{farmerfoleynature}. 
+Both of these techniques have been used extensively in a large range of fields for modelling complex systems~\cite{wsabm}, however within the field of finance use of agent-based models is predominantly missing from top economics journals~\cite{whereabmp, farmerfoleynature}.\footnote{This is discussed further in Section~\ref{litreviewofabmrr}.} This absence of agent-based models can be explained by two factors: the lack of a formal definition for the model as a whole, and the technique itself being unfamiliar and not resonating with many researchers in economics~\cite{farmerfoleynature}. 
 
-The lack of widespread acceptance of agent-based models within economics can cause an issue for the development of work in this field on complex interacting systems and emergent behaviour. Agent-based models are well known for their ability to model these kinds of systems, often being considered the natural way for describing systems composed of independent entities~\cite{techsadsProbsabm}. They allow these systems to be modelled in such a way that facilitates the exploration of aggregate properties, interaction dynamics, and emergent behaviour. The modularity of their design allows for complexity of agents to be easily tuned, as well as for the models to be easily expanded~\cite{techsadsProbsabm}. Agent-based models are in many fields are considered very powerful and well suited to computational modelling of complex systems, with a number of advantages over other modelling techniques~\cite{whereabmp, abmgood1, abmgreat2, gabm3, gabm5}. 
-
-%This dissertation seeks to increase the acceptance of agent-based models within the economics community by creating a solution to the two major factors holding these models back, formalisation and familiarity. %you said repetitive I think it is needed as I haven't mentioned formalisation and familiarity as a down side yet  (help)
+The lack of widespread acceptance of agent-based models within economics can cause an issue for the development of work in this field on complex interacting systems and emergent behaviour. Agent-based models are well known for their ability to model these kinds of systems, often being considered the natural way for describing systems composed of independent entities~\cite{techsadsProbsabm}. They allow these systems to be modelled in such a way that facilitates the exploration of aggregate properties, interaction dynamics, and emergent behaviour. The modularity of their design allows for complexity of agents to be easily tuned, as well as for the models to be easily expanded~\cite{techsadsProbsabm}. Agent-based models in many fields are considered very powerful and well suited to computational modelling of complex systems, with a number of advantages over other modelling techniques~\cite{whereabmp, abmgood1, abmgreat2, gabm3, gabm5}. 
 
 The other popular modelling technique for complex systems, recurrence relation models, has a system-wide formalisation, and is widely accepted and well used within economics~\cite{acrr, rra10, rra1}. This motivates this dissertations investigation of a correctness preserving transformation from a recurrence relation model to an equivalent agent-based model.
 
-The recurrence relation model gives the agent-based model a system wide formalism and the translation seeks to make agent-based models more familiar to those experienced with recurrence relations.  
+The recurrence relation model gives the agent-based model a system-wide formalism and the translation seeks to make agent-based models more familiar to those experienced with recurrence relations.  
 
 This translation is from a recurrence relation model to an agent-based model, as opposed to the reverse. This trajectory is taken as the aim is to familiarise those already accustomed to the former with the latter, hence it makes sense to start with the recognised model. Facilitating them in taking advantage of agent-based models ability to investigate message passing, something, which is difficult in recurrence relation models.\footnote{Translation in the opposite direction is discussed in Section~\ref{furtherwork}.}  
 
@@ -261,7 +257,7 @@ This translation has a number of fundamental challenges associated with it, whic
    \item How can the recurrence relations be split in a way that does not splinter the model? 
 \end{itemize}
 
-The translation process in this dissertation takes a step-by-step approach, with each step gradually translating the model. This allows for these issues to be tackled in a more modular fashion. This also makes the equivalence of the two models more apparent, if each small step is equivalent then so too must be the models, assuming that the transitivity of equivalence. 
+The translation process in this dissertation takes a step-by-step approach, with each step gradually translating the model. This allows for these issues to be tackled in a more modular fashion. This also makes the equivalence of the two models more apparent, if each small step is equivalent then so too must be the models, assuming the transitivity of the equivalence. 
 
 This dissertation presents both a bespoke recurrence relation language and the design of the steps needed to translate a system expressed in this language into an agent-based model. Though not within the initial project scope, also presented is the first three steps of implementing this translation process into an automated program. These steps take the form of a lexer, parser, and first translation step. 
 
@@ -271,7 +267,7 @@ The creation of this translation process contributes to the field by giving a me
 
 The benefits of this work are timely, matching with the increased interest in agent-based models within finance, and with the interest by regulatory bodies in interaction and emergent phenomenon~\cite{fallacyofcompostionBook, newwork1, newabmpaper}.  
 
-The dissertation layout is as follows. In Section 2 a background is given, covering: emergent behaviour generally and in the financial markets, a review of the literature and description of both recurrence relations and agent-based models, and an in-depth description of InterDyne. In Section 3 a description and analysis of the problem is given, covering: a detailed description of the problem this dissertation addresses, a review of similar work in tackling this problem, and a description of the challenges with the translation approach taken. In Section 4 the bespoke recurrence relation is given, along with its syntax and presentation. In Section 5 the design of the translation is given, with an example system translated from the recurrence relations to an agent-based model. In Section 6 the translation is discussed, with: comparisons to the desired agent-based model given, numerical testing of the equivalence of the steps given, and additional work outside the scope of the project presenting the first stages in implementing this translation given. In Section 7 the dissertation is concluded and summarised with notes for further work given.     
+The dissertation layout is as follows. In Section 2 a background is given, covering: emergent behaviour generally and in the financial markets, a short assessment of the literature and description of both recurrence relations and agent-based models, and an in-depth description of InterDyne. In Section 3 a description and analysis of the problem is given, covering: a detailed description of the problem this dissertation addresses, a review of similar work in tackling this problem, and a description of the challenges with the translation approach taken. In Section 4 the bespoke recurrence relation is given, along with its syntax and presentation. In Section 5 the design of the translation is given, with an example system translated from the recurrence relations to an agent-based model. In Section 6 the translation is discussed, with: comparisons to the desired agent-based model given, numerical testing of the equivalence of the steps given, and additional work outside the scope of the project presenting the first stages in implementing this translation given. In Section 7 the dissertation is concluded and summarised with notes for further work given.     
 
 
 
@@ -281,27 +277,27 @@ The dissertation layout is as follows. In Section 2 a background is given, cover
 
 \newpage
 \section{Background}
-This section covers a description of emergent behaviour, feedback loops as a type of this behaviour, and their appearance in the financial markets. Recurrence relations and agent-based models are introduced as a method for modelling emergent behaviour, and they are described. InterDyne is introduced as an example of an agent-based model designed for the financial markets. Its applicability to modelling aspects of the financial market will be discussed and a description of its design will also be given.   
+This section covers a description of emergent behaviour, feedback loops as a type of this behaviour, and their appearance in the financial markets. Recurrence relations and agent-based models are introduced as a method for modelling emergent behaviour, and are described. InterDyne is introduced as an example of an agent-based model designed for the financial markets. Its applicability to modelling aspects of the financial market will be discussed and a description of its design will also be given.   
 
 \subsection{Emergent Behaviour}
 Emergent behaviour is a term used to describe a macro-level behaviour of a system that is not obvious from analysis of the micro-level behaviour of the system; more formally this is a behaviour that can not be predicted through analysis of any single component of a system \cite{EB_systemofsystemsGLangford}.
 
 A misunderstanding of emergence can lead to the fallacy of division, this is that a property of the system as a whole most also be a property of an individual component of the system; water for example has a number of properties including being able to be cooled down to become ice and heated to become steam, saying the same must also be true of a molecule of water however is incorrect. This concept continues into economics, being called the fallacy of composition, where what is true for the whole economy my not hold for an individual and vice versa~\cite{fallacyofcompostionBook}.
        
-A simple way to demonstrate emergence is in the Game of Life~\cite{gameoflifepage}, which is an example of a cellular automaton; this game takes place on an infinite two-dimensional grid in which cells can either be `alive', coloured for example green, or `dead', a different colour usually black. Whether a cell is `alive' or `dead' is based on a set of simple rules:   
+A simple way to demonstrate emergence is in the Game of Life~\cite{gameoflifepage}, which is an example of a cellular automaton; this game takes place on an infinite two-dimensional grid in which, cells can either be `alive', coloured for example green, or `dead', a different colour usually black. Whether a cell is `alive' or `dead' is based on a set of simple rules:   
 \begin{enumerate}
-  \item `Alive' cells will transition to be `dead' cells in the next time step if they have few than two `alive' neighbours.
+  \item `Alive' cells will transition to be `dead' cells in the next time step if they have fewer than two `alive' neighbours.
   \item `Alive' cells with two or three `alive' neighbours remain `alive' at the next time step.
   \item `Alive' cells will transition to be 'dead' cells in the next time step if they have more than three `alive' neighbours.
   \item `Dead' cells with exactly three 'alive' neighbours will transition to `alive' at the next time step.
 \end{enumerate}
-With this simple set up very complex patterns evolving through time can be created, these patterns can be seen as emergence, with an individual cell not being able to encapsulate this behaviour. Natural phenomena similar to this is the formation of symmetries and patterns within snowflakes.
+With this simple set up very complex patterns evolving through time can be created, these patterns can be seen as emergence, with an individual cell not being able to encapsulate this behaviour. A natural phenomena similar to this is the formation of symmetries and patterns within snowflakes.
 
 Emergent behaviour can be seen occurring naturally in many other cases, with physics offering a number of well explored examples. For instance the n-body problem~\cite{nbodyproblem}, this historically is explained as n planets interacting in such a way as to produce complex behaviour, despite each individual body following Newtonian laws. An interesting aspect of the n-body problem is that it can be reduced down to three bodies and still exhibit complex emergent behaviour. This example shows that a system need not be overly complex or large to display emergent behaviour.
 
 The emergent behaviour within the n-body problem is caused by interaction dynamics, this is the communication between different elements of a system. The interactions here takes the form of gravitational pulls, if these pulls were not present then the system as a whole, and every individual present would maintain a constant velocity, unless they physically collided~\cite{newtonconstantvelocity}.
 
-Though this example deals with a physical phenomenon, interaction based emergence is present in many different systems. Interactions in these systems can take the form of verbal and visual communication in social systems with negative emergent behaviour in this case being the break down of social cooperation~\cite{socialemrgence}. The financial markets can be thought of as a complex system, with interaction dynamics, hence one can posit that the markets would exhibit emergence. This is true and the financial markets have been seen to exhibit a large selection of emergent behaviour, such as the formation of patterns, bubbles and crashes~\cite{bubblesandcrashes}. These particular examples derive from feedback loops with in the markets, in a similar process to that of the interaction between short range and long range feedback loops in chemical reactions~\cite{turningchemical}.     
+Though this example deals with a physical phenomenon, interaction based emergence is present in many different systems. For example interactions can take the form of verbal and visual communication in social systems, with negative emergent behaviour in this case being the break down of social cooperation~\cite{socialemrgence}. The financial markets can be thought of as a complex system, with interaction dynamics, hence one can posit that the markets would exhibit emergence. This is true and the financial markets have been seen to exhibit a large selection of emergent behaviour, such as the formation of patterns, bubbles and crashes~\cite{bubblesandcrashes}. These particular examples derive from feedback loops with in the markets, in a similar process to that of the interaction between short range and long range feedback loops in chemical reactions~\cite{turningchemical}.     
 
 Feedback loops are a prominent type of emergent behaviour that can occur from interaction dynamics. Feedback loops occur where the input information to an entity is in some way dependent on the output information of that same entity, normally from a previous moment in time. In their simplest form this can just be a single entity supplying an input to its self, shown in Fig.~\ref{fig:exampleselffeedback}.
 
@@ -312,7 +308,7 @@ In finance this could be seen as a simple trader who decides how much to sell ba
 	\caption{\it Simple feedback loop with an entity supplying its input from its output.}
 	\label{fig:exampleselffeedback}
 \end{figure} 
-Feedback loops can be encompass multiple entities, in Fig.~\ref{fig:exampletwofeedback} a feedback loop is shown that encloses two different entities. An output from $E2$ is passed to $E3$ which in turn creates a new input for $E2$; though $E2$ input is not directly its own output, it does depend upon it. 
+Feedback loops can encompass multiple entities, in Fig.~\ref{fig:exampletwofeedback} a feedback loop is shown that encloses two different entities. An output from $E2$ is passed to $E3$ which in turn creates a new input for $E2$; though $E2$ input is not directly its own output, it does depend upon it. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{twofeedback}
@@ -331,17 +327,17 @@ Due to the potential complexity of feedback loops both in construction and in ti
 
 Since feedback loops can be destabilising and damaging to the system in which they occur, there is interest in studying this emergence in the aim to prevent monetary loss and damage to the economy.
 
-A notable form of emergence behaviour, due to feedback loops, that takes place within the electronic markets are flash crashes. A flash crash is an event during which time the trading price of a security drops very rapidly, becoming disconnected from its fundamental, before then recovering~\cite{rareeventflashcrash}. A particularly famous flash crash is that of 2010, in which the E-min S\&P 500 equity futures market dropped in price by more then 5\%, before rebound to close to its original price~\cite{SECreport_delays, rareeventflashcrash}. This whole process occurred very rapidly, lasting approximately thirty-six minutes and has been described as``one of the most turbulent periods in their history'' for the US financial markets~\cite{Impact_hft}.
+A notable form of emergence behaviour, due to feedback loops, that takes place within the electronic markets are flash crashes. A flash crash is an event during which time the trading price of a security or commodity drops very rapidly, becoming disconnected from its fundamental, before then recovering~\cite{rareeventflashcrash}. A particularly famous flash crash is that of 2010, in which the E-min S\&P 500 equity futures market dropped in price by more then 5\%, before rebound to close to its original price~\cite{SECreport_delays, rareeventflashcrash}. This whole process occurred very rapidly, lasting approximately thirty-six minutes and has been described as``one of the most turbulent periods in their history'' for the US financial markets~\cite{Impact_hft}.
 
-Research done by Ref~\cite{DynamicCoupling_Chris, otherabmflash}, describes how the crash may have unfolded due to a feedback loop between High-Frequency Traders (HFTs), known as `hot-potato'' trading.
+Research done by Ref~\cite{DynamicCoupling_Chris, otherabmflash}, describes how the crash may have unfolded due to a feedback loop between High-Frequency Traders (HFTs), known as ``hot-potato'' trading.
 
 HFTs are a subset of algorithmic traders who normally participate in the market as arbitrageurs or market makers, they invest in ultra-high speed technology allowing them to detect, analyses and react to market condition in nanoseconds \cite{hftinformation1}. This means HFTs can trade huge quantities of assets in very short time frames, with some estimates stating that 10-40\% of all trades where initiated by them during 2016 \cite{hftmarketparticipation}.
 
-The feedback loop of ``Hot Potato'' trading, is when inventory imbalance is repeatedly passed between HFTs market makers. A market maker is a trader who is required to have both a bid and a ask on the order book at all times, this means in theory that they are constantly buying and selling, a high frequency market maker as expected should be buying and selling very very often. Market makers make a profit from the spread and not long positions, hence they want to keep inventories low to avoid the market moving against them. To achieve this market makers have strict inventory limits that if they pass will cause them to go into what is know as a ``panic state'', during this state the trader will sell of an amount of its inventory to return back into its normal trading region. This inventory now sold by the market maker can be bought by another market maker causing them to in turn go into ``panic'' and sell, this process is ``Hot Potato'' trading and can in theory continue indefinitely~\cite{Elias_Paper}.
+The feedback loop of ``Hot Potato'' trading, is when inventory imbalance is repeatedly passed between HFTs market makers. A market maker is a trader who is required to have both a bid and a ask on the order book at all times, this means in theory that they are constantly buying and selling. A high frequency market maker as expected should be buying and selling very very often. Market makers make a profit from the spread and not long positions, hence they want to keep inventories low to avoid the market moving against them. To achieve this market makers have strict inventory limits that if they pass will cause them to go into what is know as a ``panic state'', during this state the trader will sell off an amount of its inventory to return back into its normal trading region. This inventory now sold by the market maker can be bought by another market maker causing them to in turn go into ``panic'' and sell, this process is ``Hot Potato'' trading and can in theory continue indefinitely~\cite{Elias_Paper}.
 
 This constant selling and buying of inventory can artificially inflate the trading volume of the market, changing how many traders operate and potentially leading to a flash crash.
 
-Flash crashes have occurred on a number of occasions and in a large selection of markets, with a more recent example being a crash of the cryptocurrency ethereum~\cite{cryptocrash}.
+Flash crashes have occurred on a number of occasions and in a large selection of markets, with a more recent example being a crash of the cryptocurrency Ethereum~\cite{cryptocrash}.
 
 
 \subsection{Methods for Modelling Emergent Behaviour in Finance}  \label{litreviewofabmrr} 
@@ -363,7 +359,7 @@ The most simplistic form of a recurrence relation is one where the next term dep
 \begin{equation}
 x_{n+1} = f(x_{n}),
 \end{equation}
-where $f()$ is a function that calculates the next term based on the previous one. A recurrence relation does not just have to depend on its immediate previous term and can depend on any number of terms further back in the sequences, for example a recurrence relation depending on terms from two and three steps before can be written as, 
+where $f()$ is a function that calculates the next term based on the previous one. A recurrence relation does not just have to depend on its immediate previous term and can depend on any number of terms further back in the sequences. For example a recurrence relation depending on terms from two and three steps before can be written as, 
 \begin{equation}
 x_{n+1} = f(x_{n-1}, x_{n-2}),
 \end{equation}
@@ -395,12 +391,12 @@ These cross sequence associations allow for complex interactions to be represent
 
 Recurrence relations have a number of benefits given by their construction, such as:
 \begin{itemize}
-    \item Giving a formal mathematical definition of the whole system.
+    \item Giving a mathematical system-wide formalisation.
     \item Showing an obvious link between equations within the system.
     \item Giving a static representation of the system.
 \end{itemize}
 
-A formal mathematic definition of the whole system being model is given when using recurrence relations due to three factors: the way in which they model the whole system as a entity, the static view point they give to the system and the mathematical stye which they take~\cite{rrformulism}.  %is this right?(checker)
+A mathematic formalisation of the whole system being model is given when using recurrence relations due to three factors: the way in which they model the whole system as a entity, the static view point they give to the system and the mathematical stye which they take~\cite{rrformulism}.  %is this right?(checker)
 
 Links within sets of recurrence relations are hard coded into the equations, making these relationships amenable to static analysis.      
 
@@ -426,10 +422,10 @@ Agent-based models are particularly suited to system which, contain a number of 
 	\caption{\it Visualisation of the allowed interactions between five different agents, represented by black circles, with red lines representing the message paths.}
 	\label{fig:abmii}
 \end{figure} 
-The main aspect of this model is the agents used. Though every system modelled can have drastically different agents, there are a few characteristics which should be in place for a agent to be considered an agent~\cite{MN2010, abmtsd}:
+The main aspect of this model is the agents used. Though every system modelled can have drastically different agents, there are a few characteristics which should be in place for an agent to be considered an agent~\cite{MN2010, abmtsd}:
 \begin{itemize}
    \item An agent is self contained, unique and identifiable, this requires an agent to have boundaries which can easily be used to determine what is and what is not part of the agent. 
-   \item An agent autonomous and it can act independently during its interactions with other agents. Its has behaviour and decisions that can be associated with information acquired  during communication with other agents. 
+   \item An agent is autonomous and it can act independently during its interactions with other agents. Its has behaviour and decisions that can be associated with information acquired  during communication with other agents. 
    \item An agents state varies over time, representing variables associated with its current position. 
    \item An agent behaviour is influenced by dynamic interactions with other agents. 
 \end{itemize}
@@ -444,13 +440,13 @@ This modelling technique has a number of benefits originating from its construct
 
 Since each agent in the system can be completely autonomous and independent from each other, save for message passing, this allows for them to be created individually. Hence each agent can describe its relevant component to a relevant degree of complexity, making the creation of a simulation more intuitive and sectioned. This makes agent-based models in many cases the most natural way for describing systems composed of ``behavioural'' entities~\cite{techsadsProbsabm}.
 
-Do due the set up of this model the a network representing the communication between different agents is easy to construct, this allows for topologies to be visualised and can aid in the creation of a simulation.    
+Do due the set up of this model a network representing the communication between different agents is easy to construct, this allows for topologies to be visualised and can aid in the creation of a simulation.    
 
-The use of messages and bottom up approach this model takes allows for a more dynamic view of a system to be achieved, messages can be more easily tracked through out the systems evolution allowing for events to be more easily pinpointed and analysed.  
+The use of messages and bottom up approach this model takes, allows for a more dynamic view of a system to be achieved, messages can be more easily tracked through out the systems evolution allowing for events to be more easily pinpointed and analysed.  
 
 The use of independent agents makes this technique very amenable to expansion, new agents can be added normally with little to no change to previously existing agents. This allows these simulations to be confidently expanded to look at more complex systems, or to add new elements to an existing system.  
 
-These aspects of this approach make the modelling technique well qualified for modelling and analyse of emergent behaviour within systems of interacting components. However this approach does contain some draw backs including a one-to-many problem (where though some high level behaviour may be noted in the system this does not mean the only way of achieving this behaviour is the current system design) and the lack of a formal definition for the system as a whole~\cite{agbntj}.  
+These aspects of this approach make the modelling technique well qualified for modelling and analyse of emergent behaviour within systems of interacting components. However this approach does contain some draw backs including a one-to-many problem (where, though some high level behaviour may be noted in the system, this does not mean the only way of achieving this behaviour is the current system design) and the lack of a formal definition for the system as a whole~\cite{agbntj}.  
 
 
 
@@ -459,9 +455,9 @@ An example of an agent-based model used in modelling the financial markets is In
 
 InterDyne design is that of an agent-based model interacting via a harness. This creates a structure of individual autonomous agents who interact through messages sent through a harness to one another.
  
-Similar to other agent-based models InterDyne operates in discrete-time rather then continuous time. These quantised time chunks, which move the simulation forward, can be left without proper definition (allowing operations to be defined in a number of time steps) or they can be equated to a real time (usually with the smallest time gap needed being a single time step and then all other timings being integer multiples of this). This discrete time is most important to message passing, with messages between agents are only sent on a integer time step.
+Similar to other agent-based models InterDyne operates in discrete-time rather then continuous time. These quantised time chunks, which move the simulation forward, can be left without proper definition (allowing operations to be defined in a number of time steps) or they can be equated to a real time (usually with the smallest time gap needed being a single time step and then all other timings being integer multiples of this). This discrete time is most important to message passing, with messages between agents only sent on a integer time step.
 
-Massages in InterDyne are just small packets of data, such as a series of numbers. An agent can send private messages that are only received by a single other agent (one-to-one messages), or it can send public broadcast messages received by any number of other agents, subscribed to a channel (one-to-many messages). To facilitate this a communication topology can be made for InterDyne, this is done in the form of a directed graph determining which agents can communicate with each other. Due to the directional nature of these messages this topology could allow an agent to send messages to another but not be able to receive messages from that same agent. Messages have a defined order to them, an agent will, unless otherwise instructed, always process messages in the order in which they arrive. To change the order in which messages arrive delays can be added to communication paths between agents, this can be a static delay which always applies to messages sent from one agent to another, meaning this will arrive a set number of time steps later. Or a more complex dynamic delay, which is achieved by using another agent to mediate the passing of these messages delaying by an amount decided on in some internal logic. All messages in InterDyne are passed through a harness, this does not alter the messages or delay them\footnote{Unless instructed to, using a static delay.}, but does store the messages and their order which can be used in post analyse.
+Massages in InterDyne are just small packets of data, such as a series of numbers. An agent can send private messages that are only received by a single other agent (one-to-one messages), or it can send public broadcast messages received by any number of other agents, subscribed to a channel (one-to-many messages). To facilitate this a communication topology can be made for InterDyne, this is done in the form of a directed graph determining which agents can communicate with each other. Due to the directional nature of these messages this topology could allow an agent to send messages to another but not be able to receive messages from that same agent. Messages have a defined order to them, an agent will, unless otherwise instructed, always process messages in the order in which they arrive. To change the order in which messages arrive delays can be added to communication paths between agents, this can be a static delay which always applies to messages sent from one agent to another, meaning this will arrive a set number of time steps later. Or a more complex dynamic delay, which is achieved by using another agent to mediate the passing of these messages, delaying by an amount decided on in some internal logic. All messages in InterDyne are passed through a harness, this does not alter the messages or delay them,\footnote{Unless instructed to, using a static delay.} but does store the messages and their order which can be used in post analyse.
         
 Each of the agents within an InterDyne simulation can be completely unique and modelled to different levels of complexity, as is the case with most agent-based models. As a whole InterDyne simulations are deterministic, repeated experiments will return identical results. However non-determinism can be added via the agents, making some part of an agent stochastic will lead to repeated experiments on the whole returning different results. A pseudo-random element can also be added by instructing InterDyne to randomly sort the message order for any agent receiving multiple messages in one time step. This is only pseudo-random as, as long as the same seed is used each run of the simulation will order the rearranged messages in the same way.\footnote{If an agent receives multiple messages at the same time step and the pseudo-random element is not being used, these messages will order based on the identifiers of their sender agents.}
 
@@ -482,7 +478,7 @@ Allowing for messages to be delayed is needed to facilitate hypotheses involving
 InterDyne allows for both symmetric and asymmetric, delays. These delays can be static or dynamic, with dynamic delays requiring a special intermediary agent. 
 
 \paragraph{Storing Messages}
-InterDyne facilitates analyses of simulations be allowing for the messages between agents to be stored and viewed as a trace. This can include all messages as well as timings, messages can also be sent directly to the harness which will be added to the trace file. 
+InterDyne facilitates analyses of simulations be allowing for the messages between agents to be stored and viewed as a trace file. This can include all messages as well as timings, messages can also be sent directly to the harness which will be added to the trace file. 
   
 \paragraph{Message Ordering}
 The order in which messages are processed can be very important. For example in an exchange, it can change whose limit order has priority at a given price and whose market order executes the lowest prices. Changing these factors can make or break feedback loops within the system, meaning if message ordering is not properly dealt with the correct emergent behaviour may not be observed. Hence InterDyne stores messages in the order they are received by an agent, taking into account delays to the messages. This however can not be done when multiple messages are received at the same time step, due to the nature of discrete time there is no way for the agents to know which message arrived first. Therefore two options are presented by InterDyne; messages are ordered according to their agent identifier or messages are randomised and executed in the emerging order.
@@ -490,7 +486,7 @@ The order in which messages are processed can be very important. For example in 
 
 
 \subsubsection{InterDyne Detailed Operation}
-InterDyne is a written in the functional language Haskell. The structure of an InterDyne model is show in Fig.~\ref{fig:harness_setupfigure}, this structure contains a number of agents and a simulator harness. These agents send two types of messages, either one-to-one or one-to-many (broadcast) messages. Both these messages are sent to the harness, the harness then resends these messages to the appropriate agents, one-to-one messages are sent to their target agent and one-to-many messages are sent to any agent subscribed to the relevant broadcast channel. Messages can also be sent directly to the harness and not rerouted to another agent. At the end of the simulation the harness will produce a trace file containing information on all the messages sent for post-hoc analysis.    
+InterDyne is written in the functional language Haskell. The structure of an InterDyne model is show in Fig.~\ref{fig:harness_setupfigure}, this structure contains a number of agents and a simulator harness. These agents send two types of messages, either one-to-one or one-to-many (broadcast) messages. Both these messages are sent to the harness, the harness then resends these messages to the appropriate agents, one-to-one messages are sent to their target agent and one-to-many messages are sent to any agent subscribed to the relevant broadcast channel. Messages can also be sent directly to the harness and not rerouted to another agent. At the end of the simulation the harness will produce a trace file containing information on all the messages sent for post-hoc analysis.    
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{harness_setup}
@@ -498,9 +494,9 @@ InterDyne is a written in the functional language Haskell. The structure of an I
 	\label{fig:harness_setupfigure}
 \end{figure} 
 %-topology and delays 
-InterDyne has a intrinsic delay, which means any message sent will not be received until the next time step, message sent at $t$ will be received the earliest at $t+1$. This is in part due to the fact that the harness compiles all messages from a single time step before sending them to their targets and hence initiating the next time step. The harness can be seen as the driver in the simulation sending out the message and forcing the agents to send there next message.   
+InterDyne has a intrinsic delay, which means any message sent will not be received until the next time step, message sent at $t$ will be received the earliest at $t+1$. This is in part due to the fact that the harness compiles all messages from a single time step before sending them to their targets and hence initiating the next time step. The harness can be seen as the driver in the simulation sending out the message and forcing the agents to send their next message.   
 
-Longer delays can also be added using InterDynes topology, this allows for any two agents to be selected (a sender and a receiver) and for a delay between them to be given. This topology takes the form of a directed graph, with the agents acting as the nodes and the interaction routes as the links, this allows for the delays to be asymmetrical. Using this a delay for a path could also be set as a abort message, making a particular communication route unusable.  
+Longer delays can also be added using InterDynes topology, this allows for any two agents to be selected (a sender and a receiver) and for a delay between them to be given. This topology takes the form of a directed graph, with the agents acting as the nodes and the interaction routes as the links, this allows for the delays to be asymmetrical. Using this, a delay for a path could also be set as a abort message, making a particular communication route unusable.  
 
 Adding delays is done through run time arguments, here two run time arguments must be added, one stating the maximum delay in the system and the other listing the delays. To show the maximum delay the argument $(Arg (Str$  $``maxDelay", 10)))$ is used, where $10$ is the maximum delay. To add the list of delays the argument $(DelayArg (Str$  $``DelayArg", delay))$ is used, where $delay$ is a function that takes two agents and returns the delay between the first and the second. 
 %-what a message looks like 
@@ -515,12 +511,12 @@ An example of this is a one-to-one message, which would look like $Message$ $(1,
 
 A broadcast message, which looks like $Broadcastmessage$ $(3, 1)$ $broadcastdata$, can be received by agents subscribed to its channel, in this case $1$. All agent subscriptions have to be announced at the beginning of a simulation and can not be changed during it. This is done by adding the subscription channel to the list in a tuple passed as an argument, for example this could look like $(agent1, [1])$, for agent 1 subscribed to broadcast channel one.
 
-Empty messages can also be sent, if the message is required to be known to be intentionally empty and not a mistake the a message can be sent containing ``Hiaton''. This is done at the beginning of the run to allow for the harness to send a first message. 
+Empty messages can also be sent, if the message is required to be known to be intentionally empty and not a mistake, the a message can be sent containing ``Hiaton''. This is done at the beginning of the run to allow for the harness to send a first message. 
 %-what is an agent in interdyne and what is its type
 
 InterDyne is designed in such a way that agents both taken in and produce a seemingly infinite list of messages. This is achieved through lazy evaluation in Haskell, which in short means that any element in the list will not be calculated until it is absolutely needed. This allows for an infinite list as long as no agent tries to read further into the list then what as already been calculated. In achieving this an agent must at each time step, allows read in a message (even if it is then not used) and produce a list of messages (even if this is a empty list). An agent will hence iterate over the list of incoming messages, at each time step adding a new output message to its list of output messages.  
 
-Agents in InterDyne are topically, though not required to be, written in two parts, a wrapper function and a logic function. The wrapper will manage the reading of inbound messages to the agent and generate its outbound messages, it will also update the local state of the agent. While a logic function is called by the wrapper to calculate the messages to be sent and there content. A agent written following this design could have a form similar to that of the agent show in Fig.~\ref{fig:wrapperfrominterdyne}. This agents wrapper recursively calls its self on the inbound message list, consuming the head of the list\footnote{This design dictates that the head of the list is the messages for the current time step.} and producing a list of outbound messages using a logic function.  
+Agents in InterDyne are typically, though not required to be, written in two parts, a wrapper function and a logic function. The wrapper will manage the reading of inbound messages to the agent and generate its outbound messages, it will also update the local state of the agent. While a logic function is called by the wrapper to calculate the messages to be sent and there content. An agent written following this design could have a form similar to that of the agent show in Fig.~\ref{fig:wrapperfrominterdyne}. This agents wrapper recursively calls its self on the inbound message list, consuming the head of the list\footnote{This design dictates that the head of the list is the messages for the current time step.} and producing a list of outbound messages using a logic function.  
 \begin{figure}[H]
 	\centering
         \lstinputlisting[language=Haskell]{complexagentwrapper.hs}
@@ -540,7 +536,7 @@ This has the type shown in Fig.~\ref{fig:harntypintfirst}, this type illustrates
 \end{figure} 
 
 
-The simulator harness is embodied in a function called sim, this function contains code associated with a number of administrative operations. For the purpose of this project a reduced specification of the function sim will be shown. This specification captures all of the core functionality for managing message passing for agents and driving evaluation of the simulation. This reduced InterDyne sim harness can be seen in Fig.~\ref{fig:intersimfun}, with its function type shown in Fig.~\ref{fig:reducedsimtypet}. This reduced function is shown outputting a single integer value that is the message first message sent be the first agent at time step $x$, this is just for illustration purposes since the normal output of sim as a trace file is not being shown here. In the reduced type definition it can be seen that the output is now and integer instead of an $IO()$ type, the list passed to the sim that contains the subscription channels is now of unknown type as no channels are passed.   
+The simulator harness is embodied in a function called sim, this function contains code associated with a number of administrative operations. For the purpose of this project a reduced specification of the function sim will be shown. This specification captures all of the core functionality for managing message passing for agents and driving evaluation of the simulation. This reduced InterDyne sim harness can be seen in Fig.~\ref{fig:intersimfun}, with its function type shown in Fig.~\ref{fig:reducedsimtypet}. This reduced function is shown outputting a single integer value, that is the first message sent by the first agent at time step $x$. This is just for illustration purposes since the normal output of sim is a trace file and is not being shown here. In the reduced type definition it can be seen that the output is now and integer instead of an $IO()$ type, the list passed to the sim that contains the subscription channels is now of unknown type as no channels are passed.   
  
 \begin{figure}[H]
 	\centering
@@ -558,13 +554,13 @@ The simulator harness is embodied in a function called sim, this function contai
 
 %-how do you run an interdyne experiment 
 
-Running an InterDyne experiment is done by calling the simulator with relevant inputs, an example example of this is shown in Fig.~\ref{fig:runninginterdyne}.
-\begin{figure}[H]
-	\centering
-        \lstinputlisting[language=Haskell]{interdynewithdelays.hs}
-	\caption{\it A run of an experiment in InterDyne containing delays.}
-	\label{fig:runninginterdyne}
-\end{figure} 
+%Running an InterDyne experiment is done by calling the simulator with relevant inputs, an example example of this is shown in Fig.~\ref{fig:runninginterdyne}.
+%\begin{figure}[H]
+%	\centering
+%        \lstinputlisting[language=Haskell]{interdynewithdelays.hs}
+%	\caption{\it A run of an experiment in InterDyne containing delays.}
+%	\label{fig:runninginterdyne}
+%\end{figure} 
 
 
 
