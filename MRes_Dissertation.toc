@@ -33,6 +33,6 @@
 \contentsline {subsection}{\numberline {6.2}Translation Semantic Considerations}{57}
 \contentsline {subsection}{\numberline {6.3}Automated Translation Implementation}{58}
 \contentsline {section}{\numberline {7}Summary and Conclusion }{61}
-\contentsline {subsection}{\numberline {7.1}Discussion and Further work }{61}
+\contentsline {subsection}{\numberline {7.1}Discussion and Further work }{62}
 \contentsline {section}{\numberline {8}Appendix A.}{63}
 \contentsline {section}{References}{64}
