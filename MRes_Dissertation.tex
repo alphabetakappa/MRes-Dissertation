@@ -112,24 +112,25 @@
 
 %%%%%%%%%%%%%%%%to do%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%2make sure appendixes match the paper 
+%1make sure appendixes match the paper 
 
 
 
 %%%%%%%%%%rewrite%%%%%%%%%%%%
 
+%about using miranda for giving numerical equivlance (talk about a program to translate and the afcet tthat this is the defintion so its fine) 
+
+
 %%%%%%%%%%finish%%%%%%%%%%%%%
 
-%3create transformation program 
-
-%4write conversion code.  parser, first step
+%2create transformation program 
 
 
 %%%%%%%%%%%add%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%side things%%%%%%%%%%%%%%
-%5replace $'$ with \textsc{\char13}
+%3replace $'$ with \textsc{\char13}
 
 
 
@@ -1383,24 +1384,45 @@ Implementing and combining both of these translation would give a method for rea
 
 
 \newpage 
-\section{Appendix A.}
-%unnumbered subsection in appedic
-%
+\section*{Appendix A: Programs for Numerical Testing}
+\addcontentsline{toc}{section}{Appendix A: Programs for Numerical Testing}
+\subsection*{User Manual}
+Here the code that translates from the target states in the design steps shown in this dissertation is given, along with its results. These results were used to numerically test the design steps equivalency. 
+
+This code is written in Miranda, therefore to run it Miranda must be installed; installation instructions and downloads for Miranda can be found through the following link: http://miranda.org.uk/. 
 
 
 
-%definations of intermieated translat 
-
-
-
-%user manal
-% all code is written using miranda and will require the miranda program lanaguge to be installed 
+%t = tomira "tester.m" "newtester.m"
 
 %oncee miranda is started load file .. and then each translation step has its own function name for exapla "main1" etc 
 
-%
+\subsection*{Translation from Design to Miranda}
+\lstinputlisting[language=C++]{tomircode.m}
 
-%\subsection{Appendix 1} %\label{Appendix_1}
+
+
+
+\subsection*{Programs for Numerical Testing}
+%\lstinputlisting[language=C++]{autocode.m}
+
+
+
+
+
+\newpage
+\section*{Appendix B: Implementation of Translation}
+\addcontentsline{toc}{section}{Appendix B: Implementation of Translation}
+
+\subsection*{User Manual}
+Here the code for the implementation of the translation described in this dissertation is given; this implementation only covers the first three aspects of the automated translation. These three steps are the lexer, parser and first translation step, shown here in one file. 
+
+This code is written in Miranda, therefore to run it Miranda must be installed; installation instructions and downloads for Miranda can be found through the following link: http://miranda.org.uk/. 
+
+Once Miranda is installed, simply run the the code as a file using $mira$ $file.m$. Once this is done the first transaltion step can be achieved by using the command $trans\_step1$~$(parser$~$(lex$~$input$~$))$, where $input$ is the character list defining the experiment to be translated (this can be created by reading in a text file). 
+
+
+\subsection*{Lexer, Parser and First Translation Step Code}
 \lstinputlisting[language=C++]{autocode.m}
 
 \newpage
