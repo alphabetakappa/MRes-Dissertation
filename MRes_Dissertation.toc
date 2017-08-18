@@ -35,5 +35,5 @@
 \contentsline {section}{\numberline {7}Summary and Conclusion }{60}
 \contentsline {subsection}{\numberline {7.1}Discussion and Further work }{61}
 \contentsline {section}{Appendix A: Programs for Numerical Testing}{62}
-\contentsline {section}{Appendix B: Implementation of Translation}{63}
-\contentsline {section}{References}{72}
+\contentsline {section}{Appendix B: Implementation of Translation}{76}
+\contentsline {section}{References}{85}

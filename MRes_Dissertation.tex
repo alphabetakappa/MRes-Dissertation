@@ -122,14 +122,9 @@
 
 
 %%%%%%%%%%finish%%%%%%%%%%%%%
-
-%2create transformation program 
-
-
-%%%%%%%%%%%add%%%%%%%%%%%%%%%%%
-
-
+%%%%%%%%%%%add%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%side things%%%%%%%%%%%%%%
+
 %3replace $'$ with \textsc{\char13}
 
 
@@ -1384,18 +1379,19 @@ Implementing and combining both of these translation would give a method for rea
 
 
 \newpage 
-\section*{Appendix A: Programs for Numerical Testing}
+\section*{Appendix A: Program for Numerical Testing}
 \addcontentsline{toc}{section}{Appendix A: Programs for Numerical Testing}
 \subsection*{User Manual}
-Here the code that translates from the target states in the design steps shown in this dissertation is given, along with its results. These results were used to numerically test the design steps equivalency. 
+Here the code that translates from the target states in the design steps shown in this dissertation is given, along with the code used to numerically test the target states.
 
 This code is written in Miranda, therefore to run it Miranda must be installed; installation instructions and downloads for Miranda can be found through the following link: http://miranda.org.uk/. 
 
+The first code shown is for translating the target states in the translation steps into their Miranda form. This can be run after loading the file (using $mira$ $file.m$) by running the command  $tomira$ $"import.m"$ $"output.m"$, where the file names given are examples. 
 
+Though this code correctly translates the target states into their Miranda form, there are still a number of issues stop this form from then being run. The target states use some syntax that is different in Miranda, as well as some internal functions and types that need to be defined in Miranda. 
 
-%t = tomira "tester.m" "newtester.m"
+To run numerical testing the outputs from this code were compiled into one program and edited to run in Miranda, definitions were also given to internal functions and types requiring them. Each step was given the name $main$ with the step number appended to the end, for example the result from the first translation step is called $main1$. To run the numerical test the command $testvalue$ is used and to test the numerical equivalence of these tests the command $testequiv$ is used. 
 
-%oncee miranda is started load file .. and then each translation step has its own function name for exapla "main1" etc 
 
 \subsection*{Translation from Design to Miranda}
 \lstinputlisting[language=C++]{tomircode.m}
@@ -1403,8 +1399,8 @@ This code is written in Miranda, therefore to run it Miranda must be installed; 
 
 
 
-\subsection*{Programs for Numerical Testing}
-%\lstinputlisting[language=C++]{autocode.m}
+\subsection*{Program for Numerical Testing}
+\lstinputlisting[language=C++]{t_miracode.m}
 
 
 
