@@ -108,15 +108,9 @@
 
 
 
-%tell chris to look at my new section "Method for Achieving a Translation" as I have changed it a bit to hopefully cover the issues he had 
 
-%look at line help
-
-%tell chris i have rewritten bespoke rr 
 
 %%%%%%%%%%%%%%%%to do%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%1rewrite bespoke rr
 
 %2make sure appendixes match the paper 
 
@@ -671,32 +665,51 @@ A set of recurrence relation can be used to statically model a interacting syste
 
 To allow for tracing, specifications need to be give of a set of recurrence relations, initial values for these relations, and a driving expression. 
 
-This section first gives the initial syntax and the abstract syntax, then keywords and naming conventions are given, finally a well formed program in this language is described and an example is given.  
+This section first gives the concrete syntax, then keywords and naming conventions, finally a well formed program in this language is described and an example is given.  
  
 
 
 \subsection{Syntax}
-%in bespoke model say that miranda as shown is the definition of the language 
-%the meaning of the recurraance relation is this miranda expression, when defining mirada expression 
-
-
-The concrete BNF syntax for this bespoke language is defined in Fig.~\ref{fig:bnflex}, this syntax specifies what constitutes a this language. Symbols and structures not given in this syntax are not part of this language and therefore models created in this language are only incorporate what is given by the concrete syntax. 
+The formal concrete syntax for this bespoke recurrence relation language is defined in Backus-Naur form (BNF), shown in Fig.~\ref{fig:bnflex}. The main aspects of this notation, in this context, are described as follows:
+\begin{itemize}
+  \item Expressions of the design of language are represented inside $<$ $>$; these are high level design aspects of the language (e.g. the simulation as a whole, or the main block defining the experiment).
+  \item These high level expressions are given meaning by $::=$, the expression of the left hand side of this must take the form given on the right hand side (e.g. in $<a> ::= <b>$, $<a>$ has to take the form given by $<b>$).  
+  \item The right hand side of $::=$, have multiple options, these are split by $|$. This can be seen to representing an $or$ operation, with the left hand side being able to be represented by any of the options given on the right hand side (e.g. in $<a> ::= <b> | <c>$, $<a>$ can be either $<b>$ or $<c>$). 
+  \item The speech marks $``$'' are used to denote actual writing in the language, this allows the syntax to describe how the language can be written (e.g. connecting the expression $<where>$ to the word $``where$'' in the language). In this notation $``$'' are used for strings of characters, and $`$' are used for single characters (e.g. $``where$'' and $`w$').
+  \item Here $..$ is used to denote any item that would logically appear between the left hand side and right hand side of the $..$, these items are separated by an $|$ (e.g. $`1$'$.. `4$' gives $`1$' $| `2$' $| `3$' $| `4$'). 
+  \item The character $`\backslash n$' is used to donate  a new line in the language. 
+\end{itemize}
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[language=Miranda]{bnflex.m}
-	\caption{\it Concrete BNF syntax for bespoke recurrence relation language.}
+	\caption{\it Concrete BNF syntax for the bespoke recurrence relation language.}
 	\label{fig:bnflex}
 \end{figure} 
 
-This concrete syntax gives the language the ability to have certain functionality, such as the use of lists, being able to specify equations, being able to specify internal functions, and the use of certain inbuilt functions (such as retrieving the tail from a list). The functionality of this language will be described more fully in the Section~\ref{nameconv}.
+A simulation written in this language takes the structure shown in Fig.~\ref{fig:befroemira}, this structure is defined to have the same meaning as the Miranda expression shown in Fig.~\ref{fig:miramean}; where the BNF syntax for the items encapsulated by $<>$ is shown in Fig.~\ref{fig:structuredefs}.
 
-The layout and structure of the language is formally defined in the abstract BNF shown in Fig.~\ref{fig:BNF}. This syntax describes the shape of the program, all programs written in the bespoke recurrence relation language have to adhere to this shape. Any program that does not fit the shape described by the abstract BNF can not be considered to be a model written in the language defined in this section.  
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{BNF.m}
-	\caption{\it Abstract BNF syntax for bespoke recurrence relation language.}
-	\label{fig:BNF}
+	\lstinputlisting[language=Miranda]{befroemira.m}
+	\caption{\it Layout of a simulation in bespoke recurrence relation language.}
+	\label{fig:befroemira}
 \end{figure} 
+
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{miramean.m}
+	\caption{\it Miranda definition of the layout shown in Fig.\ref{fig:befroemira}.}
+	\label{fig:miramean}
+\end{figure} 
+
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{structuredefs.m}
+	\caption{\it BNF syntax for items shown in Fig.~\ref{fig:befroemira}, with further definitions defined in Fig.~\ref{fig:bnflex}.}
+	\label{fig:structuredefs}
+\end{figure} 
+
+The syntax given in this section dictates how a simulation written in this bespoke recurrence relation must be formatted and what items are allowed to be used within this language. The functionality of this language, given by the BNF, will be described more fully in the Section~\ref{nameconv}. Any program that does not fit the shape described by the concrete BNF can not be considered to be a model written in the language defined in this section.  
 
 
 
@@ -751,6 +764,7 @@ There are a number of names and naming conventions which can not be used and can
 This language has a strict style and layout, this covers a number of aspects: layout, experiment, initial conditions and recurrence relations.  
 
 The layout of an simulation should match that shown in Fig.~\ref{fig:1exofla}, with $main$ signifying the experiment, $init$ the initial conditions and $where$ the list of recurrence relations. 
+
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[language=Miranda]{1layout.m}

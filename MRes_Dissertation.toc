@@ -18,7 +18,7 @@
 \contentsline {section}{\numberline {4}Bespoke Recurrence Relation Language}{24}
 \contentsline {subsection}{\numberline {4.1}Syntax}{24}
 \contentsline {subsection}{\numberline {4.2}Naming Conventions}{26}
-\contentsline {subsection}{\numberline {4.3}Well Formed Programs}{28}
+\contentsline {subsection}{\numberline {4.3}Well Formed Programs}{27}
 \contentsline {section}{\numberline {5}Design of a Translation from Recurrence Relations to InterDyne}{30}
 \contentsline {subsection}{\numberline {5.1}Infinite List Output}{31}
 \contentsline {subsection}{\numberline {5.2}Grouping into Agents}{32}

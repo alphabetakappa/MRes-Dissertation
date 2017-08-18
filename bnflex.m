@@ -17,7 +17,7 @@
                 | <whereblock>
 <main>        ::= ``main\n''
 <init>        ::= ``init\n''
-<whereblock>  ::= ``where\n''
+<where>       ::= ``where\n''
 <recrel>      ::= <letters> ``_'' <letters>
 <letter>      ::= `a' .. 'z' | `A' .. `Z'
 <cond>        ::= ``cond ''
