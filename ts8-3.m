@@ -9,6 +9,7 @@ j_wrapper localstate args inputs id = outbound_messages_this_timestep : (j_wrapp
                                                                         where
                                                                         res1 = j_f1 t
                                                                         res2 = j_f2 t
+                                                                        endwhere
                                       j_f1 0 = k
                                       j_f1 t = cond (t<0) k_f1_last_timestep
                                                (25 + (j_f1_last_timestep * i_f1_last_timestep)+j_f2_last_timestep)
@@ -23,9 +24,12 @@ j_wrapper localstate args inputs id = outbound_messages_this_timestep : (j_wrapp
                                                msgs_from_k        = filter ((=3).getmsgfrom) inbound_messages_this_timestep
                                                args_from_k        = concat (map getmsgargs msgs_from_k)
                                                k_f1_last_timestep = (getargval.hd) (filter ((="k_f1").getargstr) args_from_j)
+                                               endwhere
                                       j_f2 0 = k+q
                                       j_f2 t = cond (t<3) 27 (j_f1_last_timestep + 27)
                                                where
                                                msgs_from_j        = filter ((=2).getmsgfrom) inbound_messages_this_timestep
                                                args_from_j        = concat (map getmsgargs msgs_from_j)
                                                j_f1_last_timestep = (getargval.hd) (filter ((="j_f1").getargstr) args_from_j)
+                                               endwhere
+                                      endwhere

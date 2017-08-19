@@ -8,6 +8,7 @@ i_wrapper localstate args inputs id = outbound_messages_this_timestep : (i_wrapp
                                       outbound_messages_this_timestep = [ Message (id,1) [(Arg ("i_f1",res))],Message (id,2) [(Arg ("i_f1",res))]]
                                                                         where
                                                                         res = i_f1 t
+                                                                        endwhere
                                       i_f1 0 = q
                                       i_f1 t = cond (t<0) 0 (i_f1_last_timestep + j_f1_last_timestep)
                                                where
@@ -17,3 +18,5 @@ i_wrapper localstate args inputs id = outbound_messages_this_timestep : (i_wrapp
                                                msgs_from_jd        = filter ((=4).getmsgfrom) inbound_messages_this_timestep
                                                args_from_jd        = concat (map getmsgargs msgs_from_j)
                                                j_f1_2last_timestep = (getargval.hd) (filter ((="j_f1d").getargstr) args_from_jd)
+                                               endwhere
+                                      endwhere

@@ -12,6 +12,8 @@ k_wrapper localstate args inputs id = outbound_messages_this_timestep : (k_wrapp
                                                msgs_from_j        = filter ((=2).getmsgfrom) inbound_messages_this_timestep
                                                args_from_j        = concat (map getmsgargs msgs_from_j)
                                                j_f1_last_timestep = (getargval.hd) (filter ((="j_f1").getargstr) args_from_j)
+                                               endwhere
+                                      endwhere
 jf1_delay localstate args inputs id = outbound_messages_this_timestep : (jf1_delay localstate args future_messages id)
                                       where
                                       k = (getargval.hd) (filter ((="k").getargstr) args)
@@ -23,3 +25,4 @@ jf1_delay localstate args inputs id = outbound_messages_this_timestep : (jf1_del
                                       args_from_j        = concat (map getmsgargs msgs_from_j)
                                       jf1_delayed 0     = k
                                       jf1_delayed t     = (getargval.hd) (filter ((="j_f1").getargstr) args_from_j)
+                                      endwhere

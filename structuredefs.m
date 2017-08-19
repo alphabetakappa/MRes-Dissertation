@@ -1,4 +1,3 @@
-<exp>       ::= <expression>
-<idefs>     ::= <variables>
-<variables> ::= <variable> | <variable> <variables>
-<fdefs>     ::= <recrels>
+<exp>    ::= <expression>
+<idefs>  ::= <valdefinitions>
+<fdefs>  ::= <recreldefinitions>

@@ -7,3 +7,4 @@ i_wrapper localstate args inputs id = outbound_messages_this_timestep : (i_wrapp
                                       future_messages                 = tl inputs
                                       outbound_messages_this_timestep = [ [ (id,1,logic),(id,2,logic)]]
                                       logic t = function (inbound messages this timestep)
+                                      endwhere

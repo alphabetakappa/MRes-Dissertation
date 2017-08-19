@@ -18,3 +18,5 @@ h_sim x = (thd3.hd) (((outputs!x)!0)!0)
                             k_inputs   = map (map (map (filter (h 3)))) outputs
                             jf1_inputs = map (map (map (filter (h 4)))) outputs
                             h x (a,b,c) = ((b=x) \/ (a,b,c) = (0,0,0))
+                            endwhere
+          endwhere

@@ -9,3 +9,5 @@ h_sim x args agents = (thd3.hd) (((snd (outputs!x))!0)!0)
                                         myoutputs id = map (f id) outputs
 		                                f x (t, xs)  = (t, map (map (filter (h x))) xs)
 		                                h x (a,b,c)  = ((b=x) \/ (a,b,c) = (0,0,0))
+                                        endwhere
+                      endwhere

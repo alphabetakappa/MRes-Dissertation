@@ -1,39 +1,39 @@
-\contentsline {section}{\numberline {1}Introduction}{5}
-\contentsline {section}{\numberline {2}Background}{8}
-\contentsline {subsection}{\numberline {2.1}Emergent Behaviour}{8}
-\contentsline {subsection}{\numberline {2.2}Methods for Modelling Emergent Behaviour in Finance}{11}
-\contentsline {subsubsection}{\numberline {2.2.1}Recurrence Relations}{11}
-\contentsline {subsubsection}{\numberline {2.2.2}Agent-Based Models}{12}
-\contentsline {subsection}{\numberline {2.3}InterDyne}{14}
-\contentsline {subsubsection}{\numberline {2.3.1}Applicability to Finance}{15}
-\contentsline {paragraph}{\numberline {2.3.1.1}Deterministic}{15}
-\contentsline {paragraph}{\numberline {2.3.1.2}Message Delays}{15}
-\contentsline {paragraph}{\numberline {2.3.1.3}Storing Messages}{15}
-\contentsline {paragraph}{\numberline {2.3.1.4}Message Ordering}{15}
-\contentsline {subsubsection}{\numberline {2.3.2}InterDyne Detailed Operation}{16}
-\contentsline {section}{\numberline {3}Description and Analysis of the Problem}{19}
-\contentsline {subsection}{\numberline {3.1}Method for Achieving a Translation}{19}
-\contentsline {subsection}{\numberline {3.2}Review of Similar Work}{20}
-\contentsline {subsection}{\numberline {3.3}Challenges with the Translation Approach}{22}
-\contentsline {section}{\numberline {4}Bespoke Recurrence Relation Language}{24}
-\contentsline {subsection}{\numberline {4.1}Syntax}{24}
-\contentsline {subsection}{\numberline {4.2}Naming Conventions}{26}
-\contentsline {subsection}{\numberline {4.3}Well Formed Programs}{27}
-\contentsline {section}{\numberline {5}Design of a Translation from Recurrence Relations to InterDyne}{30}
-\contentsline {subsection}{\numberline {5.1}Infinite List Output}{31}
-\contentsline {subsection}{\numberline {5.2}Grouping into Agents}{32}
-\contentsline {subsection}{\numberline {5.3}A Global Output List}{33}
-\contentsline {subsection}{\numberline {5.4}Agent Input Lists}{35}
-\contentsline {subsection}{\numberline {5.5}Targeted Information Passing}{39}
-\contentsline {subsection}{\numberline {5.6}A Simulator Harness}{42}
-\contentsline {subsection}{\numberline {5.7}Runtime Arguments}{45}
-\contentsline {subsection}{\numberline {5.8}Message Communication}{49}
-\contentsline {section}{\numberline {6}Validation and Testing}{55}
-\contentsline {subsection}{\numberline {6.1}Translation Validation}{55}
-\contentsline {subsection}{\numberline {6.2}Translation Semantic Considerations}{56}
-\contentsline {subsection}{\numberline {6.3}Automated Translation Implementation}{57}
-\contentsline {section}{\numberline {7}Summary and Conclusion }{60}
-\contentsline {subsection}{\numberline {7.1}Discussion and Further work }{61}
-\contentsline {section}{Appendix A: Programs for Numerical Testing}{62}
-\contentsline {section}{Appendix B: Implementation of Translation}{76}
-\contentsline {section}{References}{85}
+\contentsline {section}{\numberline {1}Introduction}{6}
+\contentsline {section}{\numberline {2}Background}{9}
+\contentsline {subsection}{\numberline {2.1}Emergent Behaviour}{9}
+\contentsline {subsection}{\numberline {2.2}Methods for Modelling Emergent Behaviour in Finance}{12}
+\contentsline {subsubsection}{\numberline {2.2.1}Recurrence Relations}{12}
+\contentsline {subsubsection}{\numberline {2.2.2}Agent-Based Models}{13}
+\contentsline {subsection}{\numberline {2.3}InterDyne}{15}
+\contentsline {subsubsection}{\numberline {2.3.1}Applicability to Finance}{16}
+\contentsline {paragraph}{\numberline {2.3.1.1}Deterministic}{16}
+\contentsline {paragraph}{\numberline {2.3.1.2}Message Delays}{16}
+\contentsline {paragraph}{\numberline {2.3.1.3}Storing Messages}{16}
+\contentsline {paragraph}{\numberline {2.3.1.4}Message Ordering}{16}
+\contentsline {subsubsection}{\numberline {2.3.2}InterDyne Detailed Operation}{17}
+\contentsline {section}{\numberline {3}Description and Analysis of the Problem}{20}
+\contentsline {subsection}{\numberline {3.1}Method for Achieving a Translation}{20}
+\contentsline {subsection}{\numberline {3.2}Review of Similar Work}{21}
+\contentsline {subsection}{\numberline {3.3}Challenges with the Translation Approach}{23}
+\contentsline {section}{\numberline {4}Bespoke Recurrence Relation Language}{25}
+\contentsline {subsection}{\numberline {4.1}Syntax}{25}
+\contentsline {subsection}{\numberline {4.2}Naming Conventions}{28}
+\contentsline {subsection}{\numberline {4.3}Well Formed Programs}{29}
+\contentsline {section}{\numberline {5}Design of a Translation from Recurrence Relations to InterDyne}{32}
+\contentsline {subsection}{\numberline {5.1}Infinite List Output}{33}
+\contentsline {subsection}{\numberline {5.2}Grouping into Agents}{34}
+\contentsline {subsection}{\numberline {5.3}A Global Output List}{35}
+\contentsline {subsection}{\numberline {5.4}Agent Input Lists}{38}
+\contentsline {subsection}{\numberline {5.5}Targeted Information Passing}{41}
+\contentsline {subsection}{\numberline {5.6}A Simulator Harness}{46}
+\contentsline {subsection}{\numberline {5.7}Runtime Arguments}{50}
+\contentsline {subsection}{\numberline {5.8}Message Communication}{54}
+\contentsline {section}{\numberline {6}Validation and Testing}{60}
+\contentsline {subsection}{\numberline {6.1}Translation Validation}{60}
+\contentsline {subsection}{\numberline {6.2}Translation Semantic Considerations}{61}
+\contentsline {subsection}{\numberline {6.3}Automated Translation Implementation}{62}
+\contentsline {section}{\numberline {7}Summary and Conclusion }{65}
+\contentsline {subsection}{\numberline {7.1}Discussion and Further work }{66}
+\contentsline {section}{Appendix A: Program for Numerical Testing}{67}
+\contentsline {section}{Appendix B: Implementation of Translation}{81}
+\contentsline {section}{References}{90}

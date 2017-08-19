@@ -8,3 +8,5 @@ h_sim x = outputfunction (x)
                             i_inputs   = map (map (map (filter (h 1)))) outputs
                             j_inputs   = map (map (map (filter (h 2)))) outputs
                             h x (a,b,c) = ((b=x) \/ (a,b,c) = (0,0,0))
+                            endwhere
+          endwhere

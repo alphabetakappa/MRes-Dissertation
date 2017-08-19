@@ -15,3 +15,5 @@ h_sim x runtime_args agentinfo = (getargval.hd.getmsgargs) (((snd (outputs!x))!0
                                                redacted_msgs id outputs = map (f id) outputs
 		                                       f x (time, xs)               = (time, concat (map (filter (h x)) xs))
 		                                       h x (Message (f,t) args)     = (t=x)
+                                               endwhere
+                                 endwhere

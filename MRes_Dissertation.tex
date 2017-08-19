@@ -62,6 +62,7 @@
 \setcounter{secnumdepth}{4} % how many sectioning levels to assign numbers to
 \setcounter{tocdepth}{4}    % how many sectioning levels to show in ToC in preamble
 
+\usepackage{pdfpages}
 
 
 
@@ -106,33 +107,55 @@
 %folyers english 
 
 
-
-
+%%%%%%%%%%%%%%%ask chris%%%%%%%%%%%%%%%%
+%is sticker in good place? 
 
 
 %%%%%%%%%%%%%%%%to do%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%1make sure appendixes match the paper 
+%1add in intro a bullet list of objectives or planned contributions of the project & in conlucion add a bulleted list of objects that have been achieved
+
+%2restricted list and define it  (rr lanagueg)
+
+%3don't restrict the driving expression (check syntax) 
+
+%4say special thing about hd and tl is they only take one value (not that they are built-in)
+
+%5discussion of the steps to be taken in the design (detailed and about their order, is this the only one etc) 
+
+%6fix parser for nested where loops 
+
+%7add endwhere to syntax 
+
+%8expalin the syntax 
+
+%9add new syntax (from chris)
+
+%10You already have "is it correct"?  (which begs the question - "what does it mean to be correct?") but you haven't asked "is it complete?" - i.e. are there any examples of recurrence-relation model definitions that are correct with resect to the syntax that cannot be correctly translated?  And how can you be sure?
+
 
 
 
 %%%%%%%%%%rewrite%%%%%%%%%%%%
 
-%about using miranda for giving numerical equivlance (talk about a program to translate and the afcet tthat this is the defintion so its fine) 
+%116.1 validation
+
+%126.2 sematic
+
+%136.3 autamed (new parse tree)
+
+%14code and make sure it works 
 
 
 %%%%%%%%%%finish%%%%%%%%%%%%%
 %%%%%%%%%%%add%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%side things%%%%%%%%%%%%%%
 
-%3replace $'$ with \textsc{\char13}
-
-
+%unbold code 
 
 %%%%%%%%%%%%%proof%%%%%%%%%%%%%%%%%% 
 
-%sec 3
-%sec 4
+%sec 4.3
 %sec 5
 %sec 6
 %sec 7
@@ -177,6 +200,8 @@ A dissertation submitted in partial fulfilment\\
 
 \newpage
 I, Leo Carlos-Sandberg, confirm that the work presented in this dissertation is my own. Where information has been derived from other sources, I confirm that this has been indicated in the dissertation. The report may be freely copied and distributed provided the source is explicitly acknowledged.
+
+\includepdf[pages={1}]{CoverSheet.pdf}
 
 \newpage
 \begin{abstract}
@@ -412,14 +437,14 @@ The main aspect of this model is the agents used. Though every system modelled c
 \begin{itemize}
    \item An agent is self contained, unique and identifiable, this requires an agent to have boundaries which can easily be used to determine what is and what is not part of the agent. 
    \item An agent is autonomous and it can act independently during its interactions with other agents. Its has behaviour and decisions that can be associated with information acquired  during communication with other agents. 
-   \item An agent$'$s state varies over time, representing variables associated with its current position. 
-   \item An agent$'$s behaviour is influenced by dynamic interactions with other agents. 
+   \item An agent\textsc{\char13}s state varies over time, representing variables associated with its current position. 
+   \item An agent\textsc{\char13}s behaviour is influenced by dynamic interactions with other agents. 
 \end{itemize}
 
 This modelling technique has a number of benefits originating from its construction, these include:
 \begin{itemize}
    \item Being able to independently create each agent to varying degrees of complexity. 
-   \item Giving a clear visual representation of the system$'$s interconnectedness.
+   \item Giving a clear visual representation of the system\textsc{\char13}s interconnectedness.
    \item Giving a dynamic representation of the system.
    \item Easily expandable by adding more agents.  
 \end{itemize} 
@@ -428,7 +453,7 @@ Since each agent in the system can be completely autonomous and independent from
 
 Due to the set up of this model a network representing the communication between different agents is easy to construct; this allows for topologies to be visualised and can aid in the creation of a simulation.    
 
-The use of messages and a bottom-up approach in this model, allows for a more dynamic view of a system to be achieved; messages can be more easily tracked through-out the system$'$s evolution allowing for events to be more easily pinpointed and analysed.  
+The use of messages and a bottom-up approach in this model, allows for a more dynamic view of a system to be achieved; messages can be more easily tracked through-out the system\textsc{\char13}s evolution allowing for events to be more easily pinpointed and analysed.  
 
 The use of independent agents makes this technique very amenable to expansion, new agents can often be added with little or no change to previously existing agents. This allows these simulations to be confidently expanded to look at more complex systems, or to add new elements to an existing system.  
 
@@ -439,7 +464,7 @@ These aspects of this approach make the modelling technique well qualified for m
 \subsection{InterDyne} \label{InterDyne_section}
 An example of an agent-based model used in modelling the financial markets is InterDyne. InterDyne is bespoke simulator created by Clack and his research team at UCL~\cite{Chris_webPage}, it is a general-purpose simulator for exploring emergent behaviour and interaction dynamics within complex non-equilibrium systems.
 
-InterDyne$'$s design is that of an agent-based model interacting via a harness. This creates a structure of individual autonomous agents who interact through messages sent through a harness to one another.
+InterDyne\textsc{\char13}s design is that of an agent-based model interacting via a harness. This creates a structure of individual autonomous agents who interact through messages sent through a harness to one another.
  
 Similar to other agent-based models, InterDyne operates in discrete time rather then continuous time. These quantised time chunks, which move the simulation forward, can be left without proper definition (allowing operations to be defined in a number of time steps) or they can be equated to a real time (usually with the smallest time gap needed being a single time step and then all other timings being integer multiples of this). This discrete time is most important to message passing, with messages between agents only sent on an integer time step.
 
@@ -502,7 +527,7 @@ Empty messages can also be sent, if the message is required to be known to be in
 
 InterDyne is designed in such a way that agents both take in and produce a seemingly infinite list of messages. This is achieved through lazy evaluation in Haskell, which in short means that any element in the list will not be calculated until it is absolutely needed. This allows for an infinite list as long as no agent tries to read further into the list than what has already been calculated. In achieving this an agent must at each time step, read in a message (even if it is then not used) and produce a list of messages (even if this is an empty list). An agent will hence iterate over the list of incoming messages, at each time step adding a new output message to its list of output messages.  
 
-Agents in InterDyne are typically, though not required to be, written in two parts, a wrapper function and a logic function. The wrapper will manage the reading of inbound messages to the agent and generate its outbound messages, it will also update the local state of the agent. While a logic function is called by the wrapper to calculate the messages to be sent and their content. An agent written following this design could have a form similar to that of the agent show in Fig.~\ref{fig:wrapperfrominterdyne}. This agent$'$s wrapper recursively calls itself on the inbound message list, consuming the head of the list\footnote{This design dictates that the head of the list is the messages for the current time step.} and producing a list of outbound messages using a logic function.  
+Agents in InterDyne are typically, though not required to be, written in two parts, a wrapper function and a logic function. The wrapper will manage the reading of inbound messages to the agent and generate its outbound messages, it will also update the local state of the agent. While a logic function is called by the wrapper to calculate the messages to be sent and their content. An agent written following this design could have a form similar to that of the agent show in Fig.~\ref{fig:wrapperfrominterdyne}. This agent\textsc{\char13}s wrapper recursively calls itself on the inbound message list, consuming the head of the list\footnote{This design dictates that the head of the list is the messages for the current time step.} and producing a list of outbound messages using a logic function.  
 \begin{figure}[H]
 	\centering
         \lstinputlisting[language=Haskell]{complexagentwrapper.hs}
@@ -558,7 +583,7 @@ The simulator harness is embodied in a function called sim, this function contai
 \newpage
 \section {Description and Analysis of the Problem} \label{despriptionandanalysproblem}
 
-Investigating emergent behaviour originating from interaction dynamics, within a complex system, relies on viewing the communication between different components of the system as messages being passed. These messages can then be analysed to assess the communication and its pattern that lead to the creation of the emergent behaviour, this approach is amenable to the discovery of phenomena, such as dynamic feedback loops. A model investigating emergent behaviour hence must be able to view communication as messages being passed between different components. For results from this model to be broadly accepted, in fields such as economics, the model as a whole must also be well defined.      
+Investigating emergent behaviour originating from interaction dynamics, within a complex system, relies on viewing the communication between different components of the system as messages being passed. These messages can then be analysed to assess the communication and its pattern that lead to the creation of the emergent behaviour; this approach is amenable to the discovery of phenomena, such as dynamic feedback loops. A model investigating emergent behaviour hence must be able to view communication as messages being passed between different components. For results from this model to be broadly accepted, in fields such as economics, the model as a whole must also be well defined~\cite{ebmabmi}.      
 
 Agent-based models naturally support a message passing view making them well suited to analysing and investigating emergent behaviour. However most agent-based models, though having each individual agent fully specified, do not have a well defined formalisation for the system as a whole. This makes it challenging to perform system wide analytics on most agent-based model. Recurrence relations naturally support a system wide analysis, due to the full definition of their models. However their formulation does not support a message passing view of communication between components, making it difficult to analyse emergent behaviour with them directly. 
 
@@ -568,45 +593,40 @@ This section discusses how relating these two models can be achieved, reviews li
 
 
 \subsection{Method for Achieving a Translation}
-%%%%%%How can this solution be achieved (translation form rr to abm)
 To allow for recurrence relations to be used in formalising an agent-based model, the two paradigms must be connected. This connection must be able to demonstrate some sort of equivalence between these two models. 
 
-It has been shown informally by~\cite{gabm3} that most agent-based models can be expressed as a set of partial recursive functions. Therefore it can be inferred that a connection between a recurrence relation model and an agent-based model can be created in the form of a translation, from one to the other. 
+It has been shown informally by~\cite{gabm3}, that most agent-based models can be expressed as a set of partial recursive functions. Therefore it can be inferred that a connection between a recurrence relation model and an agent-based model can be created in the form of a translation, from one to the other. 
 
-%%%%%%what is a translation between rr and abm
-A correctness preserving translation between a recurrence relation model of a system and a agent-based model of the same system; allows for the recurrence relation model to provide a formalism for the agent-based model. Correctness preserving in this context is used to mean that both models representing an identical model and will produce identical results; so that both views of the system should be completely interchangeable. 
+A correctness-preserving translation between a recurrence-relation model of a system and an agent-based model of the same system provides a formalism for the agent-based model if it can be said that the recurrence-relation model defines the meaning of the agent-based model. Correctness preserving in this context is used to mean that both models representing an identical system and will produce identical results; so that both views of the system should be completely interchangeable. 
 
-%%%%%%what direction should this translation take and why? rr -> abm
-An important consideration in creating a translation between the two methods is, which direction this translation should take. For the purpose of defining the formalisation of an agent-based model and hence increasing its acceptance for a reader, a recurrence relations to agent-based model trajectory is preferred. This ordering will allow a read to start with a formalised description and translate this formalisation to cover an agent-based model, as opposed to starting with an unformalised model and translating to a formalised one. This process essentially creates and agent-based model view of the recurrence relation model.      
+An important consideration in creating a translation between the two methods is the direction in which this translation should be effected. Ideally, correctness-preserving translations would be defined in both directions and this would prove the semantic equivalence of the two models.  However, defining two complete translations is beyond the scope of this project.  Defining the translation from a recurrence-relation model to an equivalent agent-based model has been chosen, since it is believed that those who prefer recurrence-relation models would prefer to start with a recurrence-relation model; the agent-based model then becomes an equivalent view within which dynamic analysis of emergent behaviour can be undertaken.
 
-%%%%%%How will this translation be done? look at work other people have done on translations (step-by-step) 
-The next consideration is how this translation will be achieved. Inspiration can be drawn from other works investigating the design of translations, such as~\cite{clovertrans},  \cite{transproggotmod} and  \cite{stepcorentconv}. These three papers discuss translations between program representations in a way in which, the final representation will faithfully represent the initial. The approach taken by these papers is to increment the translation in step-by-step manner, where each step slightly transforms the previous to be closer to the final form. The benefit of this method is that if each step on the translation can be proven to be correct then the whole translation can be seen as correct. This approach relies on the correctness of the steps being transitive; that a correctness preserving translation from state 1 to state 2, and then another from state 2 to state 3, will produce a correctness preserving translation from state 1 to state 3.\footnote{A formal proof for a correctness preserving translation will be discussed in Section~\ref{furtherwork}.} 
+The next consideration is how this translation will be achieved. Inspiration can be drawn from other works investigating the design of translations, such as~\cite{clovertrans},  \cite{transproggotmod} and  \cite{stepcorentconv}. These three papers discuss translations between program representations in a way in which, the final representation will faithfully represent the initial. The approach taken by these papers is to increment the translation in step-by-step manner, where each step slightly transforms the previous to be closer to the final form. The benefit of this method is that if each step on the translation can be proven to be correct then the whole translation can be seen as correct. This approach relies on the correctness of the steps being transitive; that a correctness preserving translation from state 1 to state 2, and then another from state 2 to state 3, will produce a correctness preserving translation from state 1 to state 3.\footnote{A suggested method for further work in this area is given in Section~\ref{furtherwork}.} 
 
-%%%%%%what is the project? (make rr language, convert in a step-by-step manner to InterDyne
-A connection between these two models can hence be created by translating in a step-by-step fashion from a recurrence relation language to an agent-based model. The agent-based model used in this translation is InterDyne and the recurrence relation language used is discussed in Section~\ref{beskoperecurrancerealtion}. InterDyne was selected due to a number of factors, most importantly InterDyne was designed from the bottom up to model and investigate emergent behaviour with the financial markets, with research already being conducted using it to this end~\cite{DynamicCoupling_Chris}, this software was also a convenient choice due to access to the source code and local expertise.
+A connection between these two models can hence be created by translating in a step-by-step fashion from a recurrence relation language to an agent-based model. The agent-based model used in this translation is InterDyne and the recurrence relation language used is discussed in Section~\ref{beskoperecurrancerealtion}. InterDyne was selected due to a number of factors, one being that from its conception it was designed with modelling and investigate emergent behaviour with the financial markets in mind (with research existing already using it to this end~\cite{DynamicCoupling_Chris}), this software was also a convenient choice due to access to the source code and local expertise.
 
 \subsection{Review of Similar Work}\label{simwork}
-The idea of using recurrence relations to give a formal definition to an agent-based model is not a novel one and falls under the general heading of using formal systems to prove properties of agent-based models. Work in this area has covered game theory, discrete systems, classifier agents and equation-based models~\cite{taabm}. The use of recurrence relations falls under the classification of an equation-based model, these have been used in a number of papers looking to give a formalisation to agent-based models. Here three papers~\cite{ebmabmi}, \cite{econmistsnoabm} and \cite{abmtsd}, looking at this area will be reviewed and discussed, along with DEVS formalism introduced in Ref.~\cite{introdevs}.
+The idea of using recurrence relations to give a formal definition to an agent-based model is not a novel one and falls under the general heading of using formal systems to prove properties of agent-based models. Work in this area has covered game theory, discrete systems, classifier agents and equation-based models~\cite{taabm}. The use of recurrence relations falls under the classification of an equation-based model, these have been used in a number of papers looking to give a formalisation to agent-based models. Here three papers~\cite{ebmabmi}, \cite{econmistsnoabm} and \cite{abmtsd}, looking at this area will be reviewed and discussed, along with DEVS formalism introduced by Zeigler in~\cite{introdevs}.
 
-Before reviewing these papers, it is worth considering the more obvious question of does a formalism need to be given by another modelling technique to allow for the analyses of an agent-based model? North~\cite{taabm} present$'$s a formalism for the analysis of agent-based models, looking in particular at performance. This paper looks to prove findings from agent-based models, in particular the focus is on existing agent-based software such as Swarm, Repast 3 and others. This paper notes that these pieces of software use a modular imperative architecture with factored agents, spaces, a scheduler, logs, and an interface. Hence this paper presents a theoretical formalism for analysing a modular imperative agent-based model.    
+Before reviewing these papers, it is worth considering the more obvious question of does a formalism need to be given by another modelling technique to allow for the analyses of an agent-based model? North~\cite{taabm} present\textsc{\char13}s a formalism for the analysis of agent-based models, looking in particular at performance. This paper looks to prove findings from agent-based models, in particular the focus is on existing agent-based software such as Swarm, Repast 3 and others. This paper notes that these pieces of software use a modular imperative architecture with factored agents, spaces, a scheduler, logs, and an interface. Hence this paper presents a theoretical formalism for analysing a modular imperative agent-based model.    
 
-This formalism is presented using an abstract machine specification of the modular imperative agent-based modelling architecture. A  Random Access Stored-Program (RASP) architecture was chosen for the abstract machine, this architecture had been created in an earlier paper~\cite{raspceated} and was chosen due to its similarities to real computer systems. This is opposed to other options including Turing machines and $\lambda$-calculus, as they are less well matched with modern computer systems.     
+This formalism is presented using an abstract machine specification of the modular imperative agent-based modelling architecture. A  Random Access Stored-Program (RASP) architecture was chosen for the abstract machine, this architecture had been created in an earlier paper~\cite{raspceated} and was chosen due to its similarities to modern computer systems. This is opposed to other options including Turing machines and $\lambda$-calculus, as they are less well matched with modern computer systems.     
 
-One of North$'$s motivations for using this technique over an equation-based model formalisation, is that he claims that a formulation of the agent-based model in terms of an equation-based model would be unnatural and possibly unrecognisable to those accustomed to agent-based models. This consideration is not as important to the work presented in this dissertation, since here the aim is to familiarise those accustomed with equation-based models to agent-based models and not the reverse. The same argument applies to the use of RASP over alternatives such as $\lambda$-calculus, this dissertation is more interested in creating a formalism which is relatable to economists over computer scientists.   
+One of North\textsc{\char13}s motivations for using this technique over an equation-based model formalisation, is that he claims that a formulation of the agent-based model in terms of an equation-based model would be unnatural and possibly unrecognisable to those accustomed to agent-based models. This consideration is not as important to the work presented in this dissertation, since here the aim is to familiarise those accustomed with equation-based models to agent-based models and not the reverse. The same argument applies to the use of RASP over alternatives such as $\lambda$-calculus, this dissertation is more interested in creating a formalism which is relatable to economists over computer scientists.   
 
-In~\cite{ebmabmi} Costa et al consider the formalisation of agent-based models by creating their implementation guided by equation-based models. an (equation-based model)-oriented design. This paper looks at an example with interacting entities with given strategies, however these strategies could change upon interactions. In this example the equation-based model took a probabilist and macro-view approach where the agent-based model, due to its nature, took a micro-view approach. The analyses of these two models showed that though the systems appeared to be the same the micro-view approach could create slightly different outcomes depending on the number of agents chosen. This difference comes from the fact that the individual agents in the agent-based model were created to match a macro-level description given by the equation-based model, however due to the autonomous nature of the agents only their general behaviour can match and in certain circumstances even this did not correctly produce the behaviour. This issue spawns from trying  to recreate the behaviour of a probabilistic model using a deterministic model. 
+In~\cite{ebmabmi} Costa et al consider the formalisation of agent-based models by creating their implementation guided by equation-based models. This paper looks at an example with interacting entities with given strategies, however these strategies could change upon interactions. In this example the equation-based model took a probabilist and macro-view approach where the agent-based model, due to its nature, took a micro-view approach. The analyses of these two models showed that though the systems appeared to be the same the micro-view approach could create slightly different outcomes depending on the number of agents chosen. This difference comes from the fact that the individual agents in the agent-based model were created to match a macro-level description given by the equation-based model, however due to the autonomous nature of the agents only their general behaviour can match and in certain circumstances even this did not correctly produce the behaviour. This issue spawns from trying  to recreate the behaviour of a probabilistic model using a deterministic model. 
 
 This paper concludes summarising the benefits of this approach in validating an agent-based model, here an agent-based model is known to be a faithful representation of the system as long as the equation-based model is a faithful representation. However the question of whether the agent-based model is correctly implemented still rests with that model. 
 
 The main difficulties faced by this paper appear to be the transformation from a macro-level view (equation-based model) to a micro-level (agent-based model) view, this is particularly due to the statistical nature of the equation-based model. Though they succeeded in creating a formalisation of their model the differences in results between runs still raises questions over the equality between the two view points. To avoid this issue, a more micro-level focussed equation-based model should be taken.
 
-The next paper is~\cite{econmistsnoabm}, this paper is based on a similar principle to this project in that it seeks to bridge the conceptual gap around  agent-based models in economics. It tackles this problem by introducing an equation-based formalism to describe both agent-based models and analytical models, though of interest here is their work on former. 
+The next paper is~\cite{econmistsnoabm}, this paper is based on a similar principle to this project in that it seeks to bridge the conceptual gap around  agent-based models in economics. It tackles this problem by introducing an equation-based formalism to describe both agent-based models and analytical models, though of interest here is their work on the former. 
 
 The agent-based model is formalised by specifying how each agent\textsc{\char13}s state within the model changes between each time step. This is done by defining agent attributes using vectors of state variables and then applying time-indexed difference equations to specify each agents state change. This allows for expression of the agent-based model in terms of difference equations, which they then use to look at parameter estimation. 
 
 Their work shows the ability to provide estimations on agent-based models, counter to some criticism that has been levelled at agent-based models. Some difficulty in this approach can come from agent-based models with complicated algorithmic behaviour within the agents, specifying these models as difference equations can be challenging task. The work in this dissertation does not directly suffer from this problem as all systems are first described as recurrence relations before being translated into agent-based models, meaning that the equation view will only be as complex as the original writer intends.  
 
-Macal~\cite{abmtsd} investigates relating Forrester\textsc{\char13}s System Dynamics (SD) model to an agent-based model. System dynamics models consist of a set of difference equations, so this can be seen as a comparison between difference equations and agent-based models. This paper presents a formal specifications for both the Forrester\textsc{\char13}s and agent-based models, these specifications are then compared to show their equivalence. Once equivalence has been proven the specification of a Forrester\textsc{\char13}s model can be used to derive an agent-based model that is an correct representation of the same system.
+Macal~\cite{abmtsd} investigates relating Forrester\textsc{\char13}s System Dynamics (SD) model to an agent-based model. System dynamics models consist of a set of difference equations, so this can be seen as a comparison between difference equations and agent-based models. This paper presents a formal specifications for both the Forrester\textsc{\char13}s and agent-based models, these specifications are then compared to show their equivalence. Once equivalence has been proven the specification of a Forrester\textsc{\char13}s model can be used to derive an agent-based model that is a correct representation of the same system.
 
 This technique is applied to an SIR epidemic model, creating a Forrester\textsc{\char13}s and agent-based model representation. These two descriptions of the system are then evaluated and have their results compared. The findings show that though both models show similar behaviour, there is not an exact match between them. This is due to the probabilistic nature of the system being modelled and the different approach that an agent-based model takes to these kind of systems. 
 
@@ -624,7 +644,8 @@ DEVS is able to provide a theoretical foundation for analyses of a number of cri
 \subsection{Challenges with the Translation Approach} \label{twoviewsapproach} 
 The approach taken in this project of creating a step-by-step translation between a recurrence relation description of a system to a agent-based model description on the same system has a number of challenges associated with it. In this section the difficulties with this project will be described. 
 
-As noted in Section~\ref{simwork}, when looking at work done by other researchers in this area, a main challenge was how to model systems that have no counterpart in an agent-based model. This problem exists mostly due to modelling probabilist systems and macro-level systems, which are counter to the view an agent-based model takes. In this project however the focus will be on systems which are modelled at the micro-level and without probabilist aspects, though stochastic aspects will be allowed within the micro-level view.
+As noted in Section~\ref{simwork}, when looking at work done by other researchers in this area, a main challenge was how to model systems that have no counterpart, or are challenging to create a counterpart for, in an agent-based model.
+An example of this is modelling probabilist systems and macro-level systems, which are difficult to establish an equivalent agent-based model for. This project avoids these challenges by using micro-level recurrence relation models for the translation. 
 
 A problem overshadowing most aspects of this project is that the two paradigms being translated between are completely different and in some ways opposing. Recurrence relation models take an analytic (where the system evolution is defined statically.) approach where as agent-based models take a dynamic one (where the system evolution is given in simulation).  %is this right (help) 
 
@@ -653,13 +674,13 @@ The approach taken in this dissertation is to create a series of small steps bet
 
 \newpage
 \section{Bespoke Recurrence Relation Language} \label{beskoperecurrancerealtion}
-This section introduces a bespoke recurrence relation model, created to be able to model complex systems with interacting elements. This recurrence relation model will eventually be translated into an agent-based model and hence needs to be able to express the system being modelled both statically and dynamically. 
+This section introduces a bespoke recurrence relation model, created to be able to model complex systems with interacting elements. This recurrence relation model is used as the initial description of the system in the translation into an agent-based model and hence needs to be able to express the system being modelled both statically and dynamically. 
 
-A bespoke recurrence relation language is created for a few reasons: firstly there needs to exist a strict set of known rules to facilitate parsing of the language if the process is automated. Secondly, the functionality of the language needs to be restricted to keep it as simple as possible, to allow for the language to be readily understandable and easy to parse, only introducing complexity where necessary. Thirdly, the language still needs to maintain sufficient functionality to model complex systems. Creating a bespoke language offers a straightforward method satisfying these three criteria.     
- 
-A set of recurrence relation can be used to statically model a interacting system, however this model does not give a time dependent  experiment required for dynamic modelling. To add time dynamics to this model the set of recurrence relation described need to be traced through time.
+A bespoke recurrence relation language is created for three reasons. Firstly, an automated translator needs to have a well-defined input that it can parse. Secondly, the functionality of the language needs to be restricted to keep it as simple as possible, to allow for the language to be readily understandable and easy to parse, only introducing complexity where necessary. Thirdly, the language still needs to maintain sufficient functionality to model complex systems. Creating a bespoke language offers a straightforward method satisfying these three criteria.
 
-To allow for tracing, specifications need to be give of a set of recurrence relations, initial values for these relations, and a driving expression. 
+A set of recurrence relations can be used to statically model a interacting system, however this model does not give a time-dependent experiment required for dynamic modelling. To add time dynamics to this model the values of the recurrence relations need to be traced through time.
+
+To allow for tracing, initial values must be provided (noting that different experiments might have different initial values), and a main expression must be defined to control demand for the evaluation of the relevant traces.
 
 This section first gives the concrete syntax, then keywords and naming conventions, finally a well formed program in this language is described and an example is given.  
  
@@ -669,18 +690,35 @@ This section first gives the concrete syntax, then keywords and naming conventio
 The formal concrete syntax for this bespoke recurrence relation language is defined in Backus-Naur form (BNF), shown in Fig.~\ref{fig:bnflex}. The main aspects of this notation, in this context, are described as follows:
 \begin{itemize}
   \item Expressions of the design of language are represented inside $<$ $>$; these are high level design aspects of the language (e.g. the simulation as a whole, or the main block defining the experiment).
-  \item These high level expressions are given meaning by $::=$, the expression of the left hand side of this must take the form given on the right hand side (e.g. in $<a> ::= <b>$, $<a>$ has to take the form given by $<b>$).  
-  \item The right hand side of $::=$, have multiple options, these are split by $|$. This can be seen to representing an $or$ operation, with the left hand side being able to be represented by any of the options given on the right hand side (e.g. in $<a> ::= <b> | <c>$, $<a>$ can be either $<b>$ or $<c>$). 
+  \item These high level expressions are given meaning by $::=$, the expression on the left hand side of this must take the form given on the right hand side (e.g. in $<a> ::= <b>$, $<a>$ has to take the form given by $<b>$).  
+  \item The right hand side of $::=$, can have multiple options, these are split by $|$. This can be seen to representing an $or$ operation, with the left hand side being able to be represented by any of the options given on the right hand side (e.g. in $<a> ::= <b> | <c>$, $<a>$ can be either $<b>$ or $<c>$). 
   \item The speech marks $``$'' are used to denote actual writing in the language, this allows the syntax to describe how the language can be written (e.g. connecting the expression $<where>$ to the word $``where$'' in the language). In this notation $``$'' are used for strings of characters, and $`$' are used for single characters (e.g. $``where$'' and $`w$').
   \item Here $..$ is used to denote any item that would logically appear between the left hand side and right hand side of the $..$, these items are separated by an $|$ (e.g. $`1$'$.. `4$' gives $`1$' $| `2$' $| `3$' $| `4$'). 
-  \item The character $`\backslash n$' is used to donate  a new line in the language. 
+  \item The character $`\backslash n$' is used to denote  a new line in the language. 
 \end{itemize}
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{bnflex.m}
-	\caption{\it Concrete BNF syntax for the bespoke recurrence relation language.}
+	\begin{subfigure}[b]{1\textwidth}
+	\lstinputlisting[language=Miranda]{bnflex-1.m}
+	\caption{\it First half of the concrete BNF syntax for the bespoke recurrence relations.}
+        \label{fig:snt1}
+	\end{subfigure}
+	\caption*{}
+\end{figure}
+	
+\begin{figure}[H]\ContinuedFloat
+	\centering
+	\begin{subfigure}[b]{1\textwidth}
+	\lstinputlisting[language=Miranda]{bnflex-1.m}
+	\caption{\it Second half of the concrete BNF syntax for the bespoke recurrence relations.}
+        \label{fig:snt2}
+	\end{subfigure}
+	\caption{\it Concrete BNF syntax for the bespoke recurrence relation language, split between Fig.~\ref{fig:snt1} and Fig.~\ref{fig:snt2}.}
 	\label{fig:bnflex}
 \end{figure} 
+
+
+
 
 A simulation written in this language takes the structure shown in Fig.~\ref{fig:befroemira}, this structure is defined to have the same meaning as the Miranda expression shown in Fig.~\ref{fig:miramean}; where the BNF syntax for the items encapsulated by $<>$ is shown in Fig.~\ref{fig:structuredefs}.
 
@@ -712,19 +750,19 @@ The syntax given in this section dictates how a simulation written in this bespo
 \subsection{Naming Conventions} \label{nameconv}
 This language has a strict naming convention, as well as some restricted names. Naming conventions are in place for recurrence relation definitions, where blocks, sub-functions, variables, initial conditions and  if statements. 
 
-A recurrence relation be defined in four parts, $name$ $arguments$ $=$ $expression$. The name must be formatted in the manner $group\_name$, where $group$ is the name of the group the recurrence relation belongs to and $name$ is the name of the particular recurrence relation. Multiple recurrence relations can belong to the same group, and hence have the same group name, however only one relation in each group can have a set name. This language requires that all recurrence relations take at least one argument, and that time $t$ has to be the first argument. Time $t$ does not need to be utilised within the relation but it must be in the definition.     
+A recurrence relation is defined in four parts, $name$ $arguments$ $=$ $expression$. The name must be formatted in the manner $group\_name$, where $group$ is the name of the group the recurrence relation belongs to and $name$ is the name of the particular recurrence relation. Multiple recurrence relations can belong to the same group, and hence have the same group name, however only one relation in each group can have a set name. This language requires that all recurrence relations take at least one argument, and that time $t$ has to be the first argument. Time $t$ does not need to be utilised within the relation but it must be in the definition.     
 
 A recurrence relation can have sub definitions relating to it, this is done through the use of a where block. A where block is written after the expression for a recurrence relation and starts with the keyword $where$. After this local definitions for internal functions and variables can be defined. 
 
-Internal functions must be formatted in the manner $\_name$, where $name$ is the name for the function. These functions can only be accessed by the recurrence relation they are within. Local variables can be defined using the formate $name$, this name can be anything as long as it does not clash with restricted names or other variable names with in the where block. 
+Internal functions must be formatted in the manner $\_name$, where $name$ is the name for the function. These functions can only be accessed by the recurrence relation they are within. Local variables can be defined using the formate $name$, this name can be anything as long as it does not clash with restricted names or other variable names with in the same where block. 
 
 The driving expression is given in a defined section of the model, showing in Section~\ref{wellformedprogs}, and is written as  $group\_name$ $arguments$. The  $group\_name$ must correspond to a recurrence relation listed in the model and the $arguments$ must be given as values, allowing the recurrence relation to be evaluated. 
 
-Initial conditions are listed in a special location in the layout, which will be show in Section~\ref{wellformedprogs}, and are defined in three parts $name$ $=$ $expression$. This name can be seen as a variable and can be anything not in the restricted name list. 
+Initial conditions are listed in a special location in the layout, which will be show in Section~\ref{wellformedprogs}, and are defined in three parts $name$ $=$ $expression$. This name can be seen as a variable and can be anything not in the restricted name list or used by any other variable (even those within where blocks). 
 
 This language allows for both $arguments$ and $expressions$ to be written using: lists, numbers, variable names, recurrence relation names, internal function names, mathematical operators, brackets, some inbuilt functions, and conditional statements. 
 
-List in this language are contained within $[]$, items within these lists are then separated using $,$.  
+Lists in this language are contained within $[]$, items within these lists are then separated using $,$.  
 
 This language allows the use of both integers and decimal numbers, with $.$ used in decimalisation. 
 
@@ -748,7 +786,7 @@ There are a number of names and naming conventions which can not be used and can
   \item The use of the name $main$.
   \item The use of the name $init$.
   \item The use of the name $where$, unless used to make a where statement.
-  \item The use of symbols, unless for their mathematical purpose.  
+  \item The use of symbols, unless for their defined purpose.  
 \end{itemize}
 
 
@@ -759,14 +797,14 @@ There are a number of names and naming conventions which can not be used and can
 \subsection{Well Formed Programs} \label{wellformedprogs} 
 This language has a strict style and layout, this covers a number of aspects: layout, experiment, initial conditions and recurrence relations.  
 
-The layout of an simulation should match that shown in Fig.~\ref{fig:1exofla}, with $main$ signifying the experiment, $init$ the initial conditions and $where$ the list of recurrence relations. 
-
-\begin{figure}[H]
-	\centering
-	\lstinputlisting[language=Miranda]{1layout.m}
-	\caption{\it Layout of a simulation.}
-	\label{fig:1exofla}
-\end{figure} 
+%The layout of a simulation should match that shown in Fig.~\ref{fig:1exofla}, with $main$ signifying the experiment, $init$ the initial conditions and $where$ the list of recurrence relations.
+%\begin{figure}[H]
+%	\centering
+%	\lstinputlisting[language=Miranda]{1layout.m}
+%	\caption{\it Layout of a simulation. With the words incased in speech marks represent what could should replace them; ``Experiment'' should be replaced by the driving expression, ``Initial Conditions'' should be replaced by the list of initial conditions, and ``Recurrence Relations'' should be replaced by a list of recurrence relations. 
+%}
+%	\label{fig:1exofla}
+%\end{figure} 
 
 An experiment is written as a function call, with a certain set of arguments. Figure~\ref{fig:2exofla} shows a experiment that will return the value of the recurrence relation $i\_f1$ at time $3$.
 \begin{figure}[H]
@@ -812,7 +850,7 @@ A where statement is used to provided additional functionality to a recurrence r
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[language=Miranda]{7rrwhere.m}
-	\caption{\it A recurrence relation containing a where statement to add a internal function and a internal variable.}
+	\caption{\it A recurrence relation containing a where statement to add a internal function and a internal variable.  }
 	\label{fig:7exofla}
 \end{figure} 
 
@@ -873,7 +911,7 @@ Since the recurrence relations are now contained within parent functions (that d
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[language=Miranda]{ts1.m}
-	\caption{\it Figure~\ref{fig:rre1} translated to contain relations that produce infinite lists throughout time and functionality added for relations to index into these lists.}
+	\caption{\it Figure~\ref{fig:rre1} translated to contain relations that produce infinite lists throughout time and functionality added for relations to index into these lists.  }
 	\label{fig:ts1}
 \end{figure} 
 
@@ -892,7 +930,7 @@ These changes will translate the example in Fig.~\ref{fig:ts1} to that shown in 
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[language=Miranda]{ts2.m}
-	\caption{\it Translation of Fig.~\ref{fig:ts1} to allow for grouping of recurrence relations into agents.}
+	\caption{\it Translation of Fig.~\ref{fig:ts1} to allow for grouping of recurrence relations into agents.  }
 	\label{fig:ts2}
 \end{figure} 
 
@@ -911,7 +949,7 @@ This is done by creating a list of the simulation outputs, $s\_outputs$, that co
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[language=Miranda]{glnv3.m}
-	\caption{\it  An infinite list in time containing the values of every recurrence relation at each time step, with null values at the start of the list.}
+	\caption{\it  An infinite list in time containing the values of every recurrence relation at each time step, with null values at the start of the list.  }
 	\label{fig:glnv3}
 \end{figure}  
 
@@ -922,7 +960,7 @@ Translating Fig.~\ref{fig:ts2} to contain this global output list and to index i
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[language=Miranda]{ts3.m}
-	\caption{\it  Figure \ref{fig:ts2} translated to contain the global output list, $s\_outputs$, and to use this list to retrieve values from other agents.}
+	\caption{\it  Figure \ref{fig:ts2} translated to contain the global output list, $s\_outputs$, and to use this list to retrieve values from other agents.  }
 	\label{fig:ts3}
 \end{figure} 
 
@@ -943,7 +981,7 @@ The wrapper functions now takes two inputs, a list of all the outputs from all t
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[language=Miranda]{wrap4.m}
-	\caption{\it Example of part of a wrapper function form after addition of inputs for the wrapper functions.}
+	\caption{\it Example of part of a wrapper function form after addition of inputs for the wrapper functions.  }
 	\label{fig:wrap4}
 \end{figure} 
 
@@ -957,7 +995,7 @@ A delay agent, for delaying a value to $t-2$, will have a form similar to that s
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[language=Miranda]{delay4.m}
-	\caption{\it Example of a delay wrapper that delays the first value from the second wrapper, so that a value from $t-2$ is received at t.}
+	\caption{\it Example of a delay wrapper that delays the first value from the second wrapper, so that a value from $t-2$ is received at t.  }
 	\label{fig:delay4}
 \end{figure} 
   
@@ -966,7 +1004,7 @@ In this translation all information is passed as an input to the wrapper so even
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
 	\lstinputlisting[language=Miranda]{ts4-1.m}
-	\caption{From Fig.~\ref{fig:ts4}, main, init, and the outputs list.}
+	\caption{From Fig.~\ref{fig:ts4}, main, init, the outputs list, and $i$ wrapper.  }
         \label{fig:gull}
 	\end{subfigure}
 	\caption*{}
@@ -976,10 +1014,10 @@ In this translation all information is passed as an input to the wrapper so even
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
 	\lstinputlisting[language=Miranda]{ts4-2.m}
-	\caption{From Fig.~\ref{fig:ts4}, wrapper functions.}
+	\caption{From Fig.~\ref{fig:ts4}, $j$ and $k$ wrapper functions.  }
         \label{fig:gull2}
 	\end{subfigure}
-	\caption{\it Translation of Fig.~\ref{fig:ts3} to allow wrappers to access information through input values, and to limit the information given to only that from the previous time step. Figure~\ref{fig:gull} shows the experiment and the outputs list, and Fig.~\ref{fig:gull2} shows the wrappers.}
+	\caption{\it Translation of Fig.~\ref{fig:ts3} to allow wrappers to access information through input values, and to limit the information given to only that from the previous time step. Figure~\ref{fig:gull} shows the experiment, the outputs list and the $i$ wrapper, and Fig.~\ref{fig:gull2} shows the $j$ and $k$ wrappers.}
 	\label{fig:ts4}
 \end{figure} 
 
@@ -997,7 +1035,7 @@ The wrapper functions now output messages in the same form, so a message from th
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[language=Miranda]{outmes5.m}
-	\caption{\it Example of part of a wrapper that is sending two messages containing the same value. These messages come from this wrapper, which is the first wrapper (1), and are sent: to itself (1), and to the second wrapper (2). Here $logic1$ is just used to show where the logic would be and that this produces the output values, as well as what inputs this takes in.}
+	\caption{\it Example of part of a wrapper that is sending two messages containing the same value. These messages come from this wrapper, which is the first wrapper (1), and are sent: to itself (1), and to the second wrapper (2). Here $logic1$ is just used to show where the logic would be and that this produces the output values, as well as what inputs this takes in.  }
 	\label{fig:outmes5}
 \end{figure} 
 
@@ -1005,7 +1043,7 @@ Though a wrapper receives all messages sent it should only use those that are se
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[language=Miranda]{sort5.m}
-	\caption{\it Example of part of a wrapper that is used to sort the input off all messages and only return the ones directed at this wrapper.}
+	\caption{\it Example of part of a wrapper that is used to sort the input off all messages and only return the ones directed at this wrapper.  }
 	\label{fig:sort5}
 \end{figure} 
 
@@ -1015,7 +1053,7 @@ Since the format that the information is passed in, has changed the experiment f
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
 	\lstinputlisting[language=Miranda]{ts5-1.m}
-	\caption{From Fig.~\ref{fig:ts5}, main, init, and the outputs list.}
+	\caption{From Fig.~\ref{fig:ts5}, main, init, the outputs list and $i\_wrapper$.  }
         \label{fig:ts51}
 	\end{subfigure}
 	\caption*{}
@@ -1025,7 +1063,7 @@ Since the format that the information is passed in, has changed the experiment f
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
 	\lstinputlisting[language=Miranda]{ts5-2.m}
-	\caption{From Fig.~\ref{fig:ts5}, $i\_wrapper$ and $j\_wrapper$.}
+	\caption{From Fig.~\ref{fig:ts5}, $j\_wrapper$.  }
         \label{fig:ts52}
 	\end{subfigure}
 	\caption*{}
@@ -1035,10 +1073,10 @@ Since the format that the information is passed in, has changed the experiment f
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
 	\lstinputlisting[language=Miranda]{ts5-3.m}
-	\caption{From Fig.~\ref{fig:ts5}, $k\_wrapper$ and $jf1\_delay$.}
+	\caption{From Fig.~\ref{fig:ts5}, $k\_wrapper$ and $jf1\_delay$.  }
         \label{fig:ts53}
 	\end{subfigure}
-	\caption{\it Translation of Fig.~\ref{fig:ts4} to allow messages to be sent as a tuple in the form (from, to, value) and for wrappers to sort these messages as to only used ones addressed to them. Figure~\ref{fig:ts51} shows the experiment and the outputs list, Fig.~\ref{fig:ts52} shows the wrapper functions for groups $i$ and $j$, and Fig.~\ref{fig:ts53} shows the wrapper function for $k$ and the wrapper function for the delay agent $jf1\_delay$.}
+	\caption{\it Translation of Fig.~\ref{fig:ts4} to allow messages to be sent as a tuple in the form (from, to, value) and for wrappers to sort these messages as to only used ones addressed to them. Figure~\ref{fig:ts51} shows the experiment, the outputs list and the $i$ wrapper, Fig.~\ref{fig:ts52} shows the wrapper function for $j$, and Fig.~\ref{fig:ts53} shows the wrapper function for $k$ and the wrapper function for the delay agent $jf1\_delay$.}
 	\label{fig:ts5}
 \end{figure} 
 
@@ -1051,7 +1089,7 @@ The harness function, called $h\_sim$, takes one input, which is time. The retur
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[language=Miranda]{harn6.m}
-	\caption{\it Example of how the harness function $h\_sim$ is formatted for two wrappers. This function produces the output for the system and in the process mediates the passing of messages between wrappers, only allowing a wrapper to receive messages sent to it. The function $listfuction$ represents the null value list, which uses the value $newnullvalue$.}
+	\caption{\it Example of how the harness function $h\_sim$ is formatted for two wrappers. This function produces the output for the system and in the process mediates the passing of messages between wrappers, only allowing a wrapper to receive messages sent to it. The function $listfuction$ represents the null value list, which uses the value $newnullvalue$.  }
 	\label{fig:harn6}
 \end{figure} 
 
@@ -1064,7 +1102,7 @@ Translating Fig.~\ref{fig:ts5} to contain a harness function with this functiona
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
 	\lstinputlisting[language=Miranda]{ts6-1.m}
-	\caption{From Fig.~\ref{fig:ts6}, main, init, and the sim wrapper.}
+	\caption{From Fig.~\ref{fig:ts6}, main, init, and the sim wrapper.  }
         \label{fig:ts61}
 	\end{subfigure}
 	\caption*{}
@@ -1074,7 +1112,7 @@ Translating Fig.~\ref{fig:ts5} to contain a harness function with this functiona
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
 	\lstinputlisting[language=Miranda]{ts6-2.m}
-	\caption{From Fig.~\ref{fig:ts6}, $i\_wrapper$ and $j\_wrapper$.}
+	\caption{From Fig.~\ref{fig:ts6}, $i\_wrapper$ and $j\_wrapper$.  }
         \label{fig:ts62}
 	\end{subfigure}
 	\caption*{}
@@ -1084,7 +1122,7 @@ Translating Fig.~\ref{fig:ts5} to contain a harness function with this functiona
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
 	\lstinputlisting[language=Miranda]{ts6-3.m}
-	\caption{From Fig.~\ref{fig:ts6}, $k\_wrapper$ and $jf1\_delay$.}
+	\caption{From Fig.~\ref{fig:ts6}, $k\_wrapper$ and $jf1\_delay$.  }
         \label{fig:ts63}
 	\end{subfigure}
 	\caption{\it Translation of Fig.~\ref{fig:ts5} to contain a harness function that deals with message sorting and passing, as well as outputting the experiment value. Figure~\ref{fig:ts61} shows the experiment and sim wrapper, Fig.~\ref{fig:ts62} shows the wrapper functions for groups $i$ and $j$, and Fig.~\ref{fig:ts63} shows the wrapper function for $k$ and the wrapper function for the delay agent $jf1\_delay$.}
@@ -1104,7 +1142,7 @@ The harness now also bunches messages sent to each agent with a time stamp, this
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[language=Miranda]{harn7.m}
-	\caption{\it Example of how the harness function $h\_sim$ is formatted when using runtime arguments. The function $listfuction$ represents the null value list, which uses the value $newnullvalue$.}
+	\caption{\it Example of how the harness function $h\_sim$ is formatted when using runtime arguments. The function $listfuction$ represents the null value list, which uses the value $newnullvalue$.  }
 	\label{fig:harn7}
 \end{figure} 
 
@@ -1112,7 +1150,7 @@ The wrapper functions four inputs: the local state ($localstate$), the arguments
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[language=Miranda]{wrap7.m}
-	\caption{\it Example of how a wrapper function is formatted when passing the arguments: localstate, args, inputs and id. Here $logic1$ is just used to show where the logic would be and that this produces the output values, as well as what inputs this takes in.}
+	\caption{\it Example of how a wrapper function is formatted when passing the arguments: localstate, args, inputs and id. Here $logic1$ is just used to show where the logic would be and that this produces the output values, as well as what inputs this takes in.  }
 	\label{fig:wrap7}
 \end{figure} 
 
@@ -1121,7 +1159,7 @@ Since the inputs to the harness function have changed the call in $main$ must al
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
 	\lstinputlisting[language=Miranda]{ts7-1.m}
-	\caption{From Fig.~\ref{fig:ts7}, main, init, and the sim wrapper.}
+	\caption{From Fig.~\ref{fig:ts7}, main, init, the sim wrapper, and the $i$ wrapper.  }
         \label{fig:ts71}
 	\end{subfigure}
 	\caption*{}
@@ -1131,7 +1169,7 @@ Since the inputs to the harness function have changed the call in $main$ must al
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
 	\lstinputlisting[language=Miranda]{ts7-2.m}
-	\caption{From Fig.~\ref{fig:ts7}, $i\_wrapper$ and $j\_wrapper$.}
+	\caption{From Fig.~\ref{fig:ts7}, $j\_wrapper$.  }
         \label{fig:ts72}
 	\end{subfigure}
 	\caption*{}
@@ -1141,10 +1179,10 @@ Since the inputs to the harness function have changed the call in $main$ must al
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
 	\lstinputlisting[language=Miranda]{ts7-3.m}
-	\caption{From Fig.~\ref{fig:ts7}, $k\_wrapper$ and $jf1\_delay$.}
+	\caption{From Fig.~\ref{fig:ts7}, $k\_wrapper$ and $jf1\_delay$.  }
         \label{fig:ts73}
 	\end{subfigure}
-	\caption{\it Translation of Fig.~\ref{fig:ts6} to contain $args$ and $agents$ as an input to the harness, and to contain localstate, args, inputs and id as inputs for the wrapper functions. Figure~\ref{fig:ts71} shows the experiment and sim wrapper, Fig.~\ref{fig:ts72} shows the wrapper functions for groups $i$ and $j$, and Fig.~\ref{fig:ts73} shows the wrapper function for $k$ and the wrapper function for the delay agent $jf1\_delay$.}
+	\caption{\it Translation of Fig.~\ref{fig:ts6} to contain $args$ and $agents$ as an input to the harness, and to contain localstate, args, inputs and id as inputs for the wrapper functions. Figure~\ref{fig:ts71} shows the experiment, sim wrapper and $i$ wrapper, Fig.~\ref{fig:ts72} shows the wrapper functions for group $j$, and Fig.~\ref{fig:ts73} shows the wrapper function for $k$ and the wrapper function for the delay agent $jf1\_delay$.}
 	\label{fig:ts7}
 \end{figure} 
 
@@ -1170,7 +1208,7 @@ The harness has also been altered to make it more general, allow for this new me
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[language=Miranda]{harn8.m}
-	\caption{\it Simulator harness for translation comparable to InterDynes simulator harness.}
+	\caption{\it Simulator harness for translation comparable to InterDynes simulator harness.  }
 	\label{fig:harn8}
 \end{figure} 
 
@@ -1179,7 +1217,7 @@ After these translations are applied to the experiment in Fig.~\ref{fig:ts8} the
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
 	\lstinputlisting[language=Miranda]{ts8-1.m}
-	\caption{From Fig.~\ref{fig:ts8}, main, init, and the sim wrapper.}
+	\caption{From Fig.~\ref{fig:ts8}, main, init, and the sim wrapper.  }
         \label{fig:ts81}
 	\end{subfigure}
 	\caption*{}
@@ -1189,7 +1227,7 @@ After these translations are applied to the experiment in Fig.~\ref{fig:ts8} the
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
 	\lstinputlisting[language=Miranda]{ts8-2.m}
-	\caption{From Fig.~\ref{fig:ts8}, $i\_wrapper$.}
+	\caption{From Fig.~\ref{fig:ts8}, $i\_wrapper$.  }
         \label{fig:ts82}
 	\end{subfigure}
 	\caption*{}
@@ -1199,7 +1237,7 @@ After these translations are applied to the experiment in Fig.~\ref{fig:ts8} the
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
 	\lstinputlisting[language=Miranda]{ts8-3.m}
-	\caption{From Fig.~\ref{fig:ts8}, $j\_wrapper$.}
+	\caption{From Fig.~\ref{fig:ts8}, $j\_wrapper$.  }
         \label{fig:ts83}
 	\end{subfigure}
 	\caption*{}
@@ -1209,7 +1247,7 @@ After these translations are applied to the experiment in Fig.~\ref{fig:ts8} the
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
 	\lstinputlisting[language=Miranda]{ts8-4.m}
-	\caption{From Fig.~\ref{fig:ts8}, $k\_wrapper$ and $jf1\_delay$.}
+	\caption{From Fig.~\ref{fig:ts8}, $k\_wrapper$ and $jf1\_delay$.  }
         \label{fig:ts84}
 	\end{subfigure}
 	\caption{\it Translation of Fig.~\ref{fig:ts7} to contain the Message constructor and have a harness function comparable to that of InterDynes. Figure~\ref{fig:ts81} shows the experiment and sim wrapper, Fig.~\ref{fig:ts82} shows the wrapper function for groups $i$, Fig.~\ref{fig:ts83} shows the wrapper function for $j$, and Fig.~\ref{fig:ts84} shows the wrapper function for $k$ and the wrapper function for the delay agent $jf1\_delay$.}
@@ -1263,14 +1301,12 @@ This assessment of the resemblance between the final product of this translation
 
 
 
-\subsection{Translation Semantic Considerations} %maybe call it Translation Testing
-
-
-Though the translation can be seen to produce an InterDyne simulation, the question still remains about the correctness of the steps in this process. Here two arguments for the correctness of meaning of this approach will be presented.  
+\subsection{Translation Semantic Considerations}
+Though the translation can be seen to produce an InterDyne simulation, the question still remains about the correctness of the steps in this process. Here two arguments for the correctness of meaning of this approach are be presented.  
 
 The first argument is that each step can be seen as nothing more then a reformatting of the information and experiment already presented. With new structures such as types being nothing more then wrappers for data that is then extracted and treated as before. This reformatting creates no new information in the experiment, with reverse engineering used to create aspects that may have added new information, such as introducing messages sent from a sender to a receiver in place of a receiver calling on a sender to get the information.   
 
-The second argument relates to the functionality of each step, if each step can produce the same outputs given the same inputs then they can be seen as numerically equivalent. To test the functionality, each step was converted into a Miranda program, where the experiment time of $3$ was replaced by an input value, which could be executed. The initial recurrence relation model and each step were then run for a selection of five different time steps (0, 1, 2, 3 and 4). Table~\ref{tbl:meanfield_compare_to_Ising} shows the results from these runs, as can been seen all steps produced the same output. This shows, at least for the values tested, the numerical equivalence between each step of the translation and hence between the initial recurrence relation model and the final agent-based model. 
+The second argument relates to the functionality of each step, if each step can produce the same outputs given the same inputs then they can be seen as numerically equivalent. To test the functionality, each step was converted into a Miranda program; this conversion was done using a program  (this program is shown in Appendix A) to reformat the target states of each step into their Miranda equivalent, the produced programs were then edited to run in the Miranda compiler, with internal functions and types defined. These programs were also edited to allow for any time step to be asked for instead of just $3$ as shown in the design process, these programs were then grouped into a single program  (this program is shown in Appendix A) and executed for five different time steps (0, 1, 2, 3 and 4). Table~\ref{tbl:meanfield_compare_to_Ising} shows the results from these runs, as can been seen all steps produced the same output. This shows, at least for the values tested, the numerical equivalence between each step of the translation and hence between the initial recurrence relation model and the final agent-based model. 
 \begin{table}[H]
   \caption{\it The output value of the initial recurrence relation model and each translation step at the five different time steps (0, 1, 2, 3, 4, 5).}
 \begin{center}
@@ -1291,9 +1327,9 @@ The second argument relates to the functionality of each step, if each step can 
 These arguments suggest that this translation has steps that are equivalent and hence that the produced version of InterDyne is an equivalent representation of the initial recurrence relation experiment. 
 
 \subsection{Automated Translation Implementation}
-Though the design of the translation has been shown, with an example being translated by hand, this is a long process to achieve for multiple experiments. The question hence arises, can this process be automated? Implementing this automation is outside the scope of this project, however the first three steps have been achieved and are shown below. 
+Though the design of the translation has been shown, with an example being translated by hand, this is a long process to achieve for multiple experiments. The question hence arises, can this process be automated? Implementing this automation is outside the scope of this project, however the first three steps have been achieved and are discussed below (this work is shown in Appendix B). 
 
-The three aspects of implementation shown are, the lexer, the parser, and the first translation step. These steps are written in the Miranda functional language and allows for a text file contain an experiment written in the bespoke language to be translated into the first translation step. 
+The three aspects of implementation discussed are, the lexer, the parser, and the first translation step. These steps are written in the Miranda functional language and allows for a text file contain an experiment written in the bespoke language to be translated into the first translation step. 
 
 The selected text file is read in by the lexer, this tokenises the list of characters using the lexemes show Fig.\ref{fig:tokens}. These lexemes represent each item that is allowed as part of the bespoke recurrence relation language, these can be keywords or symbols. Tokenising these items adds meaning to them, for example a list of characters could be identified as a variable or as a recurrence relation, the lexemes hold this information. 
 \begin{figure}[H]
@@ -1380,7 +1416,7 @@ Implementing and combining both of these translation would give a method for rea
 
 \newpage 
 \section*{Appendix A: Program for Numerical Testing}
-\addcontentsline{toc}{section}{Appendix A: Programs for Numerical Testing}
+\addcontentsline{toc}{section}{Appendix A: Program for Numerical Testing}
 \subsection*{User Manual}
 Here the code that translates from the target states in the design steps shown in this dissertation is given, along with the code used to numerically test the target states.
 

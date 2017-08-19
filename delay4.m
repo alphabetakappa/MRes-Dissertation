@@ -4,3 +4,4 @@ jf1 delay inputs t = outbound messages this timestep : (jf1 delay future message
                      future messages = tl inputs outbound messages this timestep = [( jf1 delayed t) ]
                      jf1 delayed 0 = k
                      jf1 delayed t = (( inbound messages this timestep !1) !0)
+                     endwhere
