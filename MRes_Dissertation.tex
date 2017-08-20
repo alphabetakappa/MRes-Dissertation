@@ -87,7 +87,6 @@
 %sec 5
 %sec 6
 %sec 7
-%sec 8
 
 
  
@@ -1315,11 +1314,11 @@ A formalism is specified for the agent-based model in the form of an equivalent 
 
 To achieve this, this project has created a bespoke recurrence relation language and the design of a step-by-step translation between this language and an agent-based model.  
 
-The created bespoke recurrence relation language allows for experiments involving interacting recurrence relations to be fully specified. The language its self is defined with both a concrete and abstract BNF form, as well as details on creating well formed programs within it. The concrete BNF defines what symbols are allowed within this language, and abstract BNF defines the structure this language is allowed to take.   
+The created bespoke recurrence relation language allows for experiments involving interacting recurrence relations to be fully specified. The language its self is defined with a concrete BNF syntax, details on creating well formed programs with it are also given.
 
-A design for an eight step translation process was created, to translate experiments defined by the bespoke recurrence relations into an agent-based model that takes a reduced form of an InterDyne simulation. This design changes a few small aspects of the model at each step, gradually reshaping the recurrence relation model into an agent-based model, the eighth step hence representing an agent-based model. This process was demonstrated by hand using an example experiment written in the bespoke recurrence relation and translating this into an agent-based model, showing its structure at each step. 
+A design for an eight step translation process was created, to translate experiments defined by the bespoke recurrence relations into an agent-based model that takes a reduced form of an InterDyne simulation. This design changes a few small aspects of the model at each step, gradually reshaping the recurrence relation model into an agent-based model, the eighth target state hence representing an agent-based model. This process was demonstrated by hand using an example experiment written in the bespoke recurrence relation and translating this into an agent-based model, showing its structure at each step. 
 
-Each model presented at each of these steps during the translation, were rewritten as Miranda programs that code be executed for different time steps. These Miranda versions of the steps were then run for a number of steps to establish their numerical equivalency, with each step being shown to return the same output for a given time input. The initial recurrence relation model was also rewritten as a Miranda program and executed for the time time inputs, this program also returned the same values as each of the steps.  
+The models presented at each of these steps during the translation, were rewritten as Miranda programs that could be executed for different time steps. These Miranda versions of the steps target states were then run for a selection of time steps to establish their numerical equivalency; with each step being shown to return the same output for a given time input. The initial recurrence relation model was also rewritten as a Miranda program and executed for the time time inputs, this program also returned the same values as each of the steps target states.  
 
 The project this dissertation describes, scope was to create both a bespoke recurrence relation language and the design for a step-by-step translation from this language to an agent-based model. Both these aims were achieved and additionally the first three steps of implementing this translation as an automated program have been accomplished. These steps were the creation, in the Miranda language, of a lexer, parser and the first translation step. 
 
@@ -1348,15 +1347,15 @@ The work presented in this dissertation gives a method that can be used to give 
 
 This project builds the foundations for a number of additional extensions to be done. Four particular extensions to note are: translating delays to be internal, formally proving the correctness of the translation, implementing a the full translation, and creating a reverse translation and implementing it.     
 
-Though the implementation of delays explained given in this dissertation, is correct in preserving the meaning of the origin, for large simulations it could result in the creation of many more agents. This might produce a high over head for a simulation, due to the number of agents and messages, making it difficult to run the final agent-based model. A final step would be to convert from this agent delay method into another one allowed by InterDyne, where the delay agents are incorporated into the simulator harness.  
+Though the implementation of delays given in this dissertation, is correct in preserving the meaning of the original model, for large simulations it could result in the creation of many more agents. This might produce a high over head for a simulation, due to the number of agents and messages, making it difficult to run the final agent-based model. A final step would be to convert from this agent delay method into another one allowed by InterDyne, where the delay agents are incorporated into the simulator harness.  
 
 The the correctness of each step, and of the two models, has been argued informally and numerically in this dissertation, however this has not been formally proved. A formal proof of the correctness of each step and hence the two models, is mostly readily achieved by translating each step into lambda calculus and then proving the correctness in this form. 
 
-The first three steps of implementation have been achieved in this project, however there are a remaining eight steps to be created. Seven of these steps are the remaining translational steps, for the implementation of these the parse tree storing the model will have to be altered as the translation progresses to allow for new items, such as tuples and types. The final step is to create a function that translates from the parse into a text file that lays out the models in a way that is accommodating to a user, this is will produce the layouts of the form shown during the translation in this dissertation.    
+The first three steps of implementation have been achieved in this project, however there are a remaining eight steps to be created. Seven of these steps are the remaining translational steps, for the implementation of these the parse tree storing the model will have to be altered as the translation progresses to allow for new items, such as tuples and types. The final step is to create a function that translates from the parse tree into a text file that lays out the models in a way that is accommodating to a user, this is will produce the layouts of the form shown during the translation in this dissertation.    
 
-Though the translating from a recurrence relation model to an agent-based model fits the aims of this dissertation, further work could be to create a reverse translation and implementing it. This translation would allow a given agent-based model to be translated in a recurrence relation model. 
+Though the translating from a recurrence relation model to an agent-based model fits the aims of this dissertation, further work could be to create a reverse translation and implementing it. This translation would allow a given agent-based model to be translated into a recurrence relation model. 
 
-Implementing and combining both of these translation would give a method for readily viewing a system as either a recurrence relation model or an agent-based model, as is required. This method would be of particular use when wanting to preform both static and dynamic analysis to a system, as the most amenable view can be chosen and used. 
+Implementing and combining both of these translation would give a method for readily viewing a system as either a recurrence relation model or an agent-based model, as is required. This method would be of particular use when wanting to preform both static and dynamic analysis on a system, as the most amenable view can be chosen and used. 
 
 
 
