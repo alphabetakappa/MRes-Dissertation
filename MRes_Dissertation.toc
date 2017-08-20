@@ -34,6 +34,6 @@
 \contentsline {subsection}{\numberline {6.3}Automated Translation Implementation}{63}
 \contentsline {section}{\numberline {7}Summary and Conclusion }{66}
 \contentsline {subsection}{\numberline {7.1}Discussion and Further work }{67}
-\contentsline {section}{Appendix A: Program for Numerical Testing}{68}
-\contentsline {section}{Appendix B: Implementation of Translation}{82}
-\contentsline {section}{References}{91}
+\contentsline {section}{Appendix A: Program for Numerical Testing}{69}
+\contentsline {section}{Appendix B: Implementation of Translation}{83}
+\contentsline {section}{References}{92}

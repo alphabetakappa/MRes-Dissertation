@@ -89,6 +89,7 @@
 %	\centering
 %	\includegraphics[scale=0.2]{rhul_logo}
 %\end{figure}
+%folyers english 
 
 
 
@@ -104,35 +105,24 @@
 
 
 
-%folyers english 
 
 
 
 
 %%%%%%%%%%%%%%%%to do%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%1add in intro a bullet list of objectives or planned contributions of the project & in conclusion add a bulleted list of objects that have been achieved
+%1don't restrict the driving expression (check syntax) 
 
-%2restricted list and define it  (rr lanagueg)
+%2say special thing about hd and tl is they only take one value (not that they are built-in)
 
-%3don't restrict the driving expression (check syntax) 
-
-%4say special thing about hd and tl is they only take one value (not that they are built-in)
-
-%7add endwhere to syntax 
-
-%8expalin the syntax 
-
-%9add new syntax (from chris)
-
-%10You already have "is it correct"?  (which begs the question - "what does it mean to be correct?") but you haven't asked "is it complete?" - i.e. are there any examples of recurrence-relation model definitions that are correct with resect to the syntax that cannot be correctly translated?  And how can you be sure?
+%6You already have "is it correct"?  (which begs the question - "what does it mean to be correct?") but you haven't asked "is it complete?" - i.e. are there any examples of recurrence-relation model definitions that are correct with resect to the syntax that cannot be correctly translated?  And how can you be sure?
 
 
 
 
 %%%%%%%%%%rewrite%%%%%%%%%%%%
 
-%14code and make sure it works  (using endwhere now and new parse tree)
+%7code and make sure it works  (using endwhere now and new parse tree)
 
 
 %%%%%%%%%%finish%%%%%%%%%%%%%
@@ -263,6 +253,13 @@ This translation has a number of fundamental challenges associated with it, whic
 \end{itemize}
 
 The translation process in this dissertation takes a step-by-step approach, with each step gradually translating the model. This allows for these issues to be tackled in a more modular fashion. This also makes the equivalence of the two models more apparent, if each small step is equivalent then so too must be the models, assuming the transitivity of the equivalence. 
+
+The objectives of the project this dissertation describes are as follows:
+\begin{itemize}
+   \item The creation bespoke recurrence relation language and formal definition of its syntax.
+   \item The design of a step-by-step translation process, turning a model written in the bespoke recurrence relation language into an agent-based model. 
+   \item The validation and testing of this step-by-step translation.  
+\end{itemize}
 
 This dissertation presents both a bespoke recurrence relation language and the design of the steps needed to translate a system expressed in this language into an agent-based model. Though not within the initial project scope, also presented is the first three steps of implementing this translation process into an automated program. These steps take the form of a lexer, parser, and first translation step. 
 
@@ -683,6 +680,7 @@ The formal concrete syntax for this bespoke recurrence relation language is defi
   \item The speech marks $``$'' are used to denote actual writing in the language, this allows the syntax to describe how the language can be written (e.g. connecting the expression $<where>$ to the word $``where$'' in the language). In this notation $``$'' are used for strings of characters, and $`$' are used for single characters (e.g. $``where$'' and $`w$').
   \item Here $..$ is used to denote any item that would logically appear between the left hand side and right hand side of the $..$, these items are separated by an $|$ (e.g. $`1$'$.. `4$' gives $`1$' $| `2$' $| `3$' $| `4$'). 
   \item The character $`\backslash n$' is used to denote  a new line in the language. 
+  \item Parameterised nonterminals are used to allow for recursive calls with in the syntax, these are noted by a second item with the $<>$ (e.g.  $<indent$ $n> ::= <space> <indent$ $n-1>$, for $n=3$ will produce $<space><space><indent$ $1>$).
 \end{itemize}
 \begin{figure}[H]
 	\centering
@@ -697,7 +695,7 @@ The formal concrete syntax for this bespoke recurrence relation language is defi
 \begin{figure}[H]\ContinuedFloat
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
-	\lstinputlisting[language=Miranda]{bnflex-1.m}
+	\lstinputlisting[language=Miranda]{bnflex-2.m}
 	\caption{\it Second half of the concrete BNF syntax for the bespoke recurrence relations.}
         \label{fig:snt2}
 	\end{subfigure}
@@ -738,6 +736,16 @@ The syntax given in this section dictates how a simulation written in this bespo
 \subsection{Naming Conventions} \label{nameconv}
 This language has a strict naming convention, as well as some restricted names. Naming conventions are in place for recurrence relation definitions, where blocks, sub-functions, variables, initial conditions and  if statements. 
 
+Restricted names are those that cannot be used other than for their designated purpose (given in Fig.~\ref{fig:bnflex}), these are:
+\begin{itemize}
+  \item The use of $`\_$', unless it is being used for its designated purpose in recurrence relations and internal functions. 
+  \item The use of the name $``main$'', unless it is used to define the main block.
+  \item The use of the name $``init$'', unless it is to define the init block.
+  \item The use of the name $``where"$, unless used to make a where statement.
+  \item The use of the name $``endwhere"$, unless used to end a where statement.
+  \item The use of symbols, unless for their defined purpose.  
+\end{itemize}
+
 A recurrence relation is defined in four parts, $name$ $arguments$ $=$ $expression$. The name must be formatted in the manner $group\_name$, where $group$ is the name of the group the recurrence relation belongs to and $name$ is the name of the particular recurrence relation. Multiple recurrence relations can belong to the same group, and hence have the same group name, however only one relation in each group can have a set name. This language requires that all recurrence relations take at least one argument, and that time $t$ has to be the first argument. Time $t$ does not need to be utilised within the relation but it must be in the definition.     
 
 A recurrence relation can have sub definitions relating to it, this is done through the use of a where block. A where block is written after the expression for a recurrence relation and starts with the keyword $where$. After this local definitions for internal functions and variables can be defined. 
@@ -767,19 +775,6 @@ Expression can be incased in brackets by using $()$.
 This language allows for the use of three inbuilt functions: $hd$ (returns the head of a list), $tl$ (returns the tail of the list), and $:$ (adds an item as the new head of a list).  
 
 Conditional statements with in this language are written as $cond$ $condition$ $expression$ $expression$. Where if the condition is true, then the first expression is run and if not the second expression is.  
-
-There are a number of names and naming conventions which can not be used and can be seen as restricted, these are:
-\begin{itemize}
-  \item The use of $\_$, unless it is being used for its designated purpose in recurrence relations and internal functions. 
-  \item The use of the name $main$.
-  \item The use of the name $init$.
-  \item The use of the name $where$, unless used to make a where statement.
-  \item The use of symbols, unless for their defined purpose.  
-\end{itemize}
-
-
-
-
 
 
 \subsection{Well Formed Programs} \label{wellformedprogs} 
@@ -1398,6 +1393,14 @@ The numerical equivalence between each step and between the initial recurrence r
 The step-by-step nature of the translation allows for it to be smoothly followed and hence be more comprehensible to a reader. This allows those with knowledge of recurrence relation models to gain a deeper understanding of the formation and structure of agent-based models. 
 
 This translation also gives an numerically equivalent agent-based model for a given recurrence relation model, allowing this recurrence relation model to act as the system wide formalism for the produced agent-based model. 
+
+The achievements of this project are hence:
+\begin{itemize}
+   \item The creation bespoke recurrence relation language and formal definition of its syntax.
+   \item The design of a step-by-step translation process, turning a model written in the bespoke recurrence relation language into an agent-based model. 
+   \item The validation and testing of this step-by-step translation.  
+   \item The creation of the lexer, parser, and first translational step, in a program designed to automate the translation process. 
+\end{itemize}
 
 The work presented in this dissertation gives a method that can be used to give a system-wide formalisation to an agent-based model as well as giving a method that allows for one familiar with recurrence relation models to increase their understanding of this technique. This allows for an increased understanding of agent-based models in economics and gives potential of an increase in the use of these models and acceptance of work based on them.   
 

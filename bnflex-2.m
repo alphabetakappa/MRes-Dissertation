@@ -1,40 +1,30 @@
-<localdefinitions>     ::= <localvaldef> <newline> |<localfuncdef> <newline>
-                           | <localvaldef> <newline> <localdefinitions>
-                           | <localfuncdef> <newline> <localdefinitions>
-<localvaldef>          ::= <localvalname> <space> <equals> <space> <expression>
-<localfuncdef>         ::= <localfuncname> <space> <args> <space> <equals> <space> <expression>
-<expressions>          ::= <expression> | <expression> <space> <expressions>
-<localfuncname>        ::= <underscore> <letters>
-<localvalname>         ::= <underscore> <letters>
-<list>                 ::= <lbracket> <rbracket> |<lbracket> <listitems> <rbracket>
-<listitems>            ::= <simple_expression> |<simple_expression> <comma> <space> <listitems>
-<lparenthesis>         ::=  '('
-<rparenthesis>         ::=  ')'
-<lbracket>             ::=  '['
-<rbracket>             ::=  ']'
-<comma>                ::=  ','
-<internop>             ::= <head> | <tail> | <not>
-<not>                  ::= '~'
-<head>                 ::=  "hd"
-<tail>                 ::=  "tl"
-<number>               ::= <zero> | <posnumber> | <minus> <posnumber>
-<posnumber>            ::= <firstdigit> <digits> | <firstdigit> <digits> <dot> <digits>
-<firstdigit>           ::= '1' .. '9'
+<operation>            ::= <plus> | <minus> | <times> | <divide> | <lessthan> | <greaterthan> | <equals> | <notequals> | <lessthanorequalto> | <greaterthanorequalto> | <cons> | <index>
+<indent 1>             ::= <space>
+<indent n>             ::= <space> <indent n-1>
+<letters>              ::= <letter> | <letter> <letters>
+<letter>               ::= <lowercaseletter> | <uppercaseletter>
 <digits>               ::= <digit> | <digit> <digits>
+<main>                 ::= "main"
+<init>                 ::= "init"
+<where>                ::= "where"
+<endwhere>             ::= "endwhere"
+<firstdigit>           ::= '1' .. '9'
+<digit>                ::= '0' .. '9'
+<lowercaseletter>      ::= 'a' .. 'z'
+<uppercaseletter>      ::= 'A' .. 'Z'
+<equals>               ::= '='
+<space>                ::= ' '
+<newline>              ::= '\n'
+<underscore>           ::= '_'
+<lparenthesis>         ::= '('
+<rparenthesis>         ::= ')'
+<lbracket>             ::= '['
+<rbracket>             ::= ']'
+<comma>                ::= ','
+<head>                 ::= "hd"
+<tail>                 ::= "tl"
+<not>                  ::= '~'
 <dot>                  ::= '.'
-<digit>                ::=  '0' .. '9'
-<operation>            ::= <plus>
-                           | <minus>
-                           | <times>
-                           | <divide>
-                           | <lessthan>
-                           | <greaterthan>
-                           | <equals>
-                           | <notequals>
-                           | <lessthanorequalto>
-                           | <greaterthanorequalto>
-                           | <cons>
-                           | <index>
 <plus>                 ::= '+'
 <minus>                ::= '-'
 <times>                ::= '*'
@@ -46,3 +36,4 @@
 <greaterthanorequalto> ::= ">="
 <cons>                 ::= ':'
 <index>                ::= '!'
+<t>                    ::= 't'
