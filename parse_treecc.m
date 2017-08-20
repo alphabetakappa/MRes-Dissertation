@@ -1,5 +1,5 @@
 simulation           ::= Simulation mainblock initblock whereblock
-mainblock            ::= Main recrelname [num]
+mainblock            ::= Main expression
 recrelname           ::= Recrelname [char]
 initblock            ::= Init [valdef]
 whereblock           ::= Where [recreldef] 

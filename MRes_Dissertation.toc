@@ -36,4 +36,4 @@
 \contentsline {subsection}{\numberline {7.1}Discussion and Further work }{67}
 \contentsline {section}{Appendix A: Program for Numerical Testing}{69}
 \contentsline {section}{Appendix B: Implementation of Translation}{83}
-\contentsline {section}{References}{92}
+\contentsline {section}{References}{91}

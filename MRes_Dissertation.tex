@@ -81,41 +81,6 @@
 
 
 
-
-
-
-
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[scale=0.2]{rhul_logo}
-%\end{figure}
-%folyers english 
-
-
-
-
-
-
-
-
-%chris help
-
-
-%some questions in paper under help 
-
-
-%%%%%%%%%%%%%%%%to do%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%rewrite%%%%%%%%%%%%
-
-%2code and make sure it works  (using endwhere now and new parse tree)
-
-
-%%%%%%%%%%finish%%%%%%%%%%%%%
-%%%%%%%%%%%add%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%side things%%%%%%%%%%%%%%
-
-%unbold code 
-
 %%%%%%%%%%%%%proof%%%%%%%%%%%%%%%%%% 
 
 %sec 4.3
@@ -500,7 +465,7 @@ InterDyne is designed in such a way that agents both take in and produce a seemi
 Agents in InterDyne are typically, though not required to be, written in two parts, a wrapper function and a logic function. The wrapper will manage the reading of inbound messages to the agent and generate its outbound messages, it will also update the local state of the agent. While a logic function is called by the wrapper to calculate the messages to be sent and their content. An agent written following this design could have a form similar to that of the agent show in Fig.~\ref{fig:wrapperfrominterdyne}. This agent\textsc{\char13}s wrapper recursively calls itself on the inbound message list, consuming the head of the list\footnote{This design dictates that the head of the list is the messages for the current time step.} and producing a list of outbound messages using a logic function.  
 \begin{figure}[H]
 	\centering
-        \lstinputlisting[language=Haskell]{complexagentwrapper.hs}
+        \lstinputlisting{complexagentwrapper.hs}
 	\caption{\it Simple wrapper function, which creates a list of output messages by iterating through a list of inbound messages and calling the sub-function $logic$.}
 	\label{fig:wrapperfrominterdyne}
 \end{figure} 
@@ -511,7 +476,7 @@ The simulator harness is an intrinsic part of the simulator, it drives the simul
 This has the type shown in Fig.~\ref{fig:harntypintfirst}, this type illustrates the functions input of a number of steps and runtime arguments (with agents and the broadcast channels they are subscribed to). The output from this function can be seen to be of type $IO()$, this is writing the trace information to file.  
 \begin{figure}[H]
 	\centering
-        \lstinputlisting[language=Haskell]{harntypint.m}
+        \lstinputlisting{harntypint.m}
 	\caption{\it Type definition of the function sim.}
 	\label{fig:harntypintfirst}
 \end{figure} 
@@ -521,28 +486,17 @@ The simulator harness is embodied in a function called sim, this function contai
  
 \begin{figure}[H]
 	\centering
-        \lstinputlisting[language=Haskell]{intersimfun.hs}
+        \lstinputlisting{intersimfun.hs}
 	\caption{\it Reduced InterDyne simulator. This sim function outputs, the value of the first messages from the first agent at the final time step.}
 	\label{fig:intersimfun}
 \end{figure} 
 
 \begin{figure}[H]
 	\centering
-        \lstinputlisting[language=Haskell]{harntyptrans.m}
+        \lstinputlisting{harntyptrans.m}
 	\caption{\it Type definition of the reduced function sim.}
 	\label{fig:reducedsimtypet}
 \end{figure} 
-
-%-how do you run an interdyne experiment 
-
-%Running an InterDyne experiment is done by calling the simulator with relevant inputs, an example example of this is shown in Fig.~\ref{fig:runninginterdyne}.
-%\begin{figure}[H]
-%	\centering
-%        \lstinputlisting[language=Haskell]{interdynewithdelays.hs}
-%	\caption{\it A run of an experiment in InterDyne containing delays.}
-%	\label{fig:runninginterdyne}
-%\end{figure} 
-
 
 
 
@@ -617,7 +571,7 @@ The approach taken in this project of creating a step-by-step translation betwee
 As noted in Section~\ref{simwork}, when looking at work done by other researchers in this area, a main challenge was how to model systems that have no counterpart, or are challenging to create a counterpart for, in an agent-based model.
 An example of this is modelling probabilist systems and macro-level systems, which are difficult to establish an equivalent agent-based model for. This project avoids these challenges by using micro-level recurrence relation models for the translation. 
 
-A problem overshadowing most aspects of this project is that the two paradigms being translated between are completely different and in some ways opposing. Recurrence relation models take an analytic (where the system evolution is defined statically.) approach where as agent-based models take a dynamic one (where the system evolution is given in simulation).  %is this right (help) 
+A problem overshadowing most aspects of this project is that the two paradigms being translated between are completely different and in some ways opposing. Recurrence relation models take an analytic (where the system evolution is defined statically.) approach where as agent-based models take a dynamic one (where the system evolution is given in simulation).  
 
 The formulation of how information is exchanged within these two models is also in contrast. Recurrence relations take a static view with information passed via function calls, opposed to the agent-based model approach of dynamically sending the information between agents using message passing. This represents a difference in the way information is seen in these models, in recurrence relations information is freely available and the equation wishing to use it simply has to make a function call. Where as in agent-based modelling information is given by its creator to only other agents selected by its creator, hence agents can not use information which has not been already sent to them.
 
@@ -670,7 +624,7 @@ The formal concrete syntax for this bespoke recurrence relation language is defi
 \begin{figure}[H]
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
-	\lstinputlisting[language=Miranda]{bnflex-1.m}
+	\lstinputlisting{bnflex-1.m}
 	\caption{\it First half of the concrete BNF syntax for the bespoke recurrence relations.}
         \label{fig:snt1}
 	\end{subfigure}
@@ -680,7 +634,7 @@ The formal concrete syntax for this bespoke recurrence relation language is defi
 \begin{figure}[H]\ContinuedFloat
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
-	\lstinputlisting[language=Miranda]{bnflex-2.m}
+	\lstinputlisting{bnflex-2.m}
 	\caption{\it Second half of the concrete BNF syntax for the bespoke recurrence relations.}
         \label{fig:snt2}
 	\end{subfigure}
@@ -695,21 +649,21 @@ A simulation written in this language takes the structure shown in Fig.~\ref{fig
 
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{befroemira.m}
+	\lstinputlisting{befroemira.m}
 	\caption{\it Layout of a simulation in bespoke recurrence relation language.}
 	\label{fig:befroemira}
 \end{figure} 
 
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{miramean.m}
+	\lstinputlisting{miramean.m}
 	\caption{\it Miranda definition of the layout shown in Fig.\ref{fig:befroemira}.}
 	\label{fig:miramean}
 \end{figure} 
 
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{structuredefs.m}
+	\lstinputlisting{structuredefs.m}
 	\caption{\it BNF syntax for items shown in Fig.~\ref{fig:befroemira}, with further definitions defined in Fig.~\ref{fig:bnflex}.}
 	\label{fig:structuredefs}
 \end{figure} 
@@ -768,7 +722,7 @@ This language has a strict style and layout, this covers a number of aspects: la
 %The layout of a simulation should match that shown in Fig.~\ref{fig:1exofla}, with $main$ signifying the experiment, $init$ the initial conditions and $where$ the list of recurrence relations.
 %\begin{figure}[H]
 %	\centering
-%	\lstinputlisting[language=Miranda]{1layout.m}
+%	\lstinputlisting{1layout.m}
 %	\caption{\it Layout of a simulation. With the words incased in speech marks represent what could should replace them; ``Experiment'' should be replaced by the driving expression, ``Initial Conditions'' should be replaced by the list of initial conditions, and ``Recurrence Relations'' should be replaced by a list of recurrence relations. 
 %}
 %	\label{fig:1exofla}
@@ -777,7 +731,7 @@ This language has a strict style and layout, this covers a number of aspects: la
 An experiment is written as a function call, with a certain set of arguments. Figure~\ref{fig:2exofla} shows a experiment that will return the value of the recurrence relation $i\_f1$ at time $3$.
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{2experment.m}
+	\lstinputlisting{2experment.m}
 	\caption{\it Function call for value at time 3 in recurrence relation 1\_f1.}
 	\label{fig:2exofla}
 \end{figure} 
@@ -785,7 +739,7 @@ An experiment is written as a function call, with a certain set of arguments. Fi
 The initial conditions, which use will be shown later, are defined as shown in Fig.~\ref{fig:3exofla}. There is no defined  limit to the amount of initial conditions that can be defined. 
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{3initcons.m}
+	\lstinputlisting{3initcons.m}
 	\caption{\it Definition of two initial conditions, q and k.}
 	\label{fig:3exofla}
 \end{figure} 
@@ -793,7 +747,7 @@ The initial conditions, which use will be shown later, are defined as shown in F
 A simple recurrence relation can be written as shown in Fig.~\ref{fig:4exofla}, this recurrence relation belongs to group $i$, is named $f1$ and takes one argument which is time $t$. The expression of this relation is to call itself at the previous time step and to add that to a call for another recurrence relation, from group $j$, at the previous time step. 
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{4rrsim.m}
+	\lstinputlisting{4rrsim.m}
 	\caption{\it A simple recurrence relation, belonging to group i that adds its value at the previous time step to that of j\_f1 at the previous time step.}
 	\label{fig:4exofla}
 \end{figure} 
@@ -801,7 +755,7 @@ A simple recurrence relation can be written as shown in Fig.~\ref{fig:4exofla}, 
 Initial conditions can added to recurrence relations using pattern matching, as shown in Fig.~\ref{fig:5exofla}. The recurrence relation is first written with the value for which the initial condition will be sent and this is sent to equal the initial condition, then the full recurrence relation is written.  
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{5rrint.m}
+	\lstinputlisting{5rrint.m}
 	\caption{\it Recurrence relation containing pattern matching for initial conditions.}
 	\label{fig:5exofla}
 \end{figure} 
@@ -809,7 +763,7 @@ Initial conditions can added to recurrence relations using pattern matching, as 
 An if statement, shown in Fig.~\ref{fig:6exofla}, can contain very complex components it is hence good practice to encase each expression with in a set of brackets to maintain legibility and correct functionality.  
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{6rrif.m}
+	\lstinputlisting{6rrif.m}
 	\caption{\it Recurrence relation using an if statement.}
 	\label{fig:6exofla}
 \end{figure} 
@@ -817,7 +771,7 @@ An if statement, shown in Fig.~\ref{fig:6exofla}, can contain very complex compo
 A where statement is used to provided additional functionality to a recurrence relation and can be used to make a expression more legible and help reduce human errors. Figure~\ref{fig:7exofla} shows the use of a where statement to add an internal variable and an internal function to a recurrence relation. 
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{7rrwhere.m}
+	\lstinputlisting{7rrwhere.m}
 	\caption{\it A recurrence relation containing a where statement to add a internal function and a internal variable.  }
 	\label{fig:7exofla}
 \end{figure} 
@@ -825,7 +779,7 @@ A where statement is used to provided additional functionality to a recurrence r
 This style and layout is brought together to produce a full simulation, as shown in Fig.~\ref{fig:8exofla}.
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{8full.m}
+	\lstinputlisting{8full.m}
 	\caption{\it A simulation in the bespoke recurrence relation language.}
 	\label{fig:8exofla}
 \end{figure} 
@@ -864,7 +818,7 @@ Another translation step could be added to translate the final target state into
 These steps will be shown in this section by translating an example written in the bespoke recurrence relation language, shown in Fig.~\ref{fig:rre1}. This example consists of four recurrence relations ($i\_f1$, $j\_f2$, $j\_f2$ and $k\_f1$) split into three groups ($i$, $j$ and $k$). Each of these relations uses the allowed pattern matching to define their initial conditions in terms of $q$ and $k$, which are defined in the section $init$. The experiment, defined under $main$, is to return the value of the relation $i\_f1$ at the time step 3.  
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{rrexam.m}
+	\lstinputlisting{rrexam.m}
 	\caption{\it Example of an experiment written in the bespoke recurrence relation language, using a set of four recurrence relations.}
 	\label{fig:rre1}
 \end{figure} 
@@ -879,7 +833,7 @@ In InterDyne each agent outputs an infinite list containing the outputs of that 
 For this to be achieved each recurrence relation is wrapped into a parent function, denoted by adding $\_list$ to the end of the relations name. This parent function returns an infinite list of the outputs of its sub recurrence relation outputs, with each item in the list being the value for this relation at each time step. This is done using the sub function $\_createlist$, this function takes in a function and a time marker. These arguments are then used to add the value of the function at that time maker to the head of a least, where the next value is created by recursively calling $\_createlist$ but with the next time step, as shown in Fig.~\ref{fig:cl1}.
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{cl1.m}
+	\lstinputlisting{cl1.m}
 	\caption{\it $\_createlist$ function, used to create an infinite list in time of a recurrence relation.}
 	\label{fig:cl1}
 \end{figure} 
@@ -887,7 +841,7 @@ For this to be achieved each recurrence relation is wrapped into a parent functi
 Since the recurrence relations are now contained within parent functions (that do not take time as an input) that are outputting infinite lists, to obtain a value at a certain time step these list have to be indexed into. This indexing using time now replaces the previous method of calling a relation with time as an argument. Indexing is done with the bang operator ($!$), this applied to a list and followed by a value will return the numbered item in the list. When numbering the list, zero is considered to be the first item, so $[1,2,3]!1$ would return a value of $2$. Therefore all calls within other functions are changed to this new notation as well as the call in main for the experiment. Once these changes have been applied Fig.~\ref{fig:rre1} will be translated into Fig.~\ref{fig:ts1}.
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{ts1.m}
+	\lstinputlisting{ts1.m}
 	\caption{\it Figure~\ref{fig:rre1} translated to contain relations that produce infinite lists throughout time and functionality added for relations to index into these lists.  }
 	\label{fig:ts1}
 \end{figure} 
@@ -906,7 +860,7 @@ Since the $\_list$ functions are now contained within a wrapper function calls t
 These changes will translate the example in Fig.~\ref{fig:ts1} to that shown in Fig.~\ref{fig:ts2}.
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{ts2.m}
+	\lstinputlisting{ts2.m}
 	\caption{\it Translation of Fig.~\ref{fig:ts1} to allow for grouping of recurrence relations into agents.  }
 	\label{fig:ts2}
 \end{figure} 
@@ -919,13 +873,13 @@ In InterDyne a simulator harness is used to mediate the messages sent between di
 This is done by creating a list of the simulation outputs, $s\_outputs$, that collects the outputs from all the agents and returns an infinite list containing these outputs, the structure of this function is shown in Fig.\ref{fig:gl3}. Because InterDyne has a circler structure for its message passing through time, requiring the agents to take a message at the beginning of every time step, a initial set of messages is added to the front of this list. These initial values are set as zero to represent a null value, but to still give an agent a message to consume on the first time step. The simulation outputs list, with the addition of null values is shown in Fig.~\ref{fig:glnv3}. 
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{gl3.m}
+	\lstinputlisting{gl3.m}
 	\caption{\it  An infinite list in time containing the values of every recurrence relation at each time step.}
 	\label{fig:gl3}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{glnv3.m}
+	\lstinputlisting{glnv3.m}
 	\caption{\it  An infinite list in time containing the values of every recurrence relation at each time step, with null values at the start of the list.  }
 	\label{fig:glnv3}
 \end{figure}  
@@ -936,7 +890,7 @@ This new list of all agents outputs can now be used to refer to values produced 
 Translating Fig.~\ref{fig:ts2} to contain this global output list and to index into it for retrieving values from other agents produces Fig.~\ref{fig:ts3}.
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{ts3.m}
+	\lstinputlisting{ts3.m}
 	\caption{\it  Figure \ref{fig:ts2} translated to contain the global output list, $s\_outputs$, and to use this list to retrieve values from other agents.  }
 	\label{fig:ts3}
 \end{figure} 
@@ -948,7 +902,7 @@ In InterDyne an agent is only able to access information sent to it in the form 
 The output list, $s\_outputs$, will still produce an infinite list in time containing the outputs of all the wrappers, however to do this it now has to give inputs to the wrapper functions. Each wrapper function will receive two inputs, the outputs list and an initial time value. The initial time value is zero, this initialises recursion within the wrappers that will be discussed later.  This will lead to $s\_outputs$ similar to that shown in Fig.~\ref{fig:souts4}.
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{souts4.m}
+	\lstinputlisting{souts4.m}
 	\caption{\it Example of part of the $s\_outputs$ form after addition of inputs for the wrapper functions.}
 	\label{fig:souts4}
 \end{figure} 
@@ -957,7 +911,7 @@ The output list, $s\_outputs$, will still produce an infinite list in time conta
 The wrapper functions now takes two inputs, a list of all the outputs from all the wrappers ($inputs$) and a time stamp ($t$). When first called by $s\_outputs$ this list is complete and the time stamp is equal to zero. The head of the $inputs$ list contains just the information produced during the last time step, in this case this is the $niloutputs$, therefore to restrict the wrapper to just use the information from the last time step only the head can be used. However as the time steps increase this will no longer be true, so to create the output list required from the wrapper, the wrapper recursively calls its self using the tail of the inputs and increasing the time stamp by one. This means on the next call the head of the list will represent the allowed information for that time step, as this will be the head of the tail of the list, and so on as the time increases. The output list created by the agent, now is achieved by producing a list containing the values of the logic for that time step and adding this to the front of the recursive list. A wrapper written in this way would have a similar form to that shown in Fig.~\ref{fig:wrap4}
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{wrap4.m}
+	\lstinputlisting{wrap4.m}
 	\caption{\it Example of part of a wrapper function form after addition of inputs for the wrapper functions.  }
 	\label{fig:wrap4}
 \end{figure} 
@@ -971,7 +925,7 @@ The delay agent needs to have access to the initial values of the logic it is de
 A delay agent, for delaying a value to $t-2$, will have a form similar to that shown in Fig.~\ref{fig:delay4}. Since this agent is treated the same as any other wrapper, it will also be added to the outputs lists and be part of the inputs. 
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{delay4.m}
+	\lstinputlisting{delay4.m}
 	\caption{\it Example of a delay wrapper that delays the first value from the second wrapper, so that a value from $t-2$ is received at t.  }
 	\label{fig:delay4}
 \end{figure} 
@@ -980,7 +934,7 @@ In this translation all information is passed as an input to the wrapper so even
 \begin{figure}[H]
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
-	\lstinputlisting[language=Miranda]{ts4-1.m}
+	\lstinputlisting{ts4-1.m}
 	\caption{From Fig.~\ref{fig:ts4}, main, init, the outputs list, and $i$ wrapper.  }
         \label{fig:gull}
 	\end{subfigure}
@@ -990,7 +944,7 @@ In this translation all information is passed as an input to the wrapper so even
 \begin{figure}[H]\ContinuedFloat
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
-	\lstinputlisting[language=Miranda]{ts4-2.m}
+	\lstinputlisting{ts4-2.m}
 	\caption{From Fig.~\ref{fig:ts4}, $j$ and $k$ wrapper functions.  }
         \label{fig:gull2}
 	\end{subfigure}
@@ -1011,7 +965,7 @@ The changes required to the output list function ($s\_outputs$) is purely relate
 The wrapper functions now output messages in the same form, so a message from the first wrapper function will contain its id, which is one, the targeted wrapper id and the value it wishes to send. The wrappers id\textsc{\char13}s can be found by looking at where that wrapper appears in the order of wrappers, with the first wrapper having id one and so on. The the id of the receiving wrapper is found by analysing the call functions made by each wrapper to discern, which wrappers they are drawing information from. Once this is found messages can be created in these wrappers to send the information to the wrappers that require it. This reverse engineering as it were, can be used to deduce what message need to be sent to what wrappers. An example of the form for sending a messages from a wrapper can be seen in Fig.~\ref{fig:outmes5}.  
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{outmes5.m}
+	\lstinputlisting{outmes5.m}
 	\caption{\it Example of part of a wrapper that is sending two messages containing the same value. These messages come from this wrapper, which is the first wrapper (1), and are sent: to itself (1), and to the second wrapper (2). Here $logic1$ is just used to show where the logic would be and that this produces the output values, as well as what inputs this takes in.  }
 	\label{fig:outmes5}
 \end{figure} 
@@ -1019,7 +973,7 @@ The wrapper functions now output messages in the same form, so a message from th
 Though a wrapper receives all messages sent it should only use those that are sent directly to it. To do this the wrapper sorts the inbound messages to return only those with its id as the target. The sorting function can be seen in Fig.~\ref{fig:sort5}, this takes the head of the list, so the current time step and then uses the function $map$ with the input $f$ on it. This function applies the the function $f$ to each item in the list it is passed and then returns the new list, for example $map$ $hd$ $[[1,2],[3,4]]$ $=$ $[1,3]$. The function $f$ in this case then maps the function $g$ across all the items in the lists that it is mapped across. The function $g$ then uses a function called $filter$ takes a condition and a list and returns a list of all elements that matched the condition. In this case the condition is that the message tuple is sent this this wrapper ($id=1$) or ($\/$) that it is a null message from the $s\_outputs$ function. 
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{sort5.m}
+	\lstinputlisting{sort5.m}
 	\caption{\it Example of part of a wrapper that is used to sort the input off all messages and only return the ones directed at this wrapper.  }
 	\label{fig:sort5}
 \end{figure} 
@@ -1029,7 +983,7 @@ Since the format that the information is passed in, has changed the experiment f
 \begin{figure}[H]
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
-	\lstinputlisting[language=Miranda]{ts5-1.m}
+	\lstinputlisting{ts5-1.m}
 	\caption{From Fig.~\ref{fig:ts5}, main, init, the outputs list and $i\_wrapper$.  }
         \label{fig:ts51}
 	\end{subfigure}
@@ -1039,7 +993,7 @@ Since the format that the information is passed in, has changed the experiment f
 \begin{figure}[H]\ContinuedFloat
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
-	\lstinputlisting[language=Miranda]{ts5-2.m}
+	\lstinputlisting{ts5-2.m}
 	\caption{From Fig.~\ref{fig:ts5}, $j\_wrapper$.  }
         \label{fig:ts52}
 	\end{subfigure}
@@ -1049,7 +1003,7 @@ Since the format that the information is passed in, has changed the experiment f
 \begin{figure}[H]\ContinuedFloat
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
-	\lstinputlisting[language=Miranda]{ts5-3.m}
+	\lstinputlisting{ts5-3.m}
 	\caption{From Fig.~\ref{fig:ts5}, $k\_wrapper$ and $jf1\_delay$.  }
         \label{fig:ts53}
 	\end{subfigure}
@@ -1065,7 +1019,7 @@ As mentioned earlier InterDyne has a harness that mediates the message passing b
 The harness function, called $h\_sim$, takes one input, which is time. The return of this function is the value of $i\_f1$ at the time step given to the harness function, this value is found by indexing into the output list. The output list itself is now created within the harness function, along with its first set of messages $niloutputs$. The rest of the list is now $redactedoutputs$, this contains the same values as the prior rest of the list, however in this formulation each wrapper is only passed the messages directed to it. This is because the harness has taken over the role of sorting the messages, from the wrapper functions. Hence the input values labeled as $group\_inputs$ contain just the messages sent to the specific wrapper. An example of how a harness is formatted is shown in Fig.~\ref{fig:harn6}.
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{harn6.m}
+	\lstinputlisting{harn6.m}
 	\caption{\it Example of how the harness function $h\_sim$ is formatted for two wrappers. This function produces the output for the system and in the process mediates the passing of messages between wrappers, only allowing a wrapper to receive messages sent to it. The function $listfuction$ represents the null value list, which uses the value $newnullvalue$.  }
 	\label{fig:harn6}
 \end{figure} 
@@ -1078,7 +1032,7 @@ Translating Fig.~\ref{fig:ts5} to contain a harness function with this functiona
 \begin{figure}[H]
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
-	\lstinputlisting[language=Miranda]{ts6-1.m}
+	\lstinputlisting{ts6-1.m}
 	\caption{From Fig.~\ref{fig:ts6}, main, init, and the sim wrapper.  }
         \label{fig:ts61}
 	\end{subfigure}
@@ -1088,7 +1042,7 @@ Translating Fig.~\ref{fig:ts5} to contain a harness function with this functiona
 \begin{figure}[H]\ContinuedFloat
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
-	\lstinputlisting[language=Miranda]{ts6-2.m}
+	\lstinputlisting{ts6-2.m}
 	\caption{From Fig.~\ref{fig:ts6}, $i\_wrapper$ and $j\_wrapper$.  }
         \label{fig:ts62}
 	\end{subfigure}
@@ -1098,7 +1052,7 @@ Translating Fig.~\ref{fig:ts5} to contain a harness function with this functiona
 \begin{figure}[H]\ContinuedFloat
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
-	\lstinputlisting[language=Miranda]{ts6-3.m}
+	\lstinputlisting{ts6-3.m}
 	\caption{From Fig.~\ref{fig:ts6}, $k\_wrapper$ and $jf1\_delay$.  }
         \label{fig:ts63}
 	\end{subfigure}
@@ -1118,7 +1072,7 @@ The harness, $h\_sim$, now takes three arguments, the first is still time follow
 The harness now also bunches messages sent to each agent with a time stamp, this is done using the $zip2$ function. This function takes to list add combine each consecutive items in the list into tuples, for example $zip2$ $[1,2,3]$ $[4,5,6]$ $=$ $[(1,4),$ $(2,5),$ $(3,6)]$. This function is also used to pass the agent id to each agent, with the first agent being id equal one. The harness also passes the agents the arguments and a local state (which is unused), as well as adding the functionality for broadcast subscriptions, which are also unused. These changes create a $h\_sim$ function that is very similar to the simulator harness within InterDyne, a harness of this form is shown in Fig.~\ref{fig:harn7}.  
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{harn7.m}
+	\lstinputlisting{harn7.m}
 	\caption{\it Example of how the harness function $h\_sim$ is formatted when using runtime arguments. The function $listfuction$ represents the null value list, which uses the value $newnullvalue$.  }
 	\label{fig:harn7}
 \end{figure} 
@@ -1126,7 +1080,7 @@ The harness now also bunches messages sent to each agent with a time stamp, this
 The wrapper functions four inputs: the local state ($localstate$), the arguments ($args$), the input messages and time step ($inputs$), and the agent id ($id$). The arguments are then read in the wrapper using $getargstr$ which returns the argument name when applied and $getargval$ which returns the argument value when applied. The input list is unpacked using $fst$ and $snd$, these return the first (time) and second (messages) items in a tuple respectively. The id passed to the wrapper is now used to mark the sender in outbound messages. A wrapper function with these changes takes the form shown in Fig.~\ref{fig:wrap7}. 
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{wrap7.m}
+	\lstinputlisting{wrap7.m}
 	\caption{\it Example of how a wrapper function is formatted when passing the arguments: localstate, args, inputs and id. Here $logic1$ is just used to show where the logic would be and that this produces the output values, as well as what inputs this takes in.  }
 	\label{fig:wrap7}
 \end{figure} 
@@ -1135,7 +1089,7 @@ Since the inputs to the harness function have changed the call in $main$ must al
 \begin{figure}[H]
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
-	\lstinputlisting[language=Miranda]{ts7-1.m}
+	\lstinputlisting{ts7-1.m}
 	\caption{From Fig.~\ref{fig:ts7}, main, init, the sim wrapper, and the $i$ wrapper.  }
         \label{fig:ts71}
 	\end{subfigure}
@@ -1145,7 +1099,7 @@ Since the inputs to the harness function have changed the call in $main$ must al
 \begin{figure}[H]\ContinuedFloat
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
-	\lstinputlisting[language=Miranda]{ts7-2.m}
+	\lstinputlisting{ts7-2.m}
 	\caption{From Fig.~\ref{fig:ts7}, $j\_wrapper$.  }
         \label{fig:ts72}
 	\end{subfigure}
@@ -1155,7 +1109,7 @@ Since the inputs to the harness function have changed the call in $main$ must al
 \begin{figure}[H]\ContinuedFloat
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
-	\lstinputlisting[language=Miranda]{ts7-3.m}
+	\lstinputlisting{ts7-3.m}
 	\caption{From Fig.~\ref{fig:ts7}, $k\_wrapper$ and $jf1\_delay$.  }
         \label{fig:ts73}
 	\end{subfigure}
@@ -1176,7 +1130,7 @@ With this new message form, the assigning of message values to variables within 
 This is done by first filtering the messages to return only those from the sender of interest, the arguments from these messages are then turned into a list, which is in turn filtered to return the value in the argument associated with the function name of interest. The functions $getmsgfrom$ and $getmsgargs$ are used, these return, the from ids and the arguments, respectively. The function $concat$ is also used, this turns a list of lists into a list. An example of this process is shown in Fig.~\ref{fig:filter8}. 
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{filter8.m}
+	\lstinputlisting{filter8.m}
 	\caption{\it Example of the filtering process for returning message values, here the value from function $i\_f1$ sent by wrapper one is being searched for, when it is found it will be saved to the variable $i\_f1\_last\_timestep$.}
 	\label{fig:filter8}
 \end{figure} 
@@ -1184,7 +1138,7 @@ This is done by first filtering the messages to return only those from the sende
 The harness has also been altered to make it more general, allow for this new message type and make it more similar to that of the harness in InterDyne, this is shown in Fig.~\ref{fig:harn8}. This harness creates an output list ($outputs$) where each item is a tuple of a time stamp and all the messages sent at that time. This list is created by adding an tuple for time zero with no messages to the head of the $timed\_transposed\_msgs$ list, this list is a list of tuples with a time stamp and all the messages at that time, after time zero (for example this list will look like $[(1, t1\_outputs),$ $(2, t2\_outputs), ..]$). This is created by using the $zip2$ function to add a time stamp to the list containing lists of messages at each time ($transposed\_msgs$). This list is created from the $allmessages$ list, this is a finite list containing a tuple of an agent id and an infinite list all the messages sent, for each agent, this is created from the $agentinfo$ passed to the harness. The $apply\_to\_args$ function is used to turn the input information of the different agents into this list of outputs.
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{harn8.m}
+	\lstinputlisting{harn8.m}
 	\caption{\it Simulator harness for translation comparable to InterDynes simulator harness.  }
 	\label{fig:harn8}
 \end{figure} 
@@ -1193,7 +1147,7 @@ After these translations are applied to the experiment in Fig.~\ref{fig:ts8} the
 \begin{figure}[H]
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
-	\lstinputlisting[language=Miranda]{ts8-1.m}
+	\lstinputlisting{ts8-1.m}
 	\caption{From Fig.~\ref{fig:ts8}, main, init, and the sim wrapper.  }
         \label{fig:ts81}
 	\end{subfigure}
@@ -1203,7 +1157,7 @@ After these translations are applied to the experiment in Fig.~\ref{fig:ts8} the
 \begin{figure}[H]\ContinuedFloat
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
-	\lstinputlisting[language=Miranda]{ts8-2.m}
+	\lstinputlisting{ts8-2.m}
 	\caption{From Fig.~\ref{fig:ts8}, $i\_wrapper$.  }
         \label{fig:ts82}
 	\end{subfigure}
@@ -1213,7 +1167,7 @@ After these translations are applied to the experiment in Fig.~\ref{fig:ts8} the
 \begin{figure}[H]\ContinuedFloat
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
-	\lstinputlisting[language=Miranda]{ts8-3.m}
+	\lstinputlisting{ts8-3.m}
 	\caption{From Fig.~\ref{fig:ts8}, $j\_wrapper$.  }
         \label{fig:ts83}
 	\end{subfigure}
@@ -1223,7 +1177,7 @@ After these translations are applied to the experiment in Fig.~\ref{fig:ts8} the
 \begin{figure}[H]\ContinuedFloat
 	\centering
 	\begin{subfigure}[b]{1\textwidth}
-	\lstinputlisting[language=Miranda]{ts8-4.m}
+	\lstinputlisting{ts8-4.m}
 	\caption{From Fig.~\ref{fig:ts8}, $k\_wrapper$ and $jf1\_delay$.  }
         \label{fig:ts84}
 	\end{subfigure}
@@ -1250,19 +1204,19 @@ This section attempts to validate whether the final output of the translation is
 The  reduced-functionality version of InterDyne being compared to has a harness of the form shown in Fig~\ref{fig:harntypinharnes}, a harness type shown in Fig.~\ref{fig:harntypint}, and a agent type shown in Fig.~\ref{fig:agentpint}.
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{intersimfun.hs}
+	\lstinputlisting{intersimfun.hs}
 	\caption{\it Harness for a reduced-functionality version of InterDyne.}
 	\label{fig:harntypinharnes} 
 \end{figure} 
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{harntyptrans.m}
+	\lstinputlisting{harntyptrans.m}
 	\caption{\it Harness type for a reduced-functionality version of InterDyne.}
 	\label{fig:harntypint}
 \end{figure} 
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{agenttrans.m}
+	\lstinputlisting{agenttrans.m}
 	\caption{\it Agent type for a reduced-functionality version of InterDyne.}
 	\label{fig:agentpint}
 \end{figure} 
@@ -1272,7 +1226,7 @@ Looking at the simulator harness for InterDyne in Fig.~\ref{fig:harntypinharnes}
 The type of the harness produced by the translation process is show in Fig.~\ref{fig:harntyptrans}, as can be seen this type adheres exactly to the type of InterDyne harness shown in Fig.~\ref{fig:harntypint}.
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{harntyptrans.m}
+	\lstinputlisting{harntyptrans.m}
 	\caption{\it Type of the harness in the final target state of the translation.}
 	\label{fig:harntyptrans}
 \end{figure} 
@@ -1281,7 +1235,7 @@ Since an agent can be formulated in almost any manner within InterDyne, it is on
 
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{agenttrans.m}
+	\lstinputlisting{agenttrans.m}
 	\caption{\it Type of the agents in the final target state of the translation.}
 	\label{fig:agenttrans}
 \end{figure} 
@@ -1325,7 +1279,7 @@ The three aspects of implementation discussed are, the lexer, the parser, and th
 The selected text file is read in by the lexer, this tokenises the list of characters using the lexemes show Fig.\ref{fig:tokens}. These lexemes represent each item that is allowed as part of the bespoke recurrence relation language, these can be keywords or symbols. Tokenising these items adds meaning to them, for example a list of characters could be identified as a variable or as a recurrence relation, the lexemes hold this information. 
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{tokens.m}
+	\lstinputlisting{tokens.m}
 	\caption{\it Definition of allowed lexemes for tokenising a list of characters.}
 	\label{fig:tokens}
 \end{figure} 
@@ -1335,7 +1289,7 @@ When passing characters to the lexer it is assumed that they are in keeping with
 The next step after tokenising the input is to add a structure to this list of tokens, this is done using a parser. The parser reads in the list of tokens and knows the BNF and structure a recurrence relation experiment should take. The parser uses this knowledge of the layout and the meaning of the tokens to translate the token list into a parse tree created to represents this experiment, shown in Fig.~\ref{fig:parsetreecodemira}.  
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{parse_treecc.m}%Syntax_Def.lit.m}
+	\lstinputlisting{parse_treecc.m}%Syntax_Def.lit.m}
 	\caption{\it Parse tree, written in Miranda, to store the structure and data of the passed experiment.}
 	\label{fig:parsetreecodemira}
 \end{figure} 
@@ -1429,13 +1383,13 @@ To run numerical testing the outputs from this code were compiled into one progr
 
 
 \subsection*{Translation from Design to Miranda}
-\lstinputlisting[language=C++]{tomircode.m}
+\lstinputlisting{tomircode.m}
 
 
 
 
 \subsection*{Program for Numerical Testing}
-\lstinputlisting[language=C++]{t_miracode.m}
+\lstinputlisting{t_miracode.m}
 
 
 
@@ -1454,7 +1408,7 @@ Once Miranda is installed, simply run the the code as a file using $mira$ $file.
 
 
 \subsection*{Lexer, Parser and First Translation Step Code}
-\lstinputlisting[language=C++]{autocode.m}
+\lstinputlisting{autocode.m}
 
 \newpage
 \addcontentsline{toc}{section}{References}

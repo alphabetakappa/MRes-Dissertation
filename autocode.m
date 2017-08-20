@@ -1,7 +1,7 @@
 ||Lexer
 ||Reads in the file and converts it to tokens
 
-lexeme::=Init|Var [char]|Recrel [char] [char]|Cond|Main|Fwhere|Optl|Ophd|Intfunc [char]|Num num|Opcon|Opbng|Opdiv|Optim|Opmin|Opplus|Rbckt|Lbckt|Rlbkt|Llbkt|Opequ|Opne|Oplt|Opgt|Oplet|Opget|Concomma|nl
+lexeme ::= Initl | Varl [char] | Recrell [char] [char] | Opcond | Mainl | Wherel | Optl | Ophd | Intfunc [char] | Numl num | Opcon | Opbng | Opdiv | Optim | Opmin | Opplus | Rbckt | Lbckt | Rlbkt | Llbkt | Opequ | Opne | Oplt | Opgt | Oplet | Opget | Concomma | Newl | Endwherel
 
 
 lex []             = []
@@ -21,18 +21,20 @@ lex ('*':xs)       = Optim:(lex xs)
 lex ('/':xs)       = Opdiv:(lex xs)
 lex ('!':xs)       = Opbng:(lex xs)
 lex (' ':xs)       = lex xs
-lex ('\n':xs)      = nl:lex xs
+lex ('\n':xs)      = Newl:lex xs
 lex (',':xs)       = Concomma:(lex xs)
 lex (':':xs)       = Opcon:(lex xs)
-lex (x:xs)         = (Num (numval a)): (lex b), if (isnumber a)
+lex (x:xs)         = (Numl (numval a)): (lex b), if (isnumber a)
                    = (Intfunc (tl a)):(lex b), if (hd a) = '_'
                    = Ophd:(lex b), if a=['h','d']
                    = Optl:(lex b), if a=['t','l']
-                   = Fwhere:(lex b), if a=['w','h','e','r','e']
-                   = Main:(lex b), if a=['m', 'a', 'i', 'n']
-                   = Cond:(lex b), if a=['c','o','n','d']
+                   = Initl:(lex b), if a=['i','n','i','t']
+                   = Endwherel:(lex b), if a=['e','n','d','w','h','e','r','e']
+                   = Wherel:(lex b), if a=['w','h','e','r','e']
+                   = Mainl:(lex b), if a=['m', 'a', 'i', 'n']
+                   = Opcond:(lex b), if a=['c','o','n','d']
                    = (returnfunc a []):(lex b), if (isfunc a)
-                   = (Var a):(lex b), otherwise
+                   = (Varl a):(lex b), otherwise
                      where
                      (a,b)=f (x:xs) []
                      f []        a = (a,[])
@@ -57,7 +59,7 @@ isnumber x = (removeall "0123456789." (mkset x)) = []
 
 removeall xs []     = []
 removeall xs (y:ys) = removeall xs ys, if member xs y
-                    = y:(removeall xs ys), otherwise
+= y:(removeall xs ys), otherwise
 
 isfunc [] = False
 isfunc ('_':xs) = True
@@ -67,13 +69,9 @@ beforescore []       a = a
 beforescore ('_':xs) a = a
 beforescore (x:xs)   a = beforescore xs (a++[x])
 
-returnfunc []       a = Recrel a []
-returnfunc ('_':xs) a = Recrel a xs
+returnfunc []       a = Recrell a []
+returnfunc ('_':xs) a = Recrell a xs
 returnfunc (x:xs)   a = returnfunc xs (a++[x])
-
-
-
-
 
 
 
@@ -87,68 +85,32 @@ returnfunc (x:xs)   a = returnfunc xs (a++[x])
 ||Stores the structure of the inputted file
 
 
-simulation ::= Simulation [definition] experiment
-
-definition ::= Function [char] [char] [argument] expression
-
-argument::= Argument expression
-
-experiment::= Experiment [initcon] experimentrun
-
-initcon::= Initcon [char] expression
-
-experimentrun::= Emptyrun|Experimentrun expression
-
-expression::= Emptyexpression
-              |Ifthenelse expression expression expression
-              |Brackets expression
-              |List [expression]
-              |Operation expression op expression
-              |IntFunct [char] [argument]
-              |ExtFunct [char] [char] [argument]
-              |IntVar [char]
-              |Specialfunc specfunc expression
-              |Number num
-              |Where expression [subdefinition]
-
-op::= Plus
-      |Minus
-      |Multiply
-      |Divide
-      |Lessthan
-      |Greaterthan
-      |Equals
-      |Notequals
-      |Lessequ
-      |Greaterequ
-      |Listadd
-      |Bang
-
-specfunc::= Listhead|Listtail
-
-subdefinition ::= IntVariable [char] expression |  IntFunction [char] [argument] expression
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+simulation           ::= Simulation mainblock initblock whereblock
+mainblock            ::= Main expression ||recrelname [argname]
+recrelname           ::= Recrelname [char]
+initblock            ::= Init [valdef]
+whereblock           ::= Where [recreldef]
+valdef               ::= Valdef valname expression
+valname              ::= Valnamedef [char]
+recreldef            ::= Recreldef agentname funcname [argname] expression
+agentname            ::= Agentnamedef [char]
+funcname             ::= Funcnamedef [char]
+argname              ::= Argnamedef [char] | Argnumdef num
+expression           ::= SimpleExpression simple_expression | WhereExpression simple_expression expr_whereblock
+simple_expression    ::= Number num | Valname [char] | Argname [char] | Time char | Localvalname [char]
+                         | List [listitem] | Bracketed simple_expression
+                         | Conditional simple_expression simple_expression simple_expression
+                         | Binaryop simple_expression operation simple_expression
+                         | Unaryop internop simple_expression
+                         | Application recrelname [simple_expression]
+                         | Localapplication localfuncname [simple_expression]
+expr_whereblock      ::= Whereblock [localdefinition]
+localdefinition      ::= Localvaldef localvalname expression | Localfuncdef localfuncname [argname] expression
+localfuncname        ::= Localfuncnamedef [char]
+localvalname         ::= Localvalnamedef  [char]
+listitem             ::= Listitem simple_expression
+internop             ::= Head | Tail | Not
+operation            ::= Plus | Minus | Times | Divide | Lessthan | Greaterthan | Equals | Notequals | Lessthanorequalto | Greaterthanorequalto | Cons | Index
 
 
 
@@ -162,339 +124,309 @@ subdefinition ::= IntVariable [char] expression |  IntFunction [char] [argument]
 ||Parser
 ||This turns the tokens into the parse tree
 
-parser x = Simulation (get_defs a []) (get_exprement b c)
-           Where
-           a = find_recrel x
-           b = find_intial x
-           c = find_exp x
-
-find_recrel (Fwhere:y) = y
-find_recrel (z:y)      = find_recrel y
-
-find_intial (Init:y) = find_intial1 y []
-find_intial (z:y)    = find_intial y
-
-find_intial1 (Fwhere:y) list = list
-find_intial1 (z:y)      list = find_intial1 y (list++[z])
-
-find_exp (Main:y) = find_exp1 y []
-find_exp (z:y)    = find_exp y
-
-find_exp1 (Init:y) list = list
-find_exp1 (z:y)    list = find_exp1 y (list++[z])
+parser x = Simulation (get_main a) (get_init b) (get_lwhere c)
+           where
+           a = find_drive x []
+           b = find_inits x
+           c = find_rr x
 
 
+find_drive (Initl:xs) dlist = dlist
+find_drive (Mainl:xs) dlist = find_drive xs dlist
+find_drive (x:xs)     dlist = find_drive xs (dlist++[x])
+
+find_inits (Initl:xs) = find_initssub xs []
+find_inits (x:xs)     = find_inits xs
+
+find_initssub (Wherel:xs) ilist = ilist
+find_initssub (x:xs)      ilist = find_initssub xs (ilist++[x])
 
 
-get_defs []      deflist = deflist
-get_defs unedefs deflist = get_defs newundefs newdeflist
-                           where
-                           newundefs = b
-                           newdeflist = deflist ++ [a]
-                           a = gd_fd unedefs
-
-
-gd_fd ((Recrel a b):xs) = Function a b args expr
-                          where
-                          (args, rest1) = get_args xs []
-                          exstuff = after_equals rest1
-                          (expr, none) = get_expr exstuff Emptyexpression
+find_rr (Wherel:xs) = xs
+find_rr (x:xs)      = find_rr xs
 
 
 
-get_args (nl:xs)       args = (args, xs)
-get_args (Rbckt:xs)    args = (args, xs)
-get_args (Opequ:xs)    args = (args, xs)
-get_args (Concomma:xs) args = (args, xs)
-get_args x             args = get_args new_x new_args
-                              where
-                              new_args = args++[arg]
-                              (arg, new_x) = get_expr x Emptyexpression
+get_main x = Main exp
+             where
+             (exp, none) = get_expr x
+
+find_rrname ((Recrell a b):xs) = Recrelname (a++"_"++b)
+find_rrname (x:xs)             = find_rrname xs
+
+find_rrargs ((Recrell a b):xs) = find_rrnamesub xs []
+find_rrargs (x:xs)             = find_rrargs xs
+
+find_rrnamesub [] arglist = arglist
+find_rrnamesub ((Numl a):xs) arglist = find_rrnamesub xs (arglist++[(Argnumdef a)])
+find_rrnamesub ((Varl a):xs) arglist = find_rrnamesub xs (arglist++[(Argnamedef a)])
 
 
 
+get_init x = Init (find_indefs x [])
 
-
-
-
-get_expr x                 Emptyexpression = (new_a, new_xs), if istherewhere x
-                                             where
-                                             (bwhere, awhere) = wheresplitter x []
-                                             (inter_where, new_xs) = get_wherestate awhere []
-                                             (mid_a, none) = get_expression bwhere Emptyexpression
-                                             new_a = Where mid_a inter_where
-get_expr (Cond:xs)         Emptyexpression = get_expr new_xs new_a
-                                             where
-                                             new_a = (Ifthenelse expr1 expr2 expr3)
-                                             (expr1, xs1) = get_expr xs Emptyexpression
-                                             (expr2, xs2) = get_expr xs1 Emptyexpression
-                                             (expr3, new_xs) = get_expr xs2 Emptyexpression
-get_expr (Lbckt:xs)        Emptyexpression = get_expr new_xs new_a
-                                             where
-                                             new_a = Braclets expr
-                                             (expr, rest) = get_expr in_bracket Emptyexpression
-                                             (in_bracket, new_xs) = get_bracket xs []
-get_expr (Llbkt:xs)        Emptyexpression = get_expr new_xs new_a
-                                             where
-                                             (listeditems, new_xs) = f xs []
-                                             f (Llbkt:xs) a = (a, xs)
-                                             f (Concomma:xs) a = f xs a
-                                             f x a = f nn_xs nnn_a
-                                                     where
-                                                     (mid_a, nn_xs) = get_expr x Emptyexpression
-                                                     nnn_a = a++[mid_a]
-                                             new_a = List listeditems
-get_expr ((Intfunc a):xs)  Emptyexpression = get_expr new_xs new_a
-                                             where
-                                             new_a = IntFunct a args
-                                             (args, new_xs) = get_args xs []
-get_expr ((Recrel a b):xs) Emptyexpression = get_expr new_xs new_a
-                                             where
-                                             new_a = ExtFunct a b args
-                                             (args, new_xs) = get_args xs []
-get_expr ((Var a):xs)      Emptyexpression = get_expr new_xs new_a
-                                             where
-                                             new_a = IntVar a
-                                             new_xs = xs
-get_expr (Ophd:xs)         Emptyexpression = get_expr new_xs new_a
-                                             where
-                                             new_a = (Specialfunc Listhead exp)
-                                             (exp, new_xs) = get_expr xs Emptyexpression
-get_expr (Optl:xs)         Emptyexpression = get_expr new_xs new_a
-                                             where
-                                             new_a = (Specialfunc Listtail exp)
-                                             (exp, new_xs) = get_expr xs Emptyexpression
-get_expr ((Num a):xs)      Emptyexpression = get_expr new_xs new_a
-                                             where
-                                             new_a = Number a
-                                             new_xs = xs
-get_expr (x:xs)            a               = (a, (x:xs)), if isexprend x
-                                           = get_expr new_xs new_a, otherwise
-                                             where
-                                             new_a = (Operation a (get_op x) mid_a)
-                                             (mid_a, new_xs) = get_expr xs Emptyexpression
-
-
-isexprend []          = True
-isexprend (Opplus:xs) = False
-isexprend (Opmin:xs)  = False
-isexprend (Optim:xs)  = False
-isexprend (Opdiv:xs)  = False
-isexprend (Oplt:xs)   = False
-isexprend (Opgt:xs)   = False
-isexprend (Opequ:xs)  = False
-isexprend (Opne:xs)   = False
-isexprend (Oplet:xs)  = False
-isexprend (Opget:xs)  = False
-isexprend (Opcon:xs)  = False
-isexprend (Opbng:xs)  = False
-isexprend x           = True
-
-get_op Opplus = Plus
-get_op Opmin  = Minus
-get_op Optim  = Multiply
-get_op Opdiv  = Divide
-get_op Oplt   = Lessthan
-get_op Opgt   = Greaterthan
-get_op Opequ  = Equals
-get_op Opne   = Notequals
-get_op Oplet  = Lessequ
-get_op Opget  = Greaterequ
-get_op Opcon  = Listadd
-get_op Opbng  = Bang
-
-
-wheresplitter (Fwhere:xs) a = (a, xs)
-wheresplitter (x:xs)      a = wheresplitter xs (a++[x])
-
-
-get_wherestate []                inwhere = (inwhere, [])
-get_wherestate ((Recrel a b):xs) inwhere = (inwhere, ((Recrel a b):xs))
-get_wherestate ((Var a):xs)      inwhere = get_wherestate new_xs new_inwhere
-                                           where
-                                           new_inwhere = inwhere ++ [sub_func]
-                                           sub_func = IntVariable a expr
-                                           (expr, new_xs) = get_expr lexs Emptyexpression
-                                           lexs = get_aftereqs xs
-get_wherestate ((Intfunc a):xs)  inwhere = get_wherestate new_xs new_inwhere
-                                           where
-                                           new_inwhere = inwhere ++ [sub_func]
-                                           sub_func = IntFunction a args expr
-                                           (args, rest) = get_args xs []
-                                           (expr, new_xs) = get_expr lexs Emptyexpression
-                                           lexs = get_aftereqs rest
-
-
-
-get_aftereqs (Opequ:xs) = xs
-get_aftereqs (x:xs)     = get_aftereqs xs
-
-
-
-
-get_bracket (Lbckt:xs) a = get_bracket new_xs new_a
-                           where
-                           (new_a, new_xs) = get_innerbracket xs (a++[Lbckt])
-get_bracket (Rbckt:xs) a = (a, xs)
-get_bracket (x:xs)     a = get_bracket xs (a++[x])
-
-
-get_innerbracket (Lbckt:xs) a = get_innerbracket new_xs new_a
-                                where
-                                (new_a, new_xs) = get_innerbracket xs (a++[Lbckt])
-get_innerbracket (Rbckt:xs) a = ((a++[Rbckt]), xs)
-get_innerbracket (x:xs)     a = get_innerbracket xs (a++[x])
-
-
-
-get_exprement b c = Experiment intialcons exprun
-                    where
-                    exprun = Experimentrun exprsion
-                    (exprsion, none) = get_expr c Emptyexpression
-                    intialcons = get_inconlist b []
-
-get_inconlist []                 itcons = itcons
-get_inconlist ((Var a):Opequ:xs) itcons = get_inconlist new_x new_itcons
+find_indefs []                    dlist = dlist
+find_indefs ((Varl a):(Opequ):xs) dlist = find_indefs nxs ndlist
                                           where
-                                          new_itcons = itcons ++[newit]
-                                          newit = Initcon a expr
-                                          (expr, new_x) = get_expr xs Emptyexpression
+                                          ndlist = dlist ++ [ndef]
+                                          ndef = Valdef (Valnamedef a) (expr)
+                                          (expr, nxs) = get_expr xs
+
+
+get_lwhere x = Where [Recreldef (Agentnamedef "a") (Funcnamedef "b") [] (SimpleExpression (Number 1))]||(find_rrlist x [])
+
+find_rrlist []                 rrlist = rrlist
+find_rrlist ((Recrell a b):xs) rrlist = find_rrlist nxs nrrlist
+                                        where
+                                        nrrlist = rrlist ++ [nrr]
+                                        nrr = Recreldef (Agentnamedef a) (Funcnamedef b) args expr
+                                        args = get_rrargs xs []
+                                        (expr, nxs) = get_expr (get_aftequ xs)
+
+get_aftequ (Opequ:xs) = xs
+get_aftequ (x:xs)     = get_aftequ xs
+
+get_rrargs (Opequ:xs)    arglist = arglist
+get_rrargs ((Numl a):xs) arglist = get_rrargs xs (arglist++[(Argnumdef a)])
+get_rrargs ((Varl a):xs) arglist = get_rrargs xs (arglist++[(Argnamedef a)])
+
+
+
+get_expr x = ((WhereExpression outw inw), rest), if is_where x
+           = ((SimpleExpression exp), rest), otherwise
+             where
+             outw = Number 1
+             inw = Whereblock []
+             (exp, rest) = get_exprision x (Number 0)
+
+
+is_where []          = False
+is_where (Wherel:xs) = True
+is_where (x:xs)      = is_where xs
 
 
 
 
+
+
+get_exprision ((Numl a):xs)      lst = get_exprision xs (Number a)
+get_exprision ((Varl a):xs)      lst = get_exprision xs (Valname a)
+get_exprision ((Llbkt):xs)       lst = get_exprision al (List il)
+                                       where
+                                       (il, al) = (find_list xs)
+get_exprision ((Lbckt):xs)       lst = get_exprision ab epr
+                                       where
+                                       epr = Bracketed eib
+                                       (eib, n) = get_exprision ib (Number 0)
+                                       (ib, ab) = (find_inbr xs [])
+get_exprision ((Opcond):xs)      lst = get_exprision r3 exp
+                                       where
+                                       exp = (Conditional fst snd trd)
+                                       (fst, r1) = get_exprision xs (Number 0)
+                                       (snd, r2) = get_exprision r1 (Number 0)
+                                       (trd, r3) = get_exprision r2 (Number 0)
+get_exprision ((Ophd):xs)        lst = get_exprision rest nlst
+                                       where
+                                       nlst = Unaryop Head ex
+                                       (ex, rest) = get_exprision xs (Number 0)
+get_exprision ((Optl):xs)        lst = get_exprision rest nlst
+                                       where
+                                       nlst = Unaryop Tail ex
+                                       (ex, rest) = get_exprision xs (Number 0)
+get_exprision ((Recrell a b):xs) lst = get_exprision rest nlst
+                                       where
+                                       nlst = Application (Recrelname (a++"_"++b)) args
+                                       (args, rest) = (get_eargs xs [])
+get_exprision ((Intfunc a):xs)   lst = get_exprision r1 nlst
+                                       where
+                                       nlst = Localapplication (Localfuncnamedef a) args
+                                       (args, r1) = (get_eargs xs [])
+get_exprision (x:xs)             lst = (oper, rest), if is_op (x:xs)
+                                     = (lst, (x:xs)), otherwise
+                                       where
+                                       oper = Binaryop lst (find_op x) nexp
+                                       (nexp, rest) = get_exprision xs (Number 0)
+
+
+find_list x = (list, rest)
+              where
+              list = get_li inl [] []
+              (inl, rest) = list_splitter x []
+
+list_splitter (Rlbkt:xs) inl = (inl, xs)
+list_splitter (x:xs)     inl = list_splitter xs (inl++[x])
+
+get_li []            ce list = list
+get_li (Concomma:xs) ce list = get_li xs [] nlist
+                               where
+                               nlist = list++[nnitem]
+                               nnitem = Listitem nitem
+                               (nitem, none) = get_exprision ce (Number 0)
+get_li (x:xs)        ce list = get_li xs (ce++[x]) list
+
+
+
+find_inbr (Rbckt:xs) inbrk = (inbrk, xs)
+find_inbr (x:xs)     inbrk = find_inbr xs (inbrk++[x])
+
+
+get_eargs (Rbckt:xs) args = (args, xs)
+get_eargs x          args = get_eargs rest nargs
+                            where
+                            nargs = args ++[exp]
+                            (exp, rest) = get_exprision x (Number 0)
+
+is_op []          = False
+is_op (Opplus:xs) = True
+is_op (Opmin:xs)  = True
+is_op (Optim:xs)  = True
+is_op (Opdiv:xs)  = True
+is_op (Oplt:xs)   = True
+is_op (Opgt:xs)   = True
+is_op (Opequ:xs)  = True
+is_op (Opne:xs)   = True
+is_op (Oplet:xs)  = True
+is_op (Opget:xs)  = True
+is_op (Opcon:xs)  = True
+is_op (Opbng:xs)  = True
+is_op x           = False
+
+
+
+find_op Opplus = Plus
+find_op Opmin  = Minus
+find_op Optim  = Times
+find_op Opdiv  = Divide
+find_op Oplt   = Lessthan
+find_op Opgt   = Greaterthan
+find_op Opequ  = Equals
+find_op Opne   = Notequals
+find_op Oplet  = Lessthanorequalto
+find_op Opget  = Greaterthanorequalto
+find_op Opcon  = Cons
+find_op Opbng  = Index
 
 
 
 ||first step translation
 
 
-trans_step1 (Simulation defs expriment) = Simulation new_defs new_expirment
-                                          where
-                                          new_defs      = wrapdefs
-                                          new_expirment = callexpermnet
-                                          wrapdefs      = add_wdefs calldefs
-                                          calldefs      = add_cdefs defs []
-                                          callexpermnet = add_cexpem expriment
+trans_step1 (Simulation mblock iblock wblock) = Simulation nmblk iblock nwblk
+                                                where
+                                                nwblk = add_wrapper cwblk
+                                                cwblk = add_callsw wblock
+                                                nmblk = add_callsm mblock
+
+add_callsm (Main a) = Main na
+                      where
+                      na = add_expcall na
+
+add_expcall (SimpleExpression a) = SimpleExpression na
+                                   where
+                                   na = addcalls_exprions a
+add_expcall (WhereExpression a b) = WhereExpression na nb
+                                    where
+                                    na = addcalls_exprions a
+                                    nb = addcalls_wl b
+
+addcalls_wl (Whereblock defs) = Whereblock (adcalsdfs defs [])
 
 
 
 
-
-add_cexpem Experiment inits exprun = Experiment new_inits new_exprun
-                                     where
-                                     new_inits = add_initcalss inits []
-                                     new_exprun = add_expcalls exprun
-
-add_initcalss []                    ninits = ninits
-add_initcalss ((Initcon a expr):xs) ninits = add_initcalss xs new_ninits
-                                             where
-                                             new_ninits = Initcon a new_expr
-                                             new_expr = addcalls_exprions expr
-
-add_expcalls (Experimentrun a) = Experimentrun new_a
-                                 where
-                                 new_a = addcalls_exprions a
-
-
-add_cdefs [] ndefs = ndefs
-add_cdefs (x:xs) ndefs = add_cdefs xs (ndefs++[new_x])
-                         where
-                         new_x = adddefcal x
-
-adddefcal (Function a b c d) = Function a b new_c new_d
-                               where
-                               new_c = cargs c []
-                               new_d = addcalls_exprions d
+adcalsdfs [] ndefs = ndefs
+adcalsdfs ((Localvaldef vn exp):xs) ndefs = adcalsdfs xs nndfs
+                                            where
+                                            nndfs = ndefs++[nitem]
+                                            nitem = Localvaldef vn (add_expcall exp)
+adcalsdfs ((Localfuncdef vn arg exp):xs) ndefs = adcalsdfs xs nndfs
+                                                 where
+                                                 nndfs = ndefs++[nitem]
+                                                 nitem = Localfuncdef vn  arg (add_expcall exp)
 
 
 
-
-
-addcalls_exprions (Ifthenelse a b c) = Ifthenelse new_a new_b new_c
+addcalls_exprions (Conditional a b c) = Conditional new_a new_b new_c
+                                        where
+                                        new_a = addcalls_exprions a
+                                        new_b = addcalls_exprions b
+                                        new_c = addcalls_exprions c
+addcalls_exprions (Bracketed a)       = Bracketed new_a
+                                        where
+                                        new_a = addcalls_exprions a
+addcalls_exprions (List a)           = List na
                                        where
-                                       new_a = addcalls_exprions a
-                                       new_b = addcalls_exprions b
-                                       new_c = addcalls_exprions c
-addcalls_exprions (Brackets a)       = Brackets new_a
-                                       where
-                                       new_a = addcalls_exprions a
-addcalls_exprions (List a)           = List new_a
-                                       where
-                                       new_a = cargs a []
-addcalls_exprions (Operation a b c) = Operation new_a b new_c
+                                       na = addcallslist a []
+addcalls_exprions (Binaryop a b c)  = Binaryop new_a b new_c
                                       where
                                       new_a = addcalls_exprions a
                                       new_c = addcalls_exprions c
-addcalls_exprions (IntFunct a b)    = IntFunct a new_b
+addcalls_exprions (Localapplication a b) = Localapplication a b
+addcalls_exprions (Application a c) = Binaryop wrap Index fstarg
                                       where
-                                      new_b = cargs b []
-addcalls_exprions (ExtFunct a b c)  = Operation wrap Bang fstarg
-                                      where
-                                      wrap = ExtFunct a newb newc
-                                      newb = b ++ "_list"
-                                      newc = tl (cargs c [])
-                                      fstarg = hd (cargs c [])
-addcalls_exprions (IntVar a)        = IntVar a
-addcalls_exprions (Specialfunc a b) = Specialfunc a new_b
+                                      wrap = Application newb newc
+                                      newb = changename a
+                                      newc = tl (c)
+                                      fstarg = hd (c)
+addcalls_exprions (Valname a)       = Valname a
+addcalls_exprions (Unaryop a b)     = Unaryop a new_b
                                       where
                                       new_b = addcalls_exprions b
 addcalls_exprions (Number a)        = Number a
-addcalls_exprions (Where a b)       = Where new_a new_b
-                                      where
-                                      new_a = addcalls_exprions a
-                                      new_b = callssubdefs b []
-
-cargs []     list = list
-cargs (x:xs) list = cargs xs (list++[new_x])
-                    where
-                    new_x = addcalls_exprions x
-
-
-callssubdefs [] newdefs = newdefs
-callssubdefs ((IntVariable a b):xs) = callssubdefs xs nnewdefs
-                                      where
-                                      nnewdefs = newdefs ++ [ndef]
-                                      ndef = IntVariable a new_b
-                                      new_b = addcalls_exprions b
-callssubdefs (( IntFunction a args b):xs) = callssubdefs xs nnewdefs
-                                            where
-                                            nnewdefs = newdefs ++ [ndef]
-                                            ndef = IntFunction a new_args new_b
-                                            new_args = cargs args []
-                                            new_b = addcalls_exprions b
 
 
 
 
+changename (Recrelname a) = Recrelname (a++"_list")
+
+addcallslist []                  list = list
+addcallslist ((Listitem exp):xs) list = addcallslist xs (list++[(Listitem (addcalls_exprions exp))])
 
 
 
-add_wdefs [] ndefs = ndefs
-add_wdefs (x:xs) ndefs = add_wdefs nxs nnedfs
-                         where
-                         nndefs = addwrapper fx fun
-                         (id1, id2) = getdefid x
-                         fun = creatffunc (x:xs) [] (id1,id2)
-                         fx = findfx fun
 
-getdefid (Function a b c d) = (a, b)
+add_callsw (Where x) = Where nx
+                       where
+                       nx = wlac x []
 
-creatffunc ((Function a b c d):xs) defl id = creatffunc xs ndefl
-                                             where
-                                             ndefl = defl++[(Function a b c d)], (a,b) = id
-                                             ndefl = defl, otherwise
+wlac [] list = list
+wlac ((Recreldef a b c d):xs) list = wlac xs nlist
+                                     where
+                                     nlist = list++[(Recreldef a b c nd)]
+                                     nd = add_expcall d
 
-findfx ((Function a b c d):xs) = Function a b c d, if (hd c) = (IntVar "t")
+add_wrapper (Where x) = Where nx
+                        where
+                        nx = adfunwraps x []
+
+adfunwraps []     list = list
+adfunwraps (x:xs) list = adfunwraps xs (list++[(addwrap x)])
+
+addwrap (Recreldef a b c d) = Recreldef a nb [] ne
+                              where
+                              nb = chngnme b
+                              ne = makewrapexp a b c d
+
+chngnme (Funcnamedef a) = Funcnamedef (a++"_list")
+
+makewrapexp a b c d = WhereExpression exp defs
+                      where
+                      exp = Localapplication (Localfuncnamedef "_createlist") [Application nname [(Number 0)]]
+                      nname = createname a b
+                      defs = Whereblock (mdeflist nname c d)
+
+createname (Agentnamedef a) (Funcnamedef b) = Recrelname (a++b)
 
 
 
-addwrapper (Function a b c d) fun = Function a newb newc newd
-                                    where
-                                    newb = b ++ "_list"
-                                    newc = tl c
-                                    newd = Where exp subsdefs
-                                    exp = IntFunct "createlist" [(ExtFunct a b newc), (Number 0)]
-                                    subsdefs = creatldef:fun
-                                    creatldef = IntFunction "createlist" [(IntFunct "f"), (IntVar "t")] log
-                                    log = Operation (Brackets IntFunct "f" [IntVar "t"]) Listadd (IntFunct "createlist" [(IntFunct "f" []), (Brackets Operation (IntVar "t") Plus (Number 1))])
+
+mdeflist a   b c = [item1, item2]
+                   where
+                   item1 = Localfuncdef (Localfuncnamedef "_createlist") [(Argnamedef "f"), (Argnamedef "t")] exp1
+                   exp1 = SimpleExpression lv1
+                   lv1  = (Binaryop lv2 Cons lv3)
+                   lv2 = (Localapplication (Localfuncnamedef "f") ([Valname "t"]))
+                   lv3 = (Localapplication (Localfuncnamedef "_createlist") [Localapplication (Localfuncnamedef "f") [Binaryop (Valname "t") Plus (Number 1)]])
+                   item2 = (Localfuncdef (Localfuncnamedef (unpack a)) b c)
+
+unpack (Recrelname a) = a

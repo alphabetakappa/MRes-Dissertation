@@ -1,5 +1,5 @@
 <simulation>           ::= <mainblock> <newline> <initblock> <newline> <whereblock>
-<mainblock>            ::= <main> <newline> <recrelname> <space> <args>
+<mainblock>            ::= <main> <newline> <expression>
 <numbers>              ::= <number> | <number> <space> <numbers>
 <initblock>            ::= <init>    | <init> <newline> <valdefinitions>
 <whereblock>           ::= <where> | <where> <newline> <recreldefinitions>
