@@ -443,4 +443,10 @@ Hui Shang and Gabriel Wainer.
 \newblock {\em Simulation Conference, 2006. WSC 06. Proceedings of the Winter},
   2006.
 
+\bibitem{extnesiably}
+Davide Sangiorgi.
+\newblock Extensionality and intensionality of the ambient logics.
+\newblock In {\em Proceedings of the 28th ACM SIGPLAN-SIGACT Symposium on
+  Principles of Programming Language}, pages 4--13. ACM, 2001.
+
 \end{thebibliography}

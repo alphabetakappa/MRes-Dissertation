@@ -107,23 +107,17 @@
 %folyers english 
 
 
-%%%%%%%%%%%%%%%ask chris%%%%%%%%%%%%%%%%
-%is sticker in good place? 
 
 
 %%%%%%%%%%%%%%%%to do%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%1add in intro a bullet list of objectives or planned contributions of the project & in conlucion add a bulleted list of objects that have been achieved
+%1add in intro a bullet list of objectives or planned contributions of the project & in conclusion add a bulleted list of objects that have been achieved
 
 %2restricted list and define it  (rr lanagueg)
 
 %3don't restrict the driving expression (check syntax) 
 
 %4say special thing about hd and tl is they only take one value (not that they are built-in)
-
-%5discussion of the steps to be taken in the design (detailed and about their order, is this the only one etc) 
-
-%6fix parser for nested where loops 
 
 %7add endwhere to syntax 
 
@@ -138,13 +132,7 @@
 
 %%%%%%%%%%rewrite%%%%%%%%%%%%
 
-%116.1 validation
-
-%126.2 sematic
-
-%136.3 autamed (new parse tree)
-
-%14code and make sure it works 
+%14code and make sure it works  (using endwhere now and new parse tree)
 
 
 %%%%%%%%%%finish%%%%%%%%%%%%%
@@ -869,20 +857,29 @@ This style and layout is brought together to produce a full simulation, as shown
 
 \newpage
 \section{Design of a Translation from Recurrence Relations to InterDyne} 
-This section details the design of a step-by-step translation between the previously described bespoke recurrence relation language and a reduced form of the InterDyne simulator. This is broken down into eight individual steps, with each of these steps altering the output of the previous step to resemble more closely an InterDyne simulation. Each of these steps should be a small enough change from the previous iteration so that the translation, which they preform is digestible. 
+This section details the design of a step-by-step translation between the previously described bespoke recurrence relation language and a reduced form of the InterDyne simulator. This is broken down into eight individual steps, with each of these steps altering the output of the previous step to resemble more closely an InterDyne simulation.
 
 The eight steps required for this translation are to introduce:
 \begin{enumerate}
-  \item Infinite list output.
-  \item Grouping into agents.
-  \item A global output list.
-  \item Agent input lists.
-  \item Targeted information passing.
-  \item A simulator harness.
-  \item Runtime arguments.
-  \item Message communication.
+  \item Infinite list output. Solving the issue of InterDyne agents producing infinite lists of their outputs, compared with the recurrence relation model where outputs are calculated when given an input.
+  \item Grouping into agents. Solving the issue of InterDyne containing agents, where the recurrence relation model a list of recurrence relations.
+  \item A global output list. Begins to solve the issue of InterDyne containing a harness that mediates all the messages; by creating a function to mediate the messages.  
+  \item Agent input lists. Begins to solve the issue of agents in InterDyne taking in messages, compared with the function calls in the recurrence relation model; by giving each group of recurrence relations an input to use.  
+  \item Targeted information passing. Continues to solve the issue of message passing; by allowing information produced by a recurrence relation to have a defined group of recurrence relations as a target. 
+  \item A simulator harness. Continues to solve the issue of InterDyne containing a harness; by grouping the functionality for producing the global output list, and the sorting of inputs for the recurrence relation groups, into a single function. 
+  \item Runtime arguments. Increases the produced agent-based models similarity to InterDyne; by adding a number of arguments to be passed to the harness and between the harness and agents, and by changing the structure to be more comparable with an InterDyne simulation.
+  \item Message communication. Solves the issue of message passing in InterDyne; by adding messages that correspond to those found within InterDyne. Adding these messages also allows for the harness to be restructured to correspond to that of a reduced InterDyne simulation. 
 \end{enumerate} 
+
+These steps are conducted in a way, so that each step builds upon the translation made by its predecessor; as such the order in which these steps are organised can not be rearranged. This order also allows for the bespoke recurrence relation language to evolve into an agent-based model in a comprehensible manner; with each steps translation building on the last and hence increasing the overall complexity in small increments.   
+
+These particular translation steps have been chosen for this translation following two requirements; each step should change the target state of the previous step (with the first step changing the initial bespoke recurrence relation language) in a small enough manner that it is easy to follow, and the target state produced by each step should be a functional model (a model that can be translated into Miranda code and executed to produce an output). Additionally each step was chosen to introduce either a single larger piece of functionality to the model or a number of smaller pieces. 
+
+Though in this design eight steps have been chosen, this is by no means the only formulation that can be taken. Some of the steps described below can be translated in more steps, and some of the steps can be combined to create a large jump in the translation. However the steps chosen follow the requirements listed above and create a translation process that should be formulated in an digestible manner; increasing the number of steps would increase the length of the translation most likely without much improving its clearness, and decreasing the number of steps, though shortening the translation, would most likely make following it more challenging.    
+
 These eight steps translate the bespoke recurrence relation model into that of an InterDyne model, with some limited functionality. This translation also does not use the functionality of broadcast messages within InterDyne, all information passing within the recurrence relations is considered to be private and is hence sent as a one-to-one message. This translation does support expanded recurrence relation that take more then one argument, as well as recurrence relations that are first degree or higher.\footnote{A first-degree recurrence relation references the previous time step ($t-1$), a second-degree relation references the one prior to this ($t-2$) and so on.}  
+
+Another translation step could be added to translate the final target state into the Haskell syntax, matching that of InterDyne. However this step is not necessary in creating an agent-based model that can be seen to be equivalent to a reduced version of InterDyne.  
 
 These steps will be shown in this section by translating an example written in the bespoke recurrence relation language, shown in Fig.~\ref{fig:rre1}. This example consists of four recurrence relations ($i\_f1$, $j\_f2$, $j\_f2$ and $k\_f1$) split into three groups ($i$, $j$ and $k$). Each of these relations uses the allowed pattern matching to define their initial conditions in terms of $q$ and $k$, which are defined in the section $init$. The experiment, defined under $main$, is to return the value of the relation $i\_f1$ at the time step 3.  
 \begin{figure}[H]
@@ -1257,41 +1254,55 @@ After these translations are applied to the experiment in Fig.~\ref{fig:ts8} the
 
 \newpage
 \section{Validation and Testing}
-Now that the design of the translation process has been described there are a few aspects relating to it that should be considered. These considerations can be formed as three questions: Is the final form of the translation a good representation of InterDyne? Does this design give a correct translation? Can this translation process be automated?   
+Now that the design of the translation process has been described there are a few aspects relating to it that should be considered. These considerations can be formed as three questions: Is the final form of the translation a good representation of a reduced-functionality version of InterDyne? Does this design give a correct translation? Can this translation process be automated?   
 
-This section covers these three questions, first by comparing the final form of the translation to InterDyne, then by looking at the design and the operation of each step in the translation, and finally by showing the first steps in an automated version of this translation.  
+This section covers these three questions, first by comparing the final target state of the translation to a reduced-functionality version of InterDyne, then by looking at the design and the operation of each step in the translation, and finally by showing the first steps in an automated version of this translation.  
 
 
 \subsection{Translation Validation}
-Here the validity of this translation is assessed, this is done by comparing the main aspects of InterDyne to the final form of this translation. These aspects are: The design of the harness, the type of the harness, the type of the agents, and the type of messages. 
+This section attempts to validate whether the final output of the translation is a valid InterDyne simulation. It does this by:
+\begin{enumerate}
+  \item A visual inspection of the output syntax and comparison with InterDyne syntax
+  \item Comparison of the type of the output's harness function with the type of InterDyne's harness function
+  \item Comparison of the type of each output agent function with the type of an InterDyne agent function
+\end{enumerate}
 
-The design of the simulator harness in the translation can be seen to be very similar to that of the InterDyne simulator harness by comparing Fig.~\ref{fig:harn8} with Fig.~\ref{fig:intersimfun}. The translation limits the functionality of InterDyne some what, such as reducing its output to a single number and only allowing for one message type. These reductions in the functionality of InterDyne explain the difference between the two harness.
-
-Comparing the harness types, InterDyne has the harness type shown in Fig.~\ref{fig:harntypint}, where as the translations harness as the type sown in Fig.~\ref{fig:harntyptrans}. As can be seen these types are very similar, with the translations harness type containing an empty list instead of a list of integers and the output of the translation being an integer instead of an IO output, which is explained due to the reduced nature of this model. 
+The  reduced-functionality version of InterDyne being compared to has a harness of the form shown in Fig~\ref{fig:harntypinharnes}, a harness type shown in Fig.~\ref{fig:harntypint}, and a agent type shown in Fig.~\ref{fig:agentpint}.
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{harntypint.m}
-	\caption{\it Type of InterDynes harness.}
-	\label{fig:harntypint}
+	\lstinputlisting[language=Miranda]{intersimfun.hs}
+	\caption{\it Harness for a reduced-functionality version of InterDyne.}
+	\label{fig:harntypinharnes} 
 \end{figure} 
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[language=Miranda]{harntyptrans.m}
-	\caption{\it Type of the translations harness.}
-	\label{fig:harntyptrans}
-\end{figure} 
-
-Since an agent can be formulated in almost any manner within InterDyne, it is only worth while to compare the types of the agents between InterDyne and the translation. The type of an InterDyne agent, shown in Fig.~\ref{fig:agentpint}, is very similar to that of an agent within the translation, shown in Fig.~\ref{fig:agenttrans}, the only difference exists on the input to an InterDyne agent containing one extra list of messages. This extra list of messages is relating to broadcast messages, which are not implemented in the translation and hence do not appear in the type of the agents. This mismatch in type is again down to the translation creating a reduced form of InterDyne. 
-\begin{figure}[H]
-	\centering
-	\lstinputlisting[language=Miranda]{agentpint.m}
-	\caption{\it Type of InterDynes agents.}
-	\label{fig:agentpint}
+	\caption{\it Harness type for a reduced-functionality version of InterDyne.}
+	\label{fig:harntypint}
 \end{figure} 
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[language=Miranda]{agenttrans.m}
-	\caption{\it Type of the translations agents.}
+	\caption{\it Agent type for a reduced-functionality version of InterDyne.}
+	\label{fig:agentpint}
+\end{figure} 
+
+Looking at the simulator harness for InterDyne in Fig.~\ref{fig:harntypinharnes} and comparing this to the simulator harness in the final target stat in Fig.~\ref{fig:harn8}, one can see that these two harness are identical in form and very similar in syntax. The harness produced in the final target state of the translation has not yet been converted into Haskell (the language in which InterDyne is written), this explains the difference in syntax between the two harnesses. 
+
+The type of the harness produced by the translation process is show in Fig.~\ref{fig:harntyptrans}, as can be seen this type adheres exactly to the type of InterDyne harness shown in Fig.~\ref{fig:harntypint}.
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{harntyptrans.m}
+	\caption{\it Type of the harness in the final target state of the translation.}
+	\label{fig:harntyptrans}
+\end{figure} 
+
+Since an agent can be formulated in almost any manner within InterDyne, it is only worth while to compare the types of the agents between InterDyne and the translation, and not the form. The type of an agent created in this translation is shown in Fig.~\ref{fig:agenttrans}, comparing this to the type of an InterDyne agent, shown in Fig.~\ref{fig:agentpint}, it can be seen that these types exactly match. 
+
+\begin{figure}[H]
+	\centering
+	\lstinputlisting[language=Miranda]{agenttrans.m}
+	\caption{\it Type of the agents in the final target state of the translation.}
 	\label{fig:agenttrans}
 \end{figure} 
 
@@ -1299,14 +1310,14 @@ The translation has explicitly implemented the message type used in InterDyne by
 
 This assessment of the resemblance between the final product of this translation and an InterDyne simulation, show that this process does indeed create a InterDyne simulation, which is of reduced functionality. This reduced form of InterDyne is required to allow a matching to the initial recurrence relations and to limit excess complications during the translation.
 
-
-
 \subsection{Translation Semantic Considerations}
-Though the translation can be seen to produce an InterDyne simulation, the question still remains about the correctness of the steps in this process. Here two arguments for the correctness of meaning of this approach are be presented.  
+Though the translation can be seen to produce an InterDyne simulation, the question still remains about the correctness of the steps in this process. Here the correctness in these steps is investigated from a extensionality view point; this view  states that two objects are equal if they have the same external behaviour~\cite{extnesiably}. 
 
-The first argument is that each step can be seen as nothing more then a reformatting of the information and experiment already presented. With new structures such as types being nothing more then wrappers for data that is then extracted and treated as before. This reformatting creates no new information in the experiment, with reverse engineering used to create aspects that may have added new information, such as introducing messages sent from a sender to a receiver in place of a receiver calling on a sender to get the information.   
+For this translation the output produced by running the target state of each step is compared. Following the logic of extensionality, if these outputs are equal then so to are the target states that produced them and by association the translation. 
 
-The second argument relates to the functionality of each step, if each step can produce the same outputs given the same inputs then they can be seen as numerically equivalent. To test the functionality, each step was converted into a Miranda program; this conversion was done using a program  (this program is shown in Appendix A) to reformat the target states of each step into their Miranda equivalent, the produced programs were then edited to run in the Miranda compiler, with internal functions and types defined. These programs were also edited to allow for any time step to be asked for instead of just $3$ as shown in the design process, these programs were then grouped into a single program  (this program is shown in Appendix A) and executed for five different time steps (0, 1, 2, 3 and 4). Table~\ref{tbl:meanfield_compare_to_Ising} shows the results from these runs, as can been seen all steps produced the same output. This shows, at least for the values tested, the numerical equivalence between each step of the translation and hence between the initial recurrence relation model and the final agent-based model. 
+This numerical equivalence is assessed by translating each step into its Miranda equivalent and then executing the produced program. This conversion was done using a translation program (shown in Appendix A), the output of this program were then edited to match the Miranda syntax and to allow for an input value of $t$ to replace the static value of $3$ used in the translation. These programs were then compiled into one file (shown in Appendix A) and executed for the time steps  (0, 1, 2, 3 and 4). 
+
+Table~\ref{tbl:meanfield_compare_to_Ising} shows the results from these runs, as can been seen all steps produced the same output. This shows, at least for the values tested, there exists a numerical equivalence between each target state of the steps of the translation and hence between the initial recurrence relation model and the final agent-based model. 
 \begin{table}[H]
   \caption{\it The output value of the initial recurrence relation model and each translation step at the five different time steps (0, 1, 2, 3, 4, 5).}
 \begin{center}
@@ -1324,10 +1335,10 @@ The second argument relates to the functionality of each step, if each step can 
   \label{tbl:meanfield_compare_to_Ising}
 \end{table}
 
-These arguments suggest that this translation has steps that are equivalent and hence that the produced version of InterDyne is an equivalent representation of the initial recurrence relation experiment. 
+This equivalence suggests that each step is correct and that the entire translation produces an agent-based model that numerically represents the initial recurrence relation model. 
 
 \subsection{Automated Translation Implementation}
-Though the design of the translation has been shown, with an example being translated by hand, this is a long process to achieve for multiple experiments. The question hence arises, can this process be automated? Implementing this automation is outside the scope of this project, however the first three steps have been achieved and are discussed below (this work is shown in Appendix B). 
+Though the design of the translation has been shown, with an example being translated by hand, this is a long process to achieve for multiple experiments. The question hence arises, can this process be automated? Implementing this automation is outside the scope of this project, however the first three steps have been achieved and are discussed below (this work is shown in Appendix~B). 
 
 The three aspects of implementation discussed are, the lexer, the parser, and the first translation step. These steps are written in the Miranda functional language and allows for a text file contain an experiment written in the bespoke language to be translated into the first translation step. 
 
@@ -1344,7 +1355,7 @@ When passing characters to the lexer it is assumed that they are in keeping with
 The next step after tokenising the input is to add a structure to this list of tokens, this is done using a parser. The parser reads in the list of tokens and knows the BNF and structure a recurrence relation experiment should take. The parser uses this knowledge of the layout and the meaning of the tokens to translate the token list into a parse tree created to represents this experiment, shown in Fig.~\ref{fig:parsetreecodemira}.  
 \begin{figure}[H]
 	\centering
-	\lstinputlisting[language=Miranda]{Syntax_Def.lit.m}
+	\lstinputlisting[language=Miranda]{parse_treecc.m}%Syntax_Def.lit.m}
 	\caption{\it Parse tree, written in Miranda, to store the structure and data of the passed experiment.}
 	\label{fig:parsetreecodemira}
 \end{figure} 
@@ -1355,7 +1366,7 @@ Once in this structure a translation function can be used to translate the recur
 
 This translation step should never crash as the format passed to it should always be correct, with an incorrect format causing the parser to crash. This translation step also only focusses on the format of the experiment and any actual functionality could be incorrect but will still be correctly translated. 
 
-
+This implementation can be seen to be syntactically complete as the parse tree shown above matches exactly with the concrete syntax given in Fig.~\ref{fig:bnflex}. This means that there is no case in the concrete syntax which can not exist in the parse tree definition. Semantic completeness of this implementation is beyond the scope of this project, but would define what is not allowed because it does not make sense in the language despite being syntactically correct, such as a recurrence relation name that has no definition (but is correctly formed).
 
 
 \newpage

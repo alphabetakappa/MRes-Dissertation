@@ -21,19 +21,19 @@
 \contentsline {subsection}{\numberline {4.3}Well Formed Programs}{29}
 \contentsline {section}{\numberline {5}Design of a Translation from Recurrence Relations to InterDyne}{32}
 \contentsline {subsection}{\numberline {5.1}Infinite List Output}{33}
-\contentsline {subsection}{\numberline {5.2}Grouping into Agents}{34}
-\contentsline {subsection}{\numberline {5.3}A Global Output List}{35}
-\contentsline {subsection}{\numberline {5.4}Agent Input Lists}{38}
-\contentsline {subsection}{\numberline {5.5}Targeted Information Passing}{41}
-\contentsline {subsection}{\numberline {5.6}A Simulator Harness}{46}
-\contentsline {subsection}{\numberline {5.7}Runtime Arguments}{50}
-\contentsline {subsection}{\numberline {5.8}Message Communication}{54}
-\contentsline {section}{\numberline {6}Validation and Testing}{60}
-\contentsline {subsection}{\numberline {6.1}Translation Validation}{60}
-\contentsline {subsection}{\numberline {6.2}Translation Semantic Considerations}{61}
-\contentsline {subsection}{\numberline {6.3}Automated Translation Implementation}{62}
-\contentsline {section}{\numberline {7}Summary and Conclusion }{65}
-\contentsline {subsection}{\numberline {7.1}Discussion and Further work }{66}
-\contentsline {section}{Appendix A: Program for Numerical Testing}{67}
-\contentsline {section}{Appendix B: Implementation of Translation}{81}
-\contentsline {section}{References}{90}
+\contentsline {subsection}{\numberline {5.2}Grouping into Agents}{35}
+\contentsline {subsection}{\numberline {5.3}A Global Output List}{36}
+\contentsline {subsection}{\numberline {5.4}Agent Input Lists}{39}
+\contentsline {subsection}{\numberline {5.5}Targeted Information Passing}{42}
+\contentsline {subsection}{\numberline {5.6}A Simulator Harness}{47}
+\contentsline {subsection}{\numberline {5.7}Runtime Arguments}{51}
+\contentsline {subsection}{\numberline {5.8}Message Communication}{55}
+\contentsline {section}{\numberline {6}Validation and Testing}{61}
+\contentsline {subsection}{\numberline {6.1}Translation Validation}{61}
+\contentsline {subsection}{\numberline {6.2}Translation Semantic Considerations}{62}
+\contentsline {subsection}{\numberline {6.3}Automated Translation Implementation}{63}
+\contentsline {section}{\numberline {7}Summary and Conclusion }{66}
+\contentsline {subsection}{\numberline {7.1}Discussion and Further work }{67}
+\contentsline {section}{Appendix A: Program for Numerical Testing}{68}
+\contentsline {section}{Appendix B: Implementation of Translation}{82}
+\contentsline {section}{References}{91}
