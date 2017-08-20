@@ -104,25 +104,10 @@
 %some questions in paper under help 
 
 
-
-
-
-
-
-%%%%%%%%%%%%%%%%to do%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%1don't restrict the driving expression (check syntax) 
-
-%2say special thing about hd and tl is they only take one value (not that they are built-in)
-
-%6You already have "is it correct"?  (which begs the question - "what does it mean to be correct?") but you haven't asked "is it complete?" - i.e. are there any examples of recurrence-relation model definitions that are correct with resect to the syntax that cannot be correctly translated?  And how can you be sure?
-
-
-
-
+%%%%%%%%%%%%%%%%to do%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%rewrite%%%%%%%%%%%%
 
-%7code and make sure it works  (using endwhere now and new parse tree)
+%2code and make sure it works  (using endwhere now and new parse tree)
 
 
 %%%%%%%%%%finish%%%%%%%%%%%%%
@@ -752,7 +737,7 @@ A recurrence relation can have sub definitions relating to it, this is done thro
 
 Internal functions must be formatted in the manner $\_name$, where $name$ is the name for the function. These functions can only be accessed by the recurrence relation they are within. Local variables can be defined using the formate $name$, this name can be anything as long as it does not clash with restricted names or other variable names with in the same where block. 
 
-The driving expression is given in a defined section of the model, showing in Section~\ref{wellformedprogs}, and is written as  $group\_name$ $arguments$. The  $group\_name$ must correspond to a recurrence relation listed in the model and the $arguments$ must be given as values, allowing the recurrence relation to be evaluated. 
+The driving expression is given in a defined section of the model, shown in Section~\ref{wellformedprogs}, and is written as  $group\_name$ $arguments$. The  $group\_name$ must correspond to a recurrence relation listed in the model and the $arguments$ must be given as values, variables that are listed as initial conditions, or variables listed in a local where block, allowing the recurrence relation to be evaluated. 
 
 Initial conditions are listed in a special location in the layout, which will be show in Section~\ref{wellformedprogs}, and are defined in three parts $name$ $=$ $expression$. This name can be seen as a variable and can be anything not in the restricted name list or used by any other variable (even those within where blocks). 
 
@@ -772,7 +757,7 @@ This language allows for the mathematical operates shown in Fig.~\ref{fig:bnflex
 
 Expression can be incased in brackets by using $()$.
 
-This language allows for the use of three inbuilt functions: $hd$ (returns the head of a list), $tl$ (returns the tail of the list), and $:$ (adds an item as the new head of a list).  
+This language allows for the use of three inbuilt functions: $hd$ (returns the head of a list), $tl$ (returns the tail of the list), and $:$ (adds an item as the new head of a list). The functions $hd$ and $tl$ are particularly special as unlike the other operators, they only take one value. 
 
 Conditional statements with in this language are written as $cond$ $condition$ $expression$ $expression$. Where if the condition is true, then the first expression is run and if not the second expression is.  
 
@@ -1249,9 +1234,9 @@ After these translations are applied to the experiment in Fig.~\ref{fig:ts8} the
 
 \newpage
 \section{Validation and Testing}
-Now that the design of the translation process has been described there are a few aspects relating to it that should be considered. These considerations can be formed as three questions: Is the final form of the translation a good representation of a reduced-functionality version of InterDyne? Does this design give a correct translation? Can this translation process be automated?   
+Now that the design of the translation process has been described there are a few aspects relating to it that should be considered. These considerations can be formed as three questions: Is the final target state of the translation a good representation of a reduced-functionality version of InterDyne? Does this translation design produce an agent-based model that is a correct representation of the initial recurrence relation model? Can this translation process be automated?   
 
-This section covers these three questions, first by comparing the final target state of the translation to a reduced-functionality version of InterDyne, then by looking at the design and the operation of each step in the translation, and finally by showing the first steps in an automated version of this translation.  
+This section covers these three questions, first by comparing the final target state of the translation to a reduced-functionality version of InterDyne, then by testing the numerical correctness of each translational step, and finally by showing the first steps in an automated version of this translation.  
 
 
 \subsection{Translation Validation}
