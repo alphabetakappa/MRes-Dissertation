@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  20 AUG 2017 23:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.11)  21 AUG 2017 09:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -593,18 +593,18 @@ File: pppdftex.def 2016/04/19 v0.5f Pdfpages driver for pdfTeX (AM)
 (./MRes_Dissertation.aux)
 \openout1 = `MRes_Dissertation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 94.
-LaTeX Font Info:    ... okay on input line 94.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 94.
-LaTeX Font Info:    ... okay on input line 94.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 94.
-LaTeX Font Info:    ... okay on input line 94.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 94.
-LaTeX Font Info:    ... okay on input line 94.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 94.
-LaTeX Font Info:    ... okay on input line 94.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 94.
-LaTeX Font Info:    ... okay on input line 94.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
 
 (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -668,15 +668,15 @@ Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Info: Redefining \celsius on input line 94.
-Package gensymb Info: Faking symbols for \degree and \celsius on input line 94.
+LaTeX Info: Redefining \celsius on input line 91.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 91.
 
 
 
 Package gensymb Warning: Not defining \perthousand.
 
-LaTeX Info: Redefining \ohm on input line 94.
-Package gensymb Info: Using \Omega for \ohm on input line 94.
+LaTeX Info: Redefining \ohm on input line 91.
+Package gensymb Info: Using \Omega for \ohm on input line 91.
 
 Package gensymb Warning: Not defining \micro.
 
@@ -729,37 +729,37 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 <CoverSheet.pdf, id=10, 597.23125pt x 845.1575pt>
 File: CoverSheet.pdf Graphic file (type pdf)
  <use CoverSheet.pdf>
-Package pdftex.def Info: CoverSheet.pdf used on input line 132.
+Package pdftex.def Info: CoverSheet.pdf used on input line 129.
 (pdftex.def)             Requested size: 597.22978pt x 845.15544pt.
 File: CoverSheet.pdf Graphic file (type pdf)
 
 <use CoverSheet.pdf>
-Package pdftex.def Info: CoverSheet.pdf used on input line 132.
+Package pdftex.def Info: CoverSheet.pdf used on input line 129.
 (pdftex.def)             Requested size: 597.22978pt x 845.15544pt.
  <CoverSheet.pdf, id=13, page=1, 597.23125pt x 845.1575pt>
 File: CoverSheet.pdf Graphic file (type pdf)
 
 <use CoverSheet.pdf, page 1>
-Package pdftex.def Info: CoverSheet.pdf, page1 used on input line 132.
+Package pdftex.def Info: CoverSheet.pdf, page1 used on input line 129.
 (pdftex.def)             Requested size: 597.22978pt x 845.15544pt.
 File: CoverSheet.pdf Graphic file (type pdf)
  <use CoverSheet.pdf, page 1>
-Package pdftex.def Info: CoverSheet.pdf, page1 used on input line 132.
+Package pdftex.def Info: CoverSheet.pdf, page1 used on input line 129.
 (pdftex.def)             Requested size: 561.86221pt x 795.10587pt.
  [2]
 File: CoverSheet.pdf Graphic file (type pdf)
 
 <use CoverSheet.pdf, page 1>
-Package pdftex.def Info: CoverSheet.pdf, page1 used on input line 132.
+Package pdftex.def Info: CoverSheet.pdf, page1 used on input line 129.
 (pdftex.def)             Requested size: 561.86221pt x 795.10587pt.
 File: CoverSheet.pdf Graphic file (type pdf)
  <use CoverSheet.pdf, page 1>
-Package pdftex.def Info: CoverSheet.pdf, page1 used on input line 132.
+Package pdftex.def Info: CoverSheet.pdf, page1 used on input line 129.
 (pdftex.def)             Requested size: 561.86221pt x 795.10587pt.
 File: CoverSheet.pdf Graphic file (type pdf)
 
 <use CoverSheet.pdf, page 1>
-Package pdftex.def Info: CoverSheet.pdf, page1 used on input line 132.
+Package pdftex.def Info: CoverSheet.pdf, page1 used on input line 129.
 (pdftex.def)             Requested size: 561.86221pt x 795.10587pt.
  [3 <./CoverSheet.pdf>] [4]
 *geometry* verbose mode - [ newgeometry ] result:
@@ -804,38 +804,38 @@ Package pdftex.def Info: CoverSheet.pdf, page1 used on input line 132.
 ] [6
 
 ]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 196.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 193.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 196.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 193.
  [7] [8] [9]
 <selffeedback.png, id=64, 197.73875pt x 173.64874pt>
 File: selffeedback.png Graphic file (type png)
  <use selffeedback.png>
-Package pdftex.def Info: selffeedback.png used on input line 259.
+Package pdftex.def Info: selffeedback.png used on input line 256.
 (pdftex.def)             Requested size: 98.86913pt x 86.82416pt.
 
 <twofeedback.png, id=66, 240.9pt x 259.97125pt>
 File: twofeedback.png Graphic file (type png)
  <use twofeedback.png>
-Package pdftex.def Info: twofeedback.png used on input line 266.
+Package pdftex.def Info: twofeedback.png used on input line 263.
 (pdftex.def)             Requested size: 120.44969pt x 129.9853pt.
  [10 <./selffeedback.png> <./twofeedback.png>] [11] [12]
 <abmii.png, id=82, 423.5825pt x 442.65375pt>
 File: abmii.png Graphic file (type png)
  <use abmii.png>
-Package pdftex.def Info: abmii.png used on input line 367.
+Package pdftex.def Info: abmii.png used on input line 364.
 (pdftex.def)             Requested size: 211.79073pt x 221.32632pt.
  [13] [14 <./abmii.png>] [15] [16] <harness_setup.png, id=98, 380.42125pt x 419
 .5675pt>
 File: harness_setup.png Graphic file (type png)
 
 <use harness_setup.png>
-Package pdftex.def Info: harness_setup.png used on input line 438.
+Package pdftex.def Info: harness_setup.png used on input line 435.
 (pdftex.def)             Requested size: 190.21014pt x 209.78323pt.
  [17 <./harness_setup.png>] (./complexagentwrapper.hs)
 (./harntypint.m
@@ -855,7 +855,7 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
 ) (./5rrint.m) (./6rrif.m) (./7rrwhere.m) (./8full.m) [30] [31] [32]
 (./rrexam.m) (./cl1.m) [33] (./ts1.m) [34] (./ts2.m) [35] (./gl3.m) (./glnv3.m)
 [36] (./ts3.m) [37] [38] (./souts4.m) (./wrap4.m)
-Overfull \hbox (25.52376pt too wide) in paragraph at lines 921--922
+Overfull \hbox (25.52376pt too wide) in paragraph at lines 918--919
 []\OT1/cmr/m/n/10 A de-lay agent is a new wrap-per named in the for-mat $\OML/c
 mm/m/it/10 functionname[]elay$\OT1/cmr/m/n/10 , where $\OML/cmm/m/it/10 functio
 nname$
@@ -871,22 +871,22 @@ Overfull \vbox (2.26486pt too high) has occurred while \output is active []
 
 
 [59] (./ts8-4.m) [60] (./intersimfun.hs) (./harntyptrans.m) (./agenttrans.m)
-[61] (./harntyptrans.m) (./agenttrans.m) [62] (./tokens.m) [63]
-(./parse_treecc.m) [64] [65] [66] [67] [68]
-Overfull \hbox (45.05296pt too wide) in paragraph at lines 1376--1377
+[61] (./harntyptrans.m) (./agenttrans.m) [62] (./tokens.m) (./parse_treecc.m)
+[63] [64] [65] [66] [67] [68]
+Overfull \hbox (45.05296pt too wide) in paragraph at lines 1373--1374
 \OT1/cmr/m/n/10 tion in-struc-tions and down-loads for Mi-randa can be found th
 rough the fol-low-ing link: http://miranda.org.uk/. 
  []
 
 (./tomircode.m) (./t_miracode.m [69] [70] [71] [72] [73] [74] [75] [76]
 [77] [78] [79] [80] [81]) [82]
-Overfull \hbox (45.05296pt too wide) in paragraph at lines 1405--1406
+Overfull \hbox (45.05296pt too wide) in paragraph at lines 1402--1403
 \OT1/cmr/m/n/10 tion in-struc-tions and down-loads for Mi-randa can be found th
 rough the fol-low-ing link: http://miranda.org.uk/. 
  []
 
 
-Overfull \hbox (22.62094pt too wide) in paragraph at lines 1407--1408
+Overfull \hbox (22.62094pt too wide) in paragraph at lines 1404--1405
 \OT1/cmr/m/n/10 is done the first transaltion step can be achieved by us-ing th
 e com-mand $\OML/cmm/m/it/10 trans[]step\OT1/cmr/m/n/10 1$ $(\OML/cmm/m/it/10 p
 arser$ $\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 lex$ $input$ $\OT1/cmr/m/n/10 ))$,
@@ -941,7 +941,7 @@ cmr8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
 fb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on MRes_Dissertation.pdf (95 pages, 771813 bytes).
+Output written on MRes_Dissertation.pdf (95 pages, 771747 bytes).
 PDF statistics:
  426 PDF objects out of 1000 (max. 8388607)
  289 compressed objects within 3 object streams

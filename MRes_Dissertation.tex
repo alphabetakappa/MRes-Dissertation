@@ -83,10 +83,8 @@
 
 %%%%%%%%%%%%%proof%%%%%%%%%%%%%%%%%% 
 
-%sec 4.3
 %sec 5
 %sec 6
-%sec 7
 
 
  
@@ -735,7 +733,7 @@ An experiment is written as a function call, with a certain set of arguments. Fi
 	\label{fig:2exofla}
 \end{figure} 
  
-The initial conditions, which use will be shown later, are defined as shown in Fig.~\ref{fig:3exofla}. There is no defined  limit to the amount of initial conditions that can be defined. 
+The initial conditions, which use will be shown later, are defined as shown in Fig.~\ref{fig:3exofla}. There is no defined  limit to the number of initial conditions that can be defined. 
 \begin{figure}[H]
 	\centering
 	\lstinputlisting{3initcons.m}
@@ -814,7 +812,7 @@ These eight steps translate the bespoke recurrence relation model into that of a
 
 Another translation step could be added to translate the final target state into the Haskell syntax, matching that of InterDyne. However this step is not necessary in creating an agent-based model that can be seen to be equivalent to a reduced version of InterDyne.  
 
-These steps will be shown in this section by translating an example written in the bespoke recurrence relation language, shown in Fig.~\ref{fig:rre1}. This example consists of four recurrence relations ($i\_f1$, $j\_f2$, $j\_f2$ and $k\_f1$) split into three groups ($i$, $j$ and $k$). Each of these relations uses the allowed pattern matching to define their initial conditions in terms of $q$ and $k$, which are defined in the section $init$. The experiment, defined under $main$, is to return the value of the relation $i\_f1$ at the time step 3.  
+These steps will be shown in this section by translating an example written in the bespoke recurrence relation language, shown in Fig.~\ref{fig:rre1}, into the target states for each translation step. This example consists of four recurrence relations ($i\_f1$, $j\_f2$, $j\_f2$ and $k\_f1$) split into three groups ($i$, $j$ and $k$). Each of these relations uses the allowed pattern matching to define their initial conditions in terms of $q$ and $k$, which are defined in the section $init$. The experiment, defined under $main$, is to return the value of the relation $i\_f1$ at the time step 3.  
 \begin{figure}[H]
 	\centering
 	\lstinputlisting{rrexam.m}
@@ -1220,7 +1218,7 @@ The  reduced-functionality version of InterDyne being compared to has a harness 
 	\label{fig:agentpint}
 \end{figure} 
 
-Looking at the simulator harness for InterDyne in Fig.~\ref{fig:harntypinharnes} and comparing this to the simulator harness in the final target stat in Fig.~\ref{fig:harn8}, one can see that these two harness are identical in form and very similar in syntax. The harness produced in the final target state of the translation has not yet been converted into Haskell (the language in which InterDyne is written), this explains the difference in syntax between the two harnesses. 
+Looking at the simulator harness for InterDyne in Fig.~\ref{fig:harntypinharnes} and comparing this to the simulator harness of the final target state in Fig.~\ref{fig:ts8}, one can see that these two harness are identical in form and very similar in syntax. The harness produced in the final target state of the translation has not yet been converted into Haskell (the language in which InterDyne is written), this explains the difference in syntax between the two harnesses. 
 
 The type of the harness produced by the translation process is show in Fig.~\ref{fig:harntyptrans}, as can be seen this type adheres exactly to the type of InterDyne harness shown in Fig.~\ref{fig:harntypint}.
 \begin{figure}[H]
@@ -1273,7 +1271,7 @@ This equivalence suggests that each step is correct and that the entire translat
 \subsection{Automated Translation Implementation}
 Though the design of the translation has been shown, with an example being translated by hand, this is a long process to achieve for multiple experiments. The question hence arises, can this process be automated? Implementing this automation is outside the scope of this project, however the first three steps have been achieved and are discussed below (this work is shown in Appendix~B). 
 
-The three aspects of implementation discussed are, the lexer, the parser, and the first translation step. These steps are written in the Miranda functional language and allows for a text file contain an experiment written in the bespoke language to be translated into the first translation step. 
+The three aspects of implementation discussed are, the lexer, the parser, and the first translation step. These steps are written in the Miranda functional language and allows for a text file contain an experiment written in the bespoke recurrence relation language to be translated into the first translation step. 
 
 The selected text file is read in by the lexer, this tokenises the list of characters using the lexemes show Fig.\ref{fig:tokens}. These lexemes represent each item that is allowed as part of the bespoke recurrence relation language, these can be keywords or symbols. Tokenising these items adds meaning to them, for example a list of characters could be identified as a variable or as a recurrence relation, the lexemes hold this information. 
 \begin{figure}[H]
@@ -1283,7 +1281,7 @@ The selected text file is read in by the lexer, this tokenises the list of chara
 	\label{fig:tokens}
 \end{figure} 
 
-When passing characters to the lexer it is assumed that they are in keeping with the rules of the bespoke recurrence relation language. The lexer has no knowledge of this language, passed its keywords and symbols, and will tokenise everything according to this. If a character or string of charters is passed that does not match any of the known keywords  or symbols, it will be interpreted as a variable name and saved as such. This lexer does not use spaces so all tokenising will be done strictly on the characters order and not their spacing, this also allows a experiment to be passed as a single continuous line if one wished. 
+When passing characters to the lexer it is assumed that they are in keeping with the rules of the bespoke recurrence relation language. The lexer has no knowledge of this language, passed its keywords and symbols, and will tokenise everything according to this. If a character or string of charters is passed that does not match any of the known keywords  or symbols, it will be interpreted as a variable name and saved as such. This lexer does not use spaces so all tokenising will be done strictly on the characters order and not their spacing.
 
 The next step after tokenising the input is to add a structure to this list of tokens, this is done using a parser. The parser reads in the list of tokens and knows the BNF and structure a recurrence relation experiment should take. The parser uses this knowledge of the layout and the meaning of the tokens to translate the token list into a parse tree created to represents this experiment, shown in Fig.~\ref{fig:parsetreecodemira}.  
 \begin{figure}[H]
@@ -1295,11 +1293,11 @@ The next step after tokenising the input is to add a structure to this list of t
 
 The parser expects for the tokens given to it to conform to the rules and layout of the bespoke recurrence relation language, this includes containing a $main$ with an experiment, a $init$ though this can be empty, and a $where$ with a list of recurrence relations (this can be a single recurrence relation). Any formatting that does not match the formatting rules of this language will cause the parser to crash. However the actual function of the recurrence relations can be incorrect, causing black holes or other issues, but will still be parsed correctly.
 
-Once in this structure a translation function can be used to translate the recurrence relation experiment into the first step in the translation (to allow for infinite list outputs). This is done by reading in this numeric type and then creating a new version of this numeric type that is translated identically apart from the aspects that need to be changed to allow for the translation step. 
+Once in this structure a translation function can be used to translate the recurrence relation experiment into the target state produced by the first step in the translation (to allow for infinite list outputs). This is done by reading in this parse tree and then creating a new version of this parse tree that is translated identically apart from the aspects that need to be changed to allow for the translation step. 
 
 This translation step should never crash as the format passed to it should always be correct, with an incorrect format causing the parser to crash. This translation step also only focusses on the format of the experiment and any actual functionality could be incorrect but will still be correctly translated. 
 
-This implementation can be seen to be syntactically complete as the parse tree shown above matches exactly with the concrete syntax given in Fig.~\ref{fig:bnflex}. This means that there is no case in the concrete syntax which can not exist in the parse tree definition. Semantic completeness of this implementation is beyond the scope of this project, but would define what is not allowed because it does not make sense in the language despite being syntactically correct, such as a recurrence relation name that has no definition (but is correctly formed).
+This implementation can be seen to be syntactically complete as the parse tree shown above matches exactly with the concrete syntax given in Fig.~\ref{fig:bnflex}. This means that there is no case in the concrete syntax which can not exist in the parse tree definition. Semantic completeness of this implementation is beyond the scope of this project, but would define what is not allowed because it does not make sense in the language despite being syntactically correct; such as a recurrence relation name that has no definition (but is correctly formed).
 
 
 \newpage
